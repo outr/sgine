@@ -28,22 +28,25 @@ class Screen extends RenderFlow with Container {
 
   override def screen: Screen = this
 
-  override protected def add(child: Component): Unit = {
-    super.add(child)
+  def +=(child: Component) = add(child)
+  def -=(child: Component) = remove(child)
 
+  override protected def add[C <: Component](child: C): C = {
+    super.add(child)
     child match {
       case ac: ActorComponent[_] => screen.stage.getRoot.addActor(ac.actor)
       case _ => // Ignore non-actor components
     }
+    child
   }
 
-  override protected def remove(child: Component): Unit = {
+  override protected def remove[C <: Component](child: C): C = {
     super.remove(child)
-
     child match {
       case ac: ActorComponent[_] => screen.stage.getRoot.removeActor(ac.actor)
       case _ => // Ignore non-actor components
     }
+    child
   }
 }
 

@@ -5,11 +5,17 @@ import pl.metastack.metarx.Buffer
 trait Container extends Component {
   private val children: Buffer[Component] = Buffer[Component]
 
-  protected def add(child: Component): Unit = screen.render.once {
-    children += child
+  protected def add[C <: Component](child: C): C = {
+    screen.render.once {
+      children += child
+    }
+    child
   }
 
-  protected def remove(child: Component): Unit = screen.render.once {
-    children -= child
+  protected def remove[C <: Component](child: C): C = {
+    screen.render.once {
+      children -= child
+    }
+    child
   }
 }

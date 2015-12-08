@@ -13,6 +13,15 @@ trait UI extends RenderFlow {
 
   private[sgine] val listener = new GDXApplicationListener(this)
 
+  create.once {
+    continuousRendering.attach(cr => Gdx.graphics.setContinuousRendering(cr))
+  }
+  resize.on {
+    width := Gdx.graphics.getWidth.toDouble
+    height := Gdx.graphics.getHeight.toDouble
+    invalidateDisplay()
+  }
+
   def invalidateDisplay(): Unit = Gdx.graphics.requestRendering()
 
   def error(t: Throwable, message: Option[String] = None) = {

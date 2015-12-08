@@ -11,6 +11,8 @@ package object sgine {
   private var textureMap = Map.empty[String, Texture]
   private var textureRegionMap = Map.empty[String, TextureRegion]
 
+  def ui = UI()
+
   implicit def string2Texture(classPath: String): Texture = synchronized {
     textureMap.get(classPath) match {
       case Some(texture) => texture
