@@ -23,7 +23,7 @@ class TransitionsScreen extends Screen {
     val transition = (
       image.color.alpha transitionTo 1.0 from 0.0 in 5.seconds
         andThen(
-        image.position.x transitionTo 0.0 from image.position.x.get in 1.seconds
+          image.position.x transitionTo 0.0 from image.position.x.get in 1.seconds
           and(image.position.y transitionTo 0.0 from image.position.y.get in 1.seconds)
         )
         andThen(image.color.red transitionTo 0.0 from 1.0 in 2.seconds)
