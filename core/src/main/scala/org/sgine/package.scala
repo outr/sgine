@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
+import org.sgine.transition.to.TransitionToPartial1
+import pl.metastack.metarx.Sub
 
 import scala.language.implicitConversions
 
@@ -38,5 +40,17 @@ package object sgine {
 
   implicit def string2Drawable(classPath: String): Drawable = {
     new TextureRegionDrawable(string2TextureRegion(classPath))
+  }
+
+  implicit class Transitions(sub: Sub[Double]) {
+    def transitionTo(to: Double)(implicit screen: Screen): TransitionToPartial1 = new TransitionToPartial1(screen, sub, to)
+  }
+
+  implicit class Times(i: Int) {
+    def millis: Double = i.toDouble / 1000.0
+    def seconds: Double = i.toDouble
+    def minutes: Double = i.toDouble * 60.0
+    def hours: Double = i.toDouble * 60.0 * 60.0
+    def days: Double = i.toDouble * 60.0 * 60.0 * 24.0
   }
 }

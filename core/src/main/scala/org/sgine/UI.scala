@@ -1,14 +1,16 @@
 package org.sgine
 
 import com.badlogic.gdx.Gdx
-import pl.metastack.metarx.Sub
+import pl.metastack.metarx.{ReadStateChannel, Sub}
 
 trait UI extends RenderFlow {
   UI.instance = Some(this)
 
   def delta = Gdx.graphics.getDeltaTime
-  val width: Sub[Double] = Sub(0.0)
-  val height: Sub[Double] = Sub(0.0)
+  private val _width = Sub(0.0)
+  private val _height = Sub(0.0)
+  def width: ReadStateChannel[Double] = _width
+  def height: ReadStateChannel[Double] = _height
   val continuousRendering: Sub[Boolean] = Sub(true)
 
   private[sgine] val listener = new GDXApplicationListener(this)
@@ -17,8 +19,8 @@ trait UI extends RenderFlow {
     continuousRendering.attach(cr => Gdx.graphics.setContinuousRendering(cr))
   }
   resize.on {
-    width := Gdx.graphics.getWidth.toDouble
-    height := Gdx.graphics.getHeight.toDouble
+    _width := Gdx.graphics.getWidth.toDouble
+    _height := Gdx.graphics.getHeight.toDouble
     invalidateDisplay()
   }
 

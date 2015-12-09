@@ -17,6 +17,17 @@ class ActionManager {
     a
   }
 
+  def until(condition: => Boolean)(f: => Unit): Action = {
+    var action: Action = null
+    action = on {
+      f
+      if (condition) {
+        remove(action)
+      }
+    }
+    action
+  }
+
   def in(delay: Double)(f: => Unit): Action = every(delay, stopIn = delay)(f)
 
   def every(delay: Double, runNow: Boolean = false, stopIn: Double = Int.MaxValue.toDouble)(f: => Unit): Action = {

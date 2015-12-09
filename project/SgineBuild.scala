@@ -11,7 +11,7 @@ object SgineBuild extends Build {
   lazy val android = project("android").dependsOn(core).withDependencies(google.android, gdx.android)
   lazy val ios = project("ios").dependsOn(core).withDependencies(gdx.ios)
   lazy val tools = project("tools").dependsOn(lwjgl).withDependencies(gdx.tools)
-  lazy val examples = project("examples").dependsOn(jglfw, lwjgl).withDependencies(gdx.desktopNatives)
+  lazy val examples = project("examples").dependsOn(jglfw, lwjgl).withDependencies(gdx.desktopNatives, scalaXML)
 
   private def project(projectName: String) = Project(id = projectName, base = file(projectName)).settings(
     name := s"${Details.name}-$projectName",
@@ -82,9 +82,12 @@ object Details {
 object Dependencies {
   val gdxVersion = "1.7.1"
 
+  val scalaXML = "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
+
   object google {
     val android = "com.google.android" % "android" % "4.1.1.4" % "provided"
   }
+
   object metastack {
     val rx = "pl.metastack" %%  "metarx" % "0.1.4-SNAPSHOT"
   }
