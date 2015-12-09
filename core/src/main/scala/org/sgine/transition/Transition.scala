@@ -6,10 +6,18 @@ trait Transition {
   def screen: Screen
 
   def finished: Boolean
+  def init(): Unit
   def invoke(): Unit
 
-  def start() = screen.render.until(finished) {
-    invoke()
+  def start() = {
+    var first = true
+    screen.render.until(finished) {
+      if (first) {
+        init()
+        first = false
+      }
+      invoke()
+    }
   }
 
   def andThen(next: Transition): Sequence = new Sequence(screen, List(this, next))
