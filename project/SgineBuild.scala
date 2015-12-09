@@ -11,7 +11,7 @@ object SgineBuild extends Build {
   lazy val android = project("android").dependsOn(core).withDependencies(google.android, gdx.android)
   lazy val ios = project("ios").dependsOn(core).withDependencies(gdx.ios)
   lazy val tools = project("tools").dependsOn(lwjgl).withDependencies(gdx.tools)
-  lazy val examples = project("examples").dependsOn(jglfw).withDependencies(gdx.desktopNatives)
+  lazy val examples = project("examples").dependsOn(jglfw, lwjgl).withDependencies(gdx.desktopNatives)
 
   private def project(projectName: String) = Project(id = projectName, base = file(projectName)).settings(
     name := s"${Details.name}-$projectName",

@@ -7,4 +7,8 @@ trait ActorWidget[A <: Actor] extends Widget with ActorComponent[A] {
   position.y.attach(d => actor.setY(d.toFloat))
   size.width.attach(d => actor.setWidth(d.toFloat))
   size.height.attach(d => actor.setHeight(d.toFloat))
+  color.red.attach(d => actor.getColor.r = d.toFloat)
+  color.green.attach(d => actor.getColor.g = d.toFloat)
+  color.blue.attach(d => actor.getColor.b = d.toFloat)
+  color.alpha.attach(d => actor.getColor.a = d.toFloat)
 }

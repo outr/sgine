@@ -1,28 +1,33 @@
 package example
 
-import com.badlogic.gdx.backends.jglfw.JglfwApplicationConfiguration
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
+import com.badlogic.gdx.graphics.FPSLogger
 import org.sgine._
-import org.sgine.jglfw.JGLFWPlatform
-import org.sgine.render.{ClearScreen, SingleScreen}
+import org.sgine.lwjgl.LWJGLPlatform
 import org.sgine.widget.Image
 import pl.metastack.metarx._
 
-object HelloSgine extends JGLFWPlatform with UI with ClearScreen with SingleScreen {
+object HelloSgine extends LWJGLPlatform with BasicUI {
   lazy val screen = new HelloScreen
 
   override protected def createUI(): UI = this
 
-  override def init(config: JglfwApplicationConfiguration): Unit = {
+  override def init(config: LwjglApplicationConfiguration): Unit = {
     config.title = "Hello Sgine"
     config.width = 1024
     config.height = 768
     config.forceExit = true
     config.samples = 8
-    config.vSync = false
+    config.vSyncEnabled = false
+    config.foregroundFPS = 0
   }
 }
 
 class HelloScreen extends Screen {
+  val fps = new FPSLogger
+
+  ui.continuousRendering := false
+
   create.on {
     this += new Image("sgine.png") {    // Top-Left
       position.x := 50.0
@@ -47,5 +52,8 @@ class HelloScreen extends Screen {
       size.width := ui.width / 2.0
       size.height := size.width / aspect
     }
+  }
+  render.on {
+    fps.log()
   }
 }
