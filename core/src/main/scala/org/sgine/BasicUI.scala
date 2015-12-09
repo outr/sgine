@@ -1,5 +1,5 @@
 package org.sgine
 
-import org.sgine.render.{ClearScreen, SingleScreen}
+import org.sgine.render.{ClearScreenSupport, SingleScreenSupport}
 
-trait BasicUI extends UI with ClearScreen with SingleScreen
+trait BasicUI extends UI with ClearScreenSupport with SingleScreenSupport

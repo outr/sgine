@@ -3,7 +3,7 @@ package org.sgine.render
 import com.badlogic.gdx.Gdx
 import org.sgine.{Screen, UI}
 
-trait SingleScreen extends UI {
+trait SingleScreenSupport extends UI {
   def screen: Screen
 
   create.once {
