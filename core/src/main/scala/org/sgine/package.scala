@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
+import org.sgine.transition.ActionTransition
 import org.sgine.transition.to.TransitionToPartial1
 import pl.metastack.metarx.Sub
 
@@ -42,8 +43,10 @@ package object sgine {
     new TextureRegionDrawable(string2TextureRegion(classPath))
   }
 
+  def function(f: => Unit)(implicit screen: Screen): ActionTransition = new ActionTransition(screen, () => f)
+
   implicit class Transitions(sub: Sub[Double]) {
-    def transitionTo(to: Double)(implicit screen: Screen): TransitionToPartial1 = new TransitionToPartial1(screen, sub, to)
+    def transitionTo(to: => Double)(implicit screen: Screen): TransitionToPartial1 = new TransitionToPartial1(screen, sub, to)
   }
 
   implicit class Times(i: Int) {

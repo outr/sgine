@@ -18,18 +18,14 @@ class ColorsScreen extends Screen {
     val image = new Image("sgine.png") {
       position.x := (ui.width / 2.0) - (size.width / 2.0)
       position.y := (ui.height / 2.0) - (size.height / 2.0)
-//      render.every(0.4, runNow = true, stopIn = 10.0) {
-//        color.red := math.random
-//        color.green := math.random
-//        color.blue := math.random
-//      }
-      color.alpha := 0.0
-//      render.until(color.alpha.get >= 1.0) {
-//        color.alpha := math.min(color.alpha.get + 0.01, 1.0)
-//      }
-      // color.alpha.transitionTo 1.0 from 0.0 in 5.seconds
     }
-    image.color.alpha transitionTo 1.0 from 0.0 in 5.seconds start()
+
+    render.every(1.seconds, runNow = true) {
+      (image.color.red transitionTo math.random from image.color.red.get in 1.seconds
+        and (image.color.green transitionTo math.random from image.color.green.get in 1.seconds)
+        and (image.color.blue transitionTo math.random from image.color.blue.get in 1.seconds)
+      ).start()
+    }
     add(image)
   }
 }
