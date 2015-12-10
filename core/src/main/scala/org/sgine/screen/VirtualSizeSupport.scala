@@ -50,6 +50,7 @@ class VirtualSize(screen: VirtualSizeSupport) {
         val ratio = screen.virtualMode match {
           case VirtualMode.Bars => math.min(widthRatio, heightRatio)
           case VirtualMode.Clip => math.max(widthRatio, heightRatio)
+          case _ => 0.0   // Not possible
         }
         val w = screen.virtualWidth * ratio
         val h = screen.virtualHeight * ratio

@@ -20,7 +20,9 @@ package object sgine {
     textureMap.get(classPath) match {
       case Some(texture) => texture
       case None => {
-        val texture = new Texture(Gdx.files.classpath(classPath))
+        val file = Gdx.files.classpath(classPath)
+        if (file == null) throw new NullPointerException(s"Unable to find $classPath in classpath.")
+        val texture = new Texture(file)
         textureMap += classPath -> texture
         texture
       }

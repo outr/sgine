@@ -10,7 +10,7 @@ class ColorProperties {
   val alpha: Sub[Double] = Sub(1.0)
 
   def apply() = Color(red.get, green.get, blue.get, alpha.get)
-  def set(c: Color) = {
+  def :=(c: Color) = {
     red := c.red
     green := c.green
     blue := c.blue

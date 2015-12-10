@@ -14,4 +14,6 @@ trait ActorWidget[A <: Actor] extends Widget with ActorComponent[A] {
   rotation.attach(d => actor.setRotation(d.toFloat))
   origin.x.attach(d => actor.setOriginX(d.toFloat))
   origin.y.attach(d => actor.setOriginY(d.toFloat))
+  scale.x.attach(d => actor.setScaleX(d.toFloat))
+  scale.y.attach(d => actor.setScaleY(d.toFloat))
 }
