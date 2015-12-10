@@ -11,6 +11,11 @@ trait UI extends RenderFlow {
   private val _height = Sub(0.0)
   def width: ReadStateChannel[Double] = _width
   def height: ReadStateChannel[Double] = _height
+  lazy val aspectRatio: ReadStateChannel[Double] = {
+    val s = Sub(0.0)
+    s := width / height
+    s
+  }
   val continuousRendering: Sub[Boolean] = Sub(true)
 
   private[sgine] val listener = new GDXApplicationListener(this)
