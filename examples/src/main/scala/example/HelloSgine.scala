@@ -34,8 +34,9 @@ class HelloScreen extends Screen {
       position.y := ui.height - size.height - 50.0
     }
     this += new Image("sgine.png") {    // Top-Right
-      position.x := ui.width - size.width - 50.0
-      position.y := ui.height - size.height - 50.0
+      position.right := ui.width - 50.0
+      position.top := ui.height - 50.0
+//      position.y := ui.height - size.height - 50.0
     }
     this += new Image("sgine.png") {    // Bottom-Left
       position.x := 50.0
