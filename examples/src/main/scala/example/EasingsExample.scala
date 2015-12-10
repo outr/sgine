@@ -18,6 +18,7 @@ object EasingsExample extends LWJGLPlatform with BasicUI {
     config.samples = 8
     config.vSyncEnabled = false
     config.foregroundFPS = 0
+    config.backgroundFPS = 60
   }
 
   override protected def createUI(): UI = this
@@ -32,9 +33,11 @@ class EasingsScreen extends Screen {
       position.y := (ui.height / 2.0) - (size.height / 2.0)
     }
 
-    (image.position.x transitionTo 0.0 in 3.seconds easing Easing.BounceOut
-      andThen(image.position.right transitionTo ui.width.get in 3.seconds easing Easing.BounceInOut)
-      andThen(image.position.center transitionTo ui.width.get / 2.0 in 3.seconds easing Easing.ElasticOut)).start()
+    forever(image.position.x transitionTo 0.0 in 1.seconds easing Easing.BounceOut
+      andThen (image.position.right transitionTo ui.width.get in 1.seconds easing Easing.SineIn)
+      andThen (image.position.center transitionTo ui.width.get / 2.0 in 1.seconds easing Easing.ElasticOut)
+      andThen (image.rotation transitionTo -360.0 in 2.seconds easing Easing.ElasticOut)
+      andThen function(image.rotation := 0.0)).start()
     add(image)
   }
   render.on {

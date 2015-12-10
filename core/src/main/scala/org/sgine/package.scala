@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
 import org.sgine.component.prop.DependentVar
-import org.sgine.transition.{ActionTransition, TransitionTo}
+import org.sgine.transition.{ActionTransition, Repeat, Transition, TransitionTo}
 import pl.metastack.metarx.Sub
 
 import scala.language.implicitConversions
@@ -42,6 +42,10 @@ package object sgine {
   implicit def string2Drawable(classPath: String): Drawable = {
     new TextureRegionDrawable(string2TextureRegion(classPath))
   }
+
+  def repeat(times: Int, transition: Transition)(implicit screen: Screen): Repeat = new Repeat(screen, times, transition)
+
+  def forever(transition: Transition)(implicit screen: Screen): Repeat = new Repeat(screen, Int.MaxValue, transition)
 
   def function(f: => Unit)(implicit screen: Screen): ActionTransition = new ActionTransition(screen, () => f)
 
