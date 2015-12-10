@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
 import org.sgine.component.prop.DependentVar
 import org.sgine.transition.{ActionTransition, Repeat, Transition, TransitionTo}
-import pl.metastack.metarx.Sub
+import pl.metastack.metarx.{ReadChannel, Sub}
 
 import scala.language.implicitConversions
 
@@ -75,5 +75,16 @@ package object sgine {
     def minutes: Double = d * 60.0
     def hours: Double = d * 60.0 * 60.0
     def days: Double = d * 60.0 * 60.0 * 24.0
+  }
+
+  implicit class IntSize(i: Int) {
+    def px: Double = i.toDouble
+    def pctw: ReadChannel[Double] = (i.toDouble / 100.0) * ui.width
+    def pcth: ReadChannel[Double] = (i.toDouble / 100.0) * ui.height
+  }
+  implicit class DoubleSize(d: Double) {
+    def px: Double = d
+    def pctw: ReadChannel[Double] = (d / 100.0) * ui.width
+    def pcth: ReadChannel[Double] = (d / 100.0) * ui.height
   }
 }
