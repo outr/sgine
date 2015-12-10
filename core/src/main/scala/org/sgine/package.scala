@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
+import org.sgine.component.prop.DependentVar
 import org.sgine.transition.{ActionTransition, TransitionTo}
 import pl.metastack.metarx.Sub
 
@@ -45,7 +46,15 @@ package object sgine {
   def function(f: => Unit)(implicit screen: Screen): ActionTransition = new ActionTransition(screen, () => f)
 
   implicit class Transitions(sub: Sub[Double]) {
-    def transitionTo(to: => Double)(implicit screen: Screen): TransitionTo = new TransitionTo(screen, sub, () => to)
+    def transitionTo(to: => Double)(implicit screen: Screen): TransitionTo = {
+      new TransitionTo(screen, (d: Double) => sub := d, () => sub.get, () => to)
+    }
+  }
+
+  implicit class DependentTransitions(dep: DependentVar) {
+    def transitionTo(to: => Double)(implicit screen: Screen): TransitionTo = {
+      new TransitionTo(screen, (d: Double) => dep := d, () => dep.get, () => to)
+    }
   }
 
   implicit class Times(i: Int) {

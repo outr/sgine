@@ -46,11 +46,9 @@ class HelloScreen extends Screen {
       position.bottom := 50.0
     }
     this += new Image("sgine.png") {    // Center
-      val aspect = size.width.get / size.height.get
       position.center := ui.width / 2.0
       position.middle := ui.height / 2.0
-      size.width := ui.width / 2.0
-      size.height := size.width / aspect
+      size.maintainAspectRatio(width = ui.width / 2.0)
     }
   }
   render.on {

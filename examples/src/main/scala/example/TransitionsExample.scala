@@ -8,7 +8,15 @@ import org.sgine.widget.Image
 object TransitionsExample extends LWJGLPlatform with BasicUI {
   override lazy val screen: Screen = new TransitionsScreen
 
-  override def init(config: LwjglApplicationConfiguration): Unit = {}
+  override def init(config: LwjglApplicationConfiguration): Unit = {
+    config.title = "Transitions Example"
+    config.width = 1024
+    config.height = 768
+    config.forceExit = true
+    config.samples = 8
+    config.vSyncEnabled = false
+    config.foregroundFPS = 0
+  }
 
   override protected def createUI(): UI = this
 }
