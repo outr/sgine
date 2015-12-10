@@ -26,30 +26,29 @@ object HelloSgine extends LWJGLPlatform with BasicUI {
 class HelloScreen extends Screen {
   val fps = new FPSLogger
 
-  ui.continuousRendering := false
+  ui.continuousRendering := true
 
   create.on {
     this += new Image("sgine.png") {    // Top-Left
-      position.x := 50.0
-      position.y := ui.height - size.height - 50.0
+      position.left := 50.0
+      position.top := ui.height - 50.0
     }
     this += new Image("sgine.png") {    // Top-Right
       position.right := ui.width - 50.0
       position.top := ui.height - 50.0
-//      position.y := ui.height - size.height - 50.0
     }
     this += new Image("sgine.png") {    // Bottom-Left
-      position.x := 50.0
-      position.y := 50.0
+      position.left := 50.0
+      position.bottom := 50.0
     }
     this += new Image("sgine.png") {    // Bottom-Right
-      position.x := ui.width - size.width - 50.0
-      position.y := 50.0
+      position.right := ui.width - 50.0
+      position.bottom := 50.0
     }
     this += new Image("sgine.png") {    // Center
       val aspect = size.width.get / size.height.get
-      position.x := (ui.width / 2.0) - (size.width / 2.0)
-      position.y := (ui.height / 2.0) - (size.height / 2.0)
+      position.center := ui.width / 2.0
+      position.middle := ui.height / 2.0
       size.width := ui.width / 2.0
       size.height := size.width / aspect
     }
