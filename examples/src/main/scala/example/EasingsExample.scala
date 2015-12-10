@@ -1,30 +1,12 @@
 package example
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import com.badlogic.gdx.graphics.FPSLogger
 import org.sgine._
-import org.sgine.lwjgl.LWJGLPlatform
+import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.transition.easing.Easing
 import org.sgine.widget.Image
 
-object EasingsExample extends LWJGLPlatform with BasicUI {
-  override lazy val screen: Screen = new EasingsScreen
-
-  override def init(config: LwjglApplicationConfiguration): Unit = {
-    config.title = "Easings Example"
-    config.width = 1024
-    config.height = 768
-    config.forceExit = true
-    config.samples = 8
-    config.vSyncEnabled = false
-    config.foregroundFPS = 0
-    config.backgroundFPS = 60
-  }
-
-  override protected def createUI(): UI = this
-}
-
-class EasingsScreen extends Screen {
+object EasingsExample extends BasicDesktopApp {
   val fps = new FPSLogger
 
   create.on {

@@ -1,27 +1,10 @@
 package example
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import org.sgine._
-import org.sgine.lwjgl.LWJGLPlatform
+import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.widget.Image
 
-object TransitionsExample extends LWJGLPlatform with BasicUI {
-  override lazy val screen: Screen = new TransitionsScreen
-
-  override def init(config: LwjglApplicationConfiguration): Unit = {
-    config.title = "Transitions Example"
-    config.width = 1024
-    config.height = 768
-    config.forceExit = true
-    config.samples = 8
-    config.vSyncEnabled = false
-    config.foregroundFPS = 0
-  }
-
-  override protected def createUI(): UI = this
-}
-
-class TransitionsScreen extends Screen {
+object TransitionsExample extends BasicDesktopApp {
   create.on {
     val image = new Image("sgine.png") {
       position.x := (ui.width / 2.0) - (size.width / 2.0)
