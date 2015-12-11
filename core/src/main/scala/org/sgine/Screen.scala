@@ -1,13 +1,15 @@
 package org.sgine
 
-import com.badlogic.gdx.scenes.scene2d.Stage
+import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.badlogic.gdx.{Gdx, Screen => GDXScreen}
-import org.sgine.component.{ActorComponent, Component, Container}
+import org.sgine.component._
 
-class Screen extends RenderFlow with Container {
+class Screen extends RenderFlow with Container with ActorWidget[Group] {
   private[sgine] lazy val stage = new Stage(new ScreenViewport)
   private[sgine] lazy val gdx = new GDXScreenInstance(this)
+
+  lazy val actor: Group = stage.getRoot
 
   implicit def thisScreen: Screen = this
 

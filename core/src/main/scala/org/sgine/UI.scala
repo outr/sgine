@@ -6,7 +6,7 @@ import pl.metastack.metarx.{ReadStateChannel, Sub}
 trait UI extends RenderFlow {
   UI.instance = Some(this)
 
-  def delta = Gdx.graphics.getDeltaTime
+  def delta: Double = Gdx.graphics.getDeltaTime.toDouble
   private val _width = Sub(0.0)
   private val _height = Sub(0.0)
   def width: ReadStateChannel[Double] = _width

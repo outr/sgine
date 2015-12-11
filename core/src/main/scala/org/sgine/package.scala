@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
 import org.sgine.component.prop.DependentVar
-import org.sgine.transition.{ActionTransition, Repeat, Transition, TransitionTo}
+import org.sgine.transition._
 import pl.metastack.metarx.{ReadChannel, Sub}
 
 import scala.language.implicitConversions
@@ -45,21 +45,23 @@ package object sgine {
     new TextureRegionDrawable(string2TextureRegion(classPath))
   }
 
-  def repeat(times: Int, transition: Transition)(implicit screen: Screen): Repeat = new Repeat(screen, times, transition)
+  def delay(time: Double): Delay = new Delay(time)
 
-  def forever(transition: Transition)(implicit screen: Screen): Repeat = new Repeat(screen, Int.MaxValue, transition)
+  def repeat(times: Int, transition: Transition): Repeat = new Repeat(times, transition)
 
-  def function(f: => Unit)(implicit screen: Screen): ActionTransition = new ActionTransition(screen, () => f)
+  def forever(transition: Transition): Repeat = new Repeat(Int.MaxValue, transition)
+
+  def function(f: => Unit): ActionTransition = new ActionTransition(() => f)
 
   implicit class Transitions(sub: Sub[Double]) {
-    def transitionTo(to: => Double)(implicit screen: Screen): TransitionTo = {
-      new TransitionTo(screen, (d: Double) => sub := d, () => sub.get, () => to)
+    def transitionTo(to: => Double): TransitionTo = {
+      new TransitionTo((d: Double) => sub := d, () => sub.get, () => to)
     }
   }
 
   implicit class DependentTransitions(dep: DependentVar) {
-    def transitionTo(to: => Double)(implicit screen: Screen): TransitionTo = {
-      new TransitionTo(screen, (d: Double) => dep := d, () => dep.get, () => to)
+    def transitionTo(to: => Double): TransitionTo = {
+      new TransitionTo((d: Double) => dep := d, () => dep.get, () => to)
     }
   }
 

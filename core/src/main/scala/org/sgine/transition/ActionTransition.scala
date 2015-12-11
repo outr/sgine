@@ -1,11 +1,16 @@
 package org.sgine.transition
 
-import org.sgine.Screen
+class ActionTransition(action: () => Unit) extends Transition {
+  private var hasRun = false
 
-class ActionTransition(val screen: Screen, action: () => Unit) extends Transition {
-  override def init(): Unit = {}
+  override def init(): Unit = {
+    hasRun = false
+  }
 
-  override def finished: Boolean = true
+  override def finished: Boolean = hasRun
 
-  override def invoke(): Unit = action()
+  override def invoke(): Unit = {
+    action()
+    hasRun = true
+  }
 }

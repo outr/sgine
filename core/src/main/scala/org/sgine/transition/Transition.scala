@@ -1,17 +1,15 @@
 package org.sgine.transition
 
-import org.sgine.Screen
+import org.sgine._
 
 trait Transition {
-  def screen: Screen
-
   def finished: Boolean
   def init(): Unit
   def invoke(): Unit
 
-  def start() = {
+  def start()(implicit screen: Screen) = {
     var first = true
-    screen.render.until(finished) {
+    ui.render.until(finished) {
       if (first) {
         init()
         first = false
@@ -20,6 +18,6 @@ trait Transition {
     }
   }
 
-  def andThen(next: Transition): Sequence = new Sequence(screen, List(this, next))
-  def and(other: Transition): Parallel = new Parallel(screen, Set(this, other))
+  def andThen(next: Transition): Sequence = new Sequence(List(this, next))
+  def and(other: Transition): Parallel = new Parallel(Set(this, other))
 }

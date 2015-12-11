@@ -1,8 +1,6 @@
 package org.sgine.transition
 
-import org.sgine.Screen
-
-class Repeat(val screen: Screen, times: Int = 1, transition: Transition) extends Transition {
+class Repeat(times: Int = 1, transition: Transition) extends Transition {
   private var counter = 0
 
   override def init(): Unit = {

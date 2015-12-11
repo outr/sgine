@@ -33,19 +33,19 @@ class ActiveScreens(ui: MultiScreenSupport) extends Iterable[Screen] {
   def add(screen: Screen) = ui.render.once {
     screens -= screen
     screens += screen
-    screen.show.exec()
-    screen.resize.exec()
+    screen.gdx.show()
+    screen.gdx.resize(Gdx.graphics.getWidth, Gdx.graphics.getHeight)
   }
 
   def insert(index: Int, screen: Screen) = ui.render.once {
     screens -= screen
     screens.insert(index, screen)
-    screen.show.exec()
-    screen.resize.exec()
+    screen.gdx.show()
+    screen.gdx.resize(Gdx.graphics.getWidth, Gdx.graphics.getHeight)
   }
 
   def remove(screen: Screen) = ui.render.once {
-    screen.hide.exec()
+    screen.gdx.hide()
     screens -= screen
   }
 
@@ -55,7 +55,7 @@ class ActiveScreens(ui: MultiScreenSupport) extends Iterable[Screen] {
   }
 
   def clear() = ui.render.once {
-    screens.foreach(_.dispose.exec())
+    screens.foreach(_.gdx.dispose())
     screens.clear()
   }
 

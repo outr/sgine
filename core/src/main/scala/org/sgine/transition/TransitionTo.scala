@@ -1,11 +1,9 @@
 package org.sgine.transition
 
 import com.badlogic.gdx.Gdx
-import org.sgine.Screen
 import org.sgine.transition.easing.Easing
 
-case class TransitionTo(screen: Screen,
-                        setter: (Double) => Unit,
+case class TransitionTo(setter: (Double) => Unit,
                         getter: () => Double,
                         _to: () => Double,
                         _from: () => Option[Double] = () => None,
@@ -74,5 +72,5 @@ case class TransitionTo(screen: Screen,
   def by(step: => Double): TransitionTo = copy(_step = () => Some(step))
   def easing(easing: => Easing): TransitionTo = copy(_easing = () => Some(easing))
 
-  override def toString: String = s"TransitionTo(to = ${_to()}, from = ${_from()}, time = ${_time()}"
+  override def toString: String = s"TransitionTo(to = ${_to()}, from = ${_from()}, time = ${_time()})"
 }
