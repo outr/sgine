@@ -1,5 +1,7 @@
 package org.sgine
 
+import org.sgine.event.ActionManager
+
 trait RenderFlow {
   val create = new ActionManager
   val show = new ActionManager

@@ -1,4 +1,6 @@
-package org.sgine
+package org.sgine.event
+
+import org.sgine._
 
 import scala.collection.mutable.ListBuffer
 
