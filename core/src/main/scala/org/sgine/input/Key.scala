@@ -94,7 +94,6 @@ object Key {
   val Call = new Key(k.CALL)
   val Camera = new Key(k.CAMERA)
   val Clear = new Key(k.CLEAR)
-  val Del = new Key(k.DEL)
   val EndCall = new Key(k.ENDCALL)
   val Envelope = new Key(k.ENVELOPE)
   val Escape = new Key(k.ESCAPE)
@@ -147,20 +146,20 @@ object Key {
   val F12 = new Key(k.F12)
 
   // Special keys
-  val Play = new Key(-1)
-  val Pause = new Key(-1)
-  val Next = new Key(-1)
-  val Previous = new Key(-1)
-  val Stop = new Key(-1)
+  val Play = new Key(-1, add = false)
+  val Pause = new Key(-1, add = false)
+  val Next = new Key(-1, add = false)
+  val Previous = new Key(-1, add = false)
+  val Stop = new Key(-1, add = false)
 
   def byCode(code: Int) = codes.get(code)
   def byChar(char: Char) = chars.get(char)
 }
 
-class Buttons private() {
+class Buttons private[input]() {
   import com.badlogic.gdx.Input.{Keys => k}
 
-  val Circle = new Key(k.BUTTON_CIRCLE)
+  val Circle = new Key(k.BUTTON_CIRCLE, add = false)
   val A = new Key(k.BUTTON_A)
   val B = new Key(k.BUTTON_B)
   val C = new Key(k.BUTTON_C)
@@ -178,17 +177,17 @@ class Buttons private() {
   val Mode = new Key(k.BUTTON_MODE)
 }
 
-class NumPadKeys private() {
+class NumPadKeys private[input]() {
   import com.badlogic.gdx.Input.{Keys => k}
 
-  val Zero = new Key(k.NUM_0)
-  val One = new Key(k.NUM_1)
-  val Two = new Key(k.NUM_2)
-  val Three = new Key(k.NUM_3)
-  val Four = new Key(k.NUM_4)
-  val Five = new Key(k.NUM_5)
-  val Six = new Key(k.NUM_6)
-  val Seven = new Key(k.NUM_7)
-  val Eight = new Key(k.NUM_8)
-  val Nine = new Key(k.NUM_9)
+  val Zero = new Key(k.NUMPAD_0)
+  val One = new Key(k.NUMPAD_1)
+  val Two = new Key(k.NUMPAD_2)
+  val Three = new Key(k.NUMPAD_3)
+  val Four = new Key(k.NUMPAD_4)
+  val Five = new Key(k.NUMPAD_5)
+  val Six = new Key(k.NUMPAD_6)
+  val Seven = new Key(k.NUMPAD_7)
+  val Eight = new Key(k.NUMPAD_8)
+  val Nine = new Key(k.NUMPAD_9)
 }
