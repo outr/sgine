@@ -1,14 +1,12 @@
 package example
 
-import com.badlogic.gdx.graphics.FPSLogger
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
+import org.sgine.screen.FPSLoggingSupport
 import org.sgine.widget.Image
 import pl.metastack.metarx._
 
-object PositioningExample extends BasicDesktopApp {
-  val fps = new FPSLogger
-
+object PositioningExample extends BasicDesktopApp with FPSLoggingSupport {
   ui.continuousRendering := true
 
   create.on {
@@ -33,8 +31,5 @@ object PositioningExample extends BasicDesktopApp {
       position.middle := ui.height / 2.0
       size.maintainAspectRatio(width = ui.width / 2.0)
     }
-  }
-  render.on {
-    fps.log()
   }
 }

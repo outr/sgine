@@ -7,7 +7,7 @@ trait Transition {
   def init(): Unit
   def invoke(): Unit
 
-  def start()(implicit screen: Screen) = {
+  def start() = {
     var first = true
     ui.render.until(finished) {
       if (first) {

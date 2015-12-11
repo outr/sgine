@@ -10,7 +10,7 @@ class BasicDesktopApp extends Screen {
     config.height = 768
     config.forceExit = true
     config.samples = 8
-    config.vSyncEnabled = false
+    config.vSyncEnabled = true
     config.foregroundFPS = 0
   }
 

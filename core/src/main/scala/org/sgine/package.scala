@@ -1,9 +1,10 @@
 package org
 
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.Pixmap.Format
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.graphics.{Pixmap, Texture}
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
+import com.badlogic.gdx.{Gdx, graphics}
 import org.sgine.component.prop.DependentVar
 import org.sgine.transition._
 import pl.metastack.metarx.{ReadChannel, Sub}
@@ -11,19 +12,36 @@ import pl.metastack.metarx.{ReadChannel, Sub}
 import scala.language.implicitConversions
 
 package object sgine {
-  private var textureMap = Map.empty[String, Texture]
-  private var textureRegionMap = Map.empty[String, TextureRegion]
-
   def ui = UI()
 
+  def pixel: TextureRegion = getOrCreateTextureRegion("pixel", new TextureRegion(new Texture(createPixelMap(Color.White, 1, 1))))
+
+  def createPixelMap(color: Color, width: Int, height: Int) = {
+    val pixMap = new Pixmap(width, height, Format.RGBA8888)
+    pixMap.setColor(new graphics.Color(color.red.toFloat, color.green.toFloat, color.blue.toFloat, color.alpha.toFloat))
+    pixMap.fillRectangle(0, 0, width, height)
+    pixMap
+  }
+
+  def getOrCreateTextureRegion(name: String, creator: => TextureRegion): TextureRegion = synchronized {
+    ui.textureRegionMap.get(name) match {
+      case Some(region) => region
+      case None => {
+        val region: TextureRegion = creator
+        ui.textureRegionMap += name -> region
+        region
+      }
+    }
+  }
+
   implicit def string2Texture(classPath: String): Texture = synchronized {
-    textureMap.get(classPath) match {
+    ui.textureMap.get(classPath) match {
       case Some(texture) => texture
       case None => {
         val file = Gdx.files.classpath(classPath)
         if (file == null) throw new NullPointerException(s"Unable to find $classPath in classpath.")
         val texture = new Texture(file)
-        textureMap += classPath -> texture
+        ui.textureMap += classPath -> texture
         texture
       }
     }
@@ -31,11 +49,11 @@ package object sgine {
 
   implicit def string2TextureRegion(classPath: String): TextureRegion = synchronized {
     val texture = string2Texture(classPath)
-    textureRegionMap.get(classPath) match {
+    ui.textureRegionMap.get(classPath) match {
       case Some(region) => region
       case None => {
         val region = new TextureRegion(texture, texture.getWidth, texture.getHeight)
-        textureRegionMap += classPath -> region
+        ui.textureRegionMap += classPath -> region
         region
       }
     }
@@ -43,6 +61,10 @@ package object sgine {
 
   implicit def string2Drawable(classPath: String): Drawable = {
     new TextureRegionDrawable(string2TextureRegion(classPath))
+  }
+
+  implicit def textureRegion2Drawable(region: TextureRegion): Drawable = {
+    new TextureRegionDrawable(region)
   }
 
   def delay(time: Double): Delay = new Delay(time)

@@ -1,10 +1,15 @@
 package org.sgine
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import pl.metastack.metarx.{ReadStateChannel, Sub}
 
 trait UI extends RenderFlow {
   UI.instance = Some(this)
+
+  private[sgine] var textureMap = Map.empty[String, Texture]
+  private[sgine] var textureRegionMap = Map.empty[String, TextureRegion]
 
   def delta: Double = Gdx.graphics.getDeltaTime.toDouble
   private val _width = Sub(0.0)
