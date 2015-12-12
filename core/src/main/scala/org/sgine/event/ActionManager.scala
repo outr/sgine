@@ -37,8 +37,8 @@ class ActionManager {
     var elapsed = if (runNow) delay else 0.0
     var action: Action = null
     action = on {
-      elapsed += ui.delta.toDouble
-      total += ui.delta.toDouble
+      elapsed += ui.delta
+      total += ui.delta
       if (elapsed >= delay) {
         f
         elapsed = 0.0
