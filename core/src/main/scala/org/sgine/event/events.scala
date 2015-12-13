@@ -5,14 +5,14 @@ import org.sgine.component.Component
 import org.sgine.input.Key
 
 trait Event {
+  protected var _component: Component = _
   protected var _focused: Option[Component] = None
-  protected var _atCursor: Option[Component] = None
 
+  final def component: Component = _component
   final def focused: Option[Component] = _focused
-  final def atCursor: Option[Component] = _atCursor
 }
 
-class KeyEvent private() extends Event {
+class KeyEvent private[event]() extends Event {
   protected var _key: Key = _
 
   final def key: Key = _key
@@ -20,36 +20,52 @@ class KeyEvent private() extends Event {
 
 object KeyEvent extends KeyEvent {
   private[event] def apply(key: Key,
-                           focused: Option[Component] = None,
-                           atCursor: Option[Component] = None): KeyEvent = {
+                           component: Component,
+                           focused: Option[Component] = None): KeyEvent = {
     _key = key
+    _component = component
     _focused = focused
-    _atCursor = atCursor
     this
   }
 }
 
-class MouseEvent private() extends Event {
+class MouseEvent private[event]() extends Event {
   protected var _button: Int = _
-  protected var _x: Double = _
-  protected var _y: Double = _
+  protected var _screenX: Int = _
+  protected var _screenY: Int = _
+  protected var _stageX: Double = _
+  protected var _stageY: Double = _
+  protected var _localX: Double = _
+  protected var _localY: Double = _
 
   final def button: Int = _button
-  final def x: Double = _x
-  final def y: Double = _y
+  final def screenX: Int = _screenY
+  final def screenY: Int = _screenX
+  final def stageX: Double = _stageX
+  final def stageY: Double = _stageY
+  final def localX: Double = _localX
+  final def localY: Double = _localY
 }
 
 object MouseEvent extends MouseEvent {
   private[event] def apply(button: Int,
-                           x: Double,
-                           y: Double,
-                           focused: Option[Component] = None,
-                           atCursor: Option[Component] = None): MouseEvent = {
+                           screenX: Int,
+                           screenY: Int,
+                           stageX: Double,
+                           stageY: Double,
+                           localX: Double,
+                           localY: Double,
+                           component: Component,
+                           focused: Option[Component] = None): MouseEvent = {
     _button = button
-    _x = x
-    _y = y
+    _screenX = screenX
+    _screenY = screenY
+    _stageX = stageX
+    _stageY = stageY
+    _localX = localX
+    _localY = localY
+    _component = component
     _focused = focused
-    _atCursor = atCursor
     this
   }
 }
@@ -64,19 +80,27 @@ class FlingEvent private() extends MouseEvent {
 
 object FlingEvent extends FlingEvent {
   private[event] def apply(button: Int,
-                           x: Double,
-                           y: Double,
+                           screenX: Int,
+                           screenY: Int,
+                           stageX: Double,
+                           stageY: Double,
+                           localX: Double,
+                           localY: Double,
+                           component: Component,
                            velocityX: Double,
                            velocityY: Double,
-                           focused: Option[Component] = None,
-                           atCursor: Option[Component] = None): FlingEvent = {
+                           focused: Option[Component] = None): FlingEvent = {
     _button = button
-    _x = x
-    _y = y
+    _screenX = screenX
+    _screenY = screenY
+    _stageX = stageX
+    _stageY = stageY
+    _localX = localX
+    _localY = localY
+    _component = component
     _velocityX = velocityX
     _velocityY = velocityY
     _focused = focused
-    _atCursor = atCursor
     this
   }
 }
@@ -91,19 +115,27 @@ class PanEvent private() extends MouseEvent {
 
 object PanEvent extends PanEvent {
   private[event] def apply(button: Int,
-                           x: Double,
-                           y: Double,
+                           screenX: Int,
+                           screenY: Int,
+                           stageX: Double,
+                           stageY: Double,
+                           localX: Double,
+                           localY: Double,
+                           component: Component,
                            deltaX: Double,
                            deltaY: Double,
-                           focused: Option[Component] = None,
-                           atCursor: Option[Component] = None): PanEvent = {
+                           focused: Option[Component] = None): PanEvent = {
     _button = button
-    _x = x
-    _y = y
+    _screenX = screenX
+    _screenY = screenY
+    _stageX = stageX
+    _stageY = stageY
+    _localX = localX
+    _localY = localY
+    _component = component
     _deltaX = deltaX
     _deltaY = deltaY
     _focused = focused
-    _atCursor = atCursor
     this
   }
 }
@@ -122,23 +154,31 @@ class PinchEvent private() extends MouseEvent {
 
 object PinchEvent extends PinchEvent {
   private[event] def apply(button: Int,
-                           x: Double,
-                           y: Double,
+                           screenX: Int,
+                           screenY: Int,
+                           stageX: Double,
+                           stageY: Double,
+                           localX: Double,
+                           localY: Double,
+                           component: Component,
                            initialFirstPointer: Vector2,
                            initialSecondPointer: Vector2,
                            firstPointer: Vector2,
                            secondPointer: Vector2,
-                           focused: Option[Component] = None,
-                           atCursor: Option[Component] = None): PinchEvent = {
+                           focused: Option[Component] = None): PinchEvent = {
     _button = button
-    _x = x
-    _y = y
+    _screenX = screenX
+    _screenY = screenY
+    _stageX = stageX
+    _stageY = stageY
+    _localX = localX
+    _localY = localY
+    _component = component
     _initialFirstPointer = initialFirstPointer
     _initialSecondPointer = initialSecondPointer
     _firstPointer = firstPointer
     _secondPointer = secondPointer
     _focused = focused
-    _atCursor = atCursor
     this
   }
 }
@@ -151,17 +191,25 @@ class ScrollEvent private() extends MouseEvent {
 
 object ScrollEvent extends ScrollEvent {
   private[event] def apply(button: Int,
-                           x: Double,
-                           y: Double,
+                           screenX: Int,
+                           screenY: Int,
+                           stageX: Double,
+                           stageY: Double,
+                           localX: Double,
+                           localY: Double,
+                           component: Component,
                            amount: Int,
-                           focused: Option[Component] = None,
-                           atCursor: Option[Component] = None): ScrollEvent = {
+                           focused: Option[Component] = None): ScrollEvent = {
     _button = button
-    _x = x
-    _y = y
+    _screenX = screenX
+    _screenY = screenY
+    _stageX = stageX
+    _stageY = stageY
+    _localX = localX
+    _localY = localY
+    _component = component
     _amount = amount
     _focused = focused
-    _atCursor = atCursor
     this
   }
 }
@@ -176,19 +224,27 @@ class ZoomEvent private() extends MouseEvent {
 
 object ZoomEvent extends ZoomEvent {
   private[event] def apply(button: Int,
-                           x: Double,
-                           y: Double,
+                           screenX: Int,
+                           screenY: Int,
+                           stageX: Double,
+                           stageY: Double,
+                           localX: Double,
+                           localY: Double,
+                           component: Component,
                            originalDistance: Double,
                            currentDistance: Double,
-                           focused: Option[Component] = None,
-                           atCursor: Option[Component] = None): ZoomEvent = {
+                           focused: Option[Component] = None): ZoomEvent = {
     _button = button
-    _x = x
-    _y = y
+    _screenX = screenX
+    _screenY = screenY
+    _stageX = stageX
+    _stageY = stageY
+    _localX = localX
+    _localY = localY
+    _component = component
     _originalDistance = originalDistance
     _currentDistance = currentDistance
     _focused = focused
-    _atCursor = atCursor
     this
   }
 }

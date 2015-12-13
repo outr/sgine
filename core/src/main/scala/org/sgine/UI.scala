@@ -3,7 +3,6 @@ package org.sgine
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
-import org.sgine.event.InputProcessor
 import pl.metastack.metarx.{ReadStateChannel, Sub}
 
 trait UI extends RenderFlow with InputSupport {
@@ -25,11 +24,9 @@ trait UI extends RenderFlow with InputSupport {
   val continuousRendering: Sub[Boolean] = Sub(true)
 
   private[sgine] val listener = new GDXApplicationListener(this)
-  private[sgine] val inputProcessor = new InputProcessor(this)
 
   create.once {
     continuousRendering.attach(cr => Gdx.graphics.setContinuousRendering(cr))
-    Gdx.input.setInputProcessor(inputProcessor)
   }
   resize.on {
     _width := Gdx.graphics.getWidth.toDouble

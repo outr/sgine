@@ -1,7 +1,7 @@
 package org.sgine.component
 
-import org.sgine.Screen
+import org.sgine.{InputSupport, Screen}
 
-trait Component {
+trait Component extends InputSupport {
   def screen: Screen
 }
