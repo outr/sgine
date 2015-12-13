@@ -1,37 +1,37 @@
-package org.sgine.render
+package org.sgine.event
 
 import com.badlogic.gdx.input.GestureDetector
 import com.badlogic.gdx.input.GestureDetector.GestureListener
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.{Gdx, InputProcessor => GDXInputProcessor}
-import org.sgine.UI
+import org.sgine.Screen
 import org.sgine.component.Component
-import org.sgine.event.{EventManager, KeyEvent}
 import org.sgine.input.Key
+import pl.metastack.metarx.Channel
 
-class InputProcessor(ui: UI) extends GDXInputProcessor with GestureListener{
+class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListener{
   private val gestures = new GestureDetector(this)
 
   // TODO: add focused and atCursor support
   val focused: Option[Component] = None
   val atCursor: Option[Component] = None
 
-  def fireKeyEvent(keyCode: Int, manager: EventManager[KeyEvent], functions: (Int => Boolean)*): Boolean = {
+  def fireKeyEvent(keyCode: Int, channel: Channel[KeyEvent], functions: (Int => Boolean)*): Boolean = {
     Key.byCode(keyCode) match {
-      case Some(key) => manager.exec(KeyEvent(key, focused, atCursor))
+      case Some(key) => channel := KeyEvent(key, focused, atCursor)
       case None => Gdx.app.log("Unsupported Key Code", s"Unsupported keyCode: $keyCode in InputProcessor.fireKeyEvent.")
     }
     functions.foreach(_.apply(keyCode))
     true
   }
 
-  override def keyDown(keycode: Int): Boolean = fireKeyEvent(keycode, ui.key.down, gestures.keyDown)
+  override def keyDown(keycode: Int): Boolean = fireKeyEvent(keycode, screen.key.down, gestures.keyDown)
 
-  override def keyUp(keycode: Int): Boolean = fireKeyEvent(keycode, ui.key.up, gestures.keyUp)
+  override def keyUp(keycode: Int): Boolean = fireKeyEvent(keycode, screen.key.up, gestures.keyUp)
 
   override def keyTyped(character: Char): Boolean = {
     Key.byChar(character) match {
-      case Some(key) => ui.key.typed.exec(KeyEvent(key, focused, atCursor))
+      case Some(key) => screen.key.typed := KeyEvent(key, focused, atCursor)
       case None => Gdx.app.log("Unsupported Key Code", s"Unsupported keyChar: $character in InputProcessor.keyTyped.")
     }
     gestures.keyTyped(character)

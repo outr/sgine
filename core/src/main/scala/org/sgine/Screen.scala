@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.badlogic.gdx.{Gdx, Screen => GDXScreen}
 import org.sgine.component._
 
-class Screen extends RenderFlow with Container with ActorWidget[Group] {
+class Screen extends RenderFlow with Container with ActorWidget[Group] with InputSupport {
   private[sgine] lazy val stage = new Stage(new ScreenViewport)
   private[sgine] lazy val gdx = new GDXScreenInstance(this)
 

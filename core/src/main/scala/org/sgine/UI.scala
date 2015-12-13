@@ -3,7 +3,7 @@ package org.sgine
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
-import org.sgine.render.InputProcessor
+import org.sgine.event.InputProcessor
 import pl.metastack.metarx.{ReadStateChannel, Sub}
 
 trait UI extends RenderFlow with InputSupport {
