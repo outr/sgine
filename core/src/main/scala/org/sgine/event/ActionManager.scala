@@ -1,20 +1,24 @@
 package org.sgine.event
 
+import java.util.concurrent.atomic.AtomicReference
+
 import org.sgine._
 
 import scala.collection.mutable.ListBuffer
 
-class ActionManager {
+class ActionManager(name: String) {
   private val queue = ListBuffer.empty[Action]
 
   def on(f: => Unit): Action = synchronized {
     val a = new Action(() => f, once = false)
+    if (isActive) execAction(a)
     queue += a
     a
   }
 
   def once(f: => Unit): Action = synchronized {
     val a = new Action(() => f, once = true)
+    if (isActive) execAction(a)
     queue += a
     a
   }
@@ -55,11 +59,18 @@ class ActionManager {
   }
 
   def exec(): Unit = synchronized {
-    queue.foreach { a =>
-      UI().catchErrors {
-        a.invoke()
-        if (a.once) queue -= a
-      }
+    ActionManager.current.set(name)
+    try {
+      queue.foreach(execAction)
+    } finally {
+      ActionManager.current.set("")
+    }
+  }
+
+  private val execAction: Action => Unit = (action: Action) => UI().catchErrors {
+    action.invoke()
+    if (action.once) {
+      queue -= action
     }
   }
 
@@ -67,8 +78,14 @@ class ActionManager {
   def isEmpty: Boolean = queue.isEmpty
 
   def clear(): Unit = queue.clear()
+
+  def isActive: Boolean = ActionManager.current.get() == name
 }
 
 class Action(f: () => Unit, val once: Boolean) {
   def invoke(): Unit = f()
+}
+
+object ActionManager {
+  private val current = new AtomicReference[String]("")
 }

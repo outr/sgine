@@ -7,11 +7,13 @@ import org.sgine.component.ActorWidget
 import pl.metastack.metarx.Sub
 
 class Image(implicit val screen: Screen) extends ActorWidget[GDXImage] {
-  def this(drawable: Drawable)(implicit screen: Screen) = {
+  def this(drawable: => Drawable)(implicit screen: Screen) = {
     this()(screen)
-    this.drawable := Some(drawable)
-    size.width := drawable.getMinWidth
-    size.height := drawable.getMinHeight
+    screen.render.once {
+      this.drawable := Some(drawable)
+      size.width := drawable.getMinWidth
+      size.height := drawable.getMinHeight
+    }
   }
 
   lazy val actor = new GDXImage

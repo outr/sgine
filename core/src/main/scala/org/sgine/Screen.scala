@@ -46,18 +46,22 @@ class Screen extends RenderFlow with Container with ActorWidget[Group] with Inpu
 
   override protected def add[C <: Component](child: C): C = {
     super.add(child)
-    child match {
-      case ac: ActorComponent[_] => screen.stage.getRoot.addActor(ac.actor)
-      case _ => // Ignore non-actor components
+    render.once {
+      child match {
+        case ac: ActorComponent[_] => screen.stage.getRoot.addActor(ac.actor)
+        case _ => // Ignore non-actor components
+      }
     }
     child
   }
 
   override protected def remove[C <: Component](child: C): C = {
     super.remove(child)
-    child match {
-      case ac: ActorComponent[_] => screen.stage.getRoot.removeActor(ac.actor)
-      case _ => // Ignore non-actor components
+    render.once {
+      child match {
+        case ac: ActorComponent[_] => screen.stage.getRoot.removeActor(ac.actor)
+        case _ => // Ignore non-actor components
+      }
     }
     child
   }
