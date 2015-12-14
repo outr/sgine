@@ -1,5 +1,6 @@
 package example
 
+import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.screen.{FPSLoggingSupport, VirtualMode, VirtualSizeSupport}
@@ -25,5 +26,10 @@ object RectExample extends BasicDesktopApp with VirtualSizeSupport with FPSLoggi
         }
       }
     }
+  }
+
+  override def init(config: LwjglApplicationConfiguration): Unit = {
+    super.init(config)
+    config.vSyncEnabled = false
   }
 }
