@@ -3,6 +3,7 @@ package org.sgine
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import org.sgine.task.TaskManager
 import pl.metastack.metarx.{ReadStateChannel, Sub}
 
 trait UI extends RenderFlow with InputSupport {
@@ -22,6 +23,7 @@ trait UI extends RenderFlow with InputSupport {
     s
   }
   val continuousRendering: Sub[Boolean] = Sub(true)
+  lazy val taskManager: TaskManager = new TaskManager()   // TODO: make configurable
 
   private[sgine] val listener = new GDXApplicationListener(this)
 
@@ -35,6 +37,13 @@ trait UI extends RenderFlow with InputSupport {
   }
 
   def invalidateDisplay(): Unit = Gdx.graphics.requestRendering()
+
+  def info(message: String): Unit = {
+    println(message)
+  }
+  def warn(message: String): Unit = {
+    println(s"WARN: $message")
+  }
 
   def error(t: Throwable, message: Option[String] = None) = {
     // TODO: support logging

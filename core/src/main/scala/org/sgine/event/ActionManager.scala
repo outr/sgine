@@ -23,6 +23,23 @@ class ActionManager(name: String) {
     a
   }
 
+  def request[R](f: => R, timeout: Double = Double.MaxValue): R = {
+    var result: Option[R] = None
+    val action = once {
+      result = Some(f)
+    }
+    waitFor(timeout) {
+      result.isDefined
+    }
+    result match {
+      case Some(r) => r
+      case None => {
+        remove(action)
+        throw new RuntimeException(s"Request failed to complete within the given time ($timeout seconds).")
+      }
+    }
+  }
+
   def until(condition: => Boolean)(f: => Unit): Action = {
     var action: Action = null
     action = on {

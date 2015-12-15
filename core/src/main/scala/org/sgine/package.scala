@@ -75,6 +75,43 @@ package object sgine {
 
   def function(f: => Unit): ActionTransition = new ActionTransition(() => f)
 
+  /**
+    * Waits for <code>condition</code> to return true. This method will wait
+    * <code>time</code> (in seconds) for the condition and will return false
+    * if the condition is not met within that time. Further, a negative value
+    * for <code>time</code> will cause the wait to occur until the condition
+    * is true.
+    *
+    * @param time
+   *              The time to wait for the condition to return true.
+    * @param precision
+   *              The recycle period between checks. Defaults to 0.01s.
+    * @param start
+   *              The start time in milliseconds since epoc. Defaults to
+    *              System.currentTimeMillis.
+    * @param errorOnTimeout
+   *              If true, throws a java.util.concurrent.TimeoutException upon
+    *              timeout. Defaults to false.
+    * @param condition
+   *              The functional condition that must return true.
+    */
+  @scala.annotation.tailrec
+  def waitFor(time: Double, precision: Double = 0.01, start: Long = System.currentTimeMillis, errorOnTimeout: Boolean = false)(condition: => Boolean): Boolean = {
+    val p = precision.toMillis
+    if (!condition) {
+      if ((time >= 0.0) && (System.currentTimeMillis - start > time.toMillis)) {
+        if (errorOnTimeout) throw new java.util.concurrent.TimeoutException()
+        false
+      } else {
+        Thread.sleep(p)
+
+        waitFor(time, precision, start, errorOnTimeout)(condition)
+      }
+    } else {
+      true
+    }
+  }
+
   implicit class Transitions(sub: Sub[Double]) {
     def transitionTo(to: => Double): TransitionTo = {
       new TransitionTo((d: Double) => sub := d, () => sub.get, () => to)
@@ -103,6 +140,7 @@ package object sgine {
     def minutes: Double = d * 60.0
     def hours: Double = d * 60.0 * 60.0
     def days: Double = d * 60.0 * 60.0 * 24.0
+    def toMillis: Long = math.round(d * 1000.0)
   }
 
   implicit class IntSize(i: Int) {
