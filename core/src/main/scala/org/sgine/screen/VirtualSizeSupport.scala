@@ -10,17 +10,19 @@ trait VirtualSizeSupport extends Screen {
 
   lazy val virtual = new VirtualSize(this)
 
-  implicit class InVirtualPixels(i: Int) {
+  implicit class IntVirtualPixels(i: Int) {
     def vx: ReadChannel[Double] = vw + virtual.xOffset
     def vy: ReadChannel[Double] = vh + virtual.yOffset
     def vw: ReadChannel[Double] = i.toDouble * virtual.wMulti
     def vh: ReadChannel[Double] = i.toDouble * virtual.hMulti
+    def vf: ReadChannel[Int] = (i.toDouble * virtual.wMulti).map(d => math.round(d).toInt)
   }
   implicit class DoubleVirtualPixels(d: Double) {
     def vx: ReadChannel[Double] = vw + virtual.xOffset
     def vy: ReadChannel[Double] = vh + virtual.yOffset
     def vw: ReadChannel[Double] = d * virtual.wMulti
     def vh: ReadChannel[Double] = d * virtual.hMulti
+    def vf: ReadChannel[Int] = (d * virtual.wMulti).map(d => math.round(d).toInt)
   }
 }
 
