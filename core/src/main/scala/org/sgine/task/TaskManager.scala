@@ -3,7 +3,6 @@ package org.sgine.task
 import java.util.concurrent.atomic.AtomicInteger
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input.Orientation
 import com.badlogic.gdx.Net.{HttpMethods, HttpResponse, HttpResponseListener}
 import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.graphics.Texture
@@ -91,7 +90,7 @@ class TaskManager(maxConcurrent: Int = 4,
     download(s"$base/$filename", Gdx.files.local(s"$local/$filename"), autoAdd)
   }
 
-  def font(family: String, style: String, size: Int, scaleForOrientation: Option[Orientation] = None): FutureObject[BitmapFont] = future {
+  def font(family: String, style: String, size: Int): FutureObject[BitmapFont] = future {
     val fnt = downloadLocal("http://bitmapfonts.outr.com/font", s"$family.$style.$size.fnt", "fonts", autoAdd = false)
     val png = downloadLocal("http://bitmapfonts.outr.com/font", s"$family.$style.$size.png", "fonts", autoAdd = false)
     fnt.invoke()
