@@ -7,7 +7,7 @@ import org.sgine.component._
 import org.sgine.event.InputProcessor
 
 class Screen extends RenderFlow with Container with ActorWidget[Group] with InputSupport {
-  private[sgine] lazy val stage = new Stage(new ScreenViewport)
+  lazy val stage = new Stage(new ScreenViewport)
   private[sgine] lazy val gdx = new GDXScreenInstance(this)
 
   lazy val actor: Group = stage.getRoot

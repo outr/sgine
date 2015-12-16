@@ -3,7 +3,7 @@ package example
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.screen.{VirtualMode, VirtualSizeSupport}
-import org.sgine.widget.Label
+import org.sgine.widget.{Label, TextInput}
 
 object TextExample extends BasicDesktopApp with VirtualSizeSupport {
   override val virtualWidth: Double = 1024.0
@@ -22,6 +22,15 @@ object TextExample extends BasicDesktopApp with VirtualSizeSupport {
     size.width := 500.vw
     wrap := true
   }
+  val textInput = new TextInput("Editable Text Input", "OpenSans", "Bold", 36.vf) {
+    position.center := ui.width / 2.0
+    position.top := paragraph.position.bottom - 50.0
+  }
   add(heading)
   add(paragraph)
+  add(textInput)
+
+  render.once {
+    screen.stage.setKeyboardFocus(textInput.actor)
+  }
 }
