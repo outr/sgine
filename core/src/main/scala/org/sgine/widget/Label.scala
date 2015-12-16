@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
 import com.badlogic.gdx.scenes.scene2d.ui.{Label => GDXLabel}
 import org.sgine._
 import org.sgine.component.ActorWidget
-import pl.metastack.metarx.{ReadChannel, Sub}
+import pl.metastack.metarx.{ReadChannel, ReadStateChannel, Sub, Var}
 
 class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
   def this(text: String, family: String, style: String, size: Int)(implicit screen: Screen) {
@@ -41,7 +41,19 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
   val text: Sub[String] = Sub[String]("")
   val font: Font = new Font
   val bitmapFont: Sub[Option[BitmapFont]] = Sub[Option[BitmapFont]](None)
+  val wrap: Sub[Boolean] = Sub[Boolean](false)
+  val ellipsis: Sub[Option[String]] = Sub[Option[String]](None)
 
+  object preferred {
+    private[widget] val _width = Var[Double](0.0)
+    private[widget] val _height = Var[Double](0.0)
+
+    def width: ReadStateChannel[Double] = _width
+    def height: ReadStateChannel[Double] = _height
+  }
+
+  size.width := preferred._width
+  size.height := preferred._height
   screen.render.once {
     text.attach { s =>
       actor.setText(s)
@@ -50,6 +62,8 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
     font.family.attach(s => delayedUpdate())
     font.style.attach(s => delayedUpdate())
     font.size.attach(i => delayedUpdate())
+    wrap.attach(b => actor.setWrap(b))
+    ellipsis.attach(e => actor.setEllipsis(e.orNull))
     screen.render.on {
       if (updateDelay != -1.0) {
         updateDelay -= ui.delta
@@ -88,8 +102,8 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
   }
 
   private def updateSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
-    size.width := actor.getPrefWidth
-    size.height := actor.getPrefHeight
+    if (actor.getPrefWidth != 0.0) preferred._width := actor.getPrefWidth
+    if (actor.getPrefHeight != 0.0) preferred._height := actor.getPrefHeight
   }
 }
 
