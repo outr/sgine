@@ -28,6 +28,7 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
 
   def fireKeyEvent(keyCode: Int,
                    gestureFunction: Int => Boolean,
+                   stageFunction: Int => Boolean,
                    componentChannel: Channel[KeyEvent],
                    screenChannel: Channel[KeyEvent],
                    uiChannel: Channel[KeyEvent]): Boolean = {
@@ -41,6 +42,7 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
       case None => Gdx.app.log("Unsupported Key Code", s"Unsupported keyCode: $keyCode in InputProcessor.fireKeyEvent.")
     }
     gestureFunction(keyCode)
+    stageFunction(keyCode)
     true
   }
 
@@ -94,9 +96,9 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
     }
   }
 
-  override def keyDown(keycode: Int): Boolean = fireKeyEvent(keycode, gestures.keyDown, focused.get.getOrElse(screen).key.down, screen.key.down, ui.key.down)
+  override def keyDown(keycode: Int): Boolean = fireKeyEvent(keycode, gestures.keyDown, screen.stage.keyDown, focused.get.getOrElse(screen).key.down, screen.key.down, ui.key.down)
 
-  override def keyUp(keycode: Int): Boolean = fireKeyEvent(keycode, gestures.keyUp, focused.get.getOrElse(screen).key.up, screen.key.up, ui.key.up)
+  override def keyUp(keycode: Int): Boolean = fireKeyEvent(keycode, gestures.keyUp, screen.stage.keyUp, focused.get.getOrElse(screen).key.up, screen.key.up, ui.key.up)
 
   override def keyTyped(character: Char): Boolean = {
     Key.byChar(character) match {
@@ -109,30 +111,35 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
       case None => Gdx.app.log("Unsupported Key Code", s"Unsupported keyChar: $character in InputProcessor.keyTyped.")
     }
     gestures.keyTyped(character)
+    screen.stage.keyTyped(character)
     true
   }
 
   override def mouseMoved(screenX: Int, screenY: Int): Boolean = {
     updateCoordinates(screenX, screenY)
     gestures.mouseMoved(screenX, screenY)
+    screen.stage.mouseMoved(screenX, screenY)
     fireMouseEvent(component.get.touch.moved, screen.touch.moved, ui.touch.moved)
   }
 
   override def touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = {
     updateCoordinates(screenX, screenY)
     gestures.touchDown(screenX, screenY, pointer, button)
+    screen.stage.touchDown(screenX, screenY, pointer, button)
     fireMouseEvent(component.get.touch.down, screen.touch.down, ui.touch.down, button)
   }
 
   override def touchDragged(screenX: Int, screenY: Int, pointer: Int): Boolean = {
     updateCoordinates(screenX, screenY)
     gestures.touchDragged(screenX, screenY, pointer)
+    screen.stage.touchDragged(screenX, screenY, pointer)
     fireMouseEvent(component.get.touch.dragged, screen.touch.dragged, ui.touch.dragged)
   }
 
   override def touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = {
     updateCoordinates(screenX, screenY)
     gestures.touchUp(screenX, screenY, pointer, button)
+    screen.stage.touchUp(screenX, screenY, pointer, button)
     fireMouseEvent(component.get.touch.up, screen.touch.up, ui.touch.up, button)
   }
 

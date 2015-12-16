@@ -1,6 +1,8 @@
 package org.sgine
 
-case class Color(red: Double = 0.0, green: Double = 0.0, blue: Double = 0.0, alpha: Double = 0.0)
+case class Color(red: Double = 0.0, green: Double = 0.0, blue: Double = 0.0, alpha: Double = 0.0) {
+  override def toString: String = s"Color(red = $red, green = $green, blue = $blue, alpha = $alpha)"
+}
 
 object Color {
   lazy val Clear = fromLong(0x00000000)
@@ -148,11 +150,24 @@ object Color {
   lazy val YellowGreen = fromLong(0x9ACD32FF)
 
   def fromLong(value: Long): Color = Color(
-    red = (value >> 0 & 0xff) / 255.0,
-    green = (value >> 8 & 0xff) / 255.0,
-    blue = (value >> 16 & 0xff) / 255.0,
-    alpha = (value >> 24 & 0xff) / 255.0
+    red = (value >> 24 & 0xff) / 255.0,
+    green = (value >> 16 & 0xff) / 255.0,
+    blue = (value >> 8 & 0xff) / 255.0,
+    alpha = (value >> 0 & 0xff) / 255.0
   )
   
-  def fromHex(hex: String): Color = fromLong(java.lang.Long.parseLong(hex, 16))
+  def fromHex(hex: String): Color = {
+    if (hex.startsWith("#")) {
+      fromHex(hex.substring(1))
+    } else if (hex.length == 6) {
+      fromHex(s"${hex}ff")
+    } else if (hex.length == 3) {
+      val r = hex.charAt(0)
+      val g = hex.charAt(1)
+      val b = hex.charAt(2)
+      fromHex(s"$r$r$g$g$b${b}ff")
+    } else {
+      fromLong(java.lang.Long.parseLong(hex, 16))
+    }
+  }
 }

@@ -4,7 +4,8 @@ import com.badlogic.gdx.graphics.Colors
 import com.badlogic.gdx.graphics.g2d.{Batch, BitmapFont}
 import com.badlogic.gdx.scenes.scene2d.ui.TextField
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable
+import com.badlogic.gdx.scenes.scene2d.utils.{ChangeListener, Drawable}
+import com.badlogic.gdx.scenes.scene2d.{Event, EventListener}
 import org.sgine._
 import org.sgine.component.ActorWidget
 import org.sgine.component.prop.{FontProperties, PreferredSize}
@@ -27,19 +28,32 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
   }
 
   override lazy val actor: TextField = new TextField("", new TextFieldStyle()) {
+    addListener(new EventListener {
+      override def handle(event: Event): Boolean = {
+        event match {
+          case evt: ChangeListener.ChangeEvent => TextInput.this.text := getText
+          case _ => // Ignore others
+        }
+        false
+      }
+    })
+
     override def setStyle(style: TextFieldStyle): Unit = {
       if (style != null && style.font != null) {
         super.setStyle(style)
       }
     }
 
+    private var first = true
     override def draw(batch: Batch, parentAlpha: Float): Unit = {
       if (getStyle != null && getStyle.font != null) {
-        if (getText != TextInput.this.text.get) {
+        if (first) {
           setText(TextInput.this.text.get)
           if (maskCharacter.get.isDefined) setPasswordCharacter(maskCharacter.get.get)
           setPasswordMode(maskCharacter.get.isDefined)
           invalidate()
+          updateSize()
+          first = false
         }
         super.draw(batch, parentAlpha)
       }
@@ -58,6 +72,18 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
     } else {
       0.0f
     }
+
+    override def getPrefWidth: Float = if (getStyle != null && getStyle.font != null) {
+      layout.width + 3.0f
+    } else {
+      150.0f
+    }
+
+    override def drawSelection(selection: Drawable, batch: Batch, font: BitmapFont, x: Float, y: Float): Unit = {
+      val c = selectionColor.get
+      batch.setColor(c)
+      super.drawSelection(selection, batch, font, x, y)
+    }
   }
 
   val text: Sub[String] = Sub[String]("")
@@ -68,6 +94,8 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
   val maskCharacter: Sub[Option[Char]] = Sub[Option[Char]](None)
   val blinkTime: Sub[Double] = Sub[Double](0.32)
   val disabled: Sub[Boolean] = Sub[Boolean](false)
+  val selectionColor: Sub[Color] = Sub[Color](Color.LightCoral)
+  val placeholderColor: Sub[Color] = Sub[Color](Color.DimGray)
 
   def copy(): Unit = actor.copy()
   def cut(): Unit = actor.cut()
@@ -80,8 +108,10 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
   size.height := preferred._height
   screen.render.once {
     text.attach { s =>
-      actor.setText(s)
-      updateSize()
+      if (s != actor.getText) {
+        actor.setText(s)
+        updateSize()
+      }
     }
     placeholder.attach(s => actor.setMessageText(s))
     maskCharacter.attach {
@@ -96,6 +126,12 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
     font.family.attach(s => delayedUpdate())
     font.style.attach(s => delayedUpdate())
     font.size.attach(i => delayedUpdate())
+    placeholderColor.attach { c =>
+      val style = actor.getStyle
+      if (style != null) {
+        style.messageFontColor = c
+      }
+    }
     screen.render.on {
       if (updateDelay != -1.0) {
         updateDelay -= ui.delta
@@ -133,7 +169,9 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
     val cursor: Drawable = pixel
     val selection: Drawable = pixel
     val background: Drawable = null
-    new TextFieldStyle(bf, Colors.get("WHITE"), cursor, selection, background)
+    val style = new TextFieldStyle(bf, Colors.get("WHITE"), cursor, selection, background)
+    style.messageFontColor = placeholderColor.get
+    style
   }
 
   private def updateSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {

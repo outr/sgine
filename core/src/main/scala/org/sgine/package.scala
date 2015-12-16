@@ -112,6 +112,10 @@ package object sgine {
     }
   }
 
+  implicit def color2GDXColor(color: Color): graphics.Color = {
+    new graphics.Color(color.red.toFloat, color.green.toFloat, color.blue.toFloat, color.alpha.toFloat)
+  }
+
   implicit class Transitions(sub: Sub[Double]) {
     def transitionTo(to: => Double): TransitionTo = {
       new TransitionTo((d: Double) => sub := d, () => sub.get, () => to)
