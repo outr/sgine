@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
 import com.badlogic.gdx.scenes.scene2d.ui.{Label => GDXLabel}
 import org.sgine._
 import org.sgine.component.ActorWidget
-import org.sgine.component.prop.{FontProperties, PreferredSize}
+import org.sgine.component.prop.FontProperties
 import pl.metastack.metarx.{ReadChannel, Sub}
 
 class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
@@ -45,14 +45,10 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
   val wrap: Sub[Boolean] = Sub[Boolean](false)
   val ellipsis: Sub[Option[String]] = Sub[Option[String]](None)
 
-  val preferred: PreferredSize = new PreferredSize
-
-  size.width := preferred._width
-  size.height := preferred._height
   screen.render.once {
     text.attach { s =>
       actor.setText(s)
-      updateSize()
+      updatePreferredSize()
     }
     font.family.attach(s => delayedUpdate())
     font.style.attach(s => delayedUpdate())
@@ -73,7 +69,7 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
     if (bfOption.isDefined) {
       screen.render.once {
         actor.setStyle(labelStyle())
-        updateSize()
+        updatePreferredSize()
       }
     }
   }
@@ -96,8 +92,7 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
     new LabelStyle(bf, Colors.get("WHITE"))
   }
 
-  private def updateSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
-    if (actor.getPrefWidth != 0.0) preferred._width := actor.getPrefWidth
-    if (actor.getPrefHeight != 0.0) preferred._height := actor.getPrefHeight
+  override protected def updatePreferredSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
+    super.updatePreferredSize()
   }
 }

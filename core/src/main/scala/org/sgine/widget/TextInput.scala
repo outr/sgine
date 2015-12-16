@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle
 import com.badlogic.gdx.scenes.scene2d.utils.{ChangeListener, Drawable, FocusListener}
 import com.badlogic.gdx.scenes.scene2d.{Event, EventListener}
 import org.sgine._
-import org.sgine.component.prop.{FontProperties, PreferredSize}
+import org.sgine.component.prop.FontProperties
 import org.sgine.component.{ActorWidget, Focusable}
 import pl.metastack.metarx.{ReadChannel, Sub}
 
@@ -53,7 +53,7 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
           if (maskCharacter.get.isDefined) setPasswordCharacter(maskCharacter.get.get)
           setPasswordMode(maskCharacter.get.isDefined)
           invalidate()
-          updateSize()
+          updatePreferredSize()
           first = false
         }
         super.draw(batch, parentAlpha)
@@ -91,7 +91,6 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
   val placeholder: Sub[String] = Sub[String]("")
   val font: FontProperties = new FontProperties
   val bitmapFont: Sub[Option[BitmapFont]] = Sub[Option[BitmapFont]](None)
-  val preferred: PreferredSize = new PreferredSize
   val maskCharacter: Sub[Option[Char]] = Sub[Option[Char]](None)
   val blinkTime: Sub[Double] = Sub[Double](0.32)
   val disabled: Sub[Boolean] = Sub[Boolean](false)
@@ -105,13 +104,11 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
   def selectAll(): Unit = actor.selectAll()
   def clearSelection(): Unit = actor.clearSelection()
 
-  size.width := preferred._width
-  size.height := preferred._height
   screen.render.once {
     text.attach { s =>
       if (s != actor.getText) {
         actor.setText(s)
-        updateSize()
+        updatePreferredSize()
       }
     }
     placeholder.attach(s => actor.setMessageText(s))
@@ -147,7 +144,7 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
     if (bfOption.isDefined) {
       screen.render.once {
         actor.setStyle(textFieldStyle())
-        updateSize()
+        updatePreferredSize()
       }
     }
   }
@@ -175,9 +172,8 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
     style
   }
 
-  private def updateSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
-    if (actor.getPrefWidth != 0.0) preferred._width := actor.getPrefWidth
-    if (actor.getPrefHeight != 0.0) preferred._height := actor.getPrefHeight
+  override protected def updatePreferredSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
+    super.updatePreferredSize()
   }
 
   override protected[sgine] def applyFocus(): Unit = screen.stage.setKeyboardFocus(actor)
