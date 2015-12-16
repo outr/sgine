@@ -47,9 +47,18 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
       actor.setText(s)
       updateSize()
     }
-    font.family.attach(s => updateBitmapFont())
-    font.style.attach(s => updateBitmapFont())
-    font.size.attach(i => updateBitmapFont())
+    font.family.attach(s => delayedUpdate())
+    font.style.attach(s => delayedUpdate())
+    font.size.attach(i => delayedUpdate())
+    screen.render.on {
+      if (updateDelay != -1.0) {
+        updateDelay -= ui.delta
+        if (updateDelay <= 0.0) {
+          updateDelay = -1.0
+          updateBitmapFont()
+        }
+      }
+    }
   }
   bitmapFont.attach { bfOption =>
     if (bfOption.isDefined) {
@@ -58,6 +67,12 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
         updateSize()
       }
     }
+  }
+
+  private var updateDelay = 0.25
+
+  private def delayedUpdate(): Unit = {
+    updateDelay = 0.25
   }
 
   private def updateBitmapFont(): Unit = if (font.family.get.nonEmpty && font.size.get > 0 && font.style.get.nonEmpty) {
