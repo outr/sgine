@@ -1,7 +1,11 @@
 package org.sgine.input
 
+import com.badlogic.gdx.Gdx
+
 class Key private(val code: Int, val lowerCase: Option[Char] = None, val upperCase: Option[Char] = None, val name: String, add: Boolean = true) {
   if (add) Key.add(this)
+
+  def pressed: Boolean = Gdx.input.isKeyPressed(code)
 
   override def toString: String = s"Key($name)"
 }
