@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import org.sgine.task.TaskManager
-import pl.metastack.metarx.{ReadStateChannel, Sub}
+import pl.metastack.metarx.{ReadStateChannel, Sub, Var}
 
 trait UI extends RenderFlow with InputSupport {
   UI.instance = Some(this)
@@ -23,12 +23,14 @@ trait UI extends RenderFlow with InputSupport {
     s
   }
   val continuousRendering: Sub[Boolean] = Sub(true)
+  val exitOnError: Var[Boolean] = Var[Boolean](true)
   lazy val taskManager: TaskManager = new TaskManager()   // TODO: make configurable
 
   private[sgine] val listener = new GDXApplicationListener(this)
 
   create.once {
     continuousRendering.attach(cr => Gdx.graphics.setContinuousRendering(cr))
+    taskManager.start()
   }
   resize.on {
     _width := Gdx.graphics.getWidth.toDouble
@@ -49,6 +51,9 @@ trait UI extends RenderFlow with InputSupport {
     // TODO: support logging
     System.err.println(message.getOrElse("An Error Occurred"))
     t.printStackTrace()
+    if (exitOnError.get) {
+      Gdx.app.exit()
+    }
   }
 
   def catchErrors[R](f: => R) = try {

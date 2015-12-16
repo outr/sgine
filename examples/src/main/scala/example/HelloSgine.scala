@@ -10,5 +10,15 @@ object HelloSgine extends BasicDesktopApp {
     position.middle := ui.height / 2.0
   }
 
-  this += new Label("Hello Sgine!", "OpenSans", "Semibold", 28)
+  val label = new Label("Hello Sgine!", "OpenSans", "Semibold", 28) {
+    position.center := ui.width / 2.0
+    position.middle := ui.height / 2.0
+  }
+  add(label)
+
+  delay(5.0) andThen function {
+    println("Changing font!")
+    label.font.size := 40
+    label.color := Color.Red
+  } start()
 }

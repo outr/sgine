@@ -1,7 +1,7 @@
 package org.sgine.widget
 
 import com.badlogic.gdx.graphics.Colors
-import com.badlogic.gdx.graphics.g2d.BitmapFont
+import com.badlogic.gdx.graphics.g2d.{Batch, BitmapFont}
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
 import com.badlogic.gdx.scenes.scene2d.ui.{Label => GDXLabel}
 import org.sgine._
@@ -24,22 +24,39 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
     font.size := size
   }
 
-  override lazy val actor: GDXLabel = new GDXLabel("", new LabelStyle())
+  override lazy val actor: GDXLabel = new GDXLabel("", new LabelStyle()) {
+    override def setStyle(style: LabelStyle): Unit = {
+      if (style != null && style.font != null) {
+        super.setStyle(style)
+      }
+    }
+
+    override def draw(batch: Batch, parentAlpha: Float): Unit = {
+      if (getStyle != null && getStyle.font != null) {
+        super.draw(batch, parentAlpha)
+      }
+    }
+  }
 
   val text: Sub[String] = Sub[String]("")
   val font: Font = new Font
   val bitmapFont: Sub[Option[BitmapFont]] = Sub[Option[BitmapFont]](None)
 
   screen.render.once {
-    text.attach(s => actor.setText(s))
+    text.attach { s =>
+      actor.setText(s)
+      updateSize()
+    }
     font.family.attach(s => updateBitmapFont())
     font.style.attach(s => updateBitmapFont())
     font.size.attach(i => updateBitmapFont())
   }
   bitmapFont.attach { bfOption =>
-    screen.render.once {
-      val bf = bfOption.getOrElse(throw new NullPointerException("BitmapFont cannot be empty."))
-      actor.setStyle(new LabelStyle(bf, Colors.get("WHITE")))
+    if (bfOption.isDefined) {
+      screen.render.once {
+        actor.setStyle(labelStyle())
+        updateSize()
+      }
     }
   }
 
@@ -48,6 +65,16 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
     ui.taskManager.font(font.family.get, font.style.get, font.size.get).andThen { bf =>
       bitmapFont := Option(bf)
     }
+  }
+
+  private def labelStyle(): LabelStyle = {
+    val bf = bitmapFont.get.getOrElse(throw new NullPointerException("BitmapFont cannot be empty."))
+    new LabelStyle(bf, Colors.get("WHITE"))
+  }
+
+  private def updateSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
+    size.width := actor.getPrefWidth
+    size.height := actor.getPrefHeight
   }
 }
 
