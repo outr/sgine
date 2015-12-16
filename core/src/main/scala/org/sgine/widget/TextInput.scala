@@ -4,14 +4,14 @@ import com.badlogic.gdx.graphics.Colors
 import com.badlogic.gdx.graphics.g2d.{Batch, BitmapFont}
 import com.badlogic.gdx.scenes.scene2d.ui.TextField
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle
-import com.badlogic.gdx.scenes.scene2d.utils.{ChangeListener, Drawable}
+import com.badlogic.gdx.scenes.scene2d.utils.{ChangeListener, Drawable, FocusListener}
 import com.badlogic.gdx.scenes.scene2d.{Event, EventListener}
 import org.sgine._
-import org.sgine.component.ActorWidget
 import org.sgine.component.prop.{FontProperties, PreferredSize}
+import org.sgine.component.{ActorWidget, Focusable}
 import pl.metastack.metarx.{ReadChannel, Sub}
 
-class TextInput private(implicit val screen: Screen) extends ActorWidget[TextField] {
+class TextInput private(implicit val screen: Screen) extends ActorWidget[TextField] with Focusable {
   def this(text: String, family: String, style: String, size: Int)(implicit screen: Screen) {
     this()(screen)
     this.text := text
@@ -32,6 +32,7 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
       override def handle(event: Event): Boolean = {
         event match {
           case evt: ChangeListener.ChangeEvent => TextInput.this.text := getText
+          case evt: FocusListener.FocusEvent if evt.isFocused => requestFocus()
           case _ => // Ignore others
         }
         false
@@ -177,5 +178,11 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
   private def updateSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
     if (actor.getPrefWidth != 0.0) preferred._width := actor.getPrefWidth
     if (actor.getPrefHeight != 0.0) preferred._height := actor.getPrefHeight
+  }
+
+  override protected[sgine] def applyFocus(): Unit = screen.stage.setKeyboardFocus(actor)
+
+  override protected[sgine] def applyBlur(): Unit = {
+    // Nothing specific to do
   }
 }

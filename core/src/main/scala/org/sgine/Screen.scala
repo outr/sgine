@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.badlogic.gdx.{Gdx, Screen => GDXScreen}
 import org.sgine.component._
 import org.sgine.event.InputProcessor
+import pl.metastack.metarx.Sub
 
 class Screen extends RenderFlow with Container with ActorWidget[Group] with InputSupport {
   lazy val stage = new Stage(new ScreenViewport)
@@ -13,7 +14,19 @@ class Screen extends RenderFlow with Container with ActorWidget[Group] with Inpu
   lazy val actor: Group = stage.getRoot
   private val inputProcessor = new InputProcessor(this)
 
+  val atCursor: Sub[Component] = Sub[Component](screen)
+  val focused: Sub[Option[Focusable]] = Sub[Option[Focusable]](None)
+
   implicit def thisScreen: Screen = this
+
+  create.once {
+    var oldValue: Option[Focusable] = None
+    focused.attach { newValue =>
+      oldValue.foreach(_.blur.exec())
+      newValue.foreach(_.focus.exec())
+      oldValue = newValue
+    }
+  }
 
   resize.on {
     stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)

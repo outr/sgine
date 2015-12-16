@@ -20,9 +20,9 @@ object TransitionsExample extends BasicDesktopApp {
         andThen(image.color.green transitionTo 0.0 from 1.0 in 2.seconds)
         andThen(image.color.blue transitionTo 0.0 from 1.0 in 2.seconds)
         andThen(
-        image.color.red transitionTo 1.0 from 0.0 in 1.seconds
-          and(image.color.green transitionTo 1.0 from 0.0 in 1.seconds)
-          and(image.color.blue transitionTo 1.0 from 0.0 in 1.seconds)
+          image.color.red transitionTo 1.0 from 0.0 in 1.seconds
+            and(image.color.green transitionTo 1.0 from 0.0 in 1.seconds)
+            and(image.color.blue transitionTo 1.0 from 0.0 in 1.seconds)
         )
         andThen function {
           println("Finished!")

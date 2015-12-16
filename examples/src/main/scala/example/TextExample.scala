@@ -22,16 +22,33 @@ object TextExample extends BasicDesktopApp with VirtualSizeSupport {
     size.width := 500.vw
     wrap := true
   }
-  val textInput = new TextInput("Editable Text", "OpenSans", "Bold", 36.vf) {
+  val textInput1 = new TextInput("Editable Text", "OpenSans", "Bold", 36.vf) {
     color := Color.LightSkyBlue
     selectionColor := Color.Blue
     position.center := ui.width / 2.0
     position.top := paragraph.position.bottom - 50.0
     size.width := 500.vw
+    focus.on {
+      println("1 received focus")
+    }
+    blur.on {
+      println("1 blurred")
+    }
+  }
+  val textInput2 = new TextInput("", "OpenSans", "Light", 20.vf) {
+    position.center := ui.width / 2.0
+    position.top := textInput1.position.bottom - 50.0
     placeholder := "Hello World!"
-    disabled := false
+    size.width := 500.vw
+    focus.on {
+      println("2 received focus")
+    }
+    blur.on {
+      println("2 blurred")
+    }
   }
   add(heading)
   add(paragraph)
-  add(textInput)
+  add(textInput1)
+  add(textInput2)
 }

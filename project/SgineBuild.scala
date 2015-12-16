@@ -65,7 +65,7 @@ object SgineBuild extends Build {
 object Details {
   val organization = "org.sgine"
   val name = "sgine"
-  val version = "1.0.0-SNAPSHOT"
+  val version = "2.0.0-SNAPSHOT"
   val url = "http://sgine.org"
   val licenseType = "Apache 2.0"
   val licenseURL = "http://www.apache.org/licenses/LICENSE-2.0"
