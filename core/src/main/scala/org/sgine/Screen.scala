@@ -7,7 +7,7 @@ import org.sgine.component._
 import org.sgine.event.InputProcessor
 import pl.metastack.metarx.Sub
 
-class Screen extends RenderFlow with Container with ActorWidget[Group] with InputSupport {
+class Screen extends RenderFlow with AbstractContainer with ActorWidget[Group] with InputSupport {
   lazy val stage = new Stage(new ScreenViewport)
   private[sgine] lazy val gdx = new GDXScreenInstance(this)
 

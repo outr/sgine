@@ -21,6 +21,7 @@ class Rect(implicit screen: Screen) extends Shape()(screen) {
     colors.topRight.update(c3)
     colors.bottomLeft.update(c1)
     colors.bottomRight.update(c2)
+    updateColorAlphas()
     rect(0.0, 0.0, size.width.get, size.height.get)
   }
 }

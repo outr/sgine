@@ -30,6 +30,13 @@ abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor
     c4.set(c.r, c.g, c.b, actor.alpha)
   }
 
+  def updateColorAlphas(): Unit = {
+    c1.a *= actor.alpha
+    c2.a *= actor.alpha
+    c3.a *= actor.alpha
+    c4.a *= actor.alpha
+  }
+
   protected def beginFilled(): Unit = sr.begin(ShapeType.Filled)
   protected def beginLine(): Unit = sr.begin(ShapeType.Line)
   protected def beginPoint(): Unit = sr.begin(ShapeType.Point)

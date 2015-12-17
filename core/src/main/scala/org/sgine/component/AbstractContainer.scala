@@ -2,7 +2,7 @@ package org.sgine.component
 
 import pl.metastack.metarx.Buffer
 
-trait Container extends Component {
+trait AbstractContainer extends Component {
   private val children: Buffer[Component] = Buffer[Component]
 
   protected def add[C <: Component](child: C): C = {
