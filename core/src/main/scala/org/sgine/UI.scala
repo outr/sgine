@@ -12,6 +12,7 @@ trait UI extends RenderFlow with InputSupport {
   private[sgine] var textureMap = Map.empty[String, Texture]
   private[sgine] var textureRegionMap = Map.empty[String, TextureRegion]
 
+  val theme: Theme = new Theme
   def delta: Double = Gdx.graphics.getDeltaTime.toDouble
   private val _width = Sub(0.0)
   private val _height = Sub(0.0)

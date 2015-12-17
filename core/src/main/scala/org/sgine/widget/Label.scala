@@ -9,7 +9,11 @@ import org.sgine.component.ActorWidget
 import org.sgine.component.prop.FontProperties
 import pl.metastack.metarx.{ReadChannel, Sub}
 
-class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
+class Label(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
+  def this(text: String)(implicit screen: Screen) {
+    this()(screen)
+    this.text := text
+  }
   def this(text: String, family: String, style: String, size: Int)(implicit screen: Screen) {
     this()(screen)
     this.text := text
@@ -44,6 +48,11 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
   val bitmapFont: Sub[Option[BitmapFont]] = Sub[Option[BitmapFont]](None)
   val wrap: Sub[Boolean] = Sub[Boolean](false)
   val ellipsis: Sub[Option[String]] = Sub[Option[String]](None)
+
+  font.family := ui.theme.font.family
+  font.style := ui.theme.font.style
+  font.size := ui.theme.font.size
+  ellipsis := ui.theme.ellipsis
 
   screen.render.once {
     text.attach { s =>
@@ -92,7 +101,7 @@ class Label private(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
     new LabelStyle(bf, Colors.get("WHITE"))
   }
 
-  override protected def updatePreferredSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
+  override def updatePreferredSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
     super.updatePreferredSize()
   }
 }

@@ -10,7 +10,7 @@ trait ActorWidget[A <: Actor] extends Widget with ActorComponent[A] {
   size.width := preferred._width
   size.height := preferred._height
 
-  protected def updatePreferredSize(): Unit = actor match {
+  def updatePreferredSize(): Unit = actor match {
     case w: GDXWidget => {
       if (w.getPrefWidth != 0.0) preferred._width := w.getPrefWidth
       if (w.getPrefHeight != 0.0) preferred._height := w.getPrefHeight

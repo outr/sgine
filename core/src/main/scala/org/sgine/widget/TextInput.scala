@@ -11,7 +11,11 @@ import org.sgine.component.prop.FontProperties
 import org.sgine.component.{ActorWidget, Focusable}
 import pl.metastack.metarx.{ReadChannel, Sub}
 
-class TextInput private(implicit val screen: Screen) extends ActorWidget[TextField] with Focusable {
+class TextInput(implicit val screen: Screen) extends ActorWidget[TextField] with Focusable {
+  def this(text: String)(implicit screen: Screen) {
+    this()(screen)
+    this.text := text
+  }
   def this(text: String, family: String, style: String, size: Int)(implicit screen: Screen) {
     this()(screen)
     this.text := text
@@ -27,65 +31,9 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
     font.size := size
   }
 
-  override lazy val actor: TextField = new TextField("", new TextFieldStyle()) {
-    addListener(new EventListener {
-      override def handle(event: Event): Boolean = {
-        event match {
-          case evt: ChangeListener.ChangeEvent => TextInput.this.text := getText
-          case evt: FocusListener.FocusEvent if evt.isFocused => requestFocus()
-          case _ => // Ignore others
-        }
-        false
-      }
-    })
+  private var updateDelay = 0.25
 
-    override def setStyle(style: TextFieldStyle): Unit = {
-      if (style != null && style.font != null) {
-        super.setStyle(style)
-      }
-    }
-
-    private var first = true
-    override def draw(batch: Batch, parentAlpha: Float): Unit = {
-      if (getStyle != null && getStyle.font != null) {
-        if (first) {
-          setText(TextInput.this.text.get)
-          if (maskCharacter.get.isDefined) setPasswordCharacter(maskCharacter.get.get)
-          setPasswordMode(maskCharacter.get.isDefined)
-          invalidate()
-          updatePreferredSize()
-          first = false
-        }
-        super.draw(batch, parentAlpha)
-      }
-    }
-
-    override def setText(str: String): Unit = if (getStyle != null && getStyle.font != null) {
-      super.setText(str)
-    }
-
-    override def setPasswordMode(passwordMode: Boolean): Unit = if (getStyle != null && getStyle.font != null) {
-      super.setPasswordMode(passwordMode)
-    }
-
-    override def getPrefHeight: Float = if (getStyle != null && getStyle.font != null) {
-      super.getPrefHeight
-    } else {
-      0.0f
-    }
-
-    override def getPrefWidth: Float = if (getStyle != null && getStyle.font != null) {
-      layout.width + 3.0f
-    } else {
-      150.0f
-    }
-
-    override def drawSelection(selection: Drawable, batch: Batch, font: BitmapFont, x: Float, y: Float): Unit = {
-      val c = selectionColor.get
-      batch.setColor(c)
-      super.drawSelection(selection, batch, font, x, y)
-    }
-  }
+  override lazy val actor: GDXTextField = new GDXTextField(this)
 
   val text: Sub[String] = Sub[String]("")
   val placeholder: Sub[String] = Sub[String]("")
@@ -96,6 +44,13 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
   val disabled: Sub[Boolean] = Sub[Boolean](false)
   val selectionColor: Sub[Color] = Sub[Color](Color.LightCoral)
   val placeholderColor: Sub[Color] = Sub[Color](Color.DimGray)
+
+  font.family := ui.theme.font.family
+  font.style := ui.theme.font.style
+  font.size := ui.theme.font.size
+  blinkTime := ui.theme.blinkTime
+  selectionColor := ui.theme.selectionColor
+  placeholderColor := ui.theme.placeholderColor
 
   def copy(): Unit = actor.copy()
   def cut(): Unit = actor.cut()
@@ -149,8 +104,6 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
     }
   }
 
-  private var updateDelay = 0.25
-
   private def delayedUpdate(): Unit = {
     updateDelay = 0.25
   }
@@ -172,7 +125,7 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
     style
   }
 
-  override protected def updatePreferredSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
+  override def updatePreferredSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
     super.updatePreferredSize()
   }
 
@@ -180,5 +133,65 @@ class TextInput private(implicit val screen: Screen) extends ActorWidget[TextFie
 
   override protected[sgine] def applyBlur(): Unit = {
     // Nothing specific to do
+  }
+}
+
+class GDXTextField(textInput: TextInput) extends TextField("", new TextFieldStyle()) {
+  addListener(new EventListener {
+    override def handle(event: Event): Boolean = {
+      event match {
+        case evt: ChangeListener.ChangeEvent => textInput.text := getText
+        case evt: FocusListener.FocusEvent if evt.isFocused => textInput.requestFocus()
+        case _ => // Ignore others
+      }
+      false
+    }
+  })
+
+  override def setStyle(style: TextFieldStyle): Unit = {
+    if (style != null && style.font != null) {
+      super.setStyle(style)
+    }
+  }
+
+  private var first = true
+  override def draw(batch: Batch, parentAlpha: Float): Unit = {
+    if (getStyle != null && getStyle.font != null) {
+      if (first) {
+        setText(textInput.text.get)
+        if (textInput.maskCharacter.get.isDefined) setPasswordCharacter(textInput.maskCharacter.get.get)
+        setPasswordMode(textInput.maskCharacter.get.isDefined)
+        invalidate()
+        textInput.updatePreferredSize()
+        first = false
+      }
+      super.draw(batch, parentAlpha)
+    }
+  }
+
+  override def setText(str: String): Unit = if (getStyle != null && getStyle.font != null) {
+    super.setText(str)
+  }
+
+  override def setPasswordMode(passwordMode: Boolean): Unit = if (getStyle != null && getStyle.font != null) {
+    super.setPasswordMode(passwordMode)
+  }
+
+  override def getPrefHeight: Float = if (getStyle != null && getStyle.font != null) {
+    super.getPrefHeight
+  } else {
+    0.0f
+  }
+
+  override def getPrefWidth: Float = if (getStyle != null && getStyle.font != null) {
+    layout.width + 3.0f
+  } else {
+    150.0f
+  }
+
+  override def drawSelection(selection: Drawable, batch: Batch, font: BitmapFont, x: Float, y: Float): Unit = {
+    val c = textInput.selectionColor.get
+    batch.setColor(c)
+    super.drawSelection(selection, batch, font, x, y)
   }
 }
