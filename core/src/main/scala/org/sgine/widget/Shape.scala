@@ -12,15 +12,23 @@ import org.sgine.{Color, Screen}
 import scala.language.implicitConversions
 
 abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor] {
-  val actor: ShapeActor = new ShapeActor(this)
+  lazy val actor: ShapeActor = new ShapeActor(this)
   private def sr: ShapeRenderer = actor.renderer
 
   def draw(): Unit
 
-  private lazy val c1 = new com.badlogic.gdx.graphics.Color()
-  private lazy val c2 = new com.badlogic.gdx.graphics.Color()
-  private lazy val c3 = new com.badlogic.gdx.graphics.Color()
-  private lazy val c4 = new com.badlogic.gdx.graphics.Color()
+  lazy val c1 = new com.badlogic.gdx.graphics.Color()
+  lazy val c2 = new com.badlogic.gdx.graphics.Color()
+  lazy val c3 = new com.badlogic.gdx.graphics.Color()
+  lazy val c4 = new com.badlogic.gdx.graphics.Color()
+
+  private def resetColors(): Unit = {
+    val c = sr.getColor
+    c1.set(c.r, c.g, c.b, actor.alpha)
+    c2.set(c.r, c.g, c.b, actor.alpha)
+    c3.set(c.r, c.g, c.b, actor.alpha)
+    c4.set(c.r, c.g, c.b, actor.alpha)
+  }
 
   protected def beginFilled(): Unit = sr.begin(ShapeType.Filled)
   protected def beginLine(): Unit = sr.begin(ShapeType.Line)
@@ -55,9 +63,11 @@ abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor
 
   protected def setColor(color: Color): Unit = {
     sr.setColor(color.red.toFloat, color.green.toFloat, color.blue.toFloat, actor.alpha * color.alpha.toFloat)
+    resetColors()
   }
   protected def setColor(red: Double, green: Double, blue: Double, alpha: Double): Unit = {
     sr.setColor(red.toFloat, green.toFloat, blue.toFloat, actor.alpha * alpha.toFloat)
+    resetColors()
   }
   protected def flush(): Unit = sr.flush()
   protected def reset(): Unit = actor.reset()
@@ -76,12 +86,14 @@ abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor
     sr.ellipse(x.toFloat, y.toFloat, width.toFloat, height.toFloat, segments)
   }
   protected def line(x1: Double, y1: Double, x2: Double, y2: Double): Unit = {
-    sr.line(x1.toFloat, y1.toFloat, x2.toFloat, y2.toFloat)
+    sr.line(x1.toFloat, y1.toFloat, x2.toFloat, y2.toFloat, c1, c2)
+    resetColors()
   }
   protected def line(x1: Double, y1: Double, x2: Double, y2: Double, c1: Color, c2: Color): Unit = {
     this.c1.set(c1.red.toFloat, c1.green.toFloat, c1.blue.toFloat, actor.alpha * c1.alpha.toFloat)
     this.c2.set(c2.red.toFloat, c2.green.toFloat, c2.blue.toFloat, actor.alpha * c2.alpha.toFloat)
     sr.line(x1.toFloat, y1.toFloat, x2.toFloat, y2.toFloat, this.c1, this.c2)
+    resetColors()
   }
   protected def polygon(vertices: Double*): Unit = {
     sr.polygon(vertices.map(_.toFloat).toArray)
@@ -90,7 +102,8 @@ abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor
     sr.polyline(vertices.map(_.toFloat).toArray)
   }
   protected def rect(x: Double, y: Double, width: Double, height: Double): Unit = {
-    sr.rect(x.toFloat, y.toFloat, width.toFloat, height.toFloat)
+    sr.rect(x.toFloat, y.toFloat, width.toFloat, height.toFloat, c1, c2, c3, c4)
+    resetColors()
   }
   protected def rect(x: Double, y: Double, width: Double, height: Double, c1: Color, c2: Color, c3: Color, c4: Color): Unit = {
     this.c1.set(c1.red.toFloat, c1.green.toFloat, c1.blue.toFloat, actor.alpha * c1.alpha.toFloat)
@@ -98,6 +111,7 @@ abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor
     this.c3.set(c3.red.toFloat, c3.green.toFloat, c3.blue.toFloat, actor.alpha * c3.alpha.toFloat)
     this.c4.set(c4.red.toFloat, c4.green.toFloat, c4.blue.toFloat, actor.alpha * c4.alpha.toFloat)
     sr.rect(x.toFloat, y.toFloat, width.toFloat, height.toFloat, this.c1, this.c2, this.c3, this.c4)
+    resetColors()
   }
   protected def rotate(degrees: Double): Unit = {
     sr.rotate(0.0f, 0.0f, 1.0f, degrees.toFloat)
@@ -109,13 +123,15 @@ abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor
     sr.translate(x.toFloat, y.toFloat, 0.0f)
   }
   protected def triangle(x1: Double, y1: Double, x2: Double, y2: Double, x3: Double, y3: Double): Unit = {
-    sr.triangle(x1.toFloat, y1.toFloat, x2.toFloat, y2.toFloat, x3.toFloat, y3.toFloat)
+    sr.triangle(x1.toFloat, y1.toFloat, x2.toFloat, y2.toFloat, x3.toFloat, y3.toFloat, c1, c2, c3)
+    resetColors()
   }
   protected def triangle(x1: Double, y1: Double, x2: Double, y2: Double, x3: Double, y3: Double, c1: Color, c2: Color, c3: Color): Unit = {
     this.c1.set(c1.red.toFloat, c1.green.toFloat, c1.blue.toFloat, actor.alpha * c1.alpha.toFloat)
     this.c2.set(c2.red.toFloat, c2.green.toFloat, c2.blue.toFloat, actor.alpha * c2.alpha.toFloat)
     this.c3.set(c3.red.toFloat, c3.green.toFloat, c3.blue.toFloat, actor.alpha * c3.alpha.toFloat)
     sr.triangle(x1.toFloat, y1.toFloat, x2.toFloat, y2.toFloat, x3.toFloat, y3.toFloat, this.c1, this.c2, this.c3)
+    resetColors()
   }
 }
 
@@ -132,11 +148,9 @@ class ShapeActor(shape: Shape) extends GDXWidget {
 
     batch.end()
 
-    reset()
-
-    renderer.setColor(c.r, c.g, c.b, alpha)
     Gdx.gl.glEnable(GL20.GL_BLEND)
     Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA)
+    reset()
     shape.draw()
     Gdx.gl.glDisable(GL20.GL_BLEND)
 
@@ -154,5 +168,7 @@ class ShapeActor(shape: Shape) extends GDXWidget {
       renderer.rotate(0.0f, 0.0f, 1.0f, getRotation)
       renderer.translate(-getOriginX, -getOriginY, 0.0f)
     }
+    val c = getColor
+    renderer.setColor(c.r, c.g, c.b, alpha)
   }
 }

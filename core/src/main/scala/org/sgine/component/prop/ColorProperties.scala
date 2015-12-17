@@ -16,4 +16,17 @@ class ColorProperties {
     blue := c.blue
     alpha := c.alpha
   }
+  def :=(cp: ColorProperties): Unit = {
+    red := cp.red
+    green := cp.green
+    blue := cp.blue
+    alpha := cp.alpha
+  }
+
+  def update(color: com.badlogic.gdx.graphics.Color): Unit = {
+    color.r = red.get.toFloat
+    color.g = green.get.toFloat
+    color.b = blue.get.toFloat
+    color.a = alpha.get.toFloat
+  }
 }

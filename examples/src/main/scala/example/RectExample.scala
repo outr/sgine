@@ -12,6 +12,16 @@ object RectExample extends BasicDesktopApp with VirtualSizeSupport with FPSLoggi
   override val virtualMode: VirtualMode = VirtualMode.Bars
 
   create.on {
+    this += new Rect {
+      position.x := 0.0
+      position.y := 0.0
+      size.width := ui.width
+      size.height := ui.height
+      colors.topLeft := Color.Red
+      colors.topRight := Color.Green
+      colors.bottomLeft := Color.Blue
+      colors.bottomRight := Color.White
+    }
     (0.0 until 1000.0 by 100.0).foreach { x =>
       (0.0 until 1000.0 by 100.0).foreach { y =>
         this += new Rect {
