@@ -6,9 +6,7 @@ import org.sgine.screen.{VirtualMode, VirtualSizeSupport}
 import org.sgine.widget.{Label, TextInput}
 
 object TextExample extends BasicDesktopApp with VirtualSizeSupport {
-  override val virtualWidth: Double = 1024.0
-  override val virtualHeight: Double = 768.0
-  override val virtualMode: VirtualMode = VirtualMode.Stretch
+  virtualMode := VirtualMode.Stretch
 
   ui.theme.font.family := "OpenSans"
   ui.theme.font.style := "Light"

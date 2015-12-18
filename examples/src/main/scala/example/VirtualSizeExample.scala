@@ -3,14 +3,10 @@ package example
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
-import org.sgine.screen.{VirtualMode, VirtualSizeSupport}
+import org.sgine.screen.VirtualSizeSupport
 import org.sgine.widget.Image
 
 object VirtualSizeExample extends BasicDesktopApp with VirtualSizeSupport {
-  override val virtualWidth: Double = 1024.0
-  override val virtualHeight: Double = 768.0
-  override val virtualMode: VirtualMode = VirtualMode.Bars
-
   create.on {
     this += new Image("1024.jpg") {
       position.x := 0.0.vx

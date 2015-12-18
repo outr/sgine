@@ -4,9 +4,9 @@ import org.sgine._
 import pl.metastack.metarx._
 
 trait VirtualSizeSupport extends Screen {
-  val virtualWidth: Double
-  val virtualHeight: Double
-  val virtualMode: VirtualMode
+  val virtualWidth: Sub[Double] = Sub[Double](1024.0)
+  val virtualHeight: Sub[Double] = Sub[Double](768.0)
+  val virtualMode: Sub[VirtualMode] = Sub[VirtualMode](VirtualMode.Bars)
 
   lazy val virtual = new VirtualSize(this)
 
@@ -45,11 +45,11 @@ class VirtualSize(screen: VirtualSizeSupport) {
   val hMulti: ReadStateChannel[Double] = _hMulti
 
   private val updateFunction = (d: Double) => if (ui.width.get > 0.0 && ui.height.get > 0.0) {
-    screen.virtualMode match {
+    screen.virtualMode.get match {
       case VirtualMode.Bars | VirtualMode.Clip => {
-        val widthRatio = ui.width.get / screen.virtualWidth
-        val heightRatio = ui.height.get / screen.virtualHeight
-        val ratio = screen.virtualMode match {
+        val widthRatio = ui.width.get / screen.virtualWidth.get
+        val heightRatio = ui.height.get / screen.virtualHeight.get
+        val ratio = screen.virtualMode.get match {
           case VirtualMode.Bars => math.min(widthRatio, heightRatio)
           case VirtualMode.Clip => math.max(widthRatio, heightRatio)
           case _ => 0.0   // Not possible
@@ -72,4 +72,9 @@ class VirtualSize(screen: VirtualSizeSupport) {
 
   ui.width.attach(updateFunction)
   ui.height.attach(updateFunction)
+  screen.virtualWidth.attach(updateFunction)
+  screen.virtualHeight.attach(updateFunction)
+  screen.virtualMode.attach { mode =>
+    updateFunction(0.0)
+  }
 }

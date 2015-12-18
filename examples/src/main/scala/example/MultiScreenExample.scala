@@ -25,9 +25,7 @@ object MultiScreenExample extends DesktopApp {
 }
 
 class SimpleScreen(c: Color) extends Screen with VirtualSizeSupport with TransitionSupport {
-  override val virtualWidth: Double = 1024.0
-  override val virtualHeight: Double = 768.0
-  override val virtualMode: VirtualMode = VirtualMode.Stretch
+  virtualMode := VirtualMode.Stretch
 
   create.on {
     this += new Image("1024.jpg") {
