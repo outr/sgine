@@ -2,6 +2,7 @@ package org.sgine.widget
 
 import com.badlogic.gdx.scenes.scene2d.ui.{Image => GDXImage}
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable
+import com.badlogic.gdx.utils.Scaling
 import org.sgine.Screen
 import org.sgine.component.ActorWidget
 import pl.metastack.metarx.Sub
@@ -11,12 +12,14 @@ class Image(implicit val screen: Screen) extends ActorWidget[GDXImage] {
     this()(screen)
     screen.render.once {
       this.drawable := Some(drawable)
-      size.width := drawable.getMinWidth
-      size.height := drawable.getMinHeight
+      preferred._width := drawable.getMinWidth
+      preferred._height := drawable.getMinHeight
     }
   }
 
-  lazy val actor = new GDXImage
+  lazy val actor = new GDXImage {
+    setScaling(Scaling.stretch)
+  }
 
   val drawable: Sub[Option[Drawable]] = Sub(None)
 
