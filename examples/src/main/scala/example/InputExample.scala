@@ -10,7 +10,7 @@ object InputExample extends BasicDesktopApp {
       position.center := ui.width / 2.0
       position.middle := ui.height / 2.0
 
-      touch.tapped.attach { evt =>
+      mouse.tapped.attach { evt =>
         val to = if (color.alpha.get == 1.0) {
           0.5
         } else {

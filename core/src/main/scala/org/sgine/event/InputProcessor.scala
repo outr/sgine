@@ -120,28 +120,28 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
     updateCoordinates(screenX, screenY)
     gestures.mouseMoved(screenX, screenY)
     screen.stage.mouseMoved(screenX, screenY)
-    fireMouseEvent(atCursor.touch.moved, screen.touch.moved, ui.touch.moved)
+    fireMouseEvent(atCursor.mouse.moved, screen.mouse.moved, ui.mouse.moved)
   }
 
   override def touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = {
     updateCoordinates(screenX, screenY)
     gestures.touchDown(screenX, screenY, pointer, button)
     screen.stage.touchDown(screenX, screenY, pointer, button)
-    fireMouseEvent(atCursor.touch.down, screen.touch.down, ui.touch.down, button)
+    fireMouseEvent(atCursor.mouse.down, screen.mouse.down, ui.mouse.down, button)
   }
 
   override def touchDragged(screenX: Int, screenY: Int, pointer: Int): Boolean = {
     updateCoordinates(screenX, screenY)
     gestures.touchDragged(screenX, screenY, pointer)
     screen.stage.touchDragged(screenX, screenY, pointer)
-    fireMouseEvent(atCursor.touch.dragged, screen.touch.dragged, ui.touch.dragged)
+    fireMouseEvent(atCursor.mouse.dragged, screen.mouse.dragged, ui.mouse.dragged)
   }
 
   override def touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = {
     updateCoordinates(screenX, screenY)
     gestures.touchUp(screenX, screenY, pointer, button)
     screen.stage.touchUp(screenX, screenY, pointer, button)
-    fireMouseEvent(atCursor.touch.up, screen.touch.up, ui.touch.up, button)
+    fireMouseEvent(atCursor.mouse.up, screen.mouse.up, ui.mouse.up, button)
   }
 
   override def scrolled(amount: Int): Boolean = {
@@ -158,9 +158,9 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
   }
 
   override def longPress(x: Float, y: Float): Boolean = {
-    atCursor.touch.longPressed := MouseEvent
-    screen.touch.longPressed := MouseEvent
-    ui.touch.longPressed := MouseEvent
+    atCursor.mouse.longPressed := MouseEvent
+    screen.mouse.longPressed := MouseEvent
+    ui.mouse.longPressed := MouseEvent
     true
   }
 
@@ -189,9 +189,9 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
 
   override def tap(x: Float, y: Float, count: Int, button: Int): Boolean = {
     val evt = MouseEvent(button, screenX, screenY, stageX, stageY, localX, localY, atCursor, focused)
-    atCursor.touch.tapped := evt
-    screen.touch.tapped := evt
-    ui.touch.tapped := evt
+    atCursor.mouse.tapped := evt
+    screen.mouse.tapped := evt
+    ui.mouse.tapped := evt
     true
   }
 

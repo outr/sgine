@@ -5,7 +5,7 @@ import pl.metastack.metarx.Channel
 
 trait InputSupport {
   lazy val key: KeyEvents = new KeyEvents
-  lazy val touch: TouchEvents = new TouchEvents
+  lazy val mouse: MouseEvents = new MouseEvents
   lazy val scrolled: Channel[ScrollEvent] = Channel[ScrollEvent]
   lazy val flung: Channel[FlingEvent] = Channel[FlingEvent]
   lazy val pan: PanEvents = new PanEvents
@@ -18,7 +18,7 @@ trait InputSupport {
     lazy val typed: Channel[KeyEvent] = Channel[KeyEvent]
   }
 
-  class TouchEvents {
+  class MouseEvents {
     lazy val moved: Channel[MouseEvent] = Channel[MouseEvent]
     lazy val down: Channel[MouseEvent] = Channel[MouseEvent]
     lazy val up: Channel[MouseEvent] = Channel[MouseEvent]
