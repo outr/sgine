@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.{BitmapFont, TextureRegion}
 import com.badlogic.gdx.net.HttpRequestBuilder
 import com.badlogic.gdx.utils.async.{AsyncExecutor, AsyncTask}
 import org.sgine._
+import org.sgine.tools.BitmapFontManager
 
 class TaskManager(maxConcurrent: Int = 4,
                   autoStart: Boolean = true,
@@ -21,6 +22,8 @@ class TaskManager(maxConcurrent: Int = 4,
   private var backlog = List.empty[Task]
   private[task] val _queued = new AtomicInteger(0)
   private[task] val _running = new AtomicInteger(0)
+
+  private lazy val fontManager = new BitmapFontManager
 
   def add(task: Task): Unit = synchronized {
     if (started) {
@@ -90,7 +93,36 @@ class TaskManager(maxConcurrent: Int = 4,
     download(s"$base/$filename", Gdx.files.local(s"$local/$filename"), autoAdd)
   }
 
-  def font(family: String, style: String, size: Int): FutureObject[BitmapFont] = future {
+  def font(family: String, style: String, size: Int): FutureObject[BitmapFont] = {
+    if (Gdx.files.classpath(s"${fontFilename(family, style)}.ttf").exists()) {
+      localFont(family, style, size)
+    } else {
+      remoteFont(family, style, size)
+    }
+  }
+
+  private def fontFilename(family: String, style: String): String = if (style == null || style == "Normal") {
+    family
+  } else {
+    s"$family-$style"
+  }
+
+  def localFont(family: String, style: String, size: Int): FutureObject[BitmapFont] = future {
+    val filename = fontFilename(family, style)
+    val fnt = Gdx.files.local(s"fonts/$filename-$size.fnt")
+    if (fnt.exists()) {
+      ui.render.request {
+        new BitmapFont(fnt)
+      }
+    } else {
+      val ttf = Gdx.files.classpath(s"$filename.ttf")
+      ui.render.request {
+        fontManager.createFont(ttf, filename, size)
+      }
+    }
+  }
+
+  def remoteFont(family: String, style: String, size: Int): FutureObject[BitmapFont] = future {
     val fnt = downloadLocal("http://bitmapfonts.outr.com/font", s"$family.$style.$size.fnt", "fonts", autoAdd = false)
     val png = downloadLocal("http://bitmapfonts.outr.com/font", s"$family.$style.$size.png", "fonts", autoAdd = false)
     fnt.invoke()
