@@ -7,8 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle
 import com.badlogic.gdx.scenes.scene2d.utils.{ChangeListener, Drawable, FocusListener}
 import com.badlogic.gdx.scenes.scene2d.{Event, EventListener}
 import org.sgine._
+import org.sgine.component.gdx.EnhancedActor
 import org.sgine.component.prop.FontProperties
-import org.sgine.component.{ActorWidget, Focusable}
+import org.sgine.component.{ActorWidget, DimensionedComponent, Focusable}
 import pl.metastack.metarx.{ReadChannel, Sub}
 
 class TextInput(implicit val screen: Screen) extends ActorWidget[TextField] with Focusable {
@@ -136,7 +137,7 @@ class TextInput(implicit val screen: Screen) extends ActorWidget[TextField] with
   }
 }
 
-class GDXTextField(textInput: TextInput) extends TextField("", new TextFieldStyle()) {
+class GDXTextField(textInput: TextInput) extends TextField("", new TextFieldStyle()) with EnhancedActor {
   addListener(new EventListener {
     override def handle(event: Event): Boolean = {
       event match {
@@ -147,6 +148,8 @@ class GDXTextField(textInput: TextInput) extends TextField("", new TextFieldStyl
       false
     }
   })
+
+  override def component: DimensionedComponent = textInput
 
   override def setStyle(style: TextFieldStyle): Unit = {
     if (style != null && style.font != null) {

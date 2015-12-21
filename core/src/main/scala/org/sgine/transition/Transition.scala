@@ -7,9 +7,9 @@ trait Transition {
   def init(): Unit
   def invoke(): Unit
 
-  def start() = {
+  def start(context: Renderable) = {
     var first = true
-    ui.render.until(finished) {
+    context.render.until(finished) {
       if (first) {
         init()
         first = false

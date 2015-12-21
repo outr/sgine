@@ -53,7 +53,7 @@ object ContainerExample extends BasicDesktopApp {
       andThen(scale.x transitionTo 2.0 in 1.5.seconds easing Easing.ElasticOut
         and(scale.y transitionTo 2.0 in 1.5.seconds easing Easing.ElasticOut)
       )
-    ).start()
+    ).start(ui)
   }
   add(container)
 }

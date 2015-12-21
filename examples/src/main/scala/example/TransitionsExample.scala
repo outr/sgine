@@ -28,7 +28,7 @@ object TransitionsExample extends BasicDesktopApp {
           println("Finished!")
         }
       )
-    transition.start()
+    transition.start(ui)
     add(image)
   }
 }

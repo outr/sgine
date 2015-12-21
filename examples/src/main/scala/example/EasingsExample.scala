@@ -17,7 +17,7 @@ object EasingsExample extends BasicDesktopApp with FPSLoggingSupport {
       andThen (image.position.right transitionTo ui.width.get in 1.seconds easing Easing.SineIn)
       andThen (image.position.center transitionTo ui.width.get / 2.0 in 1.seconds easing Easing.ElasticOut)
       andThen (image.rotation transitionTo -360.0 in 2.seconds easing Easing.ElasticOut)
-      andThen function(image.rotation := 0.0)).start()
+      andThen function(image.rotation := 0.0)).start(ui)
     add(image)
   }
 }

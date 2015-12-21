@@ -5,11 +5,12 @@ import com.badlogic.gdx.graphics.g2d.{Batch, BitmapFont}
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
 import com.badlogic.gdx.scenes.scene2d.ui.{Label => GDXLabel}
 import org.sgine._
-import org.sgine.component.ActorWidget
+import org.sgine.component.gdx.EnhancedActor
 import org.sgine.component.prop.FontProperties
+import org.sgine.component.{ActorWidget, DimensionedComponent}
 import pl.metastack.metarx.{ReadChannel, Sub}
 
-class Label(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
+class Label(implicit val screen: Screen) extends ActorWidget[GDXLabel with EnhancedActor] {
   def this(text: String)(implicit screen: Screen) {
     this()(screen)
     this.text := text
@@ -29,7 +30,9 @@ class Label(implicit val screen: Screen) extends ActorWidget[GDXLabel] {
     font.size := size
   }
 
-  override lazy val actor: GDXLabel = new GDXLabel("", new LabelStyle()) {
+  override lazy val actor: GDXLabel with EnhancedActor = new GDXLabel("", new LabelStyle()) with EnhancedActor {
+    override def component: DimensionedComponent = Label.this
+
     override def setStyle(style: LabelStyle): Unit = {
       if (style != null && style.font != null) {
         super.setStyle(style)

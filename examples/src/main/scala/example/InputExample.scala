@@ -16,7 +16,7 @@ object InputExample extends BasicDesktopApp {
         } else {
           1.0
         }
-        color.alpha transitionTo to in 200.millis start()
+        color.alpha transitionTo to in 200.millis start ui
       }
     }
   }

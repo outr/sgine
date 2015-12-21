@@ -32,7 +32,7 @@ object RectExample extends BasicDesktopApp with VirtualSizeSupport with FPSLoggi
           color.green := math.random
           color.blue := math.random
           color.alpha := 0.8
-          forever(rotation transitionTo -360.0 in 2.seconds andThen function(rotation := 0.0)).start()
+          forever(rotation transitionTo -360.0 in 2.seconds andThen function(rotation := 0.0)).start(ui)
         }
       }
     }

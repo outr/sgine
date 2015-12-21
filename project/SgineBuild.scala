@@ -80,7 +80,7 @@ object Details {
 }
 
 object Dependencies {
-  val gdxVersion = "1.7.1"
+  val gdxVersion = "1.7.2"
 
   val scalaXML = "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 
@@ -89,7 +89,7 @@ object Dependencies {
   }
 
   object metastack {
-    val rx = "pl.metastack" %%  "metarx" % "0.1.4-SNAPSHOT"
+    val rx = "pl.metastack" %%  "metarx" % "0.1.4"
   }
 
   object gdx {

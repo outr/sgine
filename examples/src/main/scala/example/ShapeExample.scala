@@ -37,6 +37,6 @@ object ShapeExample extends BasicDesktopApp {
       andThen function {
         rotation := 0.0
       }
-    ).start()
+    ).start(ui)
   }
 }

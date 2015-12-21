@@ -1,6 +1,6 @@
 package org.sgine.component
 
-import org.sgine.component.prop.{OriginProperties, PositionProperties, ScaleProperties, SizeProperties}
+import org.sgine.component.prop._
 import pl.metastack.metarx.Sub
 
 trait DimensionedComponent extends Component {
@@ -9,4 +9,5 @@ trait DimensionedComponent extends Component {
   val rotation: Sub[Double] = Sub(0.0)
   val origin = new OriginProperties(this)
   val scale = new ScaleProperties
+  val clip = new ClippingProperties
 }

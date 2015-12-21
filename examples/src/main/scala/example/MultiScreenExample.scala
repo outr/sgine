@@ -45,6 +45,6 @@ class SimpleScreen(c: Color) extends Screen with VirtualSizeSupport with Transit
     val fadeIn = color.alpha transitionTo 1.0 in 1.seconds
     val s1tos2 = MultiScreenExample.screen2.transitions.fade.cross(this, 1.seconds)
     val s2tos3 = MultiScreenExample.screen3.transitions.slideOver.left(MultiScreenExample.screen2, 2.seconds, Easing.BounceOut)
-    fadeIn andThen s1tos2 andThen s2tos3 start()
+    fadeIn andThen s1tos2 andThen s2tos3 start ui
   }
 }

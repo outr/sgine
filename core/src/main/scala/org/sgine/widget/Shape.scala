@@ -6,13 +6,16 @@ import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType
 import com.badlogic.gdx.scenes.scene2d.ui.{Widget => GDXWidget}
-import org.sgine.component.ActorWidget
+import org.sgine.component.gdx.EnhancedActor
+import org.sgine.component.{ActorWidget, DimensionedComponent}
 import org.sgine.{Color, Screen}
 
 import scala.language.implicitConversions
 
-abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor] {
-  lazy val actor: ShapeActor = new ShapeActor(this)
+abstract class Shape(implicit val screen: Screen) extends ActorWidget[ShapeActor with EnhancedActor] {
+  lazy val actor: ShapeActor with EnhancedActor = new ShapeActor(this) with EnhancedActor {
+    override def component: DimensionedComponent = Shape.this
+  }
   private def sr: ShapeRenderer = actor.renderer
 
   def draw(): Unit
