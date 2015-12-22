@@ -4,13 +4,20 @@ import sbt._
 object SgineBuild extends Build {
   import Dependencies._
 
-  lazy val root = Project(id = "root", base = file(".")) aggregate(core, lwjgl, jglfw, android, ios)
+  lazy val root = Project(id = "root", base = file(".")) aggregate(core, lwjgl, jglfw, android, ios, video, examples)
   lazy val core = project("core").withDependencies(gdx.core, gdx.tools, gdx.freetype, metastack.rx)
+
+  // Platforms
   lazy val lwjgl = project("lwjgl").dependsOn(core).withDependencies(gdx.lwjgl)
   lazy val jglfw = project("jglfw").dependsOn(core).withDependencies(gdx.jglfw)
   lazy val android = project("android").dependsOn(core).withDependencies(google.android, gdx.android)
   lazy val ios = project("ios").dependsOn(core).withDependencies(gdx.ios)
-  lazy val examples = project("examples").dependsOn(jglfw, lwjgl).withDependencies(gdx.desktopNatives, gdx.freetypeDesktopNatives, scalaXML)
+
+  // Extras / Optional
+  lazy val video = project("video").dependsOn(core).withDependencies(vlcj)
+
+  // Samples / Examples
+  lazy val examples = project("examples").dependsOn(jglfw, lwjgl, video).withDependencies(gdx.desktopNatives, gdx.freetypeDesktopNatives, scalaXML)
 
   private def project(projectName: String) = Project(id = projectName, base = file(projectName)).settings(
     name := s"${Details.name}-$projectName",
@@ -104,4 +111,6 @@ object Dependencies {
     val freetype = "com.badlogicgames.gdx" % "gdx-freetype" % gdxVersion
     val freetypeDesktopNatives = "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop"
   }
+
+  val vlcj = "uk.co.caprica" % "vlcj" % "3.10.0"
 }

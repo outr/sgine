@@ -68,6 +68,10 @@ package object sgine {
     new TextureRegionDrawable(region)
   }
 
+  implicit def texture2Drawable(texture: Texture): Drawable = {
+    textureRegion2Drawable(new TextureRegion(texture))
+  }
+
   def delay(time: Double): Delay = new Delay(time)
 
   def repeat(times: Int, transition: Transition): Repeat = new Repeat(times, transition)
