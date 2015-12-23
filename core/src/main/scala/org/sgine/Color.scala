@@ -1,5 +1,8 @@
 package org.sgine
 
+/**
+  * Color provides a simple wrapper around RGBA color information.
+  */
 case class Color(red: Double = 0.0, green: Double = 0.0, blue: Double = 0.0, alpha: Double = 0.0) {
   override def toString: String = s"Color(red = $red, green = $green, blue = $blue, alpha = $alpha)"
 }
@@ -149,13 +152,24 @@ object Color {
   lazy val Yellow = fromLong(0xFFFF00FF)
   lazy val YellowGreen = fromLong(0x9ACD32FF)
 
+  /**
+    * Creates a new Color instance from a Long value 0xRRGGBBAA
+    *
+    * @param value the numeric RGBA value
+    */
   def fromLong(value: Long): Color = Color(
     red = (value >> 24 & 0xff) / 255.0,
     green = (value >> 16 & 0xff) / 255.0,
     blue = (value >> 8 & 0xff) / 255.0,
     alpha = (value >> 0 & 0xff) / 255.0
   )
-  
+
+  /**
+    * Creates a new Color instance from a hex value. It is flexible for 3-digit and 6-digit with or without a leading
+    * hash.
+    *
+    * @param hex String representation of a hex String
+    */
   def fromHex(hex: String): Color = {
     if (hex.startsWith("#")) {
       fromHex(hex.substring(1))
