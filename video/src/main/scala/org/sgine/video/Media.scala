@@ -3,9 +3,9 @@ package org.sgine.video
 import java.util.concurrent.ConcurrentLinkedQueue
 
 import com.sun.jna.Memory
-import uk.co.caprica.vlcj.player._
 import uk.co.caprica.vlcj.player.direct.format.RV32BufferFormat
 import uk.co.caprica.vlcj.player.direct.{BufferFormat, BufferFormatCallback, DirectMediaPlayer, RenderCallback}
+import uk.co.caprica.vlcj.player.{MediaPlayer => VLCMediaPlayer, _}
 
 import scala.collection.JavaConversions._
 
@@ -15,11 +15,37 @@ case class Media(length: Long,
                  textTracks: List[TextTrack])
 
 object Media {
-  private lazy val factory = new MediaPlayerFactory("--no-video-title-show")
-  private val players = new ConcurrentLinkedQueue[MediaPlayer]()
+  lazy val factory = new MediaPlayerFactory("--no-video-title-show")
+  private lazy val players = new ConcurrentLinkedQueue[VLCMediaPlayer]()
+
+  def parse(resource: String, player: VLCMediaPlayer): Media = {
+    var media: Option[Media] = None
+    val listener = new MediaPlayerEventAdapter {
+      override def mediaMetaChanged(mediaPlayer: VLCMediaPlayer, metaType: Int) = {
+        media = apply(player)
+      }
+    }
+    try {
+      val muted = player.isMute
+      player.mute()
+      player.addMediaPlayerEventListener(listener)
+      player.prepareMedia(resource)
+      player.parseMedia()
+      player.play()
+
+      while(media.isEmpty) {
+        Thread.sleep(10)
+      }
+      player.stop()
+      player.mute(muted)
+
+      media.get
+    } finally {
+      player.removeMediaPlayerEventListener(listener)
+    }
+  }
 
   def apply(resource: String): Media = {
-    var media: Media = null
     val player = Option(players.poll()) match {
       case Some(p) => p
       case None => factory.newDirectMediaPlayer(new BufferFormatCallback {
@@ -28,31 +54,24 @@ object Media {
         override def display(mediaPlayer: DirectMediaPlayer, nativeBuffers: Array[Memory], bufferFormat: BufferFormat): Unit = {}
       })
     }
-    val listener = new MediaPlayerEventAdapter {
-      override def mediaMetaChanged(mediaPlayer: MediaPlayer, metaType: Int) = {
-        media = apply(player)
-      }
-    }
     try {
-      player.addMediaPlayerEventListener(listener)
-      player.prepareMedia(resource)
-      player.parseMedia()
-      player.stop()
-
-      media
+      parse(resource, player)
     } finally {
-      player.removeMediaPlayerEventListener(listener)
       players.add(player)
     }
   }
 
-  def apply(player: MediaPlayer): Media = {
+  def apply(player: VLCMediaPlayer): Option[Media] = {
     val meta = player.getMediaMeta
     val length = meta.getLength
     val videoTracks = player.getTrackInfo(TrackType.VIDEO).toList.map(t => VideoTrack(t.asInstanceOf[VideoTrackInfo]))
     val audioTracks = player.getTrackInfo(TrackType.AUDIO).toList.map(t => AudioTrack(t.asInstanceOf[AudioTrackInfo]))
     val textTracks = player.getTrackInfo(TrackType.TEXT).toList.map(t => TextTrack(t.asInstanceOf[TextTrackInfo]))
-    Media(length, videoTracks, audioTracks, textTracks)
+    if (videoTracks.nonEmpty || audioTracks.nonEmpty || textTracks.nonEmpty) {
+      Some(Media(length, videoTracks, audioTracks, textTracks))
+    } else {
+      None
+    }
   }
 
   def clear(): Unit = {

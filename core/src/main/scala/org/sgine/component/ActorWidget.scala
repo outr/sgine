@@ -2,11 +2,8 @@ package org.sgine.component
 
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.ui.{Widget => GDXWidget}
-import org.sgine.component.prop.PreferredSize
 
 trait ActorWidget[A <: Actor] extends Widget with ActorComponent[A] {
-  val preferred: PreferredSize = new PreferredSize
-
   size.width := preferred._width
   size.height := preferred._height
 

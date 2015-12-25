@@ -10,4 +10,5 @@ trait DimensionedComponent extends Component {
   val origin = new OriginProperties(this)
   val scale = new ScaleProperties
   val clip = new ClippingProperties
+  val preferred: PreferredSize = new PreferredSize
 }

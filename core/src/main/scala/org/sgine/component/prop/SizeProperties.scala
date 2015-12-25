@@ -12,15 +12,13 @@ class SizeProperties(component: DimensionedComponent) {
       case Some(w) => if (Option(height).isDefined) {
         throw new RuntimeException(s"Cannot maintain aspect ratio with both values defined.")
       } else {
-        val aspect = this.width.get / this.height.get
         this.width := w
-        this.height := this.width / aspect
+        this.height := this.width / (component.preferred.width / component.preferred.height)
       }
       case None => Option(height) match {
         case Some(h) => {
-          val aspect = this.height.get / this.width.get
           this.height := h
-          this.width := this.height / aspect
+          this.width := this.height / (component.preferred.height / component.preferred.width)
         }
         case None => throw new RuntimeException(s"Cannot update dimensions maintaining aspect ratio unless width or height is defined.")
       }
