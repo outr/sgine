@@ -7,8 +7,8 @@ import org.sgine.widget.Image
 object TransitionsExample extends BasicDesktopApp {
   create.on {
     val image = new Image("sgine.png") {
-      position.x := (ui.width / 2.0) - (size.width / 2.0)
-      position.y := (ui.height / 2.0) - (size.height / 2.0)
+      position.center := ui.center
+      position.middle := ui.middle
     }
     val transition = (
       image.color.alpha transitionTo 1.0 from 0.0 in 5.seconds

@@ -1,9 +1,8 @@
 package example
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import org.sgine._
 import org.sgine.lwjgl.DesktopApp
-import org.sgine.screen.{TransitionSupport, VirtualMode, VirtualSizeSupport}
+import org.sgine.screen.{FPSLoggingSupport, TransitionSupport, VirtualMode, VirtualSizeSupport}
 import org.sgine.transition.easing.Easing
 import org.sgine.widget.Image
 
@@ -16,15 +15,9 @@ object MultiScreenExample extends DesktopApp {
     activeScreens.add(screen1)
     screen1.transition()
   }
-
-  override def init(config: LwjglApplicationConfiguration): Unit = {
-    super.init(config)
-
-    config.vSyncEnabled = true
-  }
 }
 
-class SimpleScreen(c: Color) extends Screen with VirtualSizeSupport with TransitionSupport {
+class SimpleScreen(c: Color) extends Screen with VirtualSizeSupport with TransitionSupport with FPSLoggingSupport {
   virtualMode := VirtualMode.Stretch
 
   create.on {
@@ -36,8 +29,8 @@ class SimpleScreen(c: Color) extends Screen with VirtualSizeSupport with Transit
       color := c
     }
     this += new Image("sgine.png") {
-      position.center := ui.width / 2.0
-      position.middle := ui.height / 2.0
+      position.center := ui.center
+      position.middle := ui.middle
     }
   }
 

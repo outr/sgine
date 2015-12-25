@@ -6,12 +6,12 @@ import org.sgine.widget.{Image, Shape}
 
 object ShapeExample extends BasicDesktopApp {
   this += new Image("sgine.png") {
-    position.center := ui.width / 2.0
-    position.middle := ui.height / 2.0
+    position.center := ui.center
+    position.middle := ui.middle
   }
   this += new Shape {
-    position.center := ui.width / 2.0
-    position.middle := ui.height / 2.0
+    position.center := ui.center
+    position.middle := ui.middle
     size.width := 200.0
     size.height := 200.0
     color := Color.Red

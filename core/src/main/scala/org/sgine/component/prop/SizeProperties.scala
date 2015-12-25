@@ -7,6 +7,9 @@ class SizeProperties(component: DimensionedComponent) {
   val width: Sub[Double] = Sub(0.0)
   val height: Sub[Double] = Sub(0.0)
 
+  lazy val center: ReadChannel[Double] = width / 2.0
+  lazy val middle: ReadChannel[Double] = height / 2.0
+
   def maintainAspectRatio(width: ReadChannel[Double] = null, height: ReadChannel[Double] = null): Unit = component.screen.render.once {
     Option(width) match {
       case Some(w) => if (Option(height).isDefined) {

@@ -27,7 +27,7 @@ trait FPSLoggingSupport extends Screen {
   }
 }
 
-class FPSLabel(implicit scrn: Screen) extends Label("Testing!!!") {
+class FPSLabel(implicit scrn: Screen) extends Label("") {
   font.family := "Inconsolata"
   font.style := "Bold"
   font.size := 18

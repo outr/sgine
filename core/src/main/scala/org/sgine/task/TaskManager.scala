@@ -15,7 +15,8 @@ import org.sgine.tools.BitmapFontManager
 
 class TaskManager(maxConcurrent: Int = 4,
                   autoStart: Boolean = true,
-                  allowTasksAfterSTart: Boolean = true) {
+                  allowTasksAfterSTart: Boolean = true,
+                  autoDownloadMissingFonts: Boolean = false) {
   private var started = false
   private val executor = new AsyncExecutor(maxConcurrent)
 
@@ -94,10 +95,13 @@ class TaskManager(maxConcurrent: Int = 4,
   }
 
   def font(family: String, style: String, size: Int): FutureObject[BitmapFont] = {
-    if (Gdx.files.classpath(s"${fontFilename(family, style)}.ttf").exists()) {
+    val filename = s"${fontFilename(family, style)}.ttf"
+    if (Gdx.files.classpath(filename).exists()) {
       localFont(family, style, size)
-    } else {
+    } else if (autoDownloadMissingFonts) {
       remoteFont(family, style, size)
+    } else {
+      throw new RuntimeException(s"Unable to find $filename in the classpath and auto-downloading of missing fonts is disabled.")
     }
   }
 

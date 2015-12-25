@@ -12,7 +12,7 @@ class DesktopApp extends LWJGLPlatform with StandardUI {
     config.height = 768
     config.forceExit = true
     config.samples = 8
-    config.vSyncEnabled = false
+    config.vSyncEnabled = true
     config.foregroundFPS = 0
   }
 }

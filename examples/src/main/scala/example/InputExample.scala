@@ -7,8 +7,8 @@ import org.sgine.widget.Image
 object InputExample extends BasicDesktopApp {
   create.on {
     this += new Image("sgine.png") {
-      position.center := ui.width / 2.0
-      position.middle := ui.height / 2.0
+      position.center := ui.center
+      position.middle := ui.middle
 
       mouse.tapped.attach { evt =>
         val to = if (color.alpha.get == 1.0) {

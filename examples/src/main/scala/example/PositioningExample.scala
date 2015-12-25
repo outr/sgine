@@ -27,9 +27,9 @@ object PositioningExample extends BasicDesktopApp with FPSLoggingSupport {
       position.bottom := 50.0
     }
     this += new Image("sgine.png") {    // Center
-      position.center := ui.width / 2.0
-      position.middle := ui.height / 2.0
-      size.maintainAspectRatio(width = ui.width / 2.0)
+      position.center := ui.center
+      position.middle := ui.middle
+      size.maintainAspectRatio(width = ui.center)
     }
   }
 }

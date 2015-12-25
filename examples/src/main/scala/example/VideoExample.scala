@@ -7,8 +7,8 @@ import org.sgine.video._
 
 object VideoExample extends BasicDesktopApp with FPSLoggingSupport {
   this += new MediaPlayer {
-    position.center := ui.width / 2.0
-    position.middle := ui.height / 2.0
+    position.center := ui.center
+    position.middle := ui.middle
 
     size.maintainAspectRatio(width = ui.width)
 
