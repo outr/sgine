@@ -7,9 +7,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack
 import org.sgine.component.DimensionedComponent
 
 trait EnhancedActor extends Actor {
+  private var _batch: Batch = _
+  def batch: Batch = _batch
   def component: DimensionedComponent
 
   override def draw(batch: Batch, parentAlpha: Float): Unit = {
+    _batch = batch
     if (component.clip.enabled.get && getWidth > 0.0f && getHeight > 0.0f) {
       import EnhancedActor._
       val x = getX + component.clip.left.get.toFloat
@@ -32,9 +35,14 @@ trait EnhancedActor extends Actor {
       super.draw(batch, parentAlpha)
     }
     component match {
-      case c: ActorIntegrated => c.render.exec()
+      case c: ActorIntegrated => {
+        val color = getColor
+        batch.setColor(color.r, color.g, color.b, color.a * parentAlpha)
+        c.render.exec()
+      }
       case _ => // Not ActorIntegrated
     }
+    _batch = null
   }
 
   override def act(delta: Float): Unit = {

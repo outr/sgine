@@ -8,7 +8,9 @@ import org.sgine.component.gdx.EnhancedActor
 import org.sgine.component.{ActorWidget, DimensionedComponent}
 import pl.metastack.metarx.Sub
 
-class Image(implicit val screen: Screen) extends ActorWidget[GDXImage with EnhancedActor] {
+class Image(implicit scrn: Screen) extends ActorWidget[GDXImage with EnhancedActor] {
+  override def screen: Screen = scrn
+
   def this(drawable: => Drawable)(implicit screen: Screen) = {
     this()(screen)
     screen.render.once {
