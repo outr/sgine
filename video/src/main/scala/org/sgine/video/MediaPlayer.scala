@@ -17,23 +17,43 @@ import scala.annotation.tailrec
 
 class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends ComponentGroup()(scrn) with ActorIntegrated {
   private val videoImage = new Image
-  private lazy val player = Media.factory.newDirectMediaPlayer(new VLCBufferFormatCallback(this), new VLCRenderCallback(this))
+  private lazy val player = {
+    val p = Media.factory.newDirectMediaPlayer(new VLCBufferFormatCallback(this), new VLCRenderCallback(this))
+    p.addMediaPlayerEventListener(new PlayerListener(this))
+    p
+  }
   private var texture: Texture = _
 
   private[video] val pbos = new AtomicInteger(0)
   private[video] val queue = new ConcurrentLinkedQueue[PBO]
   private[video] val readBuffer = new AtomicReference[PBO](null)
 
+  private[video] val videoWidth = Var[Int](0)
+  private[video] val videoHeight = Var[Int](0)
+
   private val _media = Sub[Option[Media]](None)
   val media: ReadStateChannel[Option[Media]] = _media
 
-  private[video] val videoWidth = Var[Int](0)
-  private[video] val videoHeight = Var[Int](0)
+  object status {
+    private[video] val _position = Var[Double](0.0)
+    private[video] val _time = Var[Double](0.0)
+
+    val position: ReadStateChannel[Double] = _position
+    val time: ReadStateChannel[Double] = _time
+
+    private[video] def reset(): Unit = {
+      _position := 0.0
+      _time := 0L
+    }
+  }
 
   videoImage.size.width := size.width
   videoImage.size.height := size.height
   add(videoImage)
 
+  media.attach { o =>
+    status.reset()      // Reset the status information when the media changes
+  }
   videoWidth.merge(videoHeight).attach { d =>
     render.once {
       if (texture != null) {
@@ -72,6 +92,15 @@ class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends Component
   def load(resource: String): Unit = _media := Media.parse(resource, player)
 
   def play(): Unit = player.play()
+
+  def pause(): Unit = player.pause()
+
+  def stop(): Unit = player.stop()
+
+  def seekPosition(percent: Double): Unit = player.setPosition(percent.toFloat)
+  def seekTime(time: Double): Unit = player.setTime(math.round(time * 1000.0))
+
+  def jump(time: Double): Unit = player.setTime(math.round((status.time.get + time) * 1000.0))
 
   @tailrec
   private def clearQueue(): Unit = queue.poll() match {
