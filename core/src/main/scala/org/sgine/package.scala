@@ -38,8 +38,11 @@ package object sgine {
     ui.textureMap.get(classPath) match {
       case Some(texture) => texture
       case None => {
-        val file = Gdx.files.classpath(classPath)
-        if (file == null) throw new NullPointerException(s"Unable to find $classPath in classpath.")
+        val file = try {
+          Gdx.files.classpath(classPath)
+        } catch {
+          case exc: NullPointerException => throw new RuntimeException(s"Unable to find $classPath in classpath.", exc)
+        }
         val useMipMaps = true
         val texture = new Texture(file, useMipMaps)
         ui.textureMap += classPath -> texture
