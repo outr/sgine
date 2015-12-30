@@ -19,6 +19,10 @@ class Scale9(implicit scrn: Screen) extends ComponentGroup()(scrn) {
 
   initialize()
 
+  def slice(texture: Texture, offset: Int): Unit = {
+    slice(texture, offset, offset, texture.getWidth - offset, texture.getHeight - offset)
+  }
+
   def slice(texture: Texture, x1: Int, y1: Int, x2: Int, y2: Int): Unit = {
     val topLeftImage = new Image(new TextureRegion(texture, 0, 0, x1, y1))
     val topRightImage = new Image(new TextureRegion(texture, x2, 0, x1, y1))
