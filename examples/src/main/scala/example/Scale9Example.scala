@@ -15,7 +15,7 @@ object Scale9Example extends BasicDesktopApp {
       size.width := 80.pctw
       size.height := 80.pcth
 
-      slice(texture, 50, 50, 450, 450)
+      slice(texture, 50)
     }
   }
 }
