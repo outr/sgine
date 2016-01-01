@@ -31,5 +31,6 @@ trait ActorWidget[A <: Actor] extends Widget with ActorComponent[A] {
     origin.y.attach(d => actor.setOriginY(d.toFloat))
     scale.x.attach(d => actor.setScaleX(d.toFloat))
     scale.y.attach(d => actor.setScaleY(d.toFloat))
+    visible.attach(b => actor.setVisible(b))
   }
 }
