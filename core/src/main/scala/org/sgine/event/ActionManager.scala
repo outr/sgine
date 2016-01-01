@@ -18,8 +18,11 @@ class ActionManager(name: String) {
 
   def once(f: => Unit): Action = synchronized {
     val a = new Action(() => f, once = true)
-    if (isActive) execAction(a)
-    queue += a
+    if (isActive) {
+      execAction(a)
+    } else {
+      queue += a
+    }
     a
   }
 
@@ -96,7 +99,8 @@ class ActionManager(name: String) {
 
   def clear(): Unit = queue.clear()
 
-  def isActive: Boolean = ActionManager.current.get() == name
+  // TODO: investigate why this sometimes doesn't work right
+  def isActive: Boolean = false //ActionManager.current.get() == name
 }
 
 class Action(f: () => Unit, val once: Boolean) {
