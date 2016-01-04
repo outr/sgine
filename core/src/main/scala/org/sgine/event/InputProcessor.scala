@@ -35,7 +35,9 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
     Key.byCode(keyCode) match {
       case Some(key) => {
         val evt = KeyEvent(key, atCursor, focused)
-        componentChannel := evt
+        if (componentChannel != screenChannel) {
+          componentChannel := evt
+        }
         screenChannel := evt
         uiChannel := evt
       }
@@ -59,7 +61,9 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
                      component: Component = atCursor,
                      focused: Option[Component] = this.focused): Boolean = {
     val evt = MouseEvent(button, screenX, screenY, stageX, stageY, localX, localY, component, focused)
-    componentChannel := evt
+    if (componentChannel != screenChannel) {
+      componentChannel := evt
+    }
     screenChannel := evt
     uiChannel := evt
     true

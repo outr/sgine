@@ -159,10 +159,17 @@ package object sgine {
     def px: Double = i.toDouble
     def pctw: ReadChannel[Double] = (i.toDouble / 100.0) * ui.width
     def pcth: ReadChannel[Double] = (i.toDouble / 100.0) * ui.height
+    def pct: Percent = Percent(i.toDouble)
   }
   implicit class DoubleSize(d: Double) {
     def px: Double = d
     def pctw: ReadChannel[Double] = (d / 100.0) * ui.width
     def pcth: ReadChannel[Double] = (d / 100.0) * ui.height
+    def pct: Percent = Percent(d)
   }
+}
+
+case class Percent(pct: Double) {
+  def of(rc: ReadChannel[Double]): ReadChannel[Double] = rc * (pct / 100.0)
+  def of(other: Double): Double = other * (pct / 100.0)
 }
