@@ -5,9 +5,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.{Pixmap, Texture}
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
 import com.badlogic.gdx.{Gdx, graphics}
-import org.sgine.component.prop.DependentVar
 import org.sgine.transition._
-import pl.metastack.metarx.{ReadChannel, Sub}
+import pl.metastack.metarx.{Dep, ReadChannel, Sub}
 
 import scala.language.implicitConversions
 
@@ -130,7 +129,7 @@ package object sgine {
     }
   }
 
-  implicit class DependentTransitions(dep: DependentVar) {
+  implicit class DepTransitions(dep: Dep[Double]) {
     def transitionTo(to: => Double): TransitionTo = {
       new TransitionTo((d: Double) => dep := d, () => dep.get, () => to)
     }

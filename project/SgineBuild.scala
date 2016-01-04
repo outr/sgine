@@ -86,8 +86,6 @@ object Details {
 }
 
 object Dependencies {
-  val gdxVersion = "1.7.2"
-
   val scalaXML = "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 
   object google {
@@ -95,21 +93,25 @@ object Dependencies {
   }
 
   object metastack {
-    val rx = "pl.metastack" %%  "metarx" % "0.1.4"
+    private val version = "0.1.5-SNAPSHOT"
+
+    val rx = "pl.metastack" %%  "metarx" % version
   }
 
   object gdx {
-    val core = "com.badlogicgames.gdx" % "gdx" % gdxVersion
-    val lwjgl = "com.badlogicgames.gdx" % "gdx-backend-lwjgl" % gdxVersion
-    val jglfw = "com.badlogicgames.gdx" % "gdx-backend-jglfw" % gdxVersion
-    val android = "com.badlogicgames.gdx" % "gdx-backend-android" % gdxVersion
-    val ios = "com.badlogicgames.gdx" % "gdx-backend-robovm" % gdxVersion
-    val tools = "com.badlogicgames.gdx" % "gdx-tools" % gdxVersion
+    private val version = "1.7.2"
 
-    val desktopNatives = "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop"
+    val core = "com.badlogicgames.gdx" % "gdx" % version
+    val lwjgl = "com.badlogicgames.gdx" % "gdx-backend-lwjgl" % version
+    val jglfw = "com.badlogicgames.gdx" % "gdx-backend-jglfw" % version
+    val android = "com.badlogicgames.gdx" % "gdx-backend-android" % version
+    val ios = "com.badlogicgames.gdx" % "gdx-backend-robovm" % version
+    val tools = "com.badlogicgames.gdx" % "gdx-tools" % version
 
-    val freetype = "com.badlogicgames.gdx" % "gdx-freetype" % gdxVersion
-    val freetypeDesktopNatives = "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop"
+    val desktopNatives = "com.badlogicgames.gdx" % "gdx-platform" % version classifier "natives-desktop"
+
+    val freetype = "com.badlogicgames.gdx" % "gdx-freetype" % version
+    val freetypeDesktopNatives = "com.badlogicgames.gdx" % "gdx-freetype-platform" % version classifier "natives-desktop"
   }
 
   val vlcj = "uk.co.caprica" % "vlcj" % "3.10.0"
