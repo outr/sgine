@@ -13,7 +13,7 @@ object KeyExample extends BasicDesktopApp with VirtualSizeSupport {
   }
   val keyDown = new Label("Last Key Down: None", "OpenSans", "Semibold", 60.vf) {
     position.center := ui.center
-    position.bottom := (keyUp.position.y + keyUp.size.height + 20.0)
+    position.bottom := (keyUp.position.top.toReadChannel + 20.0)
   }
   val keyTyped = new Label("Last Key Typed: None", "OpenSans", "Semibold", 60.vf) {
     position.center := ui.center

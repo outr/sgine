@@ -8,10 +8,10 @@ class PositionProperties(component: DimensionedComponent) {
   val y: Sub[Double] = Sub(0.0)
 
   def left: Sub[Double] = x
-  lazy val center: Dep[Double] = x.dep(_ - (component.size.width / 2.0), _ + (component.size.width.get / 2.0))
-  lazy val right: Dep[Double] = x.dep(_ - component.size.width, _ + component.size.width.get)
+  lazy val center: Dep[Double, Double] = x.dep(_ + (component.size.width / 2.0), _ - (component.size.width / 2.0))
+  lazy val right: Dep[Double, Double] = x.dep(_ + component.size.width, _ - component.size.width)
 
-  lazy val top: Dep[Double] = y.dep(_ - component.size.height, _ + component.size.height.get)
-  lazy val middle: Dep[Double] = y.dep(_ - component.size.height, _ + (component.size.height.get / 2.0))
+  lazy val top: Dep[Double, Double] = y.dep(_ + component.size.height, _ - component.size.height)
+  lazy val middle: Dep[Double, Double] = y.dep(_ + (component.size.height / 2.0), _ - (component.size.height / 2.0))
   def bottom: Sub[Double] = y
 }

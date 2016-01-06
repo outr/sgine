@@ -129,7 +129,7 @@ package object sgine {
     }
   }
 
-  implicit class DepTransitions(dep: Dep[Double]) {
+  implicit class DepTransitions(dep: Dep[Double, Double]) {
     def transitionTo(to: => Double): TransitionTo = {
       new TransitionTo((d: Double) => dep := d, () => dep.get, () => to)
     }
