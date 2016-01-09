@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.badlogic.gdx.{Gdx, Screen => GDXScreen}
 import org.sgine.component._
 import org.sgine.event.InputProcessor
+import org.sgine.input.Key
 import pl.metastack.metarx.Sub
 
 /**
@@ -94,6 +95,15 @@ class Screen extends RenderFlow with AbstractContainer with ActorWidget[Group] w
       }
     }
     child
+  }
+
+  /**
+    * Simulates the down, typed, and release states on this screen for the provided `key`.
+    */
+  def simulate(key: Key): Unit = {
+    inputProcessor.keyDown(key.code)
+    inputProcessor.keyTyped(key.lowerCase.getOrElse(0))
+    inputProcessor.keyUp(key.code)
   }
 }
 

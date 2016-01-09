@@ -10,6 +10,8 @@ import pl.metastack.metarx.{ReadChannel, ReadStateChannel, Sub, Var}
   * UI is the primary entry point into an Sgine application. See BasicUI and StandardUI for common use-case scenarios.
   */
 trait UI extends RenderFlow with InputSupport {
+  def screen: Screen
+
   UI.instance = Some(this)
 
   private[sgine] var textureMap = Map.empty[String, Texture]

@@ -7,6 +7,8 @@ import scala.annotation.tailrec
 import scala.collection.mutable.ListBuffer
 
 trait MultiScreenSupport extends UI {
+  override def screen: Screen = activeScreens.last
+
   val activeScreens = new ActiveScreens(this)
 
   private val renderFunction = (screen: Screen) => screen.render.exec()
@@ -58,6 +60,10 @@ class ActiveScreens(ui: MultiScreenSupport) extends Iterable[Screen] {
     screens.foreach(_.gdx.dispose())
     screens.clear()
   }
+
+  override def last: Screen = screens.last
+
+  override def lastOption: Option[Screen] = screens.lastOption
 
   override def iterator: Iterator[Screen] = screens.iterator
 

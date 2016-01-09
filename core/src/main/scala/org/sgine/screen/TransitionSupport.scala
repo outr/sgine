@@ -6,6 +6,7 @@ import org.sgine.transition.Transition
 import org.sgine.transition.easing.Easing
 import pl.metastack.metarx.Sub
 
+// TODO: make this an implicit class for Screen -> ScreenTransitions
 trait TransitionSupport extends Screen {
   object transitions {
     private def mui = ui.asInstanceOf[MultiScreenSupport]
