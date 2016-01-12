@@ -7,10 +7,15 @@ class DesktopApp extends LWJGLPlatform with StandardUI {
   override protected def createUI(): UI = this
 
   override def init(config: Lwjgl3ApplicationConfiguration): Unit = {
-    config.setTitle(getClass.getSimpleName.replaceAll("[$]", ""))
     config.setWindowedMode(1024, 768)
     //    config.forceExit = true
     config.useVsync(true)
     config.setBackbufferConfig(8, 8, 8, 8, 16, 0, 8)
+  }
+
+  create.on {
+    if (title.get == "") {
+      title := getClass.getSimpleName.replaceAll("[$]", "")
+    }
   }
 }

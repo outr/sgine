@@ -5,7 +5,6 @@ import org.sgine.{BasicUI, Screen, UI}
 
 class BasicDesktopApp extends Screen {
   def init(config: Lwjgl3ApplicationConfiguration): Unit = {
-    config.setTitle(BasicDesktopApp.this.getClass.getSimpleName.replaceAll("[$]", ""))
     config.setWindowedMode(1024, 768)
 //    config.forceExit = true
     config.useVsync(true)
@@ -18,6 +17,11 @@ class BasicDesktopApp extends Screen {
     override protected def createUI(): UI = this
 
     override def init(config: Lwjgl3ApplicationConfiguration): Unit = BasicDesktopApp.this.init(config)
+  }
+  create.on {
+    if (basicUI.title.get == "") {
+      basicUI.title := BasicDesktopApp.this.getClass.getSimpleName.replaceAll("[$]", "")
+    }
   }
 
   def main(args: Array[String]): Unit = {

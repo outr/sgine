@@ -17,6 +17,8 @@ trait UI extends RenderFlow with InputSupport {
   private[sgine] var textureMap = Map.empty[String, Texture]
   private[sgine] var textureRegionMap = Map.empty[String, TextureRegion]
 
+  val title: Sub[String] = Sub("")
+
   /**
     * The graphical theme for all elements within this UI
     */
@@ -79,6 +81,10 @@ trait UI extends RenderFlow with InputSupport {
   create.once {
     continuousRendering.attach(cr => Gdx.graphics.setContinuousRendering(cr))
     taskManager.start()
+
+    // Manage title
+    Gdx.graphics.setTitle(title.get)
+    title.attach(t => Gdx.graphics.setTitle(t))
   }
   resize.on {
     _width := Gdx.graphics.getWidth.toDouble
