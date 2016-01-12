@@ -1,13 +1,13 @@
 package org.sgine.lwjgl
 
 import com.badlogic.gdx.Application
-import com.badlogic.gdx.backends.lwjgl.{LwjglApplication, LwjglApplicationConfiguration}
+import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
 import org.sgine.{Platform, UI}
 
-trait LWJGLPlatform extends Platform[LwjglApplicationConfiguration] {
-  override protected def createConfig(): LwjglApplicationConfiguration = new LwjglApplicationConfiguration
+trait LWJGLPlatform extends Platform[Lwjgl3ApplicationConfiguration] {
+  override protected def createConfig(): Lwjgl3ApplicationConfiguration = new Lwjgl3ApplicationConfiguration
 
-  override protected def create(ui: UI, config: LwjglApplicationConfiguration): Application = {
-    new LwjglApplication(ui.listener, config)
+  override protected def create(ui: UI, config: Lwjgl3ApplicationConfiguration): Application = {
+    new Lwjgl3Application(ui.listener, config)
   }
 }

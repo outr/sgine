@@ -5,7 +5,7 @@ object SgineBuild extends Build {
   import Dependencies._
 
   lazy val root = Project(id = "root", base = file(".")) aggregate(core, lwjgl, jglfw, android, ios, video, examples)
-  lazy val core = project("core").withDependencies(gdx.core, gdx.tools, gdx.freetype, metastack.rx)
+  lazy val core = project("core").withDependencies(gdx.core, gdx.freetype, metastack.rx)
 
   // Platforms
   lazy val lwjgl = project("lwjgl").dependsOn(core).withDependencies(gdx.lwjgl)
@@ -14,7 +14,8 @@ object SgineBuild extends Build {
   lazy val ios = project("ios").dependsOn(core).withDependencies(gdx.ios)
 
   // Extras / Optional
-  lazy val video = project("video").dependsOn(core).withDependencies(vlcj)
+  lazy val tools = project("tools").dependsOn(core).withDependencies(gdx.tools)
+  lazy val video = project("video").dependsOn(core).withDependencies(gdx.lwjgl, vlcj)
 
   // Samples / Examples
   lazy val examples = project("examples").dependsOn(jglfw, lwjgl, video).withDependencies(gdx.desktopNatives, gdx.freetypeDesktopNatives, scalaXML)

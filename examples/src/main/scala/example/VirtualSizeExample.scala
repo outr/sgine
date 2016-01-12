@@ -1,6 +1,5 @@
 package example
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.screen.VirtualSizeSupport
@@ -18,10 +17,5 @@ object VirtualSizeExample extends BasicDesktopApp with VirtualSizeSupport {
       position.center := 512.0.vx
       position.middle := 385.0.vy
     }
-  }
-
-  override def init(config: LwjglApplicationConfiguration): Unit = {
-    super.init(config)
-    config.width = 1224
   }
 }

@@ -1,18 +1,16 @@
 package org.sgine.lwjgl
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration
 import org.sgine.{StandardUI, UI}
 
 class DesktopApp extends LWJGLPlatform with StandardUI {
   override protected def createUI(): UI = this
 
-  override def init(config: LwjglApplicationConfiguration): Unit = {
-    config.title = getClass.getSimpleName.replaceAll("[$]", "")
-    config.width = 1024
-    config.height = 768
-    config.forceExit = true
-    config.samples = 8
-    config.vSyncEnabled = true
-    config.foregroundFPS = 0
+  override def init(config: Lwjgl3ApplicationConfiguration): Unit = {
+    config.setTitle(getClass.getSimpleName.replaceAll("[$]", ""))
+    config.setWindowedMode(1024, 768)
+    //    config.forceExit = true
+    config.useVsync(true)
+    config.setBackbufferConfig(8, 8, 8, 8, 16, 0, 8)
   }
 }
