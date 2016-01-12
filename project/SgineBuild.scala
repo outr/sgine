@@ -99,10 +99,10 @@ object Dependencies {
   }
 
   object gdx {
-    private val version = "1.7.2"
+    private val version = "1.8.0"
 
     val core = "com.badlogicgames.gdx" % "gdx" % version
-    val lwjgl = "com.badlogicgames.gdx" % "gdx-backend-lwjgl" % version
+    val lwjgl = "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % version
     val jglfw = "com.badlogicgames.gdx" % "gdx-backend-jglfw" % version
     val android = "com.badlogicgames.gdx" % "gdx-backend-android" % version
     val ios = "com.badlogicgames.gdx" % "gdx-backend-robovm" % version
@@ -114,5 +114,5 @@ object Dependencies {
     val freetypeDesktopNatives = "com.badlogicgames.gdx" % "gdx-freetype-platform" % version classifier "natives-desktop"
   }
 
-  val vlcj = "uk.co.caprica" % "vlcj" % "3.10.0"
+  val vlcj = "uk.co.caprica" % "vlcj" % "3.10.1"
 }

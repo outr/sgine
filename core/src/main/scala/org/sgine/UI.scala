@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import org.sgine.task.TaskManager
-import pl.metastack.metarx.{ReadChannel, ReadStateChannel, Sub, Var}
+import pl.metastack.metarx.{ReadStateChannel, Sub, Var}
 
 /**
   * UI is the primary entry point into an Sgine application. See BasicUI and StandardUI for common use-case scenarios.
@@ -42,12 +42,12 @@ trait UI extends RenderFlow with InputSupport {
   /**
     * Center point of the UI (width / 2.0)
     */
-  lazy val center: ReadChannel[Double] = _width / 2.0
+  lazy val center: ReadStateChannel[Double] = Sub(_width / 2.0)
 
   /**
     * Middle point of the UI (height / 2.0)
     */
-  lazy val middle: ReadChannel[Double] = _height / 2.0
+  lazy val middle: ReadStateChannel[Double] = Sub(_height / 2.0)
 
   /**
     * Display aspect ratio
