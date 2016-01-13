@@ -14,4 +14,7 @@ trait SingleScreenSupport extends UI {
   resize.on {
     screen.gdx.resize(Gdx.graphics.getWidth, Gdx.graphics.getHeight)
   }
+  dispose.on {
+    screen.dispose.exec()
+  }
 }

@@ -1,9 +1,8 @@
-package org.sgine.screen
+package org.sgine
 
-import org.sgine._
 import pl.metastack.metarx._
 
-trait VirtualSizeSupport extends Screen {
+trait VirtualSizeSupport {
   val virtualWidth: Sub[Double] = Sub[Double](1024.0)
   val virtualHeight: Sub[Double] = Sub[Double](768.0)
   val virtualMode: Sub[VirtualMode] = Sub[VirtualMode](VirtualMode.Bars)

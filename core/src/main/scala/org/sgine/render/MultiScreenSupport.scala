@@ -9,6 +9,9 @@ import scala.collection.mutable.ListBuffer
 trait MultiScreenSupport extends UI {
   override def screen: Screen = activeScreens.last
 
+  private[render] var _screens = Set.empty[Screen]
+  def screens: Set[Screen] = _screens
+
   val activeScreens = new ActiveScreens(this)
 
   private val renderFunction = (screen: Screen) => screen.render.exec()
@@ -18,6 +21,9 @@ trait MultiScreenSupport extends UI {
   }
   resize.on {
     withScreens(screen => screen.gdx.resize(Gdx.graphics.getWidth, Gdx.graphics.getHeight), activeScreens.toList)
+  }
+  dispose.on {
+    screens.foreach(_.dispose.exec())
   }
 
   @tailrec
@@ -33,6 +39,7 @@ class ActiveScreens(ui: MultiScreenSupport) extends Iterable[Screen] {
   private val screens = ListBuffer.empty[Screen]
 
   def add(screen: Screen) = ui.render.once {
+    ui._screens += screen
     screens -= screen
     screens += screen
     screen.gdx.show()
@@ -40,6 +47,7 @@ class ActiveScreens(ui: MultiScreenSupport) extends Iterable[Screen] {
   }
 
   def insert(index: Int, screen: Screen) = ui.render.once {
+    ui._screens += screen
     screens -= screen
     screens.insert(index, screen)
     screen.gdx.show()
@@ -52,6 +60,7 @@ class ActiveScreens(ui: MultiScreenSupport) extends Iterable[Screen] {
   }
 
   def set(screens: Screen*) = ui.render.once {
+    ui._screens ++= screens
     this.screens.foreach(remove)
     screens.foreach(add)
   }

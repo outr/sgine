@@ -2,7 +2,8 @@ package example
 
 import org.sgine._
 import org.sgine.lwjgl.DesktopApp
-import org.sgine.screen.{FPSLoggingSupport, TransitionSupport, VirtualMode, VirtualSizeSupport}
+import org.sgine.screen.FPSLoggingSupport
+import org.sgine.transition.Transition
 import org.sgine.transition.easing.Easing
 import org.sgine.widget.Image
 
@@ -17,7 +18,7 @@ object MultiScreenExample extends DesktopApp {
   }
 }
 
-class SimpleScreen(c: Color) extends Screen with VirtualSizeSupport with TransitionSupport with FPSLoggingSupport {
+class SimpleScreen(c: Color) extends Screen with VirtualSizeSupport with FPSLoggingSupport {
   virtualMode := VirtualMode.Stretch
 
   create.on {
@@ -35,9 +36,10 @@ class SimpleScreen(c: Color) extends Screen with VirtualSizeSupport with Transit
   }
 
   def transition() = {
+    import MultiScreenExample._
     val fadeIn = color.alpha transitionTo 1.0 in 1.seconds
-    val s1tos2 = MultiScreenExample.screen2.transitions.fade.cross(this, 1.seconds)
-    val s2tos3 = MultiScreenExample.screen3.transitions.slideOver.left(MultiScreenExample.screen2, 2.seconds, Easing.BounceOut)
+    val s1tos2 = Transition.screen.fade.cross(screen1, screen2, 1.seconds)
+    val s2tos3 = Transition.screen.slideOver.left(screen2, screen3, 2.seconds, Easing.BounceOut)
     fadeIn andThen s1tos2 andThen s2tos3 start ui
   }
 }

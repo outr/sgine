@@ -20,6 +20,9 @@ class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends Component
   private lazy val player = {
     val p = Media.factory.newDirectMediaPlayer(new VLCBufferFormatCallback(this), new VLCRenderCallback(this))
     p.addMediaPlayerEventListener(new PlayerListener(this))
+    scrn.dispose.on {
+      dispose()
+    }
     p
   }
   private var texture: Texture = _
@@ -101,6 +104,12 @@ class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends Component
   def seekTime(time: Double): Unit = player.setTime(math.round(time * 1000.0))
 
   def jump(time: Double): Unit = player.setTime(math.round((status.time.get + time) * 1000.0))
+
+  def dispose(): Unit = {
+    stop()
+    clearQueue()
+    player.release()
+  }
 
   @tailrec
   private def clearQueue(): Unit = queue.poll() match {

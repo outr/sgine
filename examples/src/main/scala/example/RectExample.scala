@@ -3,7 +3,7 @@ package example
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
-import org.sgine.screen.{FPSLoggingSupport, VirtualSizeSupport}
+import org.sgine.screen.FPSLoggingSupport
 import org.sgine.widget.Rect
 
 object RectExample extends BasicDesktopApp with VirtualSizeSupport with FPSLoggingSupport {

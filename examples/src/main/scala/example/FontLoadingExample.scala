@@ -2,7 +2,6 @@ package example
 
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
-import org.sgine.screen.VirtualSizeSupport
 import org.sgine.widget.Label
 
 object FontLoadingExample extends BasicDesktopApp with VirtualSizeSupport {

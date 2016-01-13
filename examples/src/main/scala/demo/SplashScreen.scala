@@ -1,7 +1,6 @@
 package demo
 
 import org.sgine._
-import org.sgine.screen.{VirtualMode, VirtualSizeSupport}
 import org.sgine.transition.easing.Easing
 import org.sgine.widget.{Image, Rect}
 
