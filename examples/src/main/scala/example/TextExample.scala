@@ -1,6 +1,7 @@
 package example
 
 import org.sgine._
+import org.sgine.component.Focusable
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.widget.{Label, TextInput}
 
@@ -13,9 +14,18 @@ object TextExample extends BasicDesktopApp with VirtualSizeSupport {
 
   val longText = "Really crisp text that can dynamically size to the screen and properly wrap cleanly.\n\nIt's really easy to align and snap positioning to other dynamically sized elements."
 
-  val heading = new Label("Hello Sgine!", "OpenSans", "Semibold", 120.vf) {
+  val heading = new Label("Hello Sgine!", "OpenSans", "Semibold", 120.vf) with Focusable {
     position.center := ui.center
     position.top := ui.height - 50.0
+
+    focus.on {
+      println("heading received focus")
+      color := Color.Red
+    }
+    blur.on {
+      println("heading blurred")
+      color := Color.White
+    }
   }
   val paragraph = new Label(longText) {
     position.center := ui.center

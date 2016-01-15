@@ -129,12 +129,6 @@ class TextInput(implicit val screen: Screen) extends ActorWidget[TextField] with
   override def updatePreferredSize(): Unit = if (actor.getStyle != null && actor.getStyle.font != null) {
     super.updatePreferredSize()
   }
-
-  override protected[sgine] def applyFocus(): Unit = screen.stage.setKeyboardFocus(actor)
-
-  override protected[sgine] def applyBlur(): Unit = {
-    // Nothing specific to do
-  }
 }
 
 class GDXTextField(textInput: TextInput) extends TextField("", new TextFieldStyle()) with EnhancedActor {
