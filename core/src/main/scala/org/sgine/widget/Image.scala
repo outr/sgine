@@ -15,8 +15,6 @@ class Image(implicit scrn: Screen) extends ActorWidget[GDXImage with EnhancedAct
     this()(screen)
     screen.render.once {
       this.drawable := Some(drawable)
-      preferred._width := drawable.getMinWidth
-      preferred._height := drawable.getMinHeight
     }
   }
 
@@ -28,7 +26,18 @@ class Image(implicit scrn: Screen) extends ActorWidget[GDXImage with EnhancedAct
 
   val drawable: Sub[Option[Drawable]] = Sub(None)
 
-  drawable.attach(d => actor.setDrawable(d.orNull))
+  drawable.attach(d => updatePreferred())
+
+  private def updatePreferred(): Unit = {
+    val d = drawable.get
+    val (pw, ph) = d match {
+      case Some(dr) => dr.getMinWidth.toDouble -> dr.getMinHeight.toDouble
+      case None => 0.0 -> 0.0
+    }
+    preferred._width := pw
+    preferred._height := ph
+    actor.setDrawable(d.orNull)
+  }
 }
 
 object Image {

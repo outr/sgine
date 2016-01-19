@@ -34,8 +34,11 @@ class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends Component
   private[video] val videoWidth = Var[Int](0)
   private[video] val videoHeight = Var[Int](0)
 
-  private val _media = Sub[Option[Media]](None)
+  private[video] val _media = Sub[Option[Media]](None)
   val media: ReadStateChannel[Option[Media]] = _media
+
+  private[video] val _state = Sub[PlayerState](PlayerState.Stopped)
+  val state: ReadStateChannel[PlayerState] = _state
 
   object status {
     private[video] val _position = Var[Double](0.0)
@@ -89,6 +92,12 @@ class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends Component
         pbo.updateBuffer()
         queue.add(pbo)
       }
+    }
+  }
+
+  def onState(playerState: PlayerState)(f: => Unit): Unit = state.attach { s =>
+    if (s == playerState) {
+      f
     }
   }
 
@@ -187,4 +196,17 @@ object PBO {
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0)
     new PBO(id, width, height)
   }
+}
+
+sealed trait PlayerState
+
+object PlayerState {
+  case object Stopped extends PlayerState
+  case object NewMedia extends PlayerState
+  case object Opening extends PlayerState
+  case object Playing extends PlayerState
+  case object Error extends PlayerState
+  case object Paused extends PlayerState
+  case object Finished extends PlayerState
+  case object Freed extends PlayerState
 }

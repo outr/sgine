@@ -20,6 +20,13 @@ trait UI extends RenderFlow with InputSupport {
   val title: Sub[String] = Sub("")
 
   /**
+    * The amount of time to throttle mouse movements to. If the value is zero there is no throttling.
+    *
+    * Defaults to 0.1
+    */
+  val throttleMouseMove: Sub[Double] = Sub(0.1)
+
+  /**
     * The graphical theme for all elements within this UI
     */
   val theme: Theme = new Theme
@@ -30,6 +37,7 @@ trait UI extends RenderFlow with InputSupport {
   def delta: Double = Gdx.graphics.getDeltaTime.toDouble
   private val _width = Sub(0.0)
   private val _height = Sub(0.0)
+  private val _fullscreen = Sub(false)
 
   /**
     * Display width
@@ -40,6 +48,11 @@ trait UI extends RenderFlow with InputSupport {
     * Display height
     */
   def height: ReadStateChannel[Double] = _height
+
+  /**
+    * Fullscreen status
+    */
+  def fullscreen: ReadStateChannel[Boolean] = _fullscreen
 
   /**
     * Center point of the UI (width / 2.0)
@@ -86,6 +99,17 @@ trait UI extends RenderFlow with InputSupport {
     Gdx.graphics.setTitle(title.get)
     title.attach(t => Gdx.graphics.setTitle(t))
   }
+  render.every(0.1) {
+    if (Gdx.graphics.isFullscreen != fullscreen.get) {
+      _fullscreen := Gdx.graphics.isFullscreen
+
+      // The following is a work-around because resize is not fired when going to fullscreen
+      println(s"Fullscreen is now ${fullscreen.get} changing size from ${_width.get}x${_height.get} to ${Gdx.graphics.getWidth}x${Gdx.graphics.getHeight}")
+      _width := Gdx.graphics.getWidth.toDouble
+      _height := Gdx.graphics.getHeight.toDouble
+      invalidateDisplay()
+    }
+  }
   resize.on {
     _width := Gdx.graphics.getWidth.toDouble
     _height := Gdx.graphics.getHeight.toDouble
@@ -101,23 +125,30 @@ trait UI extends RenderFlow with InputSupport {
     * Logs an info message
     */
   def info(message: String): Unit = {
-    println(message)
+    Gdx.app.log("info", message)
   }
 
   /**
     * Logs a warning message
     */
   def warn(message: String): Unit = {
-    println(s"WARN: $message")
+    Gdx.app.log("warning", message)
+  }
+
+  /**
+    * Logs an error
+    */
+  def warn(t: Throwable, message: Option[String] = None) = {
+    Gdx.app.log("warning", message.getOrElse("An exception occurred"))
+    Gdx.app.log("stackTrace", stackTrace(t))
   }
 
   /**
     * Logs an error
     */
   def error(t: Throwable, message: Option[String] = None) = {
-    // TODO: support logging
-    System.err.println(message.getOrElse("An Error Occurred"))
-    t.printStackTrace()
+    Gdx.app.log("error", message.getOrElse("An Error Occurred"))
+    Gdx.app.log("stackTrace", stackTrace(t))
     if (exitOnError.get) {
       Gdx.app.exit()
     }
@@ -130,6 +161,14 @@ trait UI extends RenderFlow with InputSupport {
     f
   } catch {
     case t: Throwable => error(t)
+  }
+
+  def stackTrace(t: Throwable): String = {
+    val trace = s"$t\n${t.getStackTrace.map(line => s"\t$line").mkString("\n")}"
+    t.getCause match {
+      case null => trace
+      case cause => s"$trace\nCaused by: ${stackTrace(cause)}"
+    }
   }
 }
 

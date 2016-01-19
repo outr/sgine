@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.glutils.PixmapTextureData
 import com.badlogic.gdx.graphics.{Pixmap, Texture}
 import com.badlogic.gdx.tools.bmfont.BitmapFontWriter
 import com.badlogic.gdx.tools.bmfont.BitmapFontWriter.FontInfo
+import org.sgine.UI
 
 class BitmapFontManager {
   private val pageSize = 1024
@@ -54,7 +55,7 @@ class BitmapFontManager {
     font
   }
 
-  def saveFontToFile(font: BitmapFont, fontSize: Int, fontName: String, packer: PixmapPacker): Unit = {
+  def saveFontToFile(font: BitmapFont, fontSize: Int, fontName: String, packer: PixmapPacker): Unit = try {
     val filename = s"$fontName-$fontSize"
     val directory = Gdx.files.local("fonts")
     directory.mkdirs()
@@ -65,5 +66,7 @@ class BitmapFontManager {
     val scaleW = 1
     val scaleH = 1
     BitmapFontWriter.writeFont(font.getData, pageRefs, fontFile, new FontInfo(fontName, fontSize), scaleW, scaleH)
+  } catch {
+    case t: Throwable => UI().warn(t, Some("Unable to write font to file."))
   }
 }

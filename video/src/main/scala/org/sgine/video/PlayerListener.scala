@@ -5,7 +5,7 @@ import uk.co.caprica.vlcj.player
 import uk.co.caprica.vlcj.player.MediaPlayerEventListener
 
 class PlayerListener(mp: MediaPlayer) extends MediaPlayerEventListener {
-  override def opening(mediaPlayer: player.MediaPlayer): Unit = {}
+  override def opening(mediaPlayer: player.MediaPlayer): Unit = mp._state := PlayerState.Opening
 
   override def pausableChanged(mediaPlayer: player.MediaPlayer, newPausable: Int): Unit = {}
 
@@ -19,7 +19,7 @@ class PlayerListener(mp: MediaPlayer) extends MediaPlayerEventListener {
 
   override def elementaryStreamAdded(mediaPlayer: player.MediaPlayer, `type`: Int, id: Int): Unit = {}
 
-  override def stopped(mediaPlayer: player.MediaPlayer): Unit = {}
+  override def stopped(mediaPlayer: player.MediaPlayer): Unit = mp._state := PlayerState.Stopped
 
   override def mediaParsedChanged(mediaPlayer: player.MediaPlayer, newStatus: Int): Unit = {}
 
@@ -31,17 +31,17 @@ class PlayerListener(mp: MediaPlayer) extends MediaPlayerEventListener {
 
   override def titleChanged(mediaPlayer: player.MediaPlayer, newTitle: Int): Unit = {}
 
-  override def playing(mediaPlayer: player.MediaPlayer): Unit = {}
+  override def playing(mediaPlayer: player.MediaPlayer): Unit = mp._state := PlayerState.Playing
 
   override def subItemPlayed(mediaPlayer: player.MediaPlayer, subItemIndex: Int): Unit = {}
 
-  override def error(mediaPlayer: player.MediaPlayer): Unit = {}
+  override def error(mediaPlayer: player.MediaPlayer): Unit = mp._state := PlayerState.Error
 
-  override def finished(mediaPlayer: player.MediaPlayer): Unit = {}
+  override def finished(mediaPlayer: player.MediaPlayer): Unit = mp._state := PlayerState.Finished
 
-  override def mediaFreed(mediaPlayer: player.MediaPlayer): Unit = {}
+  override def mediaFreed(mediaPlayer: player.MediaPlayer): Unit = mp._state := PlayerState.Freed
 
-  override def paused(mediaPlayer: player.MediaPlayer): Unit = {}
+  override def paused(mediaPlayer: player.MediaPlayer): Unit = mp._state := PlayerState.Paused
 
   override def snapshotTaken(mediaPlayer: player.MediaPlayer, filename: String): Unit = {}
 
@@ -65,7 +65,9 @@ class PlayerListener(mp: MediaPlayer) extends MediaPlayerEventListener {
 
   override def buffering(mediaPlayer: player.MediaPlayer, newCache: Float): Unit = {}
 
-  override def lengthChanged(mediaPlayer: player.MediaPlayer, newLength: Long): Unit = {}
+  override def lengthChanged(mediaPlayer: player.MediaPlayer, newLength: Long): Unit = {
+    mp._media := mp._media.get.map(_.copy(length = newLength))
+  }
 
   override def mediaChanged(mediaPlayer: player.MediaPlayer, media: libvlc_media_t, mrl: String): Unit = {}
 

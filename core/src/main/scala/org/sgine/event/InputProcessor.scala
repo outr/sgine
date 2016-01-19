@@ -1,5 +1,7 @@
 package org.sgine.event
 
+import java.util.concurrent.atomic.AtomicBoolean
+
 import com.badlogic.gdx.input.GestureDetector
 import com.badlogic.gdx.input.GestureDetector.GestureListener
 import com.badlogic.gdx.math.Vector2
@@ -120,11 +122,35 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
     true
   }
 
+  private val updateMouseMoved = new AtomicBoolean(false)
+  private var lastUpdated: Long = _
   override def mouseMoved(screenX: Int, screenY: Int): Boolean = {
+    this.screenX = screenY
+    this.screenY = screenY
+    val throttling = UI().throttleMouseMove.get
+    if (throttling > 0.0) {
+      updateMouseMoved.set(true)
+      true
+    } else {
+      processMoved()
+    }
+  }
+
+  def processMoved(): Boolean = {
+    updateMouseMoved.set(false)
     updateCoordinates(screenX, screenY)
     gestures.mouseMoved(screenX, screenY)
     screen.stage.mouseMoved(screenX, screenY)
     fireMouseEvent(atCursor.mouse.moved, screen.mouse.moved, ui.mouse.moved)
+  }
+
+  screen.render.on {
+    val time = System.currentTimeMillis()
+    if (updateMouseMoved.get && lastUpdated < time - math.round(UI().throttleMouseMove.get * 1000.0)) {
+      updateMouseMoved.set(false)
+      processMoved()
+      lastUpdated = time
+    }
   }
 
   override def touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = {

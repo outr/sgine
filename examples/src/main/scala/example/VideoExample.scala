@@ -1,5 +1,6 @@
 package example
 
+import com.badlogic.gdx.Gdx
 import org.sgine._
 import org.sgine.input.Key
 import org.sgine.lwjgl.BasicDesktopApp
@@ -29,8 +30,9 @@ object VideoExample extends BasicDesktopApp with FPSLoggingSupport {
     color.alpha := 0.5
   }
 
-  mediaPlayer.status.time.attach { time =>
-    val text = s"$time seconds (${math.round(mediaPlayer.status.position.get * 100.0)}%)"
+  render.on {
+    val time = mediaPlayer.status.time.get
+    val text = s"$time seconds (${math.min(100, math.round(mediaPlayer.status.position.get * 100.0))}% - ${mediaPlayer.state.get})"
     mediaTime.text := text
     mediaTimeShadow.text := text
   }
@@ -41,6 +43,9 @@ object VideoExample extends BasicDesktopApp with FPSLoggingSupport {
       case Key.Right => mediaPlayer.jump(5.0)
       case _ => // Nothing bound
     }
+  }
+  mediaPlayer.onState(PlayerState.Finished) {
+    Gdx.app.exit()
   }
 
   add(mediaPlayer)
