@@ -9,16 +9,24 @@ import org.sgine.video._
 import org.sgine.widget.Label
 import pl.metastack.metarx._
 
-object VideoExample extends BasicDesktopApp with FPSLoggingSupport {
+object VideoExample extends BasicDesktopApp with FPSLoggingSupport with VirtualSizeSupport {
+  virtualWidth := 1920.0
+  virtualHeight := 1080.0
+  virtualMode := VirtualMode.Bars
+
   val mediaPlayer = new MediaPlayer {
     position.center := ui.center
     position.middle := ui.middle
 
-    size.maintainAspectRatio(width = ui.width)
-
     load("trailer_1080p.ogg")
     play()
   }
+
+  mediaPlayer.preferred.width.attach(d => updateVirtual())
+  mediaPlayer.preferred.height.attach(d => updateVirtual())
+  ui.width.attach(d => updateVirtual())
+  ui.height.attach(d => updateVirtual())
+
   val mediaTime = new Label("---", "OpenSans", "Regular", 36) {
     position.center := ui.center
     position.bottom := 15.0
@@ -51,4 +59,16 @@ object VideoExample extends BasicDesktopApp with FPSLoggingSupport {
   add(mediaPlayer)
   add(mediaTimeShadow)
   add(mediaTime)
+
+  private def updateVirtual(): Unit = {
+    if (mediaPlayer.preferred.width.get > 0.0 && mediaPlayer.preferred.height.get > 0.0) {
+      virtualWidth := mediaPlayer.preferred.width
+      virtualHeight := mediaPlayer.preferred.height
+    } else {
+      virtualWidth := 1920.0
+      virtualHeight := 1080.0
+    }
+    mediaPlayer.size.width := virtualWidth.get.vw
+    mediaPlayer.size.height := virtualHeight.get.vw
+  }
 }
