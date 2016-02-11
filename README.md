@@ -1,4 +1,6 @@
 # sgine
+
+[![Join the chat at https://gitter.im/outr/sgine](https://badges.gitter.im/outr/sgine.svg)](https://gitter.im/outr/sgine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Scala Engine for OpenGL-based Desktop, Android, and iOS game and business development.
 
 Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a powerful and functionally reactive Scala framework for developing applications.
