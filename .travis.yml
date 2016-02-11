@@ -1,0 +1,8 @@
+sudo: false
+language: scala
+scala:
+  - 2.11.7
+jdk:
+  - oraclejdk8
+notifications:
+  slack: outr:A8tndkIibmnKjv7YBMnAK7SE

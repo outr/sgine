@@ -5,7 +5,7 @@ object SgineBuild extends Build {
   import Dependencies._
 
   lazy val root = Project(id = "root", base = file(".")) aggregate(core, lwjgl, jglfw, android, ios, video, examples)
-  lazy val core = project("core").withDependencies(logging, gdx.core, gdx.freetype, metastack.rx)
+  lazy val core = project("core").withDependencies(scribe.core, scribe.slf4j, gdx.core, gdx.freetype, metastack.rx)
 
   // Platforms
   lazy val lwjgl = project("lwjgl").dependsOn(core).withDependencies(gdx.lwjgl)
@@ -94,13 +94,13 @@ object Dependencies {
   }
 
   object metastack {
-    private val version = "0.1.5"
+    private val version = "0.1.6"
 
     val rx = "pl.metastack" %%  "metarx" % version
   }
 
   object gdx {
-    private val version = "1.8.0"
+    private val version = "1.9.2"
 
     val core = "com.badlogicgames.gdx" % "gdx" % version
     val lwjgl = "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % version
@@ -115,7 +115,13 @@ object Dependencies {
     val freetypeDesktopNatives = "com.badlogicgames.gdx" % "gdx-freetype-platform" % version classifier "natives-desktop"
   }
 
-  val logging = "com.outr.scribe" %% "scribe" % "1.1.0"
+  object scribe {
+    private val group = "com.outr.scribe"
+    private val version = "1.2.0"
+
+    val core = group %% "scribe" % version
+    val slf4j = group %% "scribe-slf4j" % version
+  }
 
   val vlcj = "uk.co.caprica" % "vlcj" % "3.10.1"
 }

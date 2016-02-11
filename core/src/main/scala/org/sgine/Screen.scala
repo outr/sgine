@@ -16,7 +16,7 @@ class Screen extends RenderFlow with AbstractContainer with ActorWidget[Group] w
   private[sgine] lazy val gdx = new GDXScreenInstance(this)
 
   lazy val actor: Group = stage.getRoot
-  private val inputProcessor = new InputProcessor(this)
+  private lazy val inputProcessor = new InputProcessor(this)
 
   /**
     * The `Component` at the current cursor position. If nothing else is at the cursor position the `Screen` will be

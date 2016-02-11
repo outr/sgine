@@ -8,7 +8,7 @@ class BasicDesktopApp extends Screen {
     config.setWindowedMode(1024, 768)
 //    config.forceExit = true
     config.useVsync(true)
-    config.setBackbufferConfig(8, 8, 8, 8, 16, 0, 8)
+    config.setBackBufferConfig(8, 8, 8, 8, 16, 0, 8)
   }
 
   private val basicUI = new LWJGLPlatform with BasicUI {

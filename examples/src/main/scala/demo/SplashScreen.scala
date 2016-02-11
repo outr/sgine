@@ -35,7 +35,10 @@ object SplashScreen extends Screen with VirtualSizeSupport {
   val scaleUpY = logo.scale.y transitionTo 1.5 in 1.0
   val bringLogoIn = fadeIn and moveDown and scaleUpX and scaleUpY
 
-  val gradientFadeIn = background.color.alpha transitionTo 0.5 in 0.5
+  val gradientFadeIn = background.color.alpha transitionTo 1.0 in 0.5
 
-  bringLogoIn andThen gradientFadeIn start ui
+//  gradientFadeIn start ui
+  bringLogoIn andThen gradientFadeIn andThen function {
+    logo.position.middle := ui.middle
+  } start ui
 }
