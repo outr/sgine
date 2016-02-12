@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable
 import com.badlogic.gdx.utils.Scaling
 import org.sgine.Screen
 import org.sgine.component.gdx.EnhancedActor
+import org.sgine.component.prop.PreferredSize
 import org.sgine.component.{ActorWidget, DimensionedComponent}
 import pl.metastack.metarx.Sub
 
@@ -34,8 +35,7 @@ class Image(implicit scrn: Screen) extends ActorWidget[GDXImage with EnhancedAct
       case Some(dr) => dr.getMinWidth.toDouble -> dr.getMinHeight.toDouble
       case None => 0.0 -> 0.0
     }
-    preferred._width := pw
-    preferred._height := ph
+    PreferredSize.update(preferred, pw, ph)
     actor.setDrawable(d.orNull)
   }
 }

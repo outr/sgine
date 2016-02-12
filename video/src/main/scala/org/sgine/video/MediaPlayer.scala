@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.{Pixmap, Texture}
 import com.sun.jna.Memory
 import org.sgine._
 import org.sgine.component.gdx.ActorIntegrated
+import org.sgine.component.prop.PreferredSize
 import org.sgine.widget.{ComponentGroup, Image}
 import pl.metastack.metarx.{ReadStateChannel, Sub, Var}
 import uk.co.caprica.vlcj.player.direct.{BufferFormat, BufferFormatCallback, DirectMediaPlayer, RenderCallback}
@@ -134,8 +135,7 @@ class VLCBufferFormatCallback(player: MediaPlayer) extends BufferFormatCallback 
   override def getBufferFormat(sourceWidth: Int, sourceHeight: Int): BufferFormat = {
     player.videoWidth := sourceWidth
     player.videoHeight := sourceHeight
-    player.preferred._width := sourceWidth.toDouble
-    player.preferred._height := sourceHeight.toDouble
+    PreferredSize.update(player.preferred, sourceWidth.toDouble, sourceHeight.toDouble)
     new BufferFormat("RGBA", sourceWidth, sourceHeight, Array(sourceWidth * 4), Array(sourceHeight))
   }
 }

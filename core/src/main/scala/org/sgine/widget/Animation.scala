@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation.PlayMode
 import com.badlogic.gdx.graphics.g2d.{Animation => GDXAnimation, TextureRegion}
 import org.sgine._
 import org.sgine.component.gdx.{ActorIntegrated, EnhancedActor}
+import org.sgine.component.prop.PreferredSize
 import org.sgine.component.{ActorWidget, DimensionedComponent}
 import pl.metastack.metarx.Sub
 
@@ -28,8 +29,7 @@ class Animation(implicit scrn: Screen) extends ActorWidget[EnhancedActor] with A
 
   frames.attach { f =>
     val (w, h) = f.headOption.map(tr => tr.getRegionWidth -> tr.getRegionHeight).getOrElse(0 -> 0)
-    preferred._width := w.toDouble
-    preferred._height := h.toDouble
+    PreferredSize.update(preferred, w.toDouble, h.toDouble)
     elapsed = 0.0
     val playMode = PlayMode.NORMAL      // TODO: support multiple playmodes
     animation = new GDXAnimation(frameDuration.get.toFloat, f: _*)
