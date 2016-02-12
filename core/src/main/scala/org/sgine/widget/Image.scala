@@ -34,8 +34,8 @@ class Image(implicit scrn: Screen) extends ActorWidget[GDXImage with EnhancedAct
       case Some(dr) => dr.getMinWidth.toDouble -> dr.getMinHeight.toDouble
       case None => 0.0 -> 0.0
     }
-    preferred._width := pw
-    preferred._height := ph
+    preferred.width(pw)
+    preferred.height(ph)
     actor.setDrawable(d.orNull)
   }
 }

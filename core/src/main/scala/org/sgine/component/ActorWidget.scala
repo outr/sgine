@@ -4,13 +4,13 @@ import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.ui.{Widget => GDXWidget}
 
 trait ActorWidget[A <: Actor] extends Widget with ActorComponent[A] {
-  size.width := preferred._width
-  size.height := preferred._height
+  size.width := preferred.width
+  size.height := preferred.height
 
   def updatePreferredSize(): Unit = actor match {
     case w: GDXWidget => {
-      if (w.getPrefWidth != 0.0) preferred._width := w.getPrefWidth
-      if (w.getPrefHeight != 0.0) preferred._height := w.getPrefHeight
+      if (w.getPrefWidth != 0.0) preferred.width(w.getPrefWidth)
+      if (w.getPrefHeight != 0.0) preferred.height(w.getPrefHeight)
     }
     case _ => // Not a GDX Widget
   }

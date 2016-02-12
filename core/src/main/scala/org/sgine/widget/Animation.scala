@@ -28,8 +28,8 @@ class Animation(implicit scrn: Screen) extends ActorWidget[EnhancedActor] with A
 
   frames.attach { f =>
     val (w, h) = f.headOption.map(tr => tr.getRegionWidth -> tr.getRegionHeight).getOrElse(0 -> 0)
-    preferred._width := w.toDouble
-    preferred._height := h.toDouble
+    preferred.width(w.toDouble)
+    preferred.height(h.toDouble)
     elapsed = 0.0
     val playMode = PlayMode.NORMAL      // TODO: support multiple playmodes
     animation = new GDXAnimation(frameDuration.get.toFloat, f: _*)

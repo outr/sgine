@@ -134,8 +134,8 @@ class VLCBufferFormatCallback(player: MediaPlayer) extends BufferFormatCallback 
   override def getBufferFormat(sourceWidth: Int, sourceHeight: Int): BufferFormat = {
     player.videoWidth := sourceWidth
     player.videoHeight := sourceHeight
-    player.preferred._width := sourceWidth.toDouble
-    player.preferred._height := sourceHeight.toDouble
+    player.preferred.width(sourceWidth.toDouble)
+    player.preferred.height(sourceHeight.toDouble)
     new BufferFormat("RGBA", sourceWidth, sourceHeight, Array(sourceWidth * 4), Array(sourceHeight))
   }
 }
