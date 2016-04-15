@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.{Pixmap, Texture}
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
 import com.badlogic.gdx.{Gdx, graphics}
+import org.powerscala.Color
 import org.sgine.transition._
 import pl.metastack.metarx.{Dep, ReadChannel, Sub}
 

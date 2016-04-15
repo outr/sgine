@@ -6,9 +6,10 @@ import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType
 import com.badlogic.gdx.scenes.scene2d.ui.{Widget => GDXWidget}
+import org.powerscala.Color
 import org.sgine.component.gdx.EnhancedActor
 import org.sgine.component.{ActorWidget, DimensionedComponent}
-import org.sgine.{Color, Screen}
+import org.sgine.Screen
 
 import scala.language.implicitConversions
 

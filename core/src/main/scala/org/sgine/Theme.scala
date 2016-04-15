@@ -1,5 +1,6 @@
 package org.sgine
 
+import org.powerscala.Color
 import org.sgine.component.prop.FontProperties
 import pl.metastack.metarx.Sub
 

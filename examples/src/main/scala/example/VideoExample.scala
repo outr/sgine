@@ -1,6 +1,7 @@
 package example
 
 import com.badlogic.gdx.Gdx
+import org.powerscala.Color
 import org.sgine._
 import org.sgine.input.Key
 import org.sgine.lwjgl.BasicDesktopApp

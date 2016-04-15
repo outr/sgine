@@ -1,6 +1,7 @@
 package example
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration
+import org.powerscala.Color
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.screen.FPSLoggingSupport

@@ -1,5 +1,6 @@
 package example
 
+import org.powerscala.Color
 import org.sgine._
 import org.sgine.lwjgl.DesktopApp
 import org.sgine.screen.FPSLoggingSupport

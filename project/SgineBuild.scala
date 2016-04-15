@@ -5,7 +5,7 @@ object SgineBuild extends Build {
   import Dependencies._
 
   lazy val root = Project(id = "root", base = file(".")) aggregate(core, lwjgl, jglfw, android, ios, video, examples)
-  lazy val core = project("core").withDependencies(scribe.core, scribe.slf4j, gdx.core, gdx.freetype, metastack.rx)
+  lazy val core = project("core").withDependencies(powerscala.core, scribe.core, scribe.slf4j, gdx.core, gdx.freetype, metastack.rx)
 
   // Platforms
   lazy val lwjgl = project("lwjgl").dependsOn(core).withDependencies(gdx.lwjgl)
@@ -123,7 +123,7 @@ object Dependencies {
 
   object scribe {
     private val group = "com.outr.scribe"
-    private val version = "1.2.0"
+    private val version = "1.2.2"
 
     val core = group %% "scribe" % version
     val slf4j = group %% "scribe-slf4j" % version

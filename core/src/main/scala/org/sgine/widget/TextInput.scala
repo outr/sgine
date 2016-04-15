@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle
 import com.badlogic.gdx.scenes.scene2d.utils.{ChangeListener, Drawable, FocusListener}
 import com.badlogic.gdx.scenes.scene2d.{Event, EventListener}
+import org.powerscala.Color
 import org.sgine._
 import org.sgine.component.gdx.EnhancedActor
 import org.sgine.component.prop.FontProperties

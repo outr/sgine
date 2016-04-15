@@ -1,6 +1,6 @@
 package org.sgine.component.prop
 
-import org.sgine.Color
+import org.powerscala.Color
 import pl.metastack.metarx.Sub
 
 class ColorProperties {
