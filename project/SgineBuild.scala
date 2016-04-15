@@ -82,8 +82,8 @@ object Details {
   val developerName = "Matt Hicks"
   val developerURL = "http://matthicks.com"
 
-  val sbtVersion = "0.13.9"
-  val scalaVersion = "2.11.7"
+  val sbtVersion = "0.13.11"
+  val scalaVersion = "2.11.8"
 }
 
 object Dependencies {
@@ -97,6 +97,12 @@ object Dependencies {
     private val version = "0.1.6"
 
     val rx = "pl.metastack" %%  "metarx" % version
+  }
+
+  object powerscala {
+    private val version = "2.0.0"
+
+    val core = "org.powerscala" %% "powerscala-core" % version
   }
 
   object gdx {
