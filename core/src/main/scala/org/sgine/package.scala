@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.{Pixmap, Texture}
 import com.badlogic.gdx.scenes.scene2d.utils.{Drawable, TextureRegionDrawable}
 import com.badlogic.gdx.{Gdx, graphics}
-import org.powerscala.Color
+import io.youi.Color
 import org.sgine.transition._
-import pl.metastack.metarx.{Dep, ReadChannel, Sub}
+import reactify._
 
 import scala.language.implicitConversions
 
@@ -124,7 +124,7 @@ package object sgine {
     new graphics.Color(color.red.toFloat, color.green.toFloat, color.blue.toFloat, color.alpha.toFloat)
   }
 
-  implicit class Transitions(sub: Sub[Double]) {
+  implicit class Transitions(sub: Var[Double]) {
     def transitionTo(to: => Double): TransitionTo = {
       new TransitionTo((d: Double) => sub := d, () => sub.get, () => to)
     }
@@ -157,19 +157,19 @@ package object sgine {
 
   implicit class IntSize(i: Int) {
     def px: Double = i.toDouble
-    def pctw: ReadChannel[Double] = (i.toDouble / 100.0) * ui.width
-    def pcth: ReadChannel[Double] = (i.toDouble / 100.0) * ui.height
+    def pctw: Val[Double] = Val((i.toDouble / 100.0) * ui.width)
+    def pcth: Val[Double] = Val((i.toDouble / 100.0) * ui.height)
     def pct: Percent = Percent(i.toDouble)
   }
   implicit class DoubleSize(d: Double) {
     def px: Double = d
-    def pctw: ReadChannel[Double] = (d / 100.0) * ui.width
-    def pcth: ReadChannel[Double] = (d / 100.0) * ui.height
+    def pctw: Val[Double] = Val((d / 100.0) * ui.width)
+    def pcth: Val[Double] = Val((d / 100.0) * ui.height)
     def pct: Percent = Percent(d)
   }
 }
 
 case class Percent(pct: Double) {
-  def of(rc: ReadChannel[Double]): ReadChannel[Double] = rc * (pct / 100.0)
+  def of(rc: Val[Double]): Val[Double] = Val(rc * (pct / 100.0))
   def of(other: Double): Double = other * (pct / 100.0)
 }

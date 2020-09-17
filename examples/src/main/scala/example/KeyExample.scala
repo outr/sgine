@@ -3,7 +3,7 @@ package example
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.widget.Label
-import pl.metastack.metarx._
+import reactify._
 
 object KeyExample extends BasicDesktopApp with VirtualSizeSupport {
   val keyUp = new Label("Last Key Up: None", "OpenSans", "Semibold", 60.vf) {

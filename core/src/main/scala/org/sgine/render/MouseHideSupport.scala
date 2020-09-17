@@ -3,28 +3,28 @@ package org.sgine.render
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.{Cursor, Pixmap}
 import org.sgine.UI
-import pl.metastack.metarx.{ReadStateChannel, Sub}
+import reactify._
 
 trait MouseHideSupport extends UI {
   object mouseHide {
     /**
       * The currently elapsed time since any mouse movement has occurred.
       */
-    val elapsed: Sub[Double] = Sub(0.0)
+    val elapsed: Var[Double] = Var(0.0)
 
     /**
       * The amount of time (in seconds) to delay after mouse movement before hiding the mouse again.
       *
       * Defaults to 5.0
       */
-    val delay: Sub[Double] = Sub(5.0)
+    val delay: Var[Double] = Var(5.0)
 
     /**
       * Determines whether mouse hiding is currently enabled. If disabled the mouse will revert back to the pointer.
       *
       * Defaults to true
       */
-    val enabled: Sub[Boolean] = Sub(true)
+    val enabled: Var[Boolean] = Var(true)
 
     /**
       * Resets the elapsed state to keep the mouse from hiding.
@@ -39,8 +39,8 @@ trait MouseHideSupport extends UI {
     }
 
     // Whether the mouse is currently being displayed
-    private val _mouseShowing = Sub(true)
-    def mouseShowing: ReadStateChannel[Boolean] = _mouseShowing
+    private val _mouseShowing = Var(true)
+    def mouseShowing: Val[Boolean] = _mouseShowing
 
     create.once {
       _mouseShowing.attach { b =>

@@ -6,12 +6,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle
 import com.badlogic.gdx.scenes.scene2d.utils.{ChangeListener, Drawable, FocusListener}
 import com.badlogic.gdx.scenes.scene2d.{Event, EventListener}
-import org.powerscala.Color
+import io.youi.Color
 import org.sgine._
 import org.sgine.component.gdx.EnhancedActor
 import org.sgine.component.prop.FontProperties
 import org.sgine.component.{ActorWidget, DimensionedComponent, Focusable}
-import pl.metastack.metarx.{ReadChannel, Sub}
+import reactify._
 
 class TextInput(implicit val screen: Screen) extends ActorWidget[TextField] with Focusable {
   def this(text: String)(implicit screen: Screen) {
@@ -25,7 +25,7 @@ class TextInput(implicit val screen: Screen) extends ActorWidget[TextField] with
     font.style := style
     font.size := size
   }
-  def this(text: String, family: String, style: String, size: ReadChannel[Int])(implicit screen: Screen) {
+  def this(text: String, family: String, style: String, size: Val[Int])(implicit screen: Screen) {
     this()(screen)
     this.text := text
     font.family := family
@@ -37,15 +37,15 @@ class TextInput(implicit val screen: Screen) extends ActorWidget[TextField] with
 
   override lazy val actor: GDXTextField = new GDXTextField(this)
 
-  val text: Sub[String] = Sub[String]("")
-  val placeholder: Sub[String] = Sub[String]("")
+  val text: Var[String] = Var[String]("")
+  val placeholder: Var[String] = Var[String]("")
   val font: FontProperties = new FontProperties
-  val bitmapFont: Sub[Option[BitmapFont]] = Sub[Option[BitmapFont]](None)
-  val maskCharacter: Sub[Option[Char]] = Sub[Option[Char]](None)
-  val blinkTime: Sub[Double] = Sub[Double](0.32)
-  val disabled: Sub[Boolean] = Sub[Boolean](false)
-  val selectionColor: Sub[Color] = Sub[Color](Color.LightCoral)
-  val placeholderColor: Sub[Color] = Sub[Color](Color.DimGray)
+  val bitmapFont: Var[Option[BitmapFont]] = Var[Option[BitmapFont]](None)
+  val maskCharacter: Var[Option[Char]] = Var[Option[Char]](None)
+  val blinkTime: Var[Double] = Var[Double](0.32)
+  val disabled: Var[Boolean] = Var[Boolean](false)
+  val selectionColor: Var[Color] = Var[Color](Color.LightCoral)
+  val placeholderColor: Var[Color] = Var[Color](Color.DimGray)
 
   font.family := ui.theme.font.family
   font.style := ui.theme.font.style

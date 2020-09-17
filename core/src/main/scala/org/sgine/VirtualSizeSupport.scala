@@ -1,27 +1,27 @@
 package org.sgine
 
-import pl.metastack.metarx._
+import reactify._
 
 trait VirtualSizeSupport {
-  val virtualWidth: Sub[Double] = Sub[Double](1024.0)
-  val virtualHeight: Sub[Double] = Sub[Double](768.0)
-  val virtualMode: Sub[VirtualMode] = Sub[VirtualMode](VirtualMode.Bars)
+  val virtualWidth: Var[Double] = Var[Double](1024.0)
+  val virtualHeight: Var[Double] = Var[Double](768.0)
+  val virtualMode: Var[VirtualMode] = Var[VirtualMode](VirtualMode.Bars)
 
   lazy val virtual = new VirtualSize(this)
 
   implicit class IntVirtualPixels(i: Int) {
-    def vx: ReadChannel[Double] = vw + virtual.xOffset
-    def vy: ReadChannel[Double] = vh + virtual.yOffset
-    def vw: ReadChannel[Double] = i.toDouble * virtual.wMulti
-    def vh: ReadChannel[Double] = i.toDouble * virtual.hMulti
-    def vf: ReadChannel[Int] = (i.toDouble * virtual.wMulti).map(d => math.round(d).toInt)
+    def vx: Val[Double] = Val(vw + virtual.xOffset)
+    def vy: Val[Double] = Val(vh + virtual.yOffset)
+    def vw: Val[Double] = Val(i.toDouble * virtual.wMulti)
+    def vh: Val[Double] = Val(i.toDouble * virtual.hMulti)
+    def vf: Val[Int] = Val(math.round(i.toDouble * virtual.wMulti).toInt)
   }
   implicit class DoubleVirtualPixels(d: Double) {
-    def vx: ReadChannel[Double] = vw + virtual.xOffset
-    def vy: ReadChannel[Double] = vh + virtual.yOffset
-    def vw: ReadChannel[Double] = d * virtual.wMulti
-    def vh: ReadChannel[Double] = d * virtual.hMulti
-    def vf: ReadChannel[Int] = (d * virtual.wMulti).map(d => math.round(d).toInt)
+    def vx: Val[Double] = Val(vw + virtual.xOffset)
+    def vy: Val[Double] = Val(vh + virtual.yOffset)
+    def vw: Val[Double] = Val(d * virtual.wMulti)
+    def vh: Val[Double] = Val(d * virtual.hMulti)
+    def vf: Val[Int] = Val(math.round(d * virtual.wMulti).toInt)
   }
 }
 
@@ -34,14 +34,14 @@ object VirtualMode {
 }
 
 class VirtualSize(screen: VirtualSizeSupport) {
-  private val _xOffset = Sub(0.0)
-  private val _yOffset = Sub(0.0)
-  private val _wMulti = Sub(0.0)
-  private val _hMulti = Sub(0.0)
-  val xOffset: ReadStateChannel[Double] = _xOffset
-  val yOffset: ReadStateChannel[Double] = _yOffset
-  val wMulti: ReadStateChannel[Double] = _wMulti
-  val hMulti: ReadStateChannel[Double] = _hMulti
+  private val _xOffset = Var(0.0)
+  private val _yOffset = Var(0.0)
+  private val _wMulti = Var(0.0)
+  private val _hMulti = Var(0.0)
+  val xOffset: Val[Double] = _xOffset
+  val yOffset: Val[Double] = _yOffset
+  val wMulti: Val[Double] = _wMulti
+  val hMulti: Val[Double] = _hMulti
 
   private val updateFunction = (d: Double) => if (ui.width.get > 0.0 && ui.height.get > 0.0) {
     screen.virtualMode.get match {

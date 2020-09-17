@@ -11,7 +11,7 @@ import org.sgine._
 import org.sgine.component.gdx.ActorIntegrated
 import org.sgine.component.prop.PreferredSize
 import org.sgine.widget.{ComponentGroup, Image}
-import pl.metastack.metarx.{ReadStateChannel, Sub, Var}
+import reactify._
 import uk.co.caprica.vlcj.player.direct.{BufferFormat, BufferFormatCallback, DirectMediaPlayer, RenderCallback}
 
 import scala.annotation.tailrec
@@ -35,18 +35,18 @@ class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends Component
   private[video] val videoWidth = Var[Int](0)
   private[video] val videoHeight = Var[Int](0)
 
-  private[video] val _media = Sub[Option[Media]](None)
-  val media: ReadStateChannel[Option[Media]] = _media
+  private[video] val _media = Var[Option[Media]](None)
+  val media: Val[Option[Media]] = _media
 
-  private[video] val _state = Sub[PlayerState](PlayerState.Stopped)
-  val state: ReadStateChannel[PlayerState] = _state
+  private[video] val _state = Var[PlayerState](PlayerState.Stopped)
+  val state: Val[PlayerState] = _state
 
   object status {
     private[video] val _position = Var[Double](0.0)
     private[video] val _time = Var[Double](0.0)
 
-    val position: ReadStateChannel[Double] = _position
-    val time: ReadStateChannel[Double] = _time
+    val position: Val[Double] = _position
+    val time: Val[Double] = _time
 
     private[video] def reset(): Unit = {
       _position := 0.0
@@ -61,7 +61,7 @@ class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends Component
   media.attach { o =>
     status.reset()      // Reset the status information when the media changes
   }
-  videoWidth.merge(videoHeight).attach { d =>
+  videoWidth.and(videoHeight).attach { d =>
     render.once {
       if (texture != null) {
         texture.dispose()
@@ -102,7 +102,7 @@ class MediaPlayer(val buffers: Int = 2)(implicit scrn: Screen) extends Component
     }
   }
 
-  def load(resource: String): Unit = _media := Media.parse(resource, player)
+  def load(resource: String): Unit = _media := Some(Media.parse(resource, player))
 
   def play(): Unit = player.play()
 

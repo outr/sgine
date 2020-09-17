@@ -7,7 +7,7 @@ import org.sgine.Screen
 import org.sgine.component.gdx.EnhancedActor
 import org.sgine.component.prop.PreferredSize
 import org.sgine.component.{ActorWidget, DimensionedComponent}
-import pl.metastack.metarx.Sub
+import reactify._
 
 class Image(implicit scrn: Screen) extends ActorWidget[GDXImage with EnhancedActor] {
   override def screen: Screen = scrn
@@ -25,7 +25,7 @@ class Image(implicit scrn: Screen) extends ActorWidget[GDXImage with EnhancedAct
     override def component: DimensionedComponent = Image.this
   }
 
-  val drawable: Sub[Option[Drawable]] = Sub(None)
+  val drawable: Var[Option[Drawable]] = Var(None)
 
   drawable.attach(d => updatePreferred())
 

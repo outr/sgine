@@ -4,7 +4,6 @@ import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.screen.FPSLoggingSupport
 import org.sgine.widget.Image
-import pl.metastack.metarx._
 
 object PositioningExample extends BasicDesktopApp with FPSLoggingSupport {
   ui.continuousRendering := true

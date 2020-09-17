@@ -1,7 +1,7 @@
 package org.sgine
 
 import org.sgine.event._
-import pl.metastack.metarx.Channel
+import reactify.Channel
 
 /**
   * InputSupport provides standard visual event support.

@@ -1,9 +1,9 @@
 package org.sgine.component.prop
 
-import pl.metastack.metarx.Sub
+import reactify._
 
 class FontProperties {
-  val family: Sub[String] = Sub[String]("")
-  val style: Sub[String] = Sub[String]("")
-  val size: Sub[Int] = Sub[Int](0)
+  val family: Var[String] = Var[String]("")
+  val style: Var[String] = Var[String]("")
+  val size: Var[Int] = Var[Int](0)
 }

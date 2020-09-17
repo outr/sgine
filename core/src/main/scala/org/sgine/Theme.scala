@@ -1,8 +1,8 @@
 package org.sgine
 
-import org.powerscala.Color
+import io.youi.Color
 import org.sgine.component.prop.FontProperties
-import pl.metastack.metarx.Sub
+import reactify._
 
 /**
   * Theme provides defaults that are used by visual elements. This is instantiated in the UI instance and can be
@@ -11,10 +11,10 @@ import pl.metastack.metarx.Sub
   */
 class Theme {
   val font: FontProperties = new FontProperties
-  val blinkTime: Sub[Double] = Sub[Double](0.32)
-  val selectionColor: Sub[Color] = Sub[Color](Color.LightSkyBlue)
-  val placeholderColor: Sub[Color] = Sub[Color](Color.DimGray)
-  val ellipsis: Sub[Option[String]] = Sub[Option[String]](None)
+  val blinkTime: Var[Double] = Var[Double](0.32)
+  val selectionColor: Var[Color] = Var[Color](Color.LightSkyBlue)
+  val placeholderColor: Var[Color] = Var[Color](Color.DimGray)
+  val ellipsis: Var[Option[String]] = Var[Option[String]](None)
 
   font.family := "OpenSans"
   font.style := "Semibold"

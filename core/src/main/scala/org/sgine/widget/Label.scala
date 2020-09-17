@@ -8,7 +8,7 @@ import org.sgine._
 import org.sgine.component.gdx.EnhancedActor
 import org.sgine.component.prop.FontProperties
 import org.sgine.component.{ActorWidget, DimensionedComponent}
-import pl.metastack.metarx.{ReadChannel, Sub}
+import reactify._
 
 class Label(implicit val screen: Screen) extends ActorWidget[GDXLabel with EnhancedActor] {
   def this(text: String)(implicit screen: Screen) {
@@ -22,7 +22,7 @@ class Label(implicit val screen: Screen) extends ActorWidget[GDXLabel with Enhan
     font.style := style
     font.size := size
   }
-  def this(text: String, family: String, style: String, size: ReadChannel[Int])(implicit screen: Screen) {
+  def this(text: String, family: String, style: String, size: Val[Int])(implicit screen: Screen) {
     this()(screen)
     this.text := text
     font.family := family
@@ -46,11 +46,11 @@ class Label(implicit val screen: Screen) extends ActorWidget[GDXLabel with Enhan
     }
   }
 
-  val text: Sub[String] = Sub[String]("")
+  val text: Var[String] = Var[String]("")
   val font: FontProperties = new FontProperties
-  val bitmapFont: Sub[Option[BitmapFont]] = Sub[Option[BitmapFont]](None)
-  val wrap: Sub[Boolean] = Sub[Boolean](false)
-  val ellipsis: Sub[Option[String]] = Sub[Option[String]](None)
+  val bitmapFont: Var[Option[BitmapFont]] = Var[Option[BitmapFont]](None)
+  val wrap: Var[Boolean] = Var[Boolean](false)
+  val ellipsis: Var[Option[String]] = Var[Option[String]](None)
 
   font.family := ui.theme.font.family
   font.style := ui.theme.font.style

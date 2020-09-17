@@ -6,8 +6,7 @@ import com.sun.jna.Memory
 import uk.co.caprica.vlcj.player.direct.format.RV32BufferFormat
 import uk.co.caprica.vlcj.player.direct.{BufferFormat, BufferFormatCallback, DirectMediaPlayer, RenderCallback}
 import uk.co.caprica.vlcj.player.{MediaPlayer => VLCMediaPlayer, _}
-
-import scala.collection.JavaConversions._
+import scala.jdk.CollectionConverters._
 
 case class Media(length: Long,
                  videoTracks: List[VideoTrack],
@@ -64,9 +63,9 @@ object Media {
   def apply(player: VLCMediaPlayer): Option[Media] = {
     val meta = player.getMediaMeta
     val length = meta.getLength
-    val videoTracks = player.getTrackInfo(TrackType.VIDEO).toList.map(t => VideoTrack(t.asInstanceOf[VideoTrackInfo]))
-    val audioTracks = player.getTrackInfo(TrackType.AUDIO).toList.map(t => AudioTrack(t.asInstanceOf[AudioTrackInfo]))
-    val textTracks = player.getTrackInfo(TrackType.TEXT).toList.map(t => TextTrack(t.asInstanceOf[TextTrackInfo]))
+    val videoTracks = player.getTrackInfo(TrackType.VIDEO).asScala.toList.map(t => VideoTrack(t.asInstanceOf[VideoTrackInfo]))
+    val audioTracks = player.getTrackInfo(TrackType.AUDIO).asScala.toList.map(t => AudioTrack(t.asInstanceOf[AudioTrackInfo]))
+    val textTracks = player.getTrackInfo(TrackType.TEXT).asScala.toList.map(t => TextTrack(t.asInstanceOf[TextTrackInfo]))
     if (videoTracks.nonEmpty || audioTracks.nonEmpty || textTracks.nonEmpty) {
       Some(Media(length, videoTracks, audioTracks, textTracks))
     } else {
@@ -75,7 +74,7 @@ object Media {
   }
 
   def clear(): Unit = {
-    players.foreach(_.release())
+    players.asScala.foreach(_.release())
     players.clear()
   }
 }

@@ -1,16 +1,16 @@
 package org.sgine.component.prop
 
-import pl.metastack.metarx.{ReadChannel, Sub}
+import reactify._
 
 class ScaleProperties {
-  val x: Sub[Double] = Sub(1.0)
-  val y: Sub[Double] = Sub(1.0)
+  val x: Var[Double] = Var(1.0)
+  val y: Var[Double] = Var(1.0)
 
-  def :=(d: Double) = {
+  def :=(d: Double): Unit = {
     x := d
     y := d
   }
-  def :=(c: ReadChannel[Double]) = {
+  def :=(c: Val[Double]): Unit = {
     x := c
     y := c
   }

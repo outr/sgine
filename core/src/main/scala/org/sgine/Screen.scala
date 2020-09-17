@@ -6,7 +6,7 @@ import com.badlogic.gdx.{Gdx, Screen => GDXScreen}
 import org.sgine.component._
 import org.sgine.event.InputProcessor
 import org.sgine.input.Key
-import pl.metastack.metarx.Sub
+import reactify.Var
 
 /**
   * Screen represents a visual section of a UI. UIs can have one or many Screens that are displayed at any given time.
@@ -22,11 +22,11 @@ class Screen extends RenderFlow with AbstractContainer with ActorWidget[Group] w
     * The `Component` at the current cursor position. If nothing else is at the cursor position the `Screen` will be
     * returned.
     */
-  val atCursor: Sub[Component] = Sub[Component](screen)
+  val atCursor: Var[Component] = Var[Component](screen)
   /**
     * The `Component` currently focused. If their is nothing currently focused `None` will be returned.
     */
-  val focused: Sub[Option[Focusable]] = Sub[Option[Focusable]](None)
+  val focused: Var[Option[Focusable]] = Var[Option[Focusable]](None)
 
   implicit def thisScreen: Screen = this
 

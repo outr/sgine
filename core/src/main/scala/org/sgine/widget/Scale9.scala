@@ -4,18 +4,18 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import org.sgine._
 import org.sgine.component.{DimensionedComponent, EmptyComponent}
-import pl.metastack.metarx._
+import reactify._
 
 class Scale9(implicit scrn: Screen) extends ComponentGroup()(scrn) {
-  val topLeft: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
-  val topRight: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
-  val bottomLeft: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
-  val bottomRight: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
-  val top: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
-  val bottom: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
-  val left: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
-  val right: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
-  val center: Sub[DimensionedComponent] = Sub[DimensionedComponent](new EmptyComponent)
+  val topLeft: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
+  val topRight: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
+  val bottomLeft: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
+  val bottomRight: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
+  val top: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
+  val bottom: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
+  val left: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
+  val right: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
+  val center: Var[DimensionedComponent] = Var[DimensionedComponent](new EmptyComponent)
 
   initialize()
 
@@ -86,49 +86,49 @@ class Scale9(implicit scrn: Screen) extends ComponentGroup()(scrn) {
     }
     top.attach { c =>
       t.foreach(remove)
-      c.position.left := topLeft.flatMap(dc => dc.size.width)
+      c.position.left := topLeft.size.width
       c.position.top := size.height
-      c.size.width := size.width - (topLeft.flatMap(dc => dc.size.width) + topRight.flatMap(dc => dc.size.width))
-      c.size.height := topLeft.flatMap(dc => dc.size.height).zipWith(topRight.flatMap(dc => dc.size.height))(math.max)
+      c.size.width := size.width - (topLeft.size.width + topRight.size.width)
+      c.size.height := math.max(topLeft.size.height, topRight.size.height)
       add(c)
       t = Some(c)
     }
     bottom.attach { c =>
       b.foreach(remove)
-      c.position.left := bottomLeft.flatMap(dc => dc.size.width)
+      c.position.left := bottomLeft.size.width
       c.position.bottom := 0.0
-      c.size.width := size.width - (bottomLeft.flatMap(dc => dc.size.width) + bottomRight.flatMap(dc => dc.size.width))
-      c.size.height := bottomLeft.flatMap(dc => dc.size.height).zipWith(bottomRight.flatMap(dc => dc.size.height))(math.max)
+      c.size.width := size.width - (bottomLeft.size.width) + bottomRight.size.width
+      c.size.height := math.max(bottomLeft.size.height, bottomRight.size.height)
       add(c)
       b = Some(c)
     }
     left.attach { c =>
       l.foreach(remove)
       c.position.left := 0.0
-      c.position.bottom := bottomLeft.flatMap(dc => dc.size.height)
-      c.size.width := bottomLeft.flatMap(dc => dc.size.width).zipWith(topLeft.flatMap(dc => dc.size.width))(math.max)
-      c.size.height := size.height - (bottomLeft.flatMap(dc => dc.size.height) + topLeft.flatMap(dc => dc.size.height))
+      c.position.bottom := bottomLeft.size.height
+      c.size.width := math.max(bottomLeft.size.width, topLeft.size.width)
+      c.size.height := size.height - (bottomLeft.size.height) + topLeft.size.height
       add(c)
       l = Some(c)
     }
     right.attach { c =>
       r.foreach(remove)
       c.position.right := size.width
-      c.position.bottom := bottomLeft.flatMap(dc => dc.size.height)
-      c.size.width := bottomRight.flatMap(dc => dc.size.width).zipWith(topRight.flatMap(dc => dc.size.width))(math.max)
-      c.size.height := size.height - (bottomRight.flatMap(dc => dc.size.height) + topRight.flatMap(dc => dc.size.height))
+      c.position.bottom := bottomLeft.size.height
+      c.size.width := math.max(bottomRight.size.width, topRight.size.width)
+      c.size.height := size.height - (bottomRight.size.height) + topRight.size.height
       add(c)
       r = Some(c)
     }
     center.attach { c =>
       cntr.foreach(remove)
-      c.position.left := bottomLeft.flatMap(dc => dc.size.width).zipWith(topLeft.flatMap(dc => dc.size.width))(math.max)
-      c.position.bottom := bottomLeft.flatMap(dc => dc.size.height).zipWith(bottomRight.flatMap(dc => dc.size.height))(math.max)
-      val maxLeft = bottomLeft.flatMap(_.size.width).zipWith(topLeft.flatMap(_.size.width))(math.max)
-      val maxRight = bottomRight.flatMap(_.size.width).zipWith(topRight.flatMap(_.size.width))(math.max)
+      c.position.left := math.max(bottomLeft.size.width, topLeft.size.width)
+      c.position.bottom := math.max(bottomLeft.size.height, bottomRight.size.height)
+      val maxLeft = math.max(bottomLeft.size.width, topLeft.size.width)
+      val maxRight = math.max(bottomRight.size.width, topRight.size.width)
       c.size.width := size.width - (maxLeft + maxRight)
-      val maxTop = topLeft.flatMap(_.size.height).zipWith(topRight.flatMap(_.size.height))(math.max)
-      val maxBottom = bottomLeft.flatMap(_.size.height).zipWith(bottomRight.flatMap(_.size.height))(math.max)
+      val maxTop = math.max(topLeft.size.height, topRight.size.height)
+      val maxBottom = math.max(bottomLeft.size.height, bottomRight.size.height)
       c.size.height := size.height - (maxTop + maxBottom)
       add(c)
       cntr = Some(c)

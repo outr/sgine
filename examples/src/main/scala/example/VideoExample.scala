@@ -1,14 +1,14 @@
 package example
 
 import com.badlogic.gdx.Gdx
-import org.powerscala.Color
+import io.youi.Color
 import org.sgine._
 import org.sgine.input.Key
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.screen.FPSLoggingSupport
 import org.sgine.video._
 import org.sgine.widget.Label
-import pl.metastack.metarx._
+import reactify._
 
 object VideoExample extends BasicDesktopApp with FPSLoggingSupport with VirtualSizeSupport {
   virtualWidth := 1920.0

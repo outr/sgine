@@ -1,12 +1,12 @@
 package org.sgine.component
 
 import org.sgine.event.ActionManager
-import pl.metastack.metarx.Sub
+import reactify._
 
 trait Focusable extends Component {
   lazy val focus: ActionManager = new ActionManager("focused")
   lazy val blur: ActionManager = new ActionManager("blurred")
-  val clickToFocus: Sub[Boolean] = Sub(true)
+  val clickToFocus: Var[Boolean] = Var(true)
 
   mouse.tapped.attach { evt =>
     if (clickToFocus.get) requestFocus()

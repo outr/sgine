@@ -1,16 +1,16 @@
 package org.sgine.component.prop
 
 import org.sgine.component.DimensionedComponent
-import pl.metastack.metarx.{ReadChannel, Sub}
+import reactify._
 
 class SizeProperties(component: DimensionedComponent) {
-  val width: Sub[Double] = Sub(0.0)
-  val height: Sub[Double] = Sub(0.0)
+  val width: Var[Double] = Var(0.0)
+  val height: Var[Double] = Var(0.0)
 
-  lazy val center: ReadChannel[Double] = width / 2.0
-  lazy val middle: ReadChannel[Double] = height / 2.0
+  lazy val center: Val[Double] = Val(width / 2.0)
+  lazy val middle: Val[Double] = Val(height / 2.0)
 
-  def maintainAspectRatio(width: ReadChannel[Double] = null, height: ReadChannel[Double] = null): Unit = component.screen.render.once {
+  def maintainAspectRatio(width: Val[Double] = null, height: Val[Double] = null): Unit = component.screen.render.once {
     Option(width) match {
       case Some(w) => if (Option(height).isDefined) {
         throw new RuntimeException(s"Cannot maintain aspect ratio with both values defined.")

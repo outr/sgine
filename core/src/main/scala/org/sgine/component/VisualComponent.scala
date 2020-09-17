@@ -1,10 +1,10 @@
 package org.sgine.component
 
 import org.sgine.component.prop.ColorProperties
-import pl.metastack.metarx.Sub
+import reactify._
 
 trait VisualComponent extends Component {
   val color = new ColorProperties
 
-  val visible: Sub[Boolean] = Sub(true)
+  val visible: Var[Boolean] = Var(true)
 }

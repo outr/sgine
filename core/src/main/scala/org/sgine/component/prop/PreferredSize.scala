@@ -1,13 +1,13 @@
 package org.sgine.component.prop
 
-import pl.metastack.metarx.{ReadStateChannel, Var}
+import reactify._
 
 class PreferredSize {
   private val _width = Var[Double](0.0)
   private val _height = Var[Double](0.0)
 
-  def width: ReadStateChannel[Double] = _width
-  def height: ReadStateChannel[Double] = _height
+  def width: Val[Double] = _width
+  def height: Val[Double] = _height
 }
 
 object PreferredSize {

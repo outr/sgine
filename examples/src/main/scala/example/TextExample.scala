@@ -1,6 +1,6 @@
 package example
 
-import org.powerscala.Color
+import io.youi.Color
 import org.sgine._
 import org.sgine.component.Focusable
 import org.sgine.lwjgl.BasicDesktopApp

@@ -1,11 +1,11 @@
 package org.sgine.widget
 
 import org.sgine.Screen
-import pl.metastack.metarx.Sub
+import reactify._
 
 class RoundedRect(implicit screen: Screen) extends Shape()(screen) {
-  val radius: Sub[Double] = Sub[Double](25.0)
-  val segments: Sub[Int] = Sub[Int](10)
+  val radius: Var[Double] = Var[Double](25.0)
+  val segments: Var[Int] = Var[Int](10)
 
   override def draw(): Unit = doFilled {
     // Top-Left

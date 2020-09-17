@@ -1,7 +1,7 @@
 package example
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration
-import org.powerscala.Color
+import io.youi.Color
 import org.sgine._
 import org.sgine.lwjgl.BasicDesktopApp
 import org.sgine.screen.FPSLoggingSupport
@@ -22,8 +22,8 @@ object RectExample extends BasicDesktopApp with VirtualSizeSupport with FPSLoggi
       colors.bottomLeft := Color.Blue
       colors.bottomRight := Color.White
     }
-    (0.0 until 1000.0 by 100.0).foreach { x =>
-      (0.0 until 1000.0 by 100.0).foreach { y =>
+    (0 until 1000 by 100).foreach { x =>
+      (0 until 1000 by 100).foreach { y =>
         this += new Rect {
           position.x := x.vx
           position.y := y.vy

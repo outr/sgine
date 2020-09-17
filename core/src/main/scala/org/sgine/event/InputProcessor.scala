@@ -10,7 +10,7 @@ import com.badlogic.gdx.{Gdx, InputProcessor => GDXInputProcessor}
 import org.sgine._
 import org.sgine.component.{ActorWidget, Component}
 import org.sgine.input.Key
-import pl.metastack.metarx.Channel
+import reactify._
 
 import scala.annotation.tailrec
 

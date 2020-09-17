@@ -1,11 +1,11 @@
 package org.sgine.component.prop
 
-import pl.metastack.metarx.Sub
+import reactify._
 
 class ClippingProperties {
-  val top: Sub[Double] = Sub[Double](0.0)
-  val bottom: Sub[Double] = Sub[Double](0.0)
-  val left: Sub[Double] = Sub[Double](0.0)
-  val right: Sub[Double] = Sub[Double](0.0)
-  val enabled: Sub[Boolean] = Sub[Boolean](false)
+  val top: Var[Double] = Var[Double](0.0)
+  val bottom: Var[Double] = Var[Double](0.0)
+  val left: Var[Double] = Var[Double](0.0)
+  val right: Var[Double] = Var[Double](0.0)
+  val enabled: Var[Boolean] = Var[Boolean](false)
 }

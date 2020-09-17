@@ -7,7 +7,7 @@ import org.sgine._
 import org.sgine.component.gdx.{ActorIntegrated, EnhancedActor}
 import org.sgine.component.prop.PreferredSize
 import org.sgine.component.{ActorWidget, DimensionedComponent}
-import pl.metastack.metarx.Sub
+import reactify._
 
 class Animation(implicit scrn: Screen) extends ActorWidget[EnhancedActor] with ActorIntegrated {
   override def screen: Screen = scrn
@@ -15,8 +15,8 @@ class Animation(implicit scrn: Screen) extends ActorWidget[EnhancedActor] with A
   private var elapsed = 0.0
   private var animation: GDXAnimation = _
 
-  val frames: Sub[Vector[TextureRegion]] = Sub[Vector[TextureRegion]](Vector.empty)
-  val frameDuration: Sub[Double] = Sub[Double](0.025)
+  val frames: Var[Vector[TextureRegion]] = Var[Vector[TextureRegion]](Vector.empty)
+  val frameDuration: Var[Double] = Var[Double](0.025)
 
   def framesFromTexture(texture: Texture, tileWidth: Int, tileHeight: Int): Unit = {
     val regions = TextureRegion.split(texture, tileWidth, tileHeight).flatten

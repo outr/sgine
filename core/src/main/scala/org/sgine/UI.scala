@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import org.sgine.task.TaskManager
-import pl.metastack.metarx.{ReadStateChannel, Sub, Var}
+import reactify._
 
 /**
   * UI is the primary entry point into an Sgine application. See BasicUI and StandardUI for common use-case scenarios.
@@ -17,14 +17,14 @@ trait UI extends RenderFlow with InputSupport {
   private[sgine] var textureMap = Map.empty[String, Texture]
   private[sgine] var textureRegionMap = Map.empty[String, TextureRegion]
 
-  val title: Sub[String] = Sub("")
+  val title: Var[String] = Var("")
 
   /**
     * The amount of time to throttle mouse movements to. If the value is zero there is no throttling.
     *
     * Defaults to 0.1
     */
-  val throttleMouseMove: Sub[Double] = Sub(0.1)
+  val throttleMouseMove: Var[Double] = Var(0.1)
 
   /**
     * The graphical theme for all elements within this UI
@@ -35,49 +35,45 @@ trait UI extends RenderFlow with InputSupport {
     * The current delta between renders
     */
   def delta: Double = Gdx.graphics.getDeltaTime.toDouble
-  private val _width = Sub(0.0)
-  private val _height = Sub(0.0)
-  private val _fullscreen = Sub(false)
+  private val _width = Var(0.0)
+  private val _height = Var(0.0)
+  private val _fullscreen = Var(false)
 
   /**
     * Display width
     */
-  def width: ReadStateChannel[Double] = _width
+  def width: Val[Double] = _width
 
   /**
     * Display height
     */
-  def height: ReadStateChannel[Double] = _height
+  def height: Val[Double] = _height
 
   /**
     * Fullscreen status
     */
-  def fullscreen: ReadStateChannel[Boolean] = _fullscreen
+  def fullscreen: Val[Boolean] = _fullscreen
 
   /**
     * Center point of the UI (width / 2.0)
     */
-  lazy val center: ReadStateChannel[Double] = Sub(_width / 2.0)
+  lazy val center: Val[Double] = Val(_width / 2.0)
 
   /**
     * Middle point of the UI (height / 2.0)
     */
-  lazy val middle: ReadStateChannel[Double] = Sub(_height / 2.0)
+  lazy val middle: Val[Double] = Val(_height / 2.0)
 
   /**
     * Display aspect ratio
     */
-  lazy val aspectRatio: ReadStateChannel[Double] = {
-    val s = Sub(0.0)
-    s := width / height
-    s
-  }
+  lazy val aspectRatio: Val[Double] = Val(width / height)
 
   /**
     * True if continuousRendering should be enabled. If false, rendering will be handled internally or when
     * invalidateDisplay() is called. Defaults to true.
     */
-  val continuousRendering: Sub[Boolean] = Sub(true)
+  val continuousRendering: Var[Boolean] = Var(true)
 
   /**
     * True if the UI should exit on error. Defaults to true.

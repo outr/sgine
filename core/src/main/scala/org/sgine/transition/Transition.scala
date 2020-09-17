@@ -3,7 +3,7 @@ package org.sgine.transition
 import org.sgine._
 import org.sgine.render.MultiScreenSupport
 import org.sgine.transition.easing.Easing
-import pl.metastack.metarx.Sub
+import reactify._
 
 trait Transition {
   def finished: Boolean
@@ -75,13 +75,13 @@ object Transition {
                 newScreen: Screen,
                 time: Double,
                 easing: Easing,
-                inSub: Sub[Double],
-                outSub: Sub[Double],
+                inVar: Var[Double],
+                outVar: Var[Double],
                 outDestination: => Double): Transition = {
-        val pushOut = outSub transitionTo outDestination in time easing easing
-        val pushIn = inSub transitionTo 0.0 in time easing easing
+        val pushOut = outVar transitionTo outDestination in time easing easing
+        val pushIn = inVar transitionTo 0.0 in time easing easing
         function {
-          inSub := -outDestination
+          inVar := -outDestination
           mui.activeScreens.add(newScreen)
         } andThen (pushOut and pushIn) andThen function {
           mui.activeScreens.remove(oldScreen)
@@ -106,11 +106,11 @@ object Transition {
                 newScreen: Screen,
                 time: Double,
                 easing: Easing,
-                inSub: Sub[Double],
+                inVar: Var[Double],
                 inStart: => Double): Transition = {
-        val pushIn = inSub transitionTo 0.0 in time easing easing
+        val pushIn = inVar transitionTo 0.0 in time easing easing
         function {
-          inSub := inStart
+          inVar := inStart
           mui.activeScreens.add(newScreen)
         } andThen pushIn andThen function {
           mui.activeScreens.remove(oldScreen)
