@@ -1,15 +1,17 @@
 package org.sgine.render
 
-import reactify.Val
+import reactify.{Val, Var}
 
 trait Renderable {
-  def depth: Val[Double]
+  lazy val depth: Val[Double] = Var(0.0)
 
   def render(context: RenderContext): Unit
 
-  def shouldRender: Boolean
+  def shouldRender: Boolean = true
 }
 
-class RenderContext {
-  // TODO: implement, includes delta
+object Renderable {
+  implicit object ordering extends Ordering[Renderable] {
+    override def compare(x: Renderable, y: Renderable): Int = y.depth().compareTo(x.depth())
+  }
 }

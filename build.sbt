@@ -1,4 +1,4 @@
-ThisBuild / name := "sgine"
+name := "sgine"
 ThisBuild / organization := "org.sgine"
 ThisBuild / version := "2.0.0-SNAPSHOT"
 
@@ -25,6 +25,8 @@ ThisBuild / scmInfo := Some(
 ThisBuild / developers := List(
   Developer(id="darkfrog", name="Matt Hicks", email="matt@matthicks.com", url=url("http://matthicks.com"))
 )
+
+ThisBuild / fork := true
 
 val gdxVersion: String = "1.10.1-SNAPSHOT"
 val reactifyVersion: String = "4.0.8"
