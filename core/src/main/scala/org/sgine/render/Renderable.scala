@@ -1,9 +1,8 @@
 package org.sgine.render
 
-import org.sgine.component.Component
 import reactify.Val
 
-trait Renderable extends Component {
+trait Renderable {
   def depth: Val[Double]
 
   def render(context: RenderContext): Unit
