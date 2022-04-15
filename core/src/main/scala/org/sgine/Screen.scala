@@ -20,6 +20,9 @@ trait Screen extends Renderable with Updatable { self =>
   val width: Var[Double] = Var(3840.0)
   val height: Var[Double] = Var(2160.0)
 
+  val center: Val[Double] = Val(width / 2.0)
+  val middle: Val[Double] = Val(height / 2.0)
+
   protected[sgine] lazy val camera: Camera = {
     val c = new OrthographicCamera
     c.setToOrtho(false, width().toFloat, height().toFloat)

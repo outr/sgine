@@ -1,10 +1,8 @@
 package org.sgine.render
 
-
-import com.badlogic.gdx.graphics.Pixmap.Format
-import com.badlogic.gdx.graphics.g2d.{BitmapFont, GlyphLayout, NinePatch, SpriteBatch, TextureRegion}
-import com.badlogic.gdx.graphics.{Color, Pixmap, Texture}
-import org.sgine.texture.TextureReference
+import com.badlogic.gdx.graphics.g2d.{BitmapFont, GlyphLayout, NinePatch, SpriteBatch}
+import com.badlogic.gdx.graphics.Color
+import org.sgine.texture.Texture
 import org.sgine.{Alignment, Screen}
 import space.earlygrey.shapedrawer.{JoinType, ShapeDrawer}
 
@@ -39,7 +37,7 @@ class RenderContext(val screen: Screen) {
     font.draw(spriteBatch, text, posX, posY)
   }
 
-  def draw(ref: TextureReference,
+  def draw(ref: Texture,
            x: Double,
            y: Double,
            scaleX: Double,
@@ -116,15 +114,7 @@ class RenderContext(val screen: Screen) {
 
 object RenderContext {
   private lazy val spriteBatch: SpriteBatch = new SpriteBatch
-  private lazy val shapeDrawer: ShapeDrawer = {
-    val pixmap = new Pixmap(1, 1, Format.RGBA8888)
-    pixmap.setColor(Color.WHITE)
-    pixmap.drawPixel(0, 0)
-    val texture = new Texture(pixmap)
-    pixmap.dispose()
-    val region = new TextureRegion(texture, 0, 0, 1, 1)
-    new ShapeDrawer(spriteBatch, region)
-  }
+  private lazy val shapeDrawer: ShapeDrawer = new ShapeDrawer(spriteBatch, Texture.Pixel.ref)
   lazy val fontNormal: BitmapFont = {
     val f = new BitmapFont
     f.getData.setScale(4.0f)
