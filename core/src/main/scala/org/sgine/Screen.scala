@@ -3,13 +3,13 @@ package org.sgine
 import com.badlogic.gdx
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
-import org.sgine.component.Component
+import org.sgine.component.{TypedContainer, Component}
 import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
 import reactify.{Val, Var}
 
 trait Screen extends Renderable with Updatable { self =>
-  lazy val flatChildren: Val[List[Component]] = Val(Component.flatChildren(root))
+  lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(root))
   lazy val renderables: Val[List[Renderable]] = Val(flatChildren.collect {
     case r: Renderable => r
   }.filter(_.shouldRender).sorted(Renderable.ordering))

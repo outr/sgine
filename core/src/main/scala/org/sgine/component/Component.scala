@@ -1,20 +1,9 @@
 package org.sgine.component
 
-import reactify.Val
+import reactify._
 
 trait Component {
+  protected[sgine] val _parent: Var[Option[Component]] = Var(None)
 
-}
-
-trait Container {
-  def children: Val[List[Component]]
-}
-
-object Component {
-  def flatChildren(component: Component): List[Component] = component match {
-    case container: Container => container :: container.children.flatMap { child =>
-      flatChildren(child)
-    }
-    case _ => List(component)
-  }
+  val parent: Val[Option[Component]] = _parent
 }
