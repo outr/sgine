@@ -49,6 +49,7 @@ lazy val root = project.in(file("."))
 lazy val core = project
   .in(file("core"))
   .settings(
+    javaOptions ++= Seq("-verbose:gc"),
     libraryDependencies ++= Seq(
       "com.badlogicgames.gdx" % "gdx" % gdxVersion,
       "com.badlogicgames.gdx" % "gdx-tools" % gdxVersion,

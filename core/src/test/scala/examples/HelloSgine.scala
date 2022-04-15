@@ -4,9 +4,9 @@ import org.sgine.component.{Component, TextureView}
 import org.sgine.{Screen, UI}
 
 object HelloSgine extends Screen { screen =>
-  private lazy val logo = new TextureView("sgine.png") {
-    center @= screen.center
-    middle @= screen.middle
+  private lazy val logo = new TextureView("basketball.png") {
+//    center @= screen.center
+//    middle @= screen.middle
   }
 
   override protected def root: Component = logo

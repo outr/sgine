@@ -2,6 +2,7 @@ package org.sgine.render
 
 import com.badlogic.gdx.graphics.g2d.{BitmapFont, GlyphLayout, NinePatch, SpriteBatch}
 import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.math.Matrix4
 import org.sgine.texture.Texture
 import org.sgine.{Alignment, Screen}
 import space.earlygrey.shapedrawer.{JoinType, ShapeDrawer}
@@ -37,6 +38,14 @@ class RenderContext(val screen: Screen) {
     font.draw(spriteBatch, text, posX, posY)
   }
 
+  val m = new Matrix4
+//  m.translate(1000.0f, 0.0f, 0.0f)
+//  m.translate(200.0f, -48.0f, 0.0f)
+//  m.rotate(0.0f, 0.0f, 1.0f, 180.0f)
+//  m.translate(-200.0f, 48.0f, 0.0f)
+//  m.translate(0.0f, -500.0f, 0.0f)
+  var inc = 0.0
+
   def draw(ref: Texture,
            x: Double,
            y: Double,
@@ -46,13 +55,32 @@ class RenderContext(val screen: Screen) {
            color: Color,
            flipX: Boolean,
            flipY: Boolean): Unit = {
-    val sX = ref.scaleX * scaleX
+    inc += 3.0
+    if (inc >= 360.0) {
+      inc = 0.0
+    }
+
+    val originX = (ref.width / 2.0).toFloat
+    val originY = (ref.height / 2.0).toFloat
+
+    m.idt()
+     .translate(originX, originY, 0.0f)
+     .rotate(0.0f, 0.0f, 1.0f, inc.toFloat)
+     .translate(-originX, -originY, 0.0f)
+    spriteBatch.setTransformMatrix(m)
+    spriteBatch.draw(ref.ref, 0.0f, 0.0f)
+
+    /*val sX = ref.scaleX * scaleX
     val sY = ref.scaleY * scaleY
     val posX = x.toFloat
     val posY = translateY(y, ref.height, sY)
     val originX = if (sX == 1.0) (ref.width / 2.0).toFloat else 0.0f
     val originY = if (sY == 1.0) (ref.height / 2.0).toFloat else 0.0f
     val r = -(ref.rotation + rotation)
+//    scribe.info(s"Matrix: ${spriteBatch.getTransformMatrix}")
+//    scribe.info(s"Test: ${ref.width}x${ref.height}")
+    val prev = spriteBatch.getTransformMatrix
+    spriteBatch.setTransformMatrix(m)
     spriteBatch.setColor(color)
     try {
       if (flipX != ref.ref.isFlipX) {
@@ -63,19 +91,20 @@ class RenderContext(val screen: Screen) {
       }
       spriteBatch.draw(
         ref.ref,
-        posX,
-        posY,
+        0.0f, //posX,
+        0.0f, //posY,
         originX,
         originY,
         ref.width.toFloat,
         ref.height.toFloat,
         sX.toFloat,
         sY.toFloat,
-        r.toFloat
+        inc.toFloat //r.toFloat
       )
     } finally {
+      spriteBatch.setTransformMatrix(prev)
       spriteBatch.setColor(Color.WHITE)
-    }
+    }*/
   }
 
   def draw(ninePatch: NinePatch, x: Double, y: Double, width: Double, height: Double): Unit = {
