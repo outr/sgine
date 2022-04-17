@@ -2,11 +2,11 @@ package org.sgine
 
 import com.badlogic.gdx
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
-import org.sgine.component.{TypedContainer, Component}
+import com.badlogic.gdx.graphics.{Camera, Color, GL20, OrthographicCamera}
+import org.sgine.component.{Component, TypedContainer}
 import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
-import reactify.{Val, Var}
+import reactify._
 
 trait Screen extends Renderable with Updatable { self =>
   lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(root))
@@ -49,11 +49,27 @@ trait Screen extends Renderable with Updatable { self =>
 
       _context.renderWith {
         self.render(_context)
+
+        if (UI.drawFPS) _context.draw(
+          text = s"${Gdx.graphics.getFramesPerSecond}fps",
+          x = width - 20.0,
+          y = 20.0,
+          alignment = Alignment.Right,
+          color = Color.WHITE,
+          font = UI.fpsFont
+        )
       }
     }
 
     override def hide(): Unit = {
       Gdx.input.setInputProcessor(null)
+    }
+  }
+}
+
+object Screen {
+  case object Blank extends Screen {
+    override protected lazy val root: Component = new Component {
     }
   }
 }

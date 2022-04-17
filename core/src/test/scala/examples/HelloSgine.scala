@@ -12,7 +12,8 @@ object HelloSgine extends Screen { screen =>
   override protected def root: Component = logo
 
   def main(args: Array[String]): Unit = {
-    val ui = new UI(this)
-    ui.run()
+    UI.drawFPS @= true
+    UI.screen @= this
+    UI.run()
   }
 }

@@ -60,7 +60,7 @@ class RenderContext(val screen: Screen) {
       inc = 0.0
     }
 
-    val originX = (ref.width / 2.0).toFloat
+    /*val originX = (ref.width / 2.0).toFloat
     val originY = (ref.height / 2.0).toFloat
 
     m.idt()
@@ -68,9 +68,9 @@ class RenderContext(val screen: Screen) {
      .rotate(0.0f, 0.0f, 1.0f, inc.toFloat)
      .translate(-originX, -originY, 0.0f)
     spriteBatch.setTransformMatrix(m)
-    spriteBatch.draw(ref.ref, 0.0f, 0.0f)
+    spriteBatch.draw(ref.ref, 0.0f, 0.0f)*/
 
-    /*val sX = ref.scaleX * scaleX
+    val sX = ref.scaleX * scaleX
     val sY = ref.scaleY * scaleY
     val posX = x.toFloat
     val posY = translateY(y, ref.height, sY)
@@ -104,7 +104,7 @@ class RenderContext(val screen: Screen) {
     } finally {
       spriteBatch.setTransformMatrix(prev)
       spriteBatch.setColor(Color.WHITE)
-    }*/
+    }
   }
 
   def draw(ninePatch: NinePatch, x: Double, y: Double, width: Double, height: Double): Unit = {
