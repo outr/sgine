@@ -15,8 +15,8 @@ class TextureView extends RenderableComponent {
   }
 
   texture.attachAndFire { texture =>
-    width @= texture.width
-    height @= texture.height
+    width := texture.width * scaleX
+    height := texture.height * scaleY
   }
 
   override def render(context: RenderContext): Unit = context.draw(

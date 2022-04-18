@@ -51,7 +51,7 @@ trait DimensionedComponent extends Component {
       val originY = (height / 2.0).toFloat
       val originZ = 0.0f
       val x = this.x.toFloat
-      val y = (-this.y.toFloat + context.screen.height - (height * scaleY)).toFloat
+      val y = (-this.y.toFloat + context.screen.height - height).toFloat
       val sx = scaleX.toFloat
       val sy = scaleY.toFloat
       parentDimensioned() match {
@@ -63,7 +63,7 @@ trait DimensionedComponent extends Component {
       _matrix4
         .translate(x, y, 0.0f)
         .translate(originX, originY, originZ)
-        .rotate(0.0f, 0.0f, 1.0f, rotation().toFloat)
+        .rotate(0.0f, 0.0f, 1.0f, -rotation().toFloat)
         .scale(sx, sy, 1.0f)
         .translate(-originX / sx, -originY / sy, -originZ)
       _lastCalculated @= System.currentTimeMillis()
