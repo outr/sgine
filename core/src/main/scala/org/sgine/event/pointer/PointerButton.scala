@@ -1,17 +1,19 @@
 package org.sgine.event.pointer
 
-sealed trait PointerButton {
-  def index: Int
-}
+class PointerButton(index: Int)
 
 object PointerButton {
-  case object Left extends PointerButton {
-    override def index: Int = 0
-  }
-  case object Right extends PointerButton {
-    override def index: Int = 1
-  }
-  case object Middle extends PointerButton {
-    override def index: Int = 2
+  lazy val Left: PointerButton = new PointerButton(0)
+  lazy val Right: PointerButton = new PointerButton(1)
+  lazy val Middle: PointerButton = new PointerButton(2)
+
+  def apply(index: Int): PointerButton = if (index == 0) {
+    Left
+  } else if (index == 1) {
+    Right
+  } else if (index == 2) {
+    Middle
+  } else {
+    new PointerButton(index)
   }
 }

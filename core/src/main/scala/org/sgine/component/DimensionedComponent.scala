@@ -1,6 +1,6 @@
 package org.sgine.component
 
-import com.badlogic.gdx.math.Matrix4
+import com.badlogic.gdx.math.{Matrix4, Vector3}
 import org.sgine.render.RenderContext
 import reactify._
 
@@ -26,8 +26,8 @@ trait DimensionedComponent extends Component {
 
   def depth: Var[Double] = z
 
-  private val parentDimensioned: Val[Option[DimensionedComponent]] = Val(parent().flatMap(c => parentDimensionedFor(c)))
-  private val parentLastCalculated: Val[Long] = Val(parentDimensioned().map(_.lastCalculated()).getOrElse(0L))
+  protected val parentDimensioned: Val[Option[DimensionedComponent]] = Val(parent().flatMap(c => parentDimensionedFor(c)))
+  protected val parentLastCalculated: Val[Long] = Val(parentDimensioned().map(_.lastCalculated()).getOrElse(0L))
 
   private val _lastCalculated = Var[Long](0L)
   private val _matrix4 = new Matrix4()
@@ -45,7 +45,7 @@ trait DimensionedComponent extends Component {
     recalculate = true
   }
 
-  protected def matrix4(context: RenderContext): Matrix4 = {
+  protected[sgine] def matrix4(context: RenderContext): Matrix4 = {
     if (recalculate) {
       val originX = (width / 2.0).toFloat
       val originY = (height / 2.0).toFloat
@@ -75,5 +75,15 @@ trait DimensionedComponent extends Component {
   private def parentDimensionedFor(component: Component): Option[DimensionedComponent] = component match {
     case dc: DimensionedComponent => Some(dc)
     case _ => component.parent().flatMap(parentDimensionedFor)
+  }
+
+  protected[sgine] def updateHitVector(v: Vector3): Unit = {
+    parentDimensioned.foreach(p => p.updateHitVector(v))
+    val originX = (width / 2.0).toFloat
+    val originY = (height / 2.0).toFloat
+    v.add(-x.toFloat, -y.toFloat, 0.0f)
+    v.add(-originX, -originY, 0.0f)
+    v.rotate(-rotation.toFloat, 0.0f, 0.0f, 1.0f)
+    v.add(originX, originY, 0.0f)
   }
 }
