@@ -1,12 +1,13 @@
 package org.sgine.component
 
-import com.badlogic.gdx.graphics.Color
+import org.sgine.Color
 import org.sgine.render.RenderContext
 import org.sgine.texture.Texture
 import reactify._
 
 class TextureView extends RenderableComponent {
   val texture: Var[Texture] = Var(Texture.Pixel)
+  val color: Var[Color] = Var(Color.White)
 
   def this(path: String) = {
     this()
@@ -19,6 +20,12 @@ class TextureView extends RenderableComponent {
   }
 
   override def render(context: RenderContext): Unit = context.draw(
+    texture = texture,
+    transform = matrix4(context),
+    color = color.gdx
+  )
+
+  /*context.draw(
     ref = texture,
     x = x,
     y = y,
@@ -28,5 +35,5 @@ class TextureView extends RenderableComponent {
     color = Color.WHITE,
     flipX = false,
     flipY = false
-  )
+  )*/
 }

@@ -24,7 +24,7 @@ class RenderContext(val screen: Screen) {
   private def translateY(y: Double, height: Double, scaleY: Double): Float =
     (-y + screen.height() - (height * scaleY)).toFloat
 
-  def draw(text: String, x: Double, y: Double, alignment: Alignment, color: Color, font: BitmapFont = fontNormal): Unit = {
+/*  def draw(text: String, x: Double, y: Double, alignment: Alignment, color: Color, font: BitmapFont = fontNormal): Unit = {
     val layout = new GlyphLayout(font, text)
     val width = layout.width.toDouble
     val posX = (alignment match {
@@ -36,17 +36,26 @@ class RenderContext(val screen: Screen) {
 
     font.setColor(color)
     font.draw(spriteBatch, text, posX, posY)
+  }*/
+
+  def draw(font: BitmapFont, layout: GlyphLayout, transform: Matrix4, color: Color): Unit = {
+    spriteBatch.setTransformMatrix(transform)
+    font.setColor(color)
+    font.draw(spriteBatch, layout, 0.0f, 0.0f)
   }
 
-  val m = new Matrix4
-//  m.translate(1000.0f, 0.0f, 0.0f)
-//  m.translate(200.0f, -48.0f, 0.0f)
-//  m.rotate(0.0f, 0.0f, 1.0f, 180.0f)
-//  m.translate(-200.0f, 48.0f, 0.0f)
-//  m.translate(0.0f, -500.0f, 0.0f)
-  var inc = 0.0
+  def draw(texture: Texture, transform: Matrix4, color: Color): Unit = {
+    spriteBatch.setTransformMatrix(transform)
+    spriteBatch.setColor(color)
+    spriteBatch.draw(texture.ref, 0.0f, 0.0f)
+  }
 
-  def draw(ref: Texture,
+  def draw(ninePatch: NinePatch, transform: Matrix4): Unit = {
+    spriteBatch.setTransformMatrix(transform)
+    ninePatch.draw(spriteBatch, 0.0f, 0.0f, ninePatch.getTotalWidth, ninePatch.getTotalHeight)
+  }
+
+  /*def draw(ref: Texture,
            x: Double,
            y: Double,
            scaleX: Double,
@@ -105,39 +114,43 @@ class RenderContext(val screen: Screen) {
       spriteBatch.setTransformMatrix(prev)
       spriteBatch.setColor(Color.WHITE)
     }
-  }
+  }*/
 
-  def draw(ninePatch: NinePatch, x: Double, y: Double, width: Double, height: Double): Unit = {
+  /*def draw(ninePatch: NinePatch, x: Double, y: Double, width: Double, height: Double): Unit = {
     val posX = x.toFloat
     val posY = translateY(y, height, 1.0)
     ninePatch.draw(spriteBatch, posX, posY, width.toFloat, height.toFloat)
+  }*/
+
+  def filledRectangle(width: Double, height: Double, transform: Matrix4, color: Color): Unit = {
+//    val posX = x.toFloat
+//    val posY = translateY(y, height, 1.0)
+    spriteBatch.setTransformMatrix(transform)
+    shapeDrawer.filledRectangle(0.0f, 0.0f, width.toFloat, height.toFloat, color)
   }
 
-  def filledRectangle(x: Double, y: Double, width: Double, height: Double, color: Color): Unit = {
-    val posX = x.toFloat
-    val posY = translateY(y, height, 1.0)
-    shapeDrawer.filledRectangle(posX, posY, width.toFloat, height.toFloat, color)
+  def rectangle(width: Double, height: Double, transform: Matrix4, color: Color, lineWidth: Double): Unit = {
+//    val posX = x.toFloat
+//    val posY = translateY(y, height, 1.0)
+    spriteBatch.setTransformMatrix(transform)
+    shapeDrawer.rectangle(0.0f, 0.0f, width.toFloat, height.toFloat, color, lineWidth.toFloat)
   }
 
-  def rectangle(x: Double, y: Double, width: Double, height: Double, color: Color, lineWidth: Double): Unit = {
-    val posX = x.toFloat
-    val posY = translateY(y, height, 1.0)
-    shapeDrawer.rectangle(posX, posY, width.toFloat, height.toFloat, color, lineWidth.toFloat)
-  }
-
-  def circle(x: Double, y: Double, radius: Double, color: Color, lineWidth: Double, joinType: JoinType): Unit = {
-    val posX = x.toFloat
-    val posY = translateY(y, 0.0, 1.0)
+  def circle(radius: Double, transform: Matrix4, color: Color, lineWidth: Double, joinType: JoinType): Unit = {
+//    val posX = x.toFloat
+//    val posY = translateY(y, 0.0, 1.0)
+    spriteBatch.setTransformMatrix(transform)
     shapeDrawer.setColor(color)
-    shapeDrawer.circle(posX, posY, radius.toFloat, lineWidth.toFloat, joinType)
+    shapeDrawer.circle(0.0f, 0.0f, radius.toFloat, lineWidth.toFloat, joinType)
   }
 
-  def line(x1: Double, y1: Double, x2: Double, y2: Double, color: Color, lineWidth: Double): Unit = {
-    val posX1 = x1.toFloat
-    val posY1 = translateY(y1, 0.0, 1.0)
-    val posX2 = x2.toFloat
-    val posY2 = translateY(y2, 0.0, 1.0)
-    shapeDrawer.line(posX1, posY1, posX2, posY2, color, lineWidth.toFloat)
+  def line(x: Double, y: Double, transform: Matrix4, color: Color, lineWidth: Double): Unit = {
+//    val posX1 = x1.toFloat
+//    val posY1 = translateY(y1, 0.0, 1.0)
+//    val posX2 = x2.toFloat
+//    val posY2 = translateY(y2, 0.0, 1.0)
+    spriteBatch.setTransformMatrix(transform)
+    shapeDrawer.line(0.0f, 0.0f, x.toFloat, y.toFloat, color, lineWidth.toFloat)
   }
 }
 

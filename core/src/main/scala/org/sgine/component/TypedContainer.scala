@@ -18,10 +18,10 @@ object TypedContainer {
     container
   }
 
-  def flatChildren(component: Component): List[Component] = component match {
+  def flatChildren(components: Component*): List[Component] = components.toList.flatMap {
     case container: TypedContainer[_] => container :: container.children.flatMap { child =>
       flatChildren(child)
     }
-    case _ => List(component)
+    case component => List(component)
   }
 }

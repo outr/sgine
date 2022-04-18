@@ -13,9 +13,10 @@ object UI { ui =>
   lazy val drawFPS: Var[Boolean] = Var(false)
   lazy val fpsFont: Var[BitmapFont] = Var(RenderContext.fontNormal)
 
-  protected def init(): Unit = {}
+  private var init: () => Unit = () => ()
 
-  def run(): Unit = {
+  def run(init: => Unit): Unit = {
+    this.init = () => init
     val config = new Lwjgl3ApplicationConfiguration
     title.attachAndFire { title =>
       config.setTitle(title)

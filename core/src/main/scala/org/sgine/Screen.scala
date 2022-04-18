@@ -3,13 +3,13 @@ package org.sgine
 import com.badlogic.gdx
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.{Camera, Color, GL20, OrthographicCamera}
-import org.sgine.component.{Component, TypedContainer}
+import org.sgine.component.{Component, Container, FPSView, TextView, TypedContainer}
 import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
 import reactify._
 
-trait Screen extends Renderable with Updatable { self =>
-  lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(root))
+trait Screen extends Renderable with Updatable with Container { self =>
+  lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(children: _*))
   lazy val renderables: Val[List[Renderable]] = Val(flatChildren.collect {
     case r: Renderable => r
   }.filter(_.shouldRender).sorted(Renderable.ordering))
@@ -34,6 +34,17 @@ trait Screen extends Renderable with Updatable { self =>
 
   protected def root: Component
 
+  object fpsView extends FPSView {
+    top @= 0.0
+    right := self.width - 10.0
+  }
+
+  override lazy val children: Val[List[Component]] = Val(if (UI.drawFPS) {
+    List(root, fpsView)
+  } else {
+    List(root)
+  })
+
   override def render(context: RenderContext): Unit = renderables().foreach(_.render(context))
 
   override def update(delta: Double): Unit = updatables().foreach(_.update(delta))
@@ -49,15 +60,6 @@ trait Screen extends Renderable with Updatable { self =>
 
       _context.renderWith {
         self.render(_context)
-
-        if (UI.drawFPS) _context.draw(
-          text = s"${Gdx.graphics.getFramesPerSecond}fps",
-          x = width - 20.0,
-          y = 20.0,
-          alignment = Alignment.Right,
-          color = Color.WHITE,
-          font = UI.fpsFont
-        )
       }
     }
 

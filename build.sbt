@@ -12,7 +12,6 @@ ThisBuild / resolvers += "jitpack" at "https://jitpack.io"
 
 ThisBuild / publishTo := sonatypePublishToBundle.value
 ThisBuild / sonatypeProfileName := "org.sgine"
-ThisBuild / publishMavenStyle := true
 ThisBuild / licenses := Seq("MIT" -> url("https://github.com/outr/sgine/blob/master/LICENSE"))
 ThisBuild / sonatypeProjectHosting := Some(xerial.sbt.Sonatype.GitHubHosting("outr", "sgine", "matt@matthicks.com"))
 ThisBuild / homepage := Some(url("https://github.com/outr/sgine"))
