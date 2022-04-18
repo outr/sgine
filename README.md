@@ -15,6 +15,12 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 - Images
   - TiledTextureView
   - AnimationView
+- Animations / Tasks / Workflows
+- Test
+  - NinePatch
+  - Shapes
+    - filledRectangle, rectangle, circle, line
 - InteractiveComponent
   - Hit test
   - Extends DimensionedComponent
+- TextureManager

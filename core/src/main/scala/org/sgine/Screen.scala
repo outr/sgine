@@ -1,9 +1,9 @@
 package org.sgine
 
 import com.badlogic.gdx
-import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.{Gdx, InputProcessor}
 import com.badlogic.gdx.graphics.{Camera, Color, GL20, OrthographicCamera}
-import org.sgine.component.{Component, Container, FPSView, TextView, TypedContainer}
+import org.sgine.component.{Children, Component, Container, FPSView, TextView, TypedContainer}
 import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
 import reactify._
@@ -35,15 +35,12 @@ trait Screen extends Renderable with Updatable with Container { self =>
   protected def root: Component
 
   object fpsView extends FPSView {
+    visible := UI.drawFPS
     top @= 0.0
     right := self.width - 10.0
   }
 
-  override lazy val children: Val[List[Component]] = Val(if (UI.drawFPS) {
-    List(root, fpsView)
-  } else {
-    List(root)
-  })
+  override lazy val children: Children[Component] = Children(this, List(root, fpsView))
 
   override def render(context: RenderContext): Unit = renderables().foreach(_.render(context))
 
@@ -51,7 +48,7 @@ trait Screen extends Renderable with Updatable with Container { self =>
 
   private[sgine] object screen extends gdx.ScreenAdapter {
     override def show(): Unit = {
-//      Gdx.input.setInputProcessor(inputProcessor)
+      Gdx.input.setInputProcessor(inputProcessor)
     }
 
     override def render(delta: Float): Unit = {
@@ -66,6 +63,27 @@ trait Screen extends Renderable with Updatable with Container { self =>
     override def hide(): Unit = {
       Gdx.input.setInputProcessor(null)
     }
+  }
+
+  private object inputProcessor extends InputProcessor {
+    override def keyDown(keycode: Int): Boolean = true
+
+    override def keyUp(keycode: Int): Boolean = true
+
+    override def keyTyped(character: Char): Boolean = true
+
+    override def touchDown(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = true
+
+    override def touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = true
+
+    override def touchDragged(screenX: Int, screenY: Int, pointer: Int): Boolean = true
+
+    override def mouseMoved(screenX: Int, screenY: Int): Boolean = {
+//      scribe.info(s"Pointer: $screenX x $screenY")
+      true
+    }
+
+    override def scrolled(amountX: Float, amountY: Float): Boolean = true
   }
 }
 

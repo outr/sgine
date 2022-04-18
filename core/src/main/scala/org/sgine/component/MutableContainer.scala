@@ -1,32 +1,15 @@
 package org.sgine.component
 
-import reactify.{Channel, Var}
+import reactify.Var
 
-class MutableContainer[Child <: Component] extends TypedContainer[Child] {
-  container =>
+class MutableContainer[Child <: Component] extends TypedContainer[Child] { self =>
   def this(children: Child*) = {
     this()
     this.children.addAll(children: _*)
   }
 
-  override object children extends Var[List[Child]](Nil) {
-    val added: Channel[Child] = Channel[Child]
-    val removed: Channel[Child] = Channel[Child]
-
-    changes {
-      case (oldValue, newValue) =>
-        val rem = oldValue.diff(newValue)
-        val add = newValue.diff(oldValue)
-        rem.foreach(child => removed @= child)
-        add.foreach(child => added @= child)
-    }
-
-    removed.attach { child =>
-      child._parent @= None
-    }
-    added.attach { child =>
-      child._parent @= Some(container)
-    }
+  override object children extends Var[List[Child]](Nil) with Children[Child] {
+    override protected def container: Component = self
 
     def +=(child: Child): Unit = add(child)
 

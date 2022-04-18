@@ -26,10 +26,22 @@ trait DimensionedComponent extends Component {
 
   def depth: Var[Double] = z
 
+  private val parentDimensioned: Val[Option[DimensionedComponent]] = Val(parent().flatMap(c => parentDimensionedFor(c)))
+  private val parentLastCalculated: Val[Long] = Val(parentDimensioned().map(_.lastCalculated()).getOrElse(0L))
+
+  private val _lastCalculated = Var[Long](0L)
   private val _matrix4 = new Matrix4()
   private var recalculate = true
 
+  def lastCalculated: Val[Long] = _lastCalculated
+
   x.and(y).and(z).and(width).and(height).and(rotation).on {
+    recalculate = true
+  }
+  parentDimensioned.on {
+    recalculate = true
+  }
+  parentLastCalculated.on {
     recalculate = true
   }
 
@@ -42,16 +54,26 @@ trait DimensionedComponent extends Component {
       val y = (-this.y.toFloat + context.screen.height - (height * scaleY)).toFloat
       val sx = scaleX.toFloat
       val sy = scaleY.toFloat
+      parentDimensioned() match {
+        case Some(p) =>
+          _matrix4.set(p.matrix4(context))
+          _matrix4.translate(0.0f, -context.screen.height.toFloat, 0.0f)
+        case None => _matrix4.idt()
+      }
       _matrix4
-        .idt()    // TODO: apply world matrix
         .translate(x, y, 0.0f)
         .translate(originX, originY, originZ)
         .rotate(0.0f, 0.0f, 1.0f, rotation().toFloat)
         .scale(sx, sy, 1.0f)
         .translate(-originX / sx, -originY / sy, -originZ)
-
+      _lastCalculated @= System.currentTimeMillis()
       recalculate = false
     }
     _matrix4
+  }
+
+  private def parentDimensionedFor(component: Component): Option[DimensionedComponent] = component match {
+    case dc: DimensionedComponent => Some(dc)
+    case _ => component.parent().flatMap(parentDimensionedFor)
   }
 }

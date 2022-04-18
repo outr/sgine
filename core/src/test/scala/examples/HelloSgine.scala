@@ -1,6 +1,6 @@
 package examples
 
-import org.sgine.component.{Component, TextureView}
+import org.sgine.component.{Children, Component, Container, DimensionedComponent, TextureView}
 import org.sgine.render.RenderContext
 import org.sgine.{Screen, UI}
 
@@ -10,7 +10,14 @@ object HelloSgine extends Screen { screen =>
     middle @= screen.middle
   }
 
-  override protected def root: Component = logo
+  private lazy val container = new Container with DimensionedComponent { self =>
+    x @= 500.0
+    y @= 500.0
+
+    override lazy val children: Children[Component] = Children(self, List(logo))
+  }
+
+  override protected def root: Component = container
 
   def main(args: Array[String]): Unit = {
     UI.run {
