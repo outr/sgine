@@ -12,6 +12,12 @@ case class Texture(ref: TextureRegion,
                    rotation: Double = 0.0) {
   def width: Double = ref.getRegionWidth
   def height: Double = ref.getRegionHeight
+  def scaledWidth: Double = width * scaleX
+  def scaledHeight: Double = height * scaleY
+
+  def scaled(scale: Double): Texture = copy(scaleX = scale, scaleY = scale)
+  def scaled(scaleX: Double, scaleY: Double): Texture = copy(scaleX = scaleX, scaleY = scaleY)
+  def rotated(rotation: Double): Texture = copy(rotation = rotation)
 
   override def toString: String = s"TextureReference($ref, $width, $height)"
 }
@@ -27,9 +33,9 @@ object Texture {
     Texture(region)
   }
 
-  def internal(path: String): Texture = {
+  def internal(path: String, scaleX: Double = 1.0, scaleY: Double = 1.0, rotation: Double = 0.0): Texture = {
     val t = new GDXTexture(Gdx.files.internal(path), true)
     t.setFilter(TextureFilter.MipMap, TextureFilter.MipMap)
-    Texture(new TextureRegion(t))
+    Texture(new TextureRegion(t), scaleX, scaleY, rotation)
   }
 }

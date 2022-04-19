@@ -4,16 +4,35 @@ import com.badlogic.gdx
 import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import org.sgine.render.RenderContext
-import reactify.Var
+import reactify._
 
 object UI { ui =>
   val title: Var[String] = Var("Sgine")
   val screen: Var[Screen] = Var(Screen.Blank)
+  val updateFPS: Var[Int] = Var(60)
 
   lazy val drawFPS: Var[Boolean] = Var(false)
   lazy val fpsFont: Var[BitmapFont] = Var(RenderContext.fontNormal)
 
+  private var disposed = false
   private var init: () => Unit = () => ()
+
+  // Background thread for updates
+  private lazy val updateThread = new Thread {
+    setDaemon(true)
+
+    private var lastUpdate = System.currentTimeMillis()
+
+    override def run(): Unit = while(!disposed) {
+      val delay = (1000.0 / updateFPS.toDouble).toLong
+      Thread.sleep(delay)
+
+      val now = System.currentTimeMillis()
+      val delta = (now - lastUpdate) / 1000.0
+      screen().update(delta)
+      lastUpdate = now
+    }
+  }
 
   def run(init: => Unit): Unit = {
     this.init = () => init
@@ -35,9 +54,11 @@ object UI { ui =>
       ui.screen.attachAndFire { s =>
         setScreen(s.screenAdapter)
       }
+      updateThread.start()
     }
 
     override def dispose(): Unit = {
+      disposed = true
       RenderContext.dispose()
     }
   }

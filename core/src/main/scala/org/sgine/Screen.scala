@@ -2,7 +2,7 @@ package org.sgine
 
 import com.badlogic.gdx
 import com.badlogic.gdx.{Gdx, InputProcessor}
-import com.badlogic.gdx.graphics.{Camera, Color, GL20, OrthographicCamera}
+import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.math.Vector3
 import org.sgine.component.{Children, Component, Container, FPSView, InteractiveComponent, TextView, TypedContainer}
 import org.sgine.event.pointer.{PointerButton, PointerDownEvent, PointerDraggedEvent, PointerEvent, PointerEvents, PointerMovedEvent, PointerUpEvent}

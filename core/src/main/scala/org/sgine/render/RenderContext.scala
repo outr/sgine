@@ -3,7 +3,7 @@ package org.sgine.render
 import com.badlogic.gdx.graphics.g2d.{BitmapFont, GlyphLayout, NinePatch, SpriteBatch}
 import com.badlogic.gdx.math.Matrix4
 import org.sgine.texture.Texture
-import org.sgine.{Alignment, Color, Screen}
+import org.sgine.{Color, Screen}
 import space.earlygrey.shapedrawer.{JoinType, ShapeDrawer}
 
 class RenderContext(val screen: Screen) {
@@ -29,7 +29,7 @@ class RenderContext(val screen: Screen) {
   def draw(texture: Texture, transform: Matrix4, color: Color): Unit = {
     spriteBatch.setTransformMatrix(transform)
     spriteBatch.setColor(color.gdx)
-    spriteBatch.draw(texture.ref, 0.0f, 0.0f)
+    spriteBatch.draw(texture.ref, 0.0f, 0.0f, texture.scaledWidth.toFloat, texture.scaledHeight.toFloat)
   }
 
   def draw(ninePatch: NinePatch, transform: Matrix4, width: Double, height: Double): Unit = {
