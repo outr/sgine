@@ -112,7 +112,7 @@ trait Screen extends Renderable with Updatable with Container { self =>
       }
       // TODO: fix target ordering
 //      scribe.info(s"Interactive: ${interactive()}")
-      val evt = interactive.collectFirst {
+      val evt = interactive.reverse.collectFirst {
         case ic if doHitTest(ic) => create(screenX, screenY, percentX, percentY, ic, v3.x, v3.y)
       }.getOrElse(create(screenX, screenY, percentX, percentY, self, screenX, screenY))
       evt match {
