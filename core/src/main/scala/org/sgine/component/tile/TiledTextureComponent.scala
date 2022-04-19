@@ -10,8 +10,8 @@ abstract class TiledTextureComponent(val texture: Texture, overflow: Boolean) ex
 
   protected def create(tileX: Int, tileY: Int): T
 
-  val x: Var[Double] = Var(0.0)
-  val y: Var[Double] = Var(0.0)
+//  val x: Var[Double] = Var(0.0)
+//  val y: Var[Double] = Var(0.0)
   val width: Var[Double] = Var(0.0)
   val height: Var[Double] = Var(0.0)
   val color: Var[Color] = Var(Color.WHITE)
@@ -26,9 +26,12 @@ abstract class TiledTextureComponent(val texture: Texture, overflow: Boolean) ex
     case d => math.floor(d).toInt
   }
 
-  lazy val tiles: Vector[Vector[T]] = (0 until vertical).toVector.map { tileY =>
-    (0 until horizontal).toVector.map { tileX =>
-      create(tileX, tileY)
+  lazy val tiles: Vector[Vector[T]] = {
+    scribe.info(s"Building tiles for $horizontal x $vertical - tile: $tileWidth x $tileHeight")
+    (0 until vertical).toVector.map { tileY =>
+      (0 until horizontal).toVector.map { tileX =>
+        create(tileX, tileY)
+      }
     }
   }
 

@@ -11,8 +11,6 @@ class TiledComponent(tiled: TiledTextureComponent, tileX: Int, tileY: Int) exten
 
     val tc = new TextureView
     tc.texture @= tiled.texture
-    tc.x := x
-    tc.y := y
     tc
   }
 

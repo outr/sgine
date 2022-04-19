@@ -45,19 +45,18 @@ trait DimensionedComponent extends Component {
     recalculate = true
   }
 
-  protected[sgine] def matrix4(context: RenderContext): Matrix4 = {
+  protected[sgine] def matrix4(context: RenderContext, main: Boolean = true): Matrix4 = {
     if (recalculate) {
       val originX = (width / 2.0).toFloat
       val originY = (height / 2.0).toFloat
       val originZ = 0.0f
       val x = this.x.toFloat
-      val y = (-this.y.toFloat + context.screen.height - height).toFloat
+      val y = if (main) (-this.y.toFloat + context.screen.height - height).toFloat else -this.y.toFloat
       val sx = scaleX.toFloat
       val sy = scaleY.toFloat
       parentDimensioned() match {
         case Some(p) =>
-          _matrix4.set(p.matrix4(context))
-          _matrix4.translate(0.0f, -context.screen.height.toFloat, 0.0f)
+          _matrix4.set(p.matrix4(context, main = false))
         case None => _matrix4.idt()
       }
       _matrix4
