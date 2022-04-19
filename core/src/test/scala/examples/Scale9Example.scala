@@ -1,6 +1,6 @@
 package examples
-import org.sgine.component.{Component, Container, Scale9, Scale9View}
-import org.sgine.texture.Texture
+import org.sgine.component.{Component, Container, Scale9View}
+import org.sgine.texture.{Scale9, Texture}
 
 object Scale9Example extends Example {
   private lazy val scale9 = Scale9(Texture.internal("scale9test.png"), 50, 50, 50, 50)

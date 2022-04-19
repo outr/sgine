@@ -14,3 +14,5 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 ## TODO 2.0
 - Animations / Tasks / Workflows
 - TextureManager
+- Fix and test depth / z with pointer events
+- Key events
