@@ -5,6 +5,8 @@ import com.badlogic.gdx.{Gdx, InputProcessor}
 import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.math.Vector3
 import org.sgine.component.{Children, Component, Container, FPSView, InteractiveComponent, TextView, TypedContainer}
+import org.sgine.event.key.{KeyEvent, KeyState}
+import org.sgine.event.TypedEvent
 import org.sgine.event.pointer.{PointerButton, PointerDownEvent, PointerDraggedEvent, PointerEvent, PointerEvents, PointerMovedEvent, PointerUpEvent}
 import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
@@ -47,6 +49,12 @@ trait Screen extends Renderable with Updatable with Container { self =>
           case ic: InteractiveComponent => ic.pointer._over @= true
         }
     }
+  }
+
+  object input {
+    val keyDown: Channel[KeyEvent] = Channel[KeyEvent]
+    val keyUp: Channel[KeyEvent] = Channel[KeyEvent]
+    val typed: Channel[TypedEvent] = Channel[TypedEvent]
   }
 
   protected[sgine] lazy val camera: Camera = {
@@ -92,11 +100,20 @@ trait Screen extends Renderable with Updatable with Container { self =>
   }
 
   private object inputProcessor extends InputProcessor {
-    override def keyDown(keycode: Int): Boolean = true
+    override def keyDown(keyCode: Int): Boolean = {
+      input.keyDown @= KeyEvent(KeyState.Down, Key(keyCode), self)
+      true
+    }
 
-    override def keyUp(keycode: Int): Boolean = true
+    override def keyUp(keyCode: Int): Boolean = {
+      input.keyUp @= KeyEvent(KeyState.Up, Key(keyCode), self)
+      true
+    }
 
-    override def keyTyped(character: Char): Boolean = true
+    override def keyTyped(character: Char): Boolean = {
+      input.typed @= TypedEvent(character, self)
+      true
+    }
 
     private lazy val v3 = new Vector3
 
@@ -220,7 +237,10 @@ trait Screen extends Renderable with Updatable with Container { self =>
       true
     }
 
-    override def scrolled(amountX: Float, amountY: Float): Boolean = true
+    override def scrolled(amountX: Float, amountY: Float): Boolean = {
+      // TODO: Support
+      true
+    }
   }
 }
 
