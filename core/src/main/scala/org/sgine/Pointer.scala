@@ -4,7 +4,6 @@ import org.sgine.event.pointer.{PointerEvent, PointerMovedEvent}
 import reactify.{Channel, Val, Var}
 
 object Pointer {
-  // TODO: Fire events here from Screen
   val event: Channel[PointerEvent] = Channel[PointerEvent]
 
   private val _x: Var[Int] = Var[Int](0)

@@ -101,17 +101,23 @@ trait Screen extends Renderable with Updatable with Container { self =>
 
   private object inputProcessor extends InputProcessor {
     override def keyDown(keyCode: Int): Boolean = {
-      input.keyDown @= KeyEvent(KeyState.Down, Key(keyCode), self)
+      val evt = KeyEvent(KeyState.Down, Key(keyCode), self)
+      input.keyDown @= evt
+      Keyboard.keyDown @= evt
       true
     }
 
     override def keyUp(keyCode: Int): Boolean = {
-      input.keyUp @= KeyEvent(KeyState.Up, Key(keyCode), self)
+      val evt = KeyEvent(KeyState.Up, Key(keyCode), self)
+      input.keyUp @= evt
+      Keyboard.keyUp @= evt
       true
     }
 
     override def keyTyped(character: Char): Boolean = {
-      input.typed @= TypedEvent(character, self)
+      val evt = TypedEvent(character, self)
+      input.typed @= evt
+      Keyboard.typed @= evt
       true
     }
 
@@ -160,6 +166,7 @@ trait Screen extends Renderable with Updatable with Container { self =>
               self.pointer.up @= e
           }
       }
+      Pointer.event @= evt
     }
 
     override def touchDown(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {

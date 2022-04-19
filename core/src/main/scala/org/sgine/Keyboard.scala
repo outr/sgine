@@ -1,9 +1,11 @@
 package org.sgine
 
+import org.sgine.event.TypedEvent
 import org.sgine.event.key.KeyEvent
 import reactify.Channel
 
 object Keyboard {
-  // TODO: Fire events here from Screen
-  val event: Channel[KeyEvent] = Channel[KeyEvent]
+  val keyDown: Channel[KeyEvent] = Channel[KeyEvent]
+  val keyUp: Channel[KeyEvent] = Channel[KeyEvent]
+  val typed: Channel[TypedEvent] = Channel[TypedEvent]
 }
