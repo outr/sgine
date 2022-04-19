@@ -35,7 +35,7 @@ val shapedrawerVersion: String = "2.5.0"
 val youiVersion = "0.14.4"
 val scalaXMLVersion = "2.0.0-M2"
 val androidVersion = "4.1.1.4"
-val vlcjVersion = "3.10.1"
+val vlcjVersion = "3.12.1"
 val scalaTestVersion = "3.2.11"
 
 lazy val root = project.in(file("."))
