@@ -16,7 +16,6 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
   - AnimationView
 - Animations / Tasks / Workflows
 - Test
-  - NinePatch
   - Shapes
     - filledRectangle, rectangle, circle, line
 - TextureManager
