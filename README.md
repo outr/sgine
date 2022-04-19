@@ -12,7 +12,6 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 **NOTE:** Use the `video` module with discretion as it depends on VLCJ (https://github.com/caprica/vlcj) currently and unless you have a commercial license, the open-source license is GPL. Additionally, the `video` module will currently only work on desktop implementations.
 
 ## TODO 2.0
-- Animations / Tasks / Workflows
 - TextureManager
 - Fix and test depth / z with pointer events
 - Key events
