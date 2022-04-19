@@ -33,7 +33,7 @@ val scribeVersion: String = "3.8.2"
 val shapedrawerVersion: String = "2.5.0"
 
 val youiVersion = "0.14.4"
-val scalaXMLVersion = "2.0.0-M2"
+val scalaXMLVersion = "2.0.1"
 val androidVersion = "4.1.1.4"
 val vlcjVersion = "3.10.1"
 val scalaTestVersion = "3.2.11"
