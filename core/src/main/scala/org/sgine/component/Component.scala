@@ -1,15 +1,22 @@
 package org.sgine.component
 
-import java.util.concurrent.atomic.AtomicInteger
+import reactify._
 
-import org.sgine.{InputSupport, Screen}
+trait Component {
+  protected[sgine] val _parent: Var[Option[Component]] = Var(None)
 
-trait Component extends InputSupport {
-  def screen: Screen
+  /**
+   * Visibility flag for this component. Defaults to true.
+   */
+  val visible: Var[Boolean] = Var(true)
 
-  val id: Int = Component.idGenerator.incrementAndGet()
-}
+  /**
+   * Represents the visibility state of this component. Only represents true if all parent components are also visible.
+   */
+  lazy val isVisible: Val[Boolean] = Val(visible && parent().forall(_.isVisible()))
 
-object Component {
-  private val idGenerator = new AtomicInteger(0)
+  /**
+   * Parent component for this component.
+   */
+  val parent: Val[Option[Component]] = _parent
 }

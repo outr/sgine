@@ -1,130 +1,257 @@
 package org.sgine
 
-import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
-import com.badlogic.gdx.utils.viewport.ScreenViewport
-import com.badlogic.gdx.{Gdx, Screen => GDXScreen}
-import org.sgine.component._
-import org.sgine.event.InputProcessor
-import org.sgine.input.Key
-import reactify.Var
+import com.badlogic.gdx
+import com.badlogic.gdx.{Gdx, InputProcessor}
+import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
+import com.badlogic.gdx.math.Vector3
+import org.sgine.component.{Children, Component, Container, FPSView, InteractiveComponent, TextView, TypedContainer}
+import org.sgine.event.key.{KeyEvent, KeyState}
+import org.sgine.event.TypedEvent
+import org.sgine.event.pointer.{PointerButton, PointerDownEvent, PointerDraggedEvent, PointerEvent, PointerEvents, PointerMovedEvent, PointerUpEvent}
+import org.sgine.render.{RenderContext, Renderable}
+import org.sgine.update.Updatable
+import reactify._
 
-/**
-  * Screen represents a visual section of a UI. UIs can have one or many Screens that are displayed at any given time.
-  */
-class Screen extends RenderFlow with AbstractContainer with ActorWidget[Group] with InputSupport {
-  lazy val stage = new Stage(new ScreenViewport)
-  private[sgine] lazy val gdx = new GDXScreenInstance(this)
+trait Screen extends Renderable with Updatable with Container { self =>
+  lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(children: _*))
+  lazy val renderables: Val[List[Renderable]] = Val(flatChildren.collect {
+    case r: Renderable => r
+  }.filter(_.shouldRender).sorted(Renderable.ordering))
+  lazy val updatables: Val[List[Updatable]] = Val(flatChildren.collect {
+    case u: Updatable => u
+  })
+  lazy val interactive: Val[List[InteractiveComponent]] = Val(flatChildren.collect {
+    case ic: InteractiveComponent => ic
+  }.filter(c => c.isVisible && c.interactive).sortBy(_.depth()))
 
-  lazy val actor: Group = stage.getRoot
-  private lazy val inputProcessor = new InputProcessor(this)
+  val width: Var[Double] = Var(3840.0)
+  val height: Var[Double] = Var(2160.0)
 
-  /**
-    * The `Component` at the current cursor position. If nothing else is at the cursor position the `Screen` will be
-    * returned.
-    */
-  val atCursor: Var[Component] = Var[Component](screen)
-  /**
-    * The `Component` currently focused. If their is nothing currently focused `None` will be returned.
-    */
-  val focused: Var[Option[Focusable]] = Var[Option[Focusable]](None)
+  val center: Val[Double] = Val(width / 2.0)
+  val middle: Val[Double] = Val(height / 2.0)
 
-  implicit def thisScreen: Screen = this
+  object pointer extends PointerEvents {
+    private val _active: Var[Component] = Var(self)
 
-  create.once {
-    var oldValue: Option[Focusable] = None
-    focused.attach { newValue =>
-      oldValue.foreach(_.blur.exec())
-      newValue.foreach(_.focus.exec())
-      oldValue = newValue
+    def active: Val[Component] = _active
+
+    moved.attach { evt =>
+      _active @= evt.target
+    }
+    active.changes {
+      case (oldValue, newValue) =>
+        oldValue match {
+          case screen: Screen => screen.pointer._over @= false
+          case ic: InteractiveComponent => ic.pointer._over @= false
+        }
+        newValue match {
+          case screen: Screen => screen.pointer._over @= true
+          case ic: InteractiveComponent => ic.pointer._over @= true
+        }
     }
   }
 
-  resize.on {
-    stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)
-    stage.getRoot.setWidth(Gdx.graphics.getWidth)
-    stage.getRoot.setHeight(Gdx.graphics.getHeight)
+  object input {
+    val keyDown: Channel[KeyEvent] = Channel[KeyEvent]
+    val keyUp: Channel[KeyEvent] = Channel[KeyEvent]
+    val typed: Channel[TypedEvent] = Channel[TypedEvent]
   }
 
-  show.on {
-    Gdx.input.setInputProcessor(inputProcessor)
+  protected[sgine] lazy val camera: Camera = {
+    val c = new OrthographicCamera
+    c.setToOrtho(false, width().toFloat, height().toFloat)
+    c.update()
+    c
   }
-  hide.on {
-    if (Gdx.input.getInputProcessor == inputProcessor) {
+
+  private lazy val _context = new RenderContext(this)
+
+  protected def root: Component
+
+  object fpsView extends FPSView {
+    visible := UI.drawFPS
+    top @= 0.0
+    right := self.width - 10.0
+  }
+
+  override lazy val children: Children[Component] = Children(this, List(root, fpsView))
+
+  override def render(context: RenderContext): Unit = renderables().foreach(_.render(context))
+
+  override def update(delta: Double): Unit = updatables().foreach(_.update(delta))
+
+  private[sgine] object screenAdapter extends gdx.ScreenAdapter {
+    override def show(): Unit = {
+      Gdx.input.setInputProcessor(inputProcessor)
+    }
+
+    override def render(delta: Float): Unit = {
+      Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
+      Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
+
+      _context.renderWith {
+        self.render(_context)
+      }
+    }
+
+    override def hide(): Unit = {
       Gdx.input.setInputProcessor(null)
     }
   }
 
-  render.on {
-    stage.act(Gdx.graphics.getDeltaTime)
-    stage.draw()
-  }
-
-  dispose.on {
-    stage.dispose()
-  }
-
-  override def screen: Screen = this
-
-  /**
-    * Add a Component to this Screen
-    */
-  def +=(child: Component) = add(child)
-
-  /**
-    * Remove a Component from this Screen
-    */
-  def -=(child: Component) = remove(child)
-
-  override protected def add[C <: Component](child: C): C = {
-    super.add(child)
-    render.once {
-      child match {
-        case ac: ActorComponent[_] => screen.stage.getRoot.addActor(ac.actor)
-        case _ => // Ignore non-actor components
-      }
+  private object inputProcessor extends InputProcessor {
+    override def keyDown(keyCode: Int): Boolean = {
+      val evt = KeyEvent(KeyState.Down, Key(keyCode), self)
+      input.keyDown @= evt
+      Keyboard.keyDown @= evt
+      true
     }
-    child
-  }
 
-  override protected def remove[C <: Component](child: C): C = {
-    super.remove(child)
-    render.once {
-      child match {
-        case ac: ActorComponent[_] => screen.stage.getRoot.removeActor(ac.actor)
-        case _ => // Ignore non-actor components
-      }
+    override def keyUp(keyCode: Int): Boolean = {
+      val evt = KeyEvent(KeyState.Up, Key(keyCode), self)
+      input.keyUp @= evt
+      Keyboard.keyUp @= evt
+      true
     }
-    child
-  }
 
-  /**
-    * Simulates the down, typed, and release states on this screen for the provided `key`.
-    */
-  def simulate(key: Key): Unit = {
-    inputProcessor.keyDown(key.code)
-    inputProcessor.keyTyped(key.lowerCase.getOrElse(0))
-    inputProcessor.keyUp(key.code)
+    override def keyTyped(character: Char): Boolean = {
+      val evt = TypedEvent(character, self)
+      input.typed @= evt
+      Keyboard.typed @= evt
+      true
+    }
+
+    private lazy val v3 = new Vector3
+
+    private def pevt(displayX: Int, displayY: Int)
+                    (create: (Double, Double, Double, Double, Component, Double, Double) => PointerEvent): Unit = {
+      val percentX = displayX.toDouble / Gdx.graphics.getWidth.toDouble
+      val percentY = displayY.toDouble / Gdx.graphics.getHeight.toDouble
+      val screenX = percentX * width()
+      val screenY = percentY * height()
+      def doHitTest(ic: InteractiveComponent): Boolean = {
+        v3.set(screenX.toFloat, screenY.toFloat, 0.0f)
+        ic.hitTest(v3)
+      }
+      val evt = interactive.reverse.collectFirst {
+        case ic if doHitTest(ic) => create(screenX, screenY, percentX, percentY, ic, v3.x, v3.y)
+      }.getOrElse(create(screenX, screenY, percentX, percentY, self, screenX, screenY))
+      evt match {
+        case e: PointerDownEvent =>
+          e.target match {
+            case s: Screen => s.pointer.down @= e
+            case ic: InteractiveComponent =>
+              ic.pointer.down @= e
+              self.pointer.down @= e
+          }
+        case e: PointerDraggedEvent =>
+          e.target match {
+            case s: Screen => s.pointer.dragged @= e
+            case ic: InteractiveComponent =>
+              ic.pointer.dragged @= e
+              self.pointer.dragged @= e
+          }
+        case e: PointerMovedEvent =>
+          e.target match {
+            case s: Screen => s.pointer.moved @= e
+            case ic: InteractiveComponent =>
+              ic.pointer.moved @= e
+              self.pointer.moved @= e
+          }
+        case e: PointerUpEvent =>
+          e.target match {
+            case s: Screen => s.pointer.up @= e
+            case ic: InteractiveComponent =>
+              ic.pointer.up @= e
+              self.pointer.up @= e
+          }
+      }
+      Pointer.event @= evt
+    }
+
+    override def touchDown(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {
+      pevt(displayX, displayY) {
+        case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerDownEvent(
+          displayX = displayX,
+          displayY = displayY,
+          screenX = screenX,
+          screenY = screenY,
+          percentX = percentX,
+          percentY = percentY,
+          target = target,
+          targetX = targetX,
+          targetY = targetY,
+          pointer = pointer,
+          button = PointerButton(button)
+        )
+      }
+      true
+    }
+
+    override def touchUp(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {
+      pevt(displayX, displayY) {
+        case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerUpEvent(
+          displayX = displayX,
+          displayY = displayY,
+          screenX = screenX,
+          screenY = screenY,
+          percentX = percentX,
+          percentY = percentY,
+          target = target,
+          targetX = targetX,
+          targetY = targetY,
+          pointer = pointer,
+          button = PointerButton(button)
+        )
+      }
+      true
+    }
+
+    override def touchDragged(displayX: Int, displayY: Int, pointer: Int): Boolean = {
+      pevt(displayX, displayY) {
+        case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerDraggedEvent(
+          displayX = displayX,
+          displayY = displayY,
+          screenX = screenX,
+          screenY = screenY,
+          percentX = percentX,
+          percentY = percentY,
+          target = target,
+          targetX = targetX,
+          targetY = targetY,
+          pointer = pointer
+        )
+      }
+      true
+    }
+
+    override def mouseMoved(displayX: Int, displayY: Int): Boolean = {
+      pevt(displayX, displayY) {
+        case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerMovedEvent(
+          displayX = displayX,
+          displayY = displayY,
+          screenX = screenX,
+          screenY = screenY,
+          percentX = percentX,
+          percentY = percentY,
+          target = target,
+          targetX = targetX,
+          targetY = targetY
+        )
+      }
+      true
+    }
+
+    override def scrolled(amountX: Float, amountY: Float): Boolean = {
+      // TODO: Support
+      true
+    }
   }
 }
 
-class GDXScreenInstance(screen: Screen) extends GDXScreen {
-  override def show(): Unit = {
-    if (screen.create.nonEmpty) {
-      screen.create.exec()
-      screen.create.clear()
+object Screen {
+  case object Blank extends Screen {
+    override protected lazy val root: Component = new Component {
     }
-    screen.show.exec()
   }
-
-  override def hide(): Unit = screen.hide.exec()
-
-  override def render(delta: Float): Unit = screen.render.exec()
-
-  override def resize(width: Int, height: Int): Unit = screen.resize.exec()
-
-  override def pause(): Unit = screen.pause.exec()
-
-  override def resume(): Unit = screen.resume.exec()
-
-  override def dispose(): Unit = screen.dispose.exec()
 }

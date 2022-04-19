@@ -1,177 +1,65 @@
 package org.sgine
 
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.TextureRegion
-import org.sgine.task.TaskManager
+import com.badlogic.gdx
+import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
+import com.badlogic.gdx.graphics.g2d.BitmapFont
+import org.sgine.render.RenderContext
 import reactify._
 
-/**
-  * UI is the primary entry point into an Sgine application. See BasicUI and StandardUI for common use-case scenarios.
-  */
-trait UI extends RenderFlow with InputSupport {
-  def screen: Screen
+object UI { ui =>
+  val title: Var[String] = Var("Sgine")
+  val screen: Var[Screen] = Var(Screen.Blank)
+  val updateFPS: Var[Int] = Var(60)
 
-  UI.instance = Some(this)
+  lazy val drawFPS: Var[Boolean] = Var(false)
+  lazy val fpsFont: Var[BitmapFont] = Var(RenderContext.fontNormal)
 
-  private[sgine] var textureMap = Map.empty[String, Texture]
-  private[sgine] var textureRegionMap = Map.empty[String, TextureRegion]
+  private var disposed = false
+  private var init: () => Unit = () => ()
 
-  val title: Var[String] = Var("")
+  // Background thread for updates
+  private lazy val updateThread = new Thread {
+    setDaemon(true)
 
-  /**
-    * The amount of time to throttle mouse movements to. If the value is zero there is no throttling.
-    *
-    * Defaults to 0.1
-    */
-  val throttleMouseMove: Var[Double] = Var(0.1)
+    private var lastUpdate = System.currentTimeMillis()
 
-  /**
-    * The graphical theme for all elements within this UI
-    */
-  val theme: Theme = new Theme
+    override def run(): Unit = while(!disposed) {
+      val delay = (1000.0 / updateFPS.toDouble).toLong
+      Thread.sleep(delay)
 
-  /**
-    * The current delta between renders
-    */
-  def delta: Double = Gdx.graphics.getDeltaTime.toDouble
-  private val _width = Var(0.0)
-  private val _height = Var(0.0)
-  private val _fullscreen = Var(false)
-
-  /**
-    * Display width
-    */
-  def width: Val[Double] = _width
-
-  /**
-    * Display height
-    */
-  def height: Val[Double] = _height
-
-  /**
-    * Fullscreen status
-    */
-  def fullscreen: Val[Boolean] = _fullscreen
-
-  /**
-    * Center point of the UI (width / 2.0)
-    */
-  lazy val center: Val[Double] = Val(_width / 2.0)
-
-  /**
-    * Middle point of the UI (height / 2.0)
-    */
-  lazy val middle: Val[Double] = Val(_height / 2.0)
-
-  /**
-    * Display aspect ratio
-    */
-  lazy val aspectRatio: Val[Double] = Val(width / height)
-
-  /**
-    * True if continuousRendering should be enabled. If false, rendering will be handled internally or when
-    * invalidateDisplay() is called. Defaults to true.
-    */
-  val continuousRendering: Var[Boolean] = Var(true)
-
-  /**
-    * True if the UI should exit on error. Defaults to true.
-    */
-  val exitOnError: Var[Boolean] = Var[Boolean](true)
-
-  /**
-    * Manages all asynchronous operations within the application
-    */
-  lazy val taskManager: TaskManager = new TaskManager()   // TODO: make configurable
-
-  private[sgine] val listener = new GDXApplicationListener(this)
-
-  create.once {
-    continuousRendering.attach(cr => Gdx.graphics.setContinuousRendering(cr))
-    taskManager.start()
-
-    // Manage title
-    Gdx.graphics.setTitle(title.get)
-    title.attach(t => Gdx.graphics.setTitle(t))
-  }
-  render.every(0.1) {
-    if (Gdx.graphics.isFullscreen != fullscreen.get) {
-      _fullscreen := Gdx.graphics.isFullscreen
-
-      // The following is a work-around because resize is not fired when going to fullscreen
-      println(s"Fullscreen is now ${fullscreen.get} changing size from ${_width.get}x${_height.get} to ${Gdx.graphics.getWidth}x${Gdx.graphics.getHeight}")
-      _width := Gdx.graphics.getWidth.toDouble
-      _height := Gdx.graphics.getHeight.toDouble
-      invalidateDisplay()
-    }
-  }
-  resize.on {
-    _width := Gdx.graphics.getWidth.toDouble
-    _height := Gdx.graphics.getHeight.toDouble
-    invalidateDisplay()
-  }
-
-  /**
-    * Invalidates the display and request re-rendering. Only necessary if continuousRendering is set to false.
-    */
-  def invalidateDisplay(): Unit = Gdx.graphics.requestRendering()
-
-  /**
-    * Logs an info message
-    */
-  def info(message: String): Unit = {
-    Gdx.app.log("info", message)
-  }
-
-  /**
-    * Logs a warning message
-    */
-  def warn(message: String): Unit = {
-    Gdx.app.log("warning", message)
-  }
-
-  /**
-    * Logs an error
-    */
-  def warn(t: Throwable, message: Option[String] = None) = {
-    Gdx.app.log("warning", message.getOrElse("An exception occurred"))
-    Gdx.app.log("stackTrace", stackTrace(t))
-  }
-
-  /**
-    * Logs an error
-    */
-  def error(t: Throwable, message: Option[String] = None) = {
-    Gdx.app.log("error", message.getOrElse("An Error Occurred"))
-    Gdx.app.log("stackTrace", stackTrace(t))
-    if (exitOnError.get) {
-      Gdx.app.exit()
+      val now = System.currentTimeMillis()
+      val delta = (now - lastUpdate) / 1000.0
+      screen().update(delta)
+      lastUpdate = now
     }
   }
 
-  /**
-    * Convenience method to catch and report errors.
-    */
-  def catchErrors[R](f: => R) = try {
-    f
-  } catch {
-    case t: Throwable => error(t)
+  def run(init: => Unit): Unit = {
+    this.init = () => init
+    val config = new Lwjgl3ApplicationConfiguration
+    title.attachAndFire { title =>
+      config.setTitle(title)
+    }
+    config.useVsync(true)
+    config.setForegroundFPS(0)
+    config.setIdleFPS(0)
+    config.setWindowedMode(1920, 1080)
+    new Lwjgl3Application(game, config)
   }
 
-  def stackTrace(t: Throwable): String = {
-    val trace = s"$t\n${t.getStackTrace.map(line => s"\t$line").mkString("\n")}"
-    t.getCause match {
-      case null => trace
-      case cause => s"$trace\nCaused by: ${stackTrace(cause)}"
+  private object game extends gdx.Game {
+    override def create(): Unit = {
+      RenderContext.init()
+      ui.init()
+      ui.screen.attachAndFire { s =>
+        setScreen(s.screenAdapter)
+      }
+      updateThread.start()
+    }
+
+    override def dispose(): Unit = {
+      disposed = true
+      RenderContext.dispose()
     }
   }
-}
-
-object UI {
-  private var instance: Option[UI] = None
-
-  def apply(): UI = instance.get
-
-  def get(): Option[UI] = instance
 }

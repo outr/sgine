@@ -174,13 +174,16 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
     fireMouseEvent(atCursor.mouse.up, screen.mouse.up, ui.mouse.up, button)
   }
 
-  override def scrolled(amount: Int): Boolean = {
-    gestures.scrolled(amount)
-    val evt = ScrollEvent(-1, screenX, screenY, stageX, stageY, localX, localY, atCursor, amount, focused)
+  override def scrolled(amountX: Float, amountY: Float): Boolean = {
+    gestures.scrolled(amountX, amountY)
+    val evt = ScrollEvent(-1, screenX, screenY, stageX, stageY, localX, localY, atCursor, amountY.toInt, focused)
     atCursor.scrolled := evt
     screen.scrolled := evt
     ui.scrolled := evt
     true
+  }
+
+  override def pinchStop(): Unit = {
   }
 
   override def touchDown(x: Float, y: Float, pointer: Int, button: Int): Boolean = {

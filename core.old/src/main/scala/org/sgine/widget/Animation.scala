@@ -13,7 +13,7 @@ class Animation(implicit scrn: Screen) extends ActorWidget[EnhancedActor] with A
   override def screen: Screen = scrn
 
   private var elapsed = 0.0
-  private var animation: GDXAnimation = _
+  private var animation: GDXAnimation[TextureRegion] = _
 
   val frames: Var[Vector[TextureRegion]] = Var[Vector[TextureRegion]](Vector.empty)
   val frameDuration: Var[Double] = Var[Double](0.025)
