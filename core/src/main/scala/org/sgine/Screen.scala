@@ -72,7 +72,7 @@ trait Screen extends Renderable with Updatable with Container { self =>
 
   override def update(delta: Double): Unit = updatables().foreach(_.update(delta))
 
-  private[sgine] object screen extends gdx.ScreenAdapter {
+  private[sgine] object screenAdapter extends gdx.ScreenAdapter {
     override def show(): Unit = {
       Gdx.input.setInputProcessor(inputProcessor)
     }

@@ -22,18 +22,6 @@ class TextureView extends RenderableComponent {
   override def render(context: RenderContext): Unit = context.draw(
     texture = texture,
     transform = matrix4(context),
-    color = color.gdx
+    color = color
   )
-
-  /*context.draw(
-    ref = texture,
-    x = x,
-    y = y,
-    scaleX = 1.0,
-    scaleY = 1.0,
-    rotation = 0.0,
-    color = Color.WHITE,
-    flipX = false,
-    flipY = false
-  )*/
 }

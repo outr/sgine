@@ -33,7 +33,7 @@ object UI { ui =>
       RenderContext.init()
       ui.init()
       ui.screen.attachAndFire { s =>
-        setScreen(s.screen)
+        setScreen(s.screenAdapter)
       }
     }
 

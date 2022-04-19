@@ -2,7 +2,7 @@ package examples
 import org.sgine.component.{Component, Container, Scale9, Scale9View}
 import org.sgine.texture.Texture
 
-object Scale9Example extends Example { screen =>
+object Scale9Example extends Example {
   private lazy val scale9 = Scale9(Texture.internal("scale9test.png"), 50, 50, 50, 50)
 
   override protected lazy val root: Component = Container(

@@ -42,7 +42,7 @@ class TextView extends RenderableComponent {
       font = font,
       layout = layout,
       transform = matrix4(context),
-      color = color.gdx
+      color = color
     )
   }
 }
