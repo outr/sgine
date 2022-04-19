@@ -127,12 +127,13 @@ trait Screen extends Renderable with Updatable with Container { self =>
         v3.set(screenX.toFloat, screenY.toFloat, 0.0f)
         ic.hitTest(v3)
       }
-      // TODO: fix target ordering
-//      scribe.info(s"Interactive: ${interactive()}")
-      val evt = interactive.reverse.collectFirst {
+      val events = interactive.reverse.collect {
         case ic if doHitTest(ic) => create(screenX, screenY, percentX, percentY, ic, v3.x, v3.y)
-      }.getOrElse(create(screenX, screenY, percentX, percentY, self, screenX, screenY))
-      evt match {
+      } match {
+        case Nil => List(create(screenX, screenY, percentX, percentY, self, screenX, screenY))
+        case list => list
+      }
+      events.head match {
         case e: PointerDownEvent =>
           e.target match {
             case s: Screen => s.pointer.down @= e

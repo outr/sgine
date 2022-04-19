@@ -32,8 +32,9 @@ class RenderContext(val screen: Screen) {
     spriteBatch.draw(texture.ref, 0.0f, 0.0f, texture.scaledWidth.toFloat, texture.scaledHeight.toFloat)
   }
 
-  def draw(ninePatch: NinePatch, transform: Matrix4, width: Double, height: Double): Unit = {
+  def draw(ninePatch: NinePatch, transform: Matrix4, color: Color, width: Double, height: Double): Unit = {
     spriteBatch.setTransformMatrix(transform)
+    spriteBatch.setColor(color.gdx)
     ninePatch.draw(spriteBatch, 0.0f, 0.0f, width.toFloat, height.toFloat)
   }
 

@@ -9,6 +9,6 @@ trait Renderable {
 
 object Renderable {
   implicit object ordering extends Ordering[Renderable] {
-    override def compare(x: Renderable, y: Renderable): Int = y.renderOrder.compareTo(x.renderOrder)
+    override def compare(x: Renderable, y: Renderable): Int = x.renderOrder.compareTo(y.renderOrder)
   }
 }
