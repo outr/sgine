@@ -1,3 +1,5 @@
 target
 .idea
 .bsp
+core/src/test/resources/texture.atlas
+core/src/test/resources/texture.png
