@@ -3,3 +3,4 @@ target
 .bsp
 core/src/test/resources/texture.atlas
 core/src/test/resources/texture.png
+/mac.sbt
