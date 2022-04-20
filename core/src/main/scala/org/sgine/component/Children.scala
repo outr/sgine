@@ -26,13 +26,14 @@ trait Children[Child <: Component] extends Val[List[Child]] {
 
 object Children {
   def apply[Child <: Component](parent: Component,
-                                children: List[Child],
-                                name: Option[String] = None): Children[Child] = new Children[Child] {
+                                children: List[Child]): Children[Child] = dynamic(parent, children)
+
+  def dynamic[Child <: Component](parent: Component, children: => List[Child]): Children[Child] = new Children[Child] {
     override protected def container: Component = parent
 
     set(Nil)
     set(children)
 
-    override def toString(): String = name.getOrElse(s"$parent.children")
+    override def toString(): String = s"$parent.children"
   }
 }

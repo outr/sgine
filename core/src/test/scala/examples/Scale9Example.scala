@@ -1,7 +1,9 @@
 package examples
+
 import org.sgine.Color
 import org.sgine.component.{Component, Container, InteractiveComponent, Scale9View}
 import org.sgine.texture.{Scale9, Texture}
+import reactify._
 
 object Scale9Example extends Example {
   private lazy val scale9 = Scale9(Texture.internal("scale9test.png"), 50, 50, 50, 50)

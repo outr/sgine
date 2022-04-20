@@ -42,7 +42,7 @@ case class Color(value: Long) {
       val red = (colorMax - redInt) / (colorMax - colorMin)
       val green = (colorMax - greenInt) / (colorMax - colorMin)
       val blue = (colorMax - blueInt) / (colorMax - colorMin)
-      val t = if (redInt == colorMax) {
+      val t: Double = if (redInt == colorMax) {
         blue - green
       } else if (greenInt == colorMax) {
         2.0 + red - blue

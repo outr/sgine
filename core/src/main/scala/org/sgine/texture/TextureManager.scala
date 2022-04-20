@@ -18,11 +18,13 @@ import scala.util.Try
  * @param name the texture atlas filename (defaults to "texture.atlas")
  * @param path the path where the texture atlas file is stored
  * @param inputPath where the original images are stored that should be used to create the atlas
+ * @param scaleOverride defines a mapping of texture names to override scale
  */
 abstract class TextureManager(fileName: Option[String],
                               name: String = "texture.atlas",
                               path: String = "src/main/resources",
-                              inputPath: String = "resources") {
+                              inputPath: String = "resources",
+                              scaleOverride: Map[String, Double] = Map.empty) {
   private lazy val atlas: Map[String, Vector[Texture]] = Try(new TextureAtlas(Gdx.files.internal(name))
     .getRegions
     .toArray
@@ -83,7 +85,7 @@ abstract class TextureManager(fileName: Option[String],
         // Regenerate the TextureManager code
         val packageName = getClass.getPackage.getName
         val className = getClass.getSimpleName.replace("$", "")
-        val IndexedRegex = """(.+)_(\d{2})""".r
+        val IndexedRegex = """(.+)_(\d{1,2})""".r
         val textureMappings = inputFiles.groupBy { file =>
           val fileName = file.getName
           fileName.substring(0, fileName.indexOf('.')) match {
@@ -115,6 +117,16 @@ abstract class TextureManager(fileName: Option[String],
             s"""  lazy val $refName: Texture = oneByName("$textureName")"""
           }
         }
+        val scaleOverrideString = if (scaleOverride.isEmpty) {
+          "Map.empty"
+        } else {
+          val pairs = scaleOverride.map {
+            case (key, value) => s"""    "$key" -> $value"""
+          }.mkString(",\n")
+          s"""Map(
+             |$pairs
+             |  )""".stripMargin
+        }
         val source =
           s"""package $packageName
              |
@@ -127,7 +139,8 @@ abstract class TextureManager(fileName: Option[String],
              |  fileName = Some("$path"),
              |  name = "$name",
              |  path = "${this.path}",
-             |  inputPath = "$inputPath"
+             |  inputPath = "$inputPath",
+             |  scaleOverride = $scaleOverrideString
              |) {
              |${textureEntries.mkString("\n")}
              |}""".stripMargin
@@ -139,10 +152,11 @@ abstract class TextureManager(fileName: Option[String],
     }
   }
 
-  def oneByName(name: String, scale: Double = 1.0): Texture = byName(name, scale)(0)
-  def byName(name: String, scale: Double = 1.0): Vector[Texture] = {
+  def oneByName(name: String): Texture = byName(name)(0)
+  def byName(name: String): Vector[Texture] = {
     init()
     val textures = atlas(name)
+    val scale = scaleOverride.getOrElse(name, 1.0)
     if (scale == 1.0) {
       textures
     } else {

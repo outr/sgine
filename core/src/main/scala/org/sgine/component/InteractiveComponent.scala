@@ -2,7 +2,7 @@ package org.sgine.component
 
 import com.badlogic.gdx.math.Vector3
 import org.sgine.event.pointer.PointerEvents
-import reactify.Var
+import reactify._
 
 trait InteractiveComponent extends DimensionedComponent {
   lazy val interactive: Var[Boolean] = Var(true)

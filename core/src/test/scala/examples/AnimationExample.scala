@@ -3,6 +3,7 @@ package examples
 import org.sgine.component.{Component, InteractiveComponent, TextureView}
 import org.sgine.easing.Easing
 import org.sgine.task._
+import reactify._
 
 import scala.concurrent.duration.DurationInt
 

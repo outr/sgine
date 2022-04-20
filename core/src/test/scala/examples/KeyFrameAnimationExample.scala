@@ -3,6 +3,7 @@ package examples
 import org.sgine.component.{KeyFrameAnimationView, Component}
 import org.sgine.texture.Texture
 import perfolation._
+import reactify._
 
 object KeyFrameAnimationExample extends Example {
   private lazy val textures: Vector[Texture] = (0 to 19).toVector.map { index =>

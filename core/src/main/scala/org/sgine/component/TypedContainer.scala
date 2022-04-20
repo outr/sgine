@@ -1,6 +1,6 @@
 package org.sgine.component
 
-import reactify.{Channel, Val}
+import reactify._
 
 trait TypedContainer[Child <: Component] extends Component {
   def children: Children[Child]

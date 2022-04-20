@@ -24,6 +24,7 @@ ThisBuild / scmInfo := Some(
 ThisBuild / developers := List(
   Developer(id="darkfrog", name="Matt Hicks", email="matt@matthicks.com", url=url("http://matthicks.com"))
 )
+ThisBuild / publishMavenStyle := true
 
 ThisBuild / fork := true
 
@@ -48,6 +49,7 @@ lazy val root = project.in(file("."))
 lazy val core = project
   .in(file("core"))
   .settings(
+    name := "sgine-core",
     javaOptions ++= Seq("-verbose:gc"),
     libraryDependencies ++= Seq(
       "com.badlogicgames.gdx" % "gdx" % gdxVersion,

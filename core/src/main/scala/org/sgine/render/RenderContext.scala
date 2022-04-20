@@ -1,5 +1,6 @@
 package org.sgine.render
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.{BitmapFont, GlyphLayout, NinePatch, SpriteBatch}
 import com.badlogic.gdx.math.Matrix4
 import org.sgine.texture.Texture
@@ -9,11 +10,16 @@ import space.earlygrey.shapedrawer.{JoinType, ShapeDrawer}
 class RenderContext(val screen: Screen) {
   import RenderContext._
 
+  private var _delta: Double = 0.0
+
+  def delta: Double = _delta
+
   def renderWith[Return](f: => Return): Return = {
     spriteBatch.begin()
     try {
       spriteBatch.setProjectionMatrix(screen.camera.combined)
       shapeDrawer.update()
+      _delta = Gdx.graphics.getDeltaTime.toDouble
       f
     } finally {
       spriteBatch.end()

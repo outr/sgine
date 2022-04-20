@@ -1,8 +1,10 @@
 package examples
+
 import org.sgine.Color
 import org.sgine.component.{Component, DimensionedComponent}
 import org.sgine.render.{RenderContext, Renderable}
 import space.earlygrey.shapedrawer.JoinType
+import reactify._
 
 object ShapesExample extends Example {
   override protected def root: Component = new DimensionedComponent with Renderable {

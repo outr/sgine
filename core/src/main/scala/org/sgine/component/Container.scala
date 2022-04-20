@@ -1,7 +1,5 @@
 package org.sgine.component
 
-import reactify.Val
-
 trait Container extends TypedContainer[Component] {
   def children: Children[Component]
 }
