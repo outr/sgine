@@ -5,7 +5,7 @@ import org.sgine.render.RenderContext
 import org.sgine.texture.Texture
 import reactify._
 
-class TextureView extends RenderableComponent {
+class Image extends RenderableComponent {
   val texture: Var[Texture] = Var(Texture.Pixel)
   val color: Var[Color] = Var(Color.White)
 

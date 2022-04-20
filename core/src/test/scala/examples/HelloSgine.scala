@@ -1,10 +1,10 @@
 package examples
 
-import org.sgine.component.{Component, InteractiveComponent, TextureView}
+import org.sgine.component.{Component, InteractiveComponent, Image}
 import reactify._
 
 object HelloSgine extends Example {
-  override protected lazy val root: Component = new TextureView("sgine.png") with InteractiveComponent {
+  override protected lazy val root: Component = new Image("sgine.png") with InteractiveComponent {
     center @= screen.center
     middle @= screen.middle
   }

@@ -37,12 +37,28 @@ trait DimensionedComponent extends Component {
 
   x.and(y).and(z).and(width).and(height).and(rotation).on {
     recalculate = true
+    _lastCalculated @= System.currentTimeMillis()
   }
   parentDimensioned.on {
     recalculate = true
+    _lastCalculated @= System.currentTimeMillis()
   }
   parentLastCalculated.on {
     recalculate = true
+    _lastCalculated @= System.currentTimeMillis()
+  }
+
+  this match {
+    case c: TypedContainer[_] =>
+      width := c.children().foldLeft(0.0)((max, child) => child match {
+        case dc: DimensionedComponent => math.max(max, dc.x + dc.width)
+        case _ => max
+      })
+      height := c.children().foldLeft(0.0)((max, child) => child match {
+        case dc: DimensionedComponent => math.max(max, dc.y + dc.height)
+        case _ => max
+      })
+    case _ => // Ignore
   }
 
   protected[sgine] def matrix4(context: RenderContext, main: Boolean = true): Matrix4 = {
@@ -58,6 +74,9 @@ trait DimensionedComponent extends Component {
         case Some(p) =>
           _matrix4.set(p.matrix4(context, main = false))
         case None => _matrix4.idt()
+      }
+      if (rotation() != 0.0) {
+        scribe.info(s"Rotation: ${rotation()}, Origin: $originX x $originY, $this, main? $main")
       }
       _matrix4
         .translate(x, y, 0.0f)

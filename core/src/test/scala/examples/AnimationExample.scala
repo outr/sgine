@@ -1,6 +1,6 @@
 package examples
 
-import org.sgine.component.{Component, InteractiveComponent, TextureView}
+import org.sgine.component.{Component, InteractiveComponent, Image}
 import org.sgine.easing.Easing
 import org.sgine.task._
 import reactify._
@@ -8,7 +8,7 @@ import reactify._
 import scala.concurrent.duration.DurationInt
 
 object AnimationExample extends Example {
-  override protected lazy val root: Component = new TextureView("sgine.png") with InteractiveComponent with TaskSupport {
+  override protected lazy val root: Component = new Image("sgine.png") with InteractiveComponent with TaskSupport {
     center @= screen.center
     middle @= screen.middle
 
