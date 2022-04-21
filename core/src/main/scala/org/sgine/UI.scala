@@ -44,6 +44,7 @@ object UI { ui =>
     config.setForegroundFPS(0)
     config.setIdleFPS(0)
     config.setWindowedMode(1920, 1080)
+    config.setBackBufferConfig(8, 8, 8, 8, 16, 2, 2)
     new Lwjgl3Application(game, config)
   }
 
