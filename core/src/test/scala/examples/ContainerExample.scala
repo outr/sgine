@@ -33,7 +33,7 @@ object ContainerExample extends Example with TaskSupport {
 
     center := screen.center
     middle := screen.middle
-    (rotation to 360.0 in 5.seconds).start
+//    (rotation to 360.0 in 5.seconds).start
 
     pointer.over.attach {
       case true => crate.color @= Color.Red

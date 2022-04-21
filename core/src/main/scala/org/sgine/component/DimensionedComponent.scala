@@ -75,9 +75,6 @@ trait DimensionedComponent extends Component {
           _matrix4.set(p.matrix4(context, main = false))
         case None => _matrix4.idt()
       }
-      if (rotation() != 0.0) {
-        scribe.info(s"Rotation: ${rotation()}, Origin: $originX x $originY, $this, main? $main")
-      }
       _matrix4
         .translate(x, y, 0.0f)
         .translate(originX, originY, originZ)

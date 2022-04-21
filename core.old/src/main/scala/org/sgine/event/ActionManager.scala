@@ -4,15 +4,21 @@ import java.util.concurrent.atomic.AtomicReference
 
 import org.sgine._
 
-import scala.collection.mutable.ListBuffer
-
 class ActionManager(name: String) {
-  private val queue = ListBuffer.empty[Action]
+  private var queue = List.empty[Action]
+
+  private def add(action: Action): Unit = synchronized {
+    queue = queue ::: List(action)
+  }
+
+  def remove(action: Action): Unit = synchronized {
+    queue = queue.filterNot(_ eq action)
+  }
 
   def on(f: => Unit): Action = synchronized {
     val a = new Action(() => f, once = false)
     if (isActive) execAction(a)
-    queue += a
+    add(a)
     a
   }
 
@@ -21,7 +27,7 @@ class ActionManager(name: String) {
     if (isActive) {
       execAction(a)
     } else {
-      queue += a
+      add(a)
     }
     a
   }
@@ -74,10 +80,6 @@ class ActionManager(name: String) {
     action
   }
 
-  def remove(action: Action) = synchronized {
-    queue -= action
-  }
-
   def exec(): Unit = synchronized {
     ActionManager.current.set(name)
     try {
@@ -90,14 +92,16 @@ class ActionManager(name: String) {
   private val execAction: Action => Unit = (action: Action) => UI().catchErrors {
     action.invoke()
     if (action.once) {
-      queue -= action
+      remove(action)
     }
   }
 
   def nonEmpty: Boolean = queue.nonEmpty
   def isEmpty: Boolean = queue.isEmpty
 
-  def clear(): Unit = queue.clear()
+  def clear(): Unit = synchronized {
+    queue = Nil
+  }
 
   // TODO: investigate why this sometimes doesn't work right
   def isActive: Boolean = false //ActionManager.current.get() == name
