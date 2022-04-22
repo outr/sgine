@@ -4,7 +4,9 @@ import com.badlogic.gdx
 import com.badlogic.gdx.{Gdx, InputProcessor}
 import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.math.Vector3
-import org.sgine.component.{Children, Component, Container, FPSView, InteractiveComponent, TextView, TypedContainer}
+import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
+import com.badlogic.gdx.utils.viewport.ScreenViewport
+import org.sgine.component.{Children, Component, Container, FPSView, GroupContainer, InteractiveComponent, TextView, TypedContainer}
 import org.sgine.event.key.{KeyEvent, KeyState}
 import org.sgine.event.TypedEvent
 import org.sgine.event.pointer.{PointerButton, PointerDownEvent, PointerDraggedEvent, PointerEvent, PointerEvents, PointerMovedEvent, PointerUpEvent}
@@ -12,7 +14,7 @@ import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
 import reactify._
 
-trait Screen extends Renderable with Updatable with Container { self =>
+trait Screen extends Renderable with Updatable with GroupContainer { self =>
   lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(children: _*))
   lazy val renderables: Val[List[Renderable]] = Val(flatChildren.collect {
     case r: Renderable => r
@@ -24,11 +26,11 @@ trait Screen extends Renderable with Updatable with Container { self =>
     case ic: InteractiveComponent => ic
   }.filter(c => c.isVisible && c.interactive).sortBy(_.depth()))
 
-  val width: Var[Double] = Var(3840.0)
-  val height: Var[Double] = Var(2160.0)
+  lazy val stage = new Stage(new ScreenViewport)
+  override lazy val actor: Group = stage.getRoot
 
-  val center: Val[Double] = Val(width / 2.0)
-  val middle: Val[Double] = Val(height / 2.0)
+  width @= 3840.0
+  height @= 2160.0
 
   object pointer extends PointerEvents {
     private val _active: Var[Component] = Var(self)
@@ -76,9 +78,18 @@ trait Screen extends Renderable with Updatable with Container { self =>
 
   override lazy val children: Children[Component] = Children(this, List(root, fpsView))
 
-  override def render(context: RenderContext): Unit = renderables().foreach(_.render(context))
+  override def render(context: RenderContext): Unit = {
+    stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)
+    stage.getRoot.setWidth(Gdx.graphics.getWidth)
+    stage.getRoot.setHeight(Gdx.graphics.getHeight)
+//    renderables().foreach(_.render(context))
+    stage.draw()
+  }
 
-  override def update(delta: Double): Unit = updatables().foreach(_.update(delta))
+  override def update(delta: Double): Unit = {
+//    updatables().foreach(_.update(delta))
+    stage.act(delta.toFloat)
+  }
 
   private[sgine] object screenAdapter extends gdx.ScreenAdapter {
     override def show(): Unit = {
@@ -89,9 +100,14 @@ trait Screen extends Renderable with Updatable with Container { self =>
       Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
       Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-      _context.renderWith {
-        self.render(_context)
-      }
+//      _context.renderWith {
+//        self.render(_context)
+//      }
+
+      stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)
+      stage.getRoot.setWidth(Gdx.graphics.getWidth)
+      stage.getRoot.setHeight(Gdx.graphics.getHeight)
+      stage.draw()
     }
 
     override def hide(): Unit = {
