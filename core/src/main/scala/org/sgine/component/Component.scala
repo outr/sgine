@@ -1,5 +1,6 @@
 package org.sgine.component
 
+import org.sgine.Screen
 import reactify._
 
 trait Component {
@@ -19,4 +20,10 @@ trait Component {
    * Parent component for this component.
    */
   val parent: Val[Option[Component]] = _parent
+
+  lazy val screenOption: Val[Option[Screen]] = Val(parent() match {
+    case Some(s: Screen) => Some(s)
+    case Some(p: Component) => p.screenOption
+    case None => None
+  })
 }

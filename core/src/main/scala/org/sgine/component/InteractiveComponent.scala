@@ -9,7 +9,7 @@ trait InteractiveComponent extends DimensionedComponent {
   lazy val pointer: PointerEvents = new PointerEvents
 
   def hitTest(v: Vector3): Boolean = {
-    updateHitVector(v)
+//    updateHitVector(v)
     if (v.x >= 0.0f && v.x <= width.toFloat && v.y >= 0.0f && v.y <= height.toFloat) {
       true
     } else {

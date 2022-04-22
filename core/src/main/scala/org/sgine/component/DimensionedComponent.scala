@@ -1,13 +1,11 @@
 package org.sgine.component
 
-import com.badlogic.gdx.math.{Matrix4, Vector3}
-import org.sgine.render.RenderContext
 import reactify._
 
 trait DimensionedComponent extends Component {
   lazy val x: Var[Double] = Var(0.0)
   lazy val y: Var[Double] = Var(0.0)
-  lazy val z: Var[Double] = Var(0.0)
+  lazy val z: Var[Int] = Var(0)
 
   lazy val width: Var[Double] = Var(0.0)
   lazy val height: Var[Double] = Var(0.0)
@@ -24,12 +22,12 @@ trait DimensionedComponent extends Component {
   lazy val middle: Dep[Double, Double] = Dep(top)(_ + (height / 2.0), _ - (height / 2.0))
   lazy val bottom: Dep[Double, Double] = Dep(top)(_ + height, _ - height)
 
-  def depth: Var[Double] = z
+  def depth: Var[Int] = z
 
-  protected val parentDimensioned: Val[Option[DimensionedComponent]] = Val(parent().flatMap(c => parentDimensionedFor(c)))
-  protected val parentLastCalculated: Val[Long] = Val(parentDimensioned().map(_.lastCalculated()).getOrElse(0L))
+//  protected val parentDimensioned: Val[Option[DimensionedComponent]] = Val(parent().flatMap(c => parentDimensionedFor(c)))
+//  protected val parentLastCalculated: Val[Long] = Val(parentDimensioned().map(_.lastCalculated()).getOrElse(0L))
 
-  private val _lastCalculated = Var[Long](0L)
+  /*private val _lastCalculated = Var[Long](0L)
   private val _matrix4 = new Matrix4()
   private var recalculate = true
 
@@ -100,5 +98,5 @@ trait DimensionedComponent extends Component {
     v.add(-originX, -originY, 0.0f)
     v.rotate(-rotation.toFloat, 0.0f, 0.0f, 1.0f)
     v.add(originX, originY, 0.0f)
-  }
+  }*/
 }

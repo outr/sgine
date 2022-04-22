@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.ScreenViewport
-import org.sgine.component.{Children, Component, Container, FPSView, GroupContainer, InteractiveComponent, TextView, TypedContainer}
+import org.sgine.component.{Children, Component, GroupContainer, TypedContainer}
 import org.sgine.event.key.{KeyEvent, KeyState}
 import org.sgine.event.TypedEvent
 import org.sgine.event.pointer.{PointerButton, PointerDownEvent, PointerDraggedEvent, PointerEvent, PointerEvents, PointerMovedEvent, PointerUpEvent}
@@ -22,9 +22,9 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
   lazy val updatables: Val[List[Updatable]] = Val(flatChildren.collect {
     case u: Updatable => u
   })
-  lazy val interactive: Val[List[InteractiveComponent]] = Val(flatChildren.collect {
-    case ic: InteractiveComponent => ic
-  }.filter(c => c.isVisible && c.interactive).sortBy(_.depth()))
+//  lazy val interactive: Val[List[InteractiveComponent]] = Val(flatChildren.collect {
+//    case ic: InteractiveComponent => ic
+//  }.filter(c => c.isVisible && c.interactive).sortBy(_.depth()))
 
   lazy val stage = new Stage(new ScreenViewport)
   override lazy val actor: Group = stage.getRoot
@@ -40,7 +40,7 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
     moved.attach { evt =>
       _active @= evt.target
     }
-    active.changes {
+    /*active.changes {
       case (oldValue, newValue) =>
         oldValue match {
           case screen: Screen => screen.pointer._over @= false
@@ -50,7 +50,7 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
           case screen: Screen => screen.pointer._over @= true
           case ic: InteractiveComponent => ic.pointer._over @= true
         }
-    }
+    }*/
   }
 
   object input {
@@ -70,13 +70,13 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
 
   protected def root: Component
 
-  object fpsView extends FPSView {
+  /*object fpsView extends FPSView {
     visible := UI.drawFPS
     top @= 0.0
     right := self.width - 10.0
-  }
+  }*/
 
-  override lazy val children: Children[Component] = Children(this, List(root, fpsView))
+  override lazy val children: Children[Component] = Children(this, List(root)) //, fpsView))
 
   override def render(context: RenderContext): Unit = {
     stage.getViewport.setCamera(camera)
@@ -135,7 +135,7 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
 
     private def pevt(displayX: Int, displayY: Int)
                     (create: (Double, Double, Double, Double, Component, Double, Double) => PointerEvent): Unit = {
-      val percentX = displayX.toDouble / Gdx.graphics.getWidth.toDouble
+      /*val percentX = displayX.toDouble / Gdx.graphics.getWidth.toDouble
       val percentY = displayY.toDouble / Gdx.graphics.getHeight.toDouble
       val screenX = percentX * width()
       val screenY = percentY * height()
@@ -176,7 +176,7 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
               self.pointer.up @= e
           }
       }
-      Pointer.event @= evt
+      Pointer.event @= evt*/
     }
 
     override def touchDown(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {

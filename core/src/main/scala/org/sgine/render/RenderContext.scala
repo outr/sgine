@@ -67,8 +67,8 @@ class RenderContext(val screen: Screen) {
 }
 
 object RenderContext {
-  private lazy val spriteBatch: SpriteBatch = new SpriteBatch
-  private lazy val shapeDrawer: ShapeDrawer = new ShapeDrawer(spriteBatch, Texture.Pixel.ref)
+  lazy val spriteBatch: SpriteBatch = new SpriteBatch
+  lazy val shapeDrawer: ShapeDrawer = new ShapeDrawer(spriteBatch, Texture.Pixel.ref)
   lazy val fontNormal: BitmapFont = {
     val f = new BitmapFont
     f.getData.setScale(4.0f)
