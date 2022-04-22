@@ -79,10 +79,9 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
   override lazy val children: Children[Component] = Children(this, List(root, fpsView))
 
   override def render(context: RenderContext): Unit = {
-    stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)
-    stage.getRoot.setWidth(Gdx.graphics.getWidth)
-    stage.getRoot.setHeight(Gdx.graphics.getHeight)
+    stage.getViewport.setCamera(camera)
 //    renderables().foreach(_.render(context))
+    children
     stage.draw()
   }
 
@@ -100,14 +99,9 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
       Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
       Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-//      _context.renderWith {
-//        self.render(_context)
-//      }
-
-      stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)
-      stage.getRoot.setWidth(Gdx.graphics.getWidth)
-      stage.getRoot.setHeight(Gdx.graphics.getHeight)
-      stage.draw()
+      _context.renderWith {
+        self.render(_context)
+      }
     }
 
     override def hide(): Unit = {
