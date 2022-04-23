@@ -1,27 +1,32 @@
 package org.sgine
 
 import com.badlogic.gdx
-import com.badlogic.gdx.{Gdx, InputProcessor}
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
-import com.badlogic.gdx.math.Vector3
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.ScreenViewport
-import org.sgine.component.{Children, Component, GroupContainer, TypedContainer}
+import org.sgine.component.{Children, Component, GroupContainer, InteractiveComponent, TypedContainer}
 import org.sgine.event.key.{KeyEvent, KeyState}
-import org.sgine.event.TypedEvent
+import org.sgine.event.{InputProcessor, TypedEvent}
 import org.sgine.event.pointer.{PointerButton, PointerDownEvent, PointerDraggedEvent, PointerEvent, PointerEvents, PointerMovedEvent, PointerUpEvent}
 import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
 import reactify._
 
-trait Screen extends Renderable with Updatable with GroupContainer { self =>
-  lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(children: _*))
-  lazy val renderables: Val[List[Renderable]] = Val(flatChildren.collect {
-    case r: Renderable => r
-  }.filter(_.shouldRender).sorted(Renderable.ordering))
-  lazy val updatables: Val[List[Updatable]] = Val(flatChildren.collect {
-    case u: Updatable => u
-  })
+trait Screen extends Renderable with Updatable with GroupContainer with InteractiveComponent { self =>
+  /**
+   * The `Component` at the current cursor position. If nothing else is at the cursor position the `Screen` will be
+   * returned.
+   */
+  val atCursor: Var[InteractiveComponent] = Var[InteractiveComponent](self)
+
+//  lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(children: _*))
+//  lazy val renderables: Val[List[Renderable]] = Val(flatChildren.collect {
+//    case r: Renderable => r
+//  }.filter(_.shouldRender).sorted(Renderable.ordering))
+//  lazy val updatables: Val[List[Updatable]] = Val(flatChildren.collect {
+//    case u: Updatable => u
+//  })
 //  lazy val interactive: Val[List[InteractiveComponent]] = Val(flatChildren.collect {
 //    case ic: InteractiveComponent => ic
 //  }.filter(c => c.isVisible && c.interactive).sortBy(_.depth()))
@@ -32,26 +37,7 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
   width @= 3840.0
   height @= 2160.0
 
-  object pointer extends PointerEvents {
-    private val _active: Var[Component] = Var(self)
-
-    def active: Val[Component] = _active
-
-    moved.attach { evt =>
-      _active @= evt.target
-    }
-    /*active.changes {
-      case (oldValue, newValue) =>
-        oldValue match {
-          case screen: Screen => screen.pointer._over @= false
-          case ic: InteractiveComponent => ic.pointer._over @= false
-        }
-        newValue match {
-          case screen: Screen => screen.pointer._over @= true
-          case ic: InteractiveComponent => ic.pointer._over @= true
-        }
-    }*/
-  }
+  override lazy val pointer: ScreenPointerEvents = new ScreenPointerEvents
 
   object input {
     val keyDown: Channel[KeyEvent] = Channel[KeyEvent]
@@ -81,6 +67,17 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
   override def render(context: RenderContext): Unit = {
     stage.getViewport.setCamera(camera)
 //    renderables().foreach(_.render(context))
+
+    // TODO: Fix resizing bugs
+    //Size: 1728x966 / 1728.0x966.0
+//    scribe.info(s"Size: ${stage.getViewport.getScreenWidth}x${stage.getViewport.getScreenHeight} / ${stage.getViewport.getWorldWidth}x${stage.getViewport.getWorldHeight}")
+//    self.width @= width.toDouble
+//    self.height @= height.toDouble
+//    stage.getViewport.update(width.toInt, height.toInt, true)
+//    stage.getRoot.setWidth(width.toFloat)
+//    stage.getRoot.setHeight(height.toFloat)
+//    stage.getRoot.setWidth(Gdx.graphics.getWidth)
+//    stage.getRoot.setHeight(Gdx.graphics.getHeight)
     children
     stage.draw()
   }
@@ -104,157 +101,35 @@ trait Screen extends Renderable with Updatable with GroupContainer { self =>
       }
     }
 
+    override def resize(width: Int, height: Int): Unit = {
+
+    }
+
     override def hide(): Unit = {
       Gdx.input.setInputProcessor(null)
     }
   }
 
-  private object inputProcessor extends InputProcessor {
-    override def keyDown(keyCode: Int): Boolean = {
-      val evt = KeyEvent(KeyState.Down, Key(keyCode), self)
-      input.keyDown @= evt
-      Keyboard.keyDown @= evt
-      true
+  private val inputProcessor = new InputProcessor(this)
+
+  class ScreenPointerEvents extends PointerEvents {
+    private val _active: Var[Component] = Var(self)
+
+    def active: Val[Component] = _active
+
+    moved.attach { evt =>
+      _active @= evt.target
     }
-
-    override def keyUp(keyCode: Int): Boolean = {
-      val evt = KeyEvent(KeyState.Up, Key(keyCode), self)
-      input.keyUp @= evt
-      Keyboard.keyUp @= evt
-      true
-    }
-
-    override def keyTyped(character: Char): Boolean = {
-      val evt = TypedEvent(character, self)
-      input.typed @= evt
-      Keyboard.typed @= evt
-      true
-    }
-
-    private lazy val v3 = new Vector3
-
-    private def pevt(displayX: Int, displayY: Int)
-                    (create: (Double, Double, Double, Double, Component, Double, Double) => PointerEvent): Unit = {
-      /*val percentX = displayX.toDouble / Gdx.graphics.getWidth.toDouble
-      val percentY = displayY.toDouble / Gdx.graphics.getHeight.toDouble
-      val screenX = percentX * width()
-      val screenY = percentY * height()
-      def doHitTest(ic: InteractiveComponent): Boolean = {
-        v3.set(screenX.toFloat, screenY.toFloat, 0.0f)
-        ic.hitTest(v3)
-      }
-      val evt = interactive.reverse.collectFirst {
-        case ic if doHitTest(ic) => create(screenX, screenY, percentX, percentY, ic, v3.x, v3.y)
-      }.getOrElse(create(screenX, screenY, percentX, percentY, self, screenX, screenY))
-      evt match {
-        case e: PointerDownEvent =>
-          e.target match {
-            case s: Screen => s.pointer.down @= e
-            case ic: InteractiveComponent =>
-              ic.pointer.down @= e
-              self.pointer.down @= e
-          }
-        case e: PointerDraggedEvent =>
-          e.target match {
-            case s: Screen => s.pointer.dragged @= e
-            case ic: InteractiveComponent =>
-              ic.pointer.dragged @= e
-              self.pointer.dragged @= e
-          }
-        case e: PointerMovedEvent =>
-          e.target match {
-            case s: Screen => s.pointer.moved @= e
-            case ic: InteractiveComponent =>
-              ic.pointer.moved @= e
-              self.pointer.moved @= e
-          }
-        case e: PointerUpEvent =>
-          e.target match {
-            case s: Screen => s.pointer.up @= e
-            case ic: InteractiveComponent =>
-              ic.pointer.up @= e
-              self.pointer.up @= e
-          }
-      }
-      Pointer.event @= evt*/
-    }
-
-    override def touchDown(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {
-      pevt(displayX, displayY) {
-        case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerDownEvent(
-          displayX = displayX,
-          displayY = displayY,
-          screenX = screenX,
-          screenY = screenY,
-          percentX = percentX,
-          percentY = percentY,
-          target = target,
-          targetX = targetX,
-          targetY = targetY,
-          pointer = pointer,
-          button = PointerButton(button)
-        )
-      }
-      true
-    }
-
-    override def touchUp(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {
-      pevt(displayX, displayY) {
-        case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerUpEvent(
-          displayX = displayX,
-          displayY = displayY,
-          screenX = screenX,
-          screenY = screenY,
-          percentX = percentX,
-          percentY = percentY,
-          target = target,
-          targetX = targetX,
-          targetY = targetY,
-          pointer = pointer,
-          button = PointerButton(button)
-        )
-      }
-      true
-    }
-
-    override def touchDragged(displayX: Int, displayY: Int, pointer: Int): Boolean = {
-      pevt(displayX, displayY) {
-        case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerDraggedEvent(
-          displayX = displayX,
-          displayY = displayY,
-          screenX = screenX,
-          screenY = screenY,
-          percentX = percentX,
-          percentY = percentY,
-          target = target,
-          targetX = targetX,
-          targetY = targetY,
-          pointer = pointer
-        )
-      }
-      true
-    }
-
-    override def mouseMoved(displayX: Int, displayY: Int): Boolean = {
-      pevt(displayX, displayY) {
-        case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerMovedEvent(
-          displayX = displayX,
-          displayY = displayY,
-          screenX = screenX,
-          screenY = screenY,
-          percentX = percentX,
-          percentY = percentY,
-          target = target,
-          targetX = targetX,
-          targetY = targetY
-        )
-      }
-      true
-    }
-
-    override def scrolled(amountX: Float, amountY: Float): Boolean = {
-      // TODO: Support
-      true
+    active.changes {
+      case (oldValue, newValue) =>
+        oldValue match {
+          case screen: Screen => screen.pointer._over @= false
+          case ic: InteractiveComponent => ic.pointer._over @= false
+        }
+        newValue match {
+          case screen: Screen => screen.pointer._over @= true
+          case ic: InteractiveComponent => ic.pointer._over @= true
+        }
     }
   }
 }
