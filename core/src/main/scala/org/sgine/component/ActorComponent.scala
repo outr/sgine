@@ -1,10 +1,9 @@
 package org.sgine.component
 
-import com.badlogic.gdx.scenes.scene2d.Actor
+import com.badlogic.gdx.scenes.scene2d.{Actor, Touchable}
 import com.badlogic.gdx.utils.Align
 import org.sgine.{Color, Screen}
 import org.sgine.task.TaskSupport
-import org.sgine.update.Updatable
 import reactify.{Channel, Val, Var}
 
 import scala.annotation.tailrec
@@ -38,6 +37,12 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
     actor.setScaleX(scaleX.toFloat)
     actor.setScaleY(scaleY.toFloat)
     actor.setColor(color.gdx)
+    val touchable = if (visible && isInstanceOf[InteractiveComponent]) {
+      Touchable.enabled
+    } else {
+      Touchable.disabled
+    }
+    actor.setTouchable(touchable)
   }
 
   x.and(y).and(width).and(height).and(rotation).and(scaleX).and(scaleY).on(validateDimensions @= true)

@@ -10,5 +10,7 @@ object HelloSgine extends Example {
     middle @= screen.middle
 
     color := (if (pointer.over) Color.Red else Color.White)
+
+    override def toString: String = "logo"
   }
 }

@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.{Image => GDXImage}
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.badlogic.gdx.utils.Scaling
 
-class Image extends ActorComponent[GDXImage] {
+class Image extends ActorComponent[GDXImage] { component =>
   val texture: Var[Texture] = Var(Texture.Pixel)
 
   def this(path: String) = {
@@ -24,6 +24,7 @@ class Image extends ActorComponent[GDXImage] {
 
   override lazy val actor: GDXImage = new GDXImage {
     setScaling(Scaling.stretch)
+    setUserObject(component)
 
     override def draw(batch: Batch, parentAlpha: Float): Unit = {
       render @= Gdx.graphics.getDeltaTime.toDouble
