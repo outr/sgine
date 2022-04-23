@@ -5,31 +5,20 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.ScreenViewport
-import org.sgine.component.{Children, Component, GroupContainer, InteractiveComponent, TypedContainer}
-import org.sgine.event.key.{KeyEvent, KeyState}
+import org.sgine.component.{Children, Component, InteractiveComponent, TypedContainer}
+import org.sgine.event.key.KeyEvent
 import org.sgine.event.{InputProcessor, TypedEvent}
-import org.sgine.event.pointer.{PointerButton, PointerDownEvent, PointerDraggedEvent, PointerEvent, PointerEvents, PointerMovedEvent, PointerUpEvent}
+import org.sgine.event.pointer.PointerEvents
 import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
 import reactify._
 
-trait Screen extends Renderable with Updatable with GroupContainer with InteractiveComponent { self =>
+trait Screen extends Renderable with Updatable with TypedContainer[Component] with InteractiveComponent { self =>
   /**
    * The `Component` at the current cursor position. If nothing else is at the cursor position the `Screen` will be
    * returned.
    */
   val atCursor: Var[InteractiveComponent] = Var[InteractiveComponent](self)
-
-//  lazy val flatChildren: Val[List[Component]] = Val(TypedContainer.flatChildren(children: _*))
-//  lazy val renderables: Val[List[Renderable]] = Val(flatChildren.collect {
-//    case r: Renderable => r
-//  }.filter(_.shouldRender).sorted(Renderable.ordering))
-//  lazy val updatables: Val[List[Updatable]] = Val(flatChildren.collect {
-//    case u: Updatable => u
-//  })
-//  lazy val interactive: Val[List[InteractiveComponent]] = Val(flatChildren.collect {
-//    case ic: InteractiveComponent => ic
-//  }.filter(c => c.isVisible && c.interactive).sortBy(_.depth()))
 
   lazy val stage = new Stage(new ScreenViewport)
   override lazy val actor: Group = stage.getRoot

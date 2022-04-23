@@ -24,6 +24,19 @@ trait DimensionedComponent extends Component {
 
   def depth: Var[Int] = z
 
+  this match {
+    case c: TypedContainer[_] =>
+      width := c.children().foldLeft(0.0)((max, child) => child match {
+        case dc: DimensionedComponent => math.max(max, dc.x + dc.width)
+        case _ => max
+      })
+      height := c.children().foldLeft(0.0)((max, child) => child match {
+        case dc: DimensionedComponent => math.max(max, dc.y + dc.height)
+        case _ => max
+      })
+    case _ => // Ignore
+  }
+
 //  protected val parentDimensioned: Val[Option[DimensionedComponent]] = Val(parent().flatMap(c => parentDimensionedFor(c)))
 //  protected val parentLastCalculated: Val[Long] = Val(parentDimensioned().map(_.lastCalculated()).getOrElse(0L))
 
@@ -44,19 +57,6 @@ trait DimensionedComponent extends Component {
   parentLastCalculated.on {
     recalculate = true
     _lastCalculated @= System.currentTimeMillis()
-  }
-
-  this match {
-    case c: TypedContainer[_] =>
-      width := c.children().foldLeft(0.0)((max, child) => child match {
-        case dc: DimensionedComponent => math.max(max, dc.x + dc.width)
-        case _ => max
-      })
-      height := c.children().foldLeft(0.0)((max, child) => child match {
-        case dc: DimensionedComponent => math.max(max, dc.y + dc.height)
-        case _ => max
-      })
-    case _ => // Ignore
   }
 
   protected[sgine] def matrix4(context: RenderContext, main: Boolean = true): Matrix4 = {

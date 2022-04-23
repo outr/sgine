@@ -4,14 +4,11 @@ import com.badlogic.gdx.scenes.scene2d.{Actor, Touchable}
 import com.badlogic.gdx.utils.Align
 import org.sgine.{Color, Screen}
 import org.sgine.task.TaskSupport
-import reactify.{Channel, Val, Var}
-
-import scala.annotation.tailrec
+import reactify.{Channel, Var}
 
 trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   val color: Var[Color] = Var(Color.White)
 
-  lazy val parentGroup: Val[Option[GroupContainer]] = Val(findParentGroup(parent))
   lazy val render: Channel[Double] = Channel[Double]
 
   lazy val validateDimensions: Var[Boolean] = Var(true)
@@ -26,9 +23,14 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   }
 
   protected def updateDimensions(screen: Screen): Unit = {
-    val y = (-this.y.toFloat + screen.height - height).toFloat
+    val parentHeight = parent().map {
+      case dc: DimensionedComponent => dc.height()
+      case _ => screen.height()
+    }.getOrElse(screen.height())
+    val y = (-this.y.toFloat + parentHeight - height).toFloat
     actor.setX(x.toFloat)
     actor.setY(y)
+    scribe.info(s"Setting y: $y, ${this.y()}, screenHeight: ${screen.height}, height: ${height()}, parentHeight: $parentHeight for $this")
     actor.setZIndex(z())
     actor.setWidth(width.toFloat)
     actor.setHeight(height.toFloat)
@@ -49,21 +51,14 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   z.on(validateDimensions @= true)
   color.on(validateDimensions @= true)
 
-  parentGroup.changes {
+  parent.changes {
     case (oldValue, newValue) =>
-      oldValue.foreach { pg =>
-        pg.actor.removeActor(actor)
+      oldValue.foreach {
+        case p: TypedContainer[_] => p.actor.removeActor(actor)
       }
-      newValue.foreach { pg =>
-        pg.actor.addActor(actor)
+      newValue.foreach {
+        case p: TypedContainer[_] => p.actor.addActor(actor)
       }
-  }
-
-  @tailrec
-  private def findParentGroup(parent: Option[Component]): Option[GroupContainer] = parent match {
-    case None => None
-    case Some(gc: GroupContainer) => Some(gc)
-    case Some(p) => findParentGroup(p.parent())
   }
 
   def actor: A
