@@ -30,7 +30,6 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
     val y = (-this.y.toFloat + parentHeight - height).toFloat
     actor.setX(x.toFloat)
     actor.setY(y)
-    scribe.info(s"Setting y: $y, ${this.y()}, screenHeight: ${screen.height}, height: ${height()}, parentHeight: $parentHeight for $this")
     actor.setZIndex(z())
     actor.setWidth(width.toFloat)
     actor.setHeight(height.toFloat)
