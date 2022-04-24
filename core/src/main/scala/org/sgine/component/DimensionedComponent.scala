@@ -1,5 +1,6 @@
 package org.sgine.component
 
+import org.sgine.Screen
 import reactify._
 
 trait DimensionedComponent extends Component {
@@ -28,13 +29,12 @@ trait DimensionedComponent extends Component {
     super.init()
 
     this match {
+      case _: Screen => // Ignore Screen
       case c: TypedContainer[_] =>
         width := c.children().foldLeft(0.0)((max, child) => child match {
           case dc: DimensionedComponent => math.max(max, dc.x + dc.width)
           case _ => max
         })
-        scribe.info(s"C? $c")
-        scribe.info(s"Children? ${c.children()}")
         height := c.children().foldLeft(0.0)((max, child) => child match {
           case dc: DimensionedComponent => math.max(max, dc.y + dc.height)
           case _ => max

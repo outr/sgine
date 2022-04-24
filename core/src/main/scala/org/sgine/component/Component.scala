@@ -14,9 +14,7 @@ trait Component {
 
   def initialized: Val[Boolean] = _initialized
 
-  protected def init(): Unit = {
-    scribe.info(s"Initializing $this")
-  }
+  protected def init(): Unit = {}
 
   protected def verifyInit(): Unit = if (!initialized) {
     _initialized @= true

@@ -4,6 +4,8 @@ import org.sgine.component.{Component, DimensionedComponent, Image, InteractiveC
 import org.sgine.task._
 import reactify._
 
+import scala.concurrent.duration.DurationInt
+
 object ContainerExample extends Example with TaskSupport {
   private lazy val crate1 = new Image("crate.jpg") {
     override def toString: String = "crate1"
@@ -16,20 +18,27 @@ object ContainerExample extends Example with TaskSupport {
   }
   private lazy val container = new MutableContainer[Component] with DimensionedComponent with InteractiveComponent {
     private var index = 0
+    private val time = 250.millis
     private val actions = Vector(
       () => {
-        center := screen.center
-        middle := screen.middle
-        rotation @= 0.0
+        parallel(
+          center to screen.center in time,
+          middle to screen.middle in time,
+          rotation to 0.0 in time
+        ).start
       },
       () => {
-        right := screen.width
-        bottom := screen.height
+        parallel(
+          right to screen.width in time,
+          bottom to screen.height in time
+        ).start
       },
       () => {
-        center := screen.center
-        middle := screen.middle
-        rotation @= 45.0
+        parallel(
+          center to screen.center in time,
+          middle to screen.middle in time,
+          rotation to 135.0 in time
+        ).start
       }
     )
 
