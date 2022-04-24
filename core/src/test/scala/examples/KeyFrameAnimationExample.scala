@@ -1,7 +1,7 @@
 package examples
 
 import org.sgine.component.{KeyFrameAnimationView, Component}
-import org.sgine.texture.Texture
+import org.sgine.drawable.Texture
 import perfolation._
 import reactify._
 

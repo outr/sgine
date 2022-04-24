@@ -3,7 +3,7 @@ package org.sgine.render
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.{BitmapFont, GlyphLayout, NinePatch, SpriteBatch}
 import com.badlogic.gdx.math.Matrix4
-import org.sgine.texture.Texture
+import org.sgine.drawable.Texture
 import org.sgine.{Color, Screen}
 import space.earlygrey.shapedrawer.{JoinType, ShapeDrawer}
 

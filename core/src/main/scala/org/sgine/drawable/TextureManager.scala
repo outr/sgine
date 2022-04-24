@@ -1,4 +1,4 @@
-package org.sgine.texture
+package org.sgine.drawable
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.TextureAtlas

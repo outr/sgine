@@ -2,24 +2,22 @@ package org.sgine.component
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.Batch
-import org.sgine.Color
-import org.sgine.texture.Texture
 import reactify._
 import com.badlogic.gdx.scenes.scene2d.ui.{Image => GDXImage}
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 import com.badlogic.gdx.utils.Scaling
+import org.sgine.drawable.{Drawable, Texture}
 
 class Image extends ActorComponent[GDXImage] { component =>
-  val texture: Var[Texture] = Var(Texture.Pixel)
+  val drawable: Var[Drawable] = Var(Texture.Pixel)
 
   def this(path: String) = {
     this()
-    texture @= Texture.internal(path)
+    drawable @= Texture.internal(path)
   }
 
-  def this(texture: Texture) = {
+  def this(drawable: Drawable) = {
     this()
-    this.texture @= texture
+    this.drawable @= drawable
   }
 
   override lazy val actor: GDXImage = new GDXImage {
@@ -37,9 +35,9 @@ class Image extends ActorComponent[GDXImage] { component =>
     }
   }
 
-  texture.attachAndFire { texture =>
-    actor.setDrawable(new TextureRegionDrawable(texture.ref))
-    width := texture.scaledWidth * scaleX
-    height := texture.scaledHeight * scaleY
+  drawable.attachAndFire { drawable =>
+    actor.setDrawable(drawable.gdx)
+    width := drawable.scaledWidth * scaleX
+    height := drawable.scaledHeight * scaleY
   }
 }

@@ -6,6 +6,8 @@ import org.sgine.{Color, Screen}
 import org.sgine.task.TaskSupport
 import reactify.{Channel, Var}
 
+import scala.util.Try
+
 trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   val color: Var[Color] = Var(Color.White)
 
@@ -17,8 +19,12 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
     if (validateDimensions()) {
       validateDimensions @= false
 
-      val screen = screenOption().getOrElse(throw new RuntimeException("Screen not found"))
-      updateDimensions(screen)
+      Try {
+        val screen = screenOption().getOrElse(throw new RuntimeException("Screen not found"))
+        updateDimensions(screen)
+      }.failed.foreach { t =>
+        scribe.error(s"Updating dimensions failed for $this", t)
+      }
     }
   }
 

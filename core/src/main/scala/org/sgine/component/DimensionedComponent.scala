@@ -24,17 +24,23 @@ trait DimensionedComponent extends Component {
 
   def depth: Var[Int] = z
 
-  this match {
-    case c: TypedContainer[_] =>
-      width := c.children().foldLeft(0.0)((max, child) => child match {
-        case dc: DimensionedComponent => math.max(max, dc.x + dc.width)
-        case _ => max
-      })
-      height := c.children().foldLeft(0.0)((max, child) => child match {
-        case dc: DimensionedComponent => math.max(max, dc.y + dc.height)
-        case _ => max
-      })
-    case _ => // Ignore
+  override protected def init(): Unit = {
+    super.init()
+
+    this match {
+      case c: TypedContainer[_] =>
+        width := c.children().foldLeft(0.0)((max, child) => child match {
+          case dc: DimensionedComponent => math.max(max, dc.x + dc.width)
+          case _ => max
+        })
+        scribe.info(s"C? $c")
+        scribe.info(s"Children? ${c.children()}")
+        height := c.children().foldLeft(0.0)((max, child) => child match {
+          case dc: DimensionedComponent => math.max(max, dc.y + dc.height)
+          case _ => max
+        })
+      case _ => // Ignore
+    }
   }
 
 //  protected val parentDimensioned: Val[Option[DimensionedComponent]] = Val(parent().flatMap(c => parentDimensionedFor(c)))

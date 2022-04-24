@@ -2,7 +2,7 @@
 //
 //import com.badlogic.gdx.graphics.Color
 //import org.sgine.component.{Children, Component, Container}
-//import org.sgine.texture.Texture
+//import org.sgine.drawable.Texture
 //import reactify._
 //
 //abstract class TiledTextureComponent(val texture: Texture, overflow: Boolean) extends Container {

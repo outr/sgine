@@ -25,7 +25,7 @@ class Label extends ActorComponent[GDXLabel] { component =>
   width := preferred.width
   height := preferred.height
 
-  override lazy val actor: GDXLabel = new GDXLabel(text(), new LabelStyle(font(), color().gdx)) {
+  override val actor: GDXLabel = new GDXLabel(text(), new LabelStyle(font(), color().gdx)) {
     setUserObject(component)
 
     override def draw(batch: Batch, parentAlpha: Float): Unit = {

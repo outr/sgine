@@ -13,5 +13,4 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 
 ## TODO 2.0
 - Test with MT
-- Test container position change effects on children
-- Propagate Z index to children
+- Fix window resizing

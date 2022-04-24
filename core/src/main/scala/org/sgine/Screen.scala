@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.ScreenViewport
-import org.sgine.component.{Children, Component, InteractiveComponent, TypedContainer}
+import org.sgine.component.{Children, Component, FPSView, InteractiveComponent, TypedContainer}
 import org.sgine.event.key.KeyEvent
 import org.sgine.event.{InputProcessor, TypedEvent}
 import org.sgine.event.pointer.PointerEvents
@@ -45,13 +45,13 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
 
   protected def root: Component
 
-  /*object fpsView extends FPSView {
+  object fpsView extends FPSView {
     visible := UI.drawFPS
     top @= 0.0
     right := self.width - 10.0
-  }*/
+  }
 
-  override lazy val children: Children[Component] = Children(this, List(root)) //, fpsView))
+  override lazy val children: Children[Component] = Children(this, List(root, fpsView))
 
   override def render(context: RenderContext): Unit = {
     stage.getViewport.setCamera(camera)
