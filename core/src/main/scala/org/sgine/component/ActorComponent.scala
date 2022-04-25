@@ -4,7 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.{Actor, Touchable}
 import com.badlogic.gdx.utils.Align
 import org.sgine.{Color, Screen}
 import org.sgine.task.TaskSupport
-import reactify.{Channel, Var}
+import reactify._
 
 import scala.util.Try
 
