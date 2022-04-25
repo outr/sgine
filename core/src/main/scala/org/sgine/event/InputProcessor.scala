@@ -77,9 +77,9 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
 
     val touchable: Boolean = true
     Option(screen.stage.hit(screenX.toFloat, screenY.toFloat, touchable))
-      .flatMap(actor => {
+      .flatMap(actor =>
         Option(findTouchable(actor).getUserObject.asInstanceOf[ActorComponent[Actor] with InteractiveComponent])
-      }) match {
+      ) match {
       case Some(widget) =>
         if (atCursor != widget) {
           screen.atCursor := widget

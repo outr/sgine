@@ -1,6 +1,6 @@
 package examples
 
-import org.sgine.Color
+import org.sgine.{Color, Pointer, UI}
 import org.sgine.component.{Component, Container, Image, InteractiveComponent}
 import org.sgine.drawable.{Scale9, Texture}
 import reactify._

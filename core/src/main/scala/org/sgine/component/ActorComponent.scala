@@ -15,6 +15,15 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
 
   lazy val validateDimensions: Var[Boolean] = Var(true)
 
+  /**
+    * Update on render
+    */
+  protected def uor[T](v: Var[T])(f: T => Unit): Unit = v.attach { t =>
+    render.once { _ =>
+      f(t)
+    }
+  }
+
   render.on {
     if (validateDimensions()) {
       validateDimensions @= false
@@ -28,6 +37,22 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
     }
   }
 
+  uor(rotation) { r =>
+    actor.setRotation(-r.toFloat)
+  }
+  uor(z) { z =>
+    actor.setZIndex(z)
+  }
+  uor(scaleX) { s =>
+    actor.setScaleX(s.toFloat)
+  }
+  uor(scaleY) { s =>
+    actor.setScaleY(s.toFloat)
+  }
+  uor(color) { c =>
+    actor.setColor(c.gdx)
+  }
+
   protected def updateDimensions(screen: Screen): Unit = {
     val parentHeight = parent().map {
       case dc: DimensionedComponent => dc.height()
@@ -36,14 +61,9 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
     val y = (-this.y.toFloat + parentHeight - height).toFloat
     actor.setX(x.toFloat)
     actor.setY(y)
-    actor.setZIndex(z())
     actor.setWidth(width.toFloat)
     actor.setHeight(height.toFloat)
-    actor.setRotation(-rotation.toFloat)
     actor.setOrigin(Align.center)
-    actor.setScaleX(scaleX.toFloat)
-    actor.setScaleY(scaleY.toFloat)
-    actor.setColor(color.gdx)
     val touchable = if (visible && isInstanceOf[InteractiveComponent]) {
       Touchable.enabled
     } else {
@@ -52,9 +72,7 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
     actor.setTouchable(touchable)
   }
 
-  x.and(y).and(width).and(height).and(rotation).and(scaleX).and(scaleY).on(validateDimensions @= true)
-  z.on(validateDimensions @= true)
-  color.on(validateDimensions @= true)
+  x.and(y).and(width).and(height).on(validateDimensions @= true)
 
   parent.changes {
     case (oldValue, newValue) =>
@@ -62,7 +80,8 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
         case p: TypedContainer[_] => p.actor.removeActor(actor)
       }
       newValue.foreach {
-        case p: TypedContainer[_] => p.actor.addActor(actor)
+        case p: TypedContainer[_] =>
+          p.actor.addActor(actor)
       }
   }
 

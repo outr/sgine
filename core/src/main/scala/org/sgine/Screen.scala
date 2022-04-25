@@ -51,7 +51,7 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
     right := self.width - 10.0
   }
 
-  override lazy val children: Children[Component] = Children(this, List(root, fpsView))
+  override lazy val children: Children[Component] = Children(this, Vector(root, fpsView))
 
   override def render(context: RenderContext): Unit = {
     stage.getViewport.setCamera(camera)

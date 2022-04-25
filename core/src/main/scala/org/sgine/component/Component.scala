@@ -41,4 +41,6 @@ trait Component {
     case Some(_) => verifyInit()
     case None => // Not yet fully added to DOM
   }
+
+  override def toString: String = getClass.getName
 }

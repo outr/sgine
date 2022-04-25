@@ -9,6 +9,4 @@ trait Drawable {
   def scaleX: Double
   def scaleY: Double
   def rotation: Double
-  def scaledWidth: Double = width * scaleX
-  def scaledHeight: Double = height * scaleY
 }

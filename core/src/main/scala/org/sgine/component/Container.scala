@@ -6,11 +6,11 @@ trait Container extends TypedContainer[Component] {
 
 object Container {
   def apply(children: Component*): Container = {
-    val list = children.toList
+    val vector = children.toVector
     val container = new Container { self =>
-      override val children: Children[Component] = Children(self, list)
+      override val children: Children[Component] = Children(self, vector)
     }
-    list.foreach { child =>
+    vector.foreach { child =>
       child._parent @= Some(container)
     }
     container

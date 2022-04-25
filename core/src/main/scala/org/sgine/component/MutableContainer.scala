@@ -8,7 +8,7 @@ class MutableContainer[Child <: Component] extends TypedContainer[Child] { self 
     this.children.addAll(children: _*)
   }
 
-  override object children extends Var[List[Child]](Nil) with Children[Child] {
+  override object children extends Var[Vector[Child]](Vector.empty) with Children[Child] {
     override protected def container: Component = self
 
     def +=(child: Child): Unit = add(child)
@@ -20,10 +20,10 @@ class MutableContainer[Child <: Component] extends TypedContainer[Child] { self 
       child
     }
 
-    def addAll(children: Child*): List[Child] = {
-      val list = children.toList
-      this @= get ::: list
-      list
+    def addAll(children: Child*): Vector[Child] = {
+      val vector = children.toVector
+      this @= (get ++ vector)
+      vector
     }
 
     def remove(child: Child): Child = {
