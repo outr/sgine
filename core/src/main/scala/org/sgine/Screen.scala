@@ -70,7 +70,7 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
     }
 
     override def resize(width: Int, height: Int): Unit = {
-      stage.getViewport.update(width, height)
+      stage.getViewport.update(width, height, true)
     }
 
     override def hide(): Unit = {
