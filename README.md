@@ -14,3 +14,8 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 ## TODO 2.0
 - Test with MT
 - Fix window resizing
+- Add task "to" support for `Animatable[T]`
+  - Support Double
+  - Support Color
+  - Support String
+    - Cypher (increments character codes)

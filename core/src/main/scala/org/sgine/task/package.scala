@@ -10,11 +10,31 @@ package object task {
   implicit def future2Task[R](future: => Future[R]): Task = FutureTask[R](future)
   implicit def f2Task(f: => Unit): Task = Action(f)
 
-  implicit class StateChannelWorkflowDouble(state: Stateful[Double] with Mutable[Double]) {
-    def to(destination: => Double): PartialAnimate = PartialAnimate(
+  implicit object DoubleAnimatable extends Animatable[Double] {
+    override def valueAt(start: Double, end: Double, position: Double): Double = {
+      start + ((end - start) * position)
+    }
+  }
+
+  implicit object ColorAnimate extends Animatable[Color] {
+    override def valueAt(start: Color, end: Color, position: Double): Color = {
+      def v(start: Double, end: Double): Double =
+        math.max(0.0, math.min(1.0, DoubleAnimatable.valueAt(start, end, position)))
+
+      val red = v(start.red, end.red)
+      val green = v(start.green, end.green)
+      val blue = v(start.blue, end.blue)
+      val alpha = v(start.alpha, end.alpha)
+      Color.fromRGBA(red, green, blue, alpha)
+    }
+  }
+
+  implicit class StateChannelWorkflowAnimatable[T](state: Stateful[T] with Mutable[T]) {
+    def to(destination: => T)(implicit animatable: Animatable[T]) = PartialAnimate[T](
       get = () => state(),
-      apply = (d: Double) => state := d,
-      destination = () => destination
+      apply = (t: T) => state := t,
+      destination = () => destination,
+      animatable
     )
   }
 
