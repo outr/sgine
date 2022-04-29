@@ -4,7 +4,7 @@ import com.badlogic.gdx
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
-import com.badlogic.gdx.utils.viewport.ScreenViewport
+import com.badlogic.gdx.utils.viewport.{FitViewport, ScreenViewport}
 import org.sgine.component.{Children, Component, FPSView, InteractiveComponent, TypedContainer}
 import org.sgine.event.key.KeyEvent
 import org.sgine.event.{InputProcessor, TypedEvent}
@@ -20,7 +20,7 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
    */
   val atCursor: Var[InteractiveComponent] = Var[InteractiveComponent](self)
 
-  lazy val stage = new Stage(new ScreenViewport)
+  lazy val stage = new Stage(new FitViewport(3840.0f, 2160.0f))
   override lazy val actor: Group = stage.getRoot
 
   width @= 3840.0
@@ -32,13 +32,6 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
     val keyDown: Channel[KeyEvent] = Channel[KeyEvent]
     val keyUp: Channel[KeyEvent] = Channel[KeyEvent]
     val typed: Channel[TypedEvent] = Channel[TypedEvent]
-  }
-
-  protected[sgine] lazy val camera: Camera = {
-    val c = new OrthographicCamera
-    c.setToOrtho(false, width().toFloat, height().toFloat)
-    c.update()
-    c
   }
 
   private lazy val _context = new RenderContext(this)
@@ -54,25 +47,11 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
   override lazy val children: Children[Component] = Children(this, Vector(root, fpsView))
 
   override def render(context: RenderContext): Unit = {
-    stage.getViewport.setCamera(camera)
-//    renderables().foreach(_.render(context))
-
-    // TODO: Fix resizing bugs
-    //Size: 1728x966 / 1728.0x966.0
-//    scribe.info(s"Size: ${stage.getViewport.getScreenWidth}x${stage.getViewport.getScreenHeight} / ${stage.getViewport.getWorldWidth}x${stage.getViewport.getWorldHeight}")
-//    self.width @= width.toDouble
-//    self.height @= height.toDouble
-//    stage.getViewport.update(width.toInt, height.toInt, true)
-//    stage.getRoot.setWidth(width.toFloat)
-//    stage.getRoot.setHeight(height.toFloat)
-//    stage.getRoot.setWidth(Gdx.graphics.getWidth)
-//    stage.getRoot.setHeight(Gdx.graphics.getHeight)
     children
     stage.draw()
   }
 
   override def update(delta: Double): Unit = {
-//    updatables().foreach(_.update(delta))
     stage.act(delta.toFloat)
   }
 
@@ -91,7 +70,7 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
     }
 
     override def resize(width: Int, height: Int): Unit = {
-
+      stage.getViewport.update(width, height)
     }
 
     override def hide(): Unit = {

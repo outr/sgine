@@ -17,7 +17,7 @@ class RenderContext(val screen: Screen) {
   def renderWith[Return](f: => Return): Return = {
     spriteBatch.begin()
     try {
-      spriteBatch.setProjectionMatrix(screen.camera.combined)
+//      spriteBatch.setProjectionMatrix(screen.stage.getCamera.combined)
       shapeDrawer.update()
       _delta = Gdx.graphics.getDeltaTime.toDouble
       f
