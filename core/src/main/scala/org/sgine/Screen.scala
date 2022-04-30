@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.{FitViewport, ScreenViewport}
 import org.sgine.component.{Children, Component, FPSView, InteractiveComponent, TypedContainer}
-import org.sgine.event.key.KeyEvent
+import org.sgine.event.key.{KeyChannel, KeyEvent, KeyInput}
 import org.sgine.event.{InputProcessor, TypedEvent}
 import org.sgine.event.pointer.PointerEvents
 import org.sgine.render.{RenderContext, Renderable}
@@ -34,11 +34,7 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
 
   override lazy val pointer: ScreenPointerEvents = new ScreenPointerEvents
 
-  object input {
-    val keyDown: Channel[KeyEvent] = Channel[KeyEvent]
-    val keyUp: Channel[KeyEvent] = Channel[KeyEvent]
-    val typed: Channel[TypedEvent] = Channel[TypedEvent]
-  }
+  lazy val input = new KeyInput
 
   private lazy val _context = new RenderContext(this)
 
@@ -63,6 +59,7 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
 
   override def update(delta: Double): Unit = {
     stage.act(delta.toFloat)
+    input.update(delta)
   }
 
   private[sgine] object screenAdapter extends gdx.ScreenAdapter {
