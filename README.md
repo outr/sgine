@@ -17,9 +17,6 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
   - Move FPS to UI
 - Revalidate hover events per frame
 - ShapeDrawing
-- Multiple Screens
-  - Test screen switching
-  - Support transitions
 
 ## TODO 2.1
 - Support render on change support

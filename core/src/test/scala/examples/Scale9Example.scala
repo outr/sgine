@@ -8,7 +8,7 @@ import reactify._
 object Scale9Example extends Example {
   private lazy val scale9 = Scale9(Texture.internal("scale9test.png"), 50, 50, 50, 50)
 
-  override protected lazy val root: Component = Container(
+  override protected lazy val component: Component = Container(
     new Image(scale9) with InteractiveComponent {
       center @= screen.center
       middle @= screen.middle

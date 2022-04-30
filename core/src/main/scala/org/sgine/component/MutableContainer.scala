@@ -2,13 +2,10 @@ package org.sgine.component
 
 import reactify.Var
 
-class MutableContainer[Child <: Component] extends TypedContainer[Child] { self =>
-  def this(children: Child*) = {
-    this()
-    this.children.addAll(children: _*)
-  }
+trait MutableContainer[Child <: Component] extends TypedContainer[Child] { self =>
+  override lazy val children = new MutableChildren
 
-  override object children extends Var[Vector[Child]](Vector.empty) with Children[Child] {
+  class MutableChildren extends Var[Vector[Child]](Vector.empty) with Children[Child] {
     override protected def container: Component = self
 
     def +=(child: Child): Unit = add(child)

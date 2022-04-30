@@ -59,5 +59,5 @@ object ContainerExample extends Example with TaskSupport {
     override def toString: String = "container"
   }
 
-  override protected lazy val root: Component = container
+  override protected lazy val component: Component = container
 }

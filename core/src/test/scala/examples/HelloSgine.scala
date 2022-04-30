@@ -5,7 +5,7 @@ import org.sgine.component.{Component, Image, InteractiveComponent}
 import reactify._
 
 object HelloSgine extends Example {
-  override protected lazy val root: Component = new Image("sgine.png") with InteractiveComponent {
+  override protected lazy val component: Component = new Image("sgine.png") with InteractiveComponent {
     center @= screen.center
     middle @= screen.middle
 

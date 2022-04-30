@@ -3,16 +3,18 @@ package org.sgine
 import org.sgine.easing.Easing
 import org.sgine.task._
 import org.sgine.update.Updatable
-import reactify.{Channel, Var}
+import reactify._
 
 import scala.concurrent.Future
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
-
 import scribe.Execution.global
 
 class Screens extends Var[List[Screen]] with Updatable { self =>
   val added: Channel[Screen] = Channel[Screen]
   val removed: Channel[Screen] = Channel[Screen]
+
+  lazy val unlocked: Val[List[Screen]] = Val(get.filterNot(_.locked))
+  lazy val locked: Val[List[Screen]] = Val(get.filter(_.locked))
 
   changes {
     case (oldValue, newValue) =>
@@ -21,8 +23,22 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
       rem.foreach(s => removed @= s)
       add.foreach(s => added @= s)
   }
+  removed.attach { screen =>
+    if (screen.locked()) {
+      scribe.debug(s"Attempted to remove locked screen: $screen. Adding back...")
+      add(screen)
+    }
+  }
+  added.on {    // Make sure we're sorted by priority
+    val list = get
+    val sorted = list.sortBy(_.priority())
+    if (sorted != list) {
+      static(sorted)
+    }
+  }
 
   set(Nil)
+  set(List(Overlay))
 
   def add(screens: Screen*): Unit = {
     this @= get ::: screens.toList
@@ -40,7 +56,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
     private var active = Future.successful(())
 
     def to(screen: Screen)(effect: => Task)(implicit taskSupport: TaskSupport): TaskInstance = synchronized {
-      val current = get
+      val current = unlocked()
       add(screen)
       val instance = sequential(
         active,
@@ -53,7 +69,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
 
     def slideLeft(screen: Screen, duration: FiniteDuration = 1.second, easing: Easing = Easing.linear)
                  (implicit taskSupport: TaskSupport): TaskInstance = {
-      val existing = get.map { s =>
+      val existing = unlocked().map { s =>
         s.right to 0.0 in duration easing easing
       }
       screen.left @= screen.width
@@ -66,7 +82,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
 
     def slideRight(screen: Screen, duration: FiniteDuration = 1.second, easing: Easing = Easing.linear)
                  (implicit taskSupport: TaskSupport): TaskInstance = {
-      val existing = get.map { s =>
+      val existing = unlocked().map { s =>
         s.left to s.width in duration easing easing
       }
       screen.right @= 0.0
@@ -79,7 +95,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
 
     def slideUp(screen: Screen, duration: FiniteDuration = 1.second, easing: Easing = Easing.linear)
                   (implicit taskSupport: TaskSupport): TaskInstance = {
-      val existing = get.map { s =>
+      val existing = unlocked().map { s =>
         s.bottom to 0.0 in duration easing easing
       }
       screen.top @= screen.height
@@ -92,7 +108,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
 
     def slideDown(screen: Screen, duration: FiniteDuration = 1.second, easing: Easing = Easing.linear)
                (implicit taskSupport: TaskSupport): TaskInstance = {
-      val existing = get.map { s =>
+      val existing = unlocked().map { s =>
         s.top to s.height in duration easing easing
       }
       screen.bottom @= 0.0
@@ -104,7 +120,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
     }
   }
 
-  def clear(): Unit = this @= Nil
+  def clear(): Unit = this @= get.filterNot(_.locked())
 
   override def update(delta: Double): Unit = get.foreach(_.update(delta))
 }

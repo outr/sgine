@@ -20,11 +20,6 @@ object UI extends gdx.Screen { ui =>
   }
   val render: Channel[Double] = Channel[Double]
 
-  val updateFPS: Var[Int] = Var(60)
-
-  lazy val drawFPS: Var[Boolean] = Var(true)
-  lazy val fpsFont: Var[BitmapFont] = Var(RenderContext.fontNormal)
-
   private var disposed = false
   private var init: () => Unit = () => ()
 

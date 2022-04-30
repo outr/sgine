@@ -5,7 +5,7 @@ import org.sgine.component.{Component, Image, InteractiveComponent, Label}
 import reactify._
 
 object LabelExample extends Example {
-  override protected lazy val root: Component = new Label("Hello, World!") with InteractiveComponent {
+  override protected lazy val component: Component = new Label("Hello, World!") with InteractiveComponent {
     font @= Fonts.Pacifico.normal
     center @= screen.center
     middle @= screen.middle

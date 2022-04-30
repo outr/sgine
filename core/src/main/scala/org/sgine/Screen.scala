@@ -2,7 +2,7 @@ package org.sgine
 
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.FitViewport
-import org.sgine.component.{Children, Component, FPSView, InteractiveComponent, TypedContainer}
+import org.sgine.component.{Children, Component, InteractiveComponent, TypedContainer}
 import org.sgine.event.key.KeyInput
 import org.sgine.event.InputProcessor
 import org.sgine.event.pointer.PointerEvents
@@ -15,6 +15,16 @@ trait Screen extends Updatable with TypedContainer[Component] with InteractiveCo
    * returned.
    */
   val atCursor: Var[InteractiveComponent] = Var[InteractiveComponent](self)
+
+  /**
+    * If locked, cannot be removed from Screens
+    */
+  val locked: Var[Boolean] = Var(false)
+
+  /**
+    * The sort priority in Screens
+    */
+  val priority: Var[Double] = Var(0.0)
 
   width @= 3840.0
   height @= 2160.0
@@ -33,15 +43,9 @@ trait Screen extends Updatable with TypedContainer[Component] with InteractiveCo
 
   lazy val input = new KeyInput
 
-  protected def root: Component
+  protected def component: Component
 
-  object fpsView extends FPSView {
-    visible := UI.drawFPS
-    top @= 0.0
-    right := self.width - 10.0
-  }
-
-  override lazy val children: Children[Component] = Children(this, Vector(root, fpsView))
+  override lazy val children: Children[Component] = Children(this, Vector(component))
 
   protected def screenSizeChanged(): Unit = {
     stage.setViewport(new FitViewport(width.toFloat, height.toFloat))
@@ -84,7 +88,7 @@ trait Screen extends Updatable with TypedContainer[Component] with InteractiveCo
 
 object Screen {
   case object Blank extends Screen {
-    override protected lazy val root: Component = new Component {
+    override protected lazy val component: Component = new Component {
     }
   }
 }

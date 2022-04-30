@@ -1,6 +1,6 @@
 package examples
 
-import org.sgine.component.{Component, Container, Image, InteractiveComponent, Label}
+import org.sgine.component.{Component, Container, FPSView, Image, InteractiveComponent, Label}
 import org.sgine.easing.Easing
 import org.sgine.task._
 import org.sgine.{Color, MultiScreenApp, Screen, UI}
@@ -13,13 +13,13 @@ object MultiScreenExample extends MultiScreenApp {
   private lazy val screen3: Screen = new SimpleScreen("Screen 3", Color.Blue, screen1)
 
   override protected def init(): Unit = {
-    UI.fpsFont @= Fonts.OpenSans.Regular.normal
+    FPSView.font @= Fonts.OpenSans.Regular.normal
 
     UI.screen @= screen1
   }
 
   class SimpleScreen(label: String, screenColor: Color, nextScreen: => Screen) extends Screen { screen =>
-    override protected lazy val root: Component = {
+    override protected lazy val component: Component = {
       screen.width.attach { d =>
         scribe.info(s"$label width changed: $d")
       }

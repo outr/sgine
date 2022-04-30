@@ -8,7 +8,7 @@ import reactify._
 import scala.concurrent.duration._
 
 object EasingsExample extends Example {
-  override protected lazy val root: Component = new Image("sgine.png") with TaskSupport {
+  override protected lazy val component: Component = new Image("sgine.png") with TaskSupport {
     center @= screen.center
     middle @= screen.middle
     scaleX @= 0.75

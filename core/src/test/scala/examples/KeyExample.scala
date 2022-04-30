@@ -7,7 +7,7 @@ import reactify._
 object KeyExample extends Example {
   private val step = 50.0
 
-  override protected def root: Component = new Image("crate.jpg") {
+  override protected def component: Component = new Image("crate.jpg") {
     center @= screen.center
     middle @= screen.middle
 

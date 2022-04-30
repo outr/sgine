@@ -10,7 +10,7 @@ object KeyFrameAnimationExample extends Example {
     Texture.internal(s"air-minor/air-minor_${index.f(i = 2, f = 0)}.png", scaleX = 3.0, scaleY = 3.0)
   }
 
-  override protected lazy val root: Component = new KeyFrameAnimationView(textures) {
+  override protected lazy val component: Component = new KeyFrameAnimationView(textures) {
     center @= screen.center
     middle @= screen.middle
   }

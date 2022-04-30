@@ -12,7 +12,6 @@ trait TypedContainer[Child <: Component] extends ActorComponent[Group] with Inte
     super.init()
 
     children.on {
-      scribe.info(s"Sorting children!")
       actor.getChildren.items.sortBy {
         case null => -1
         case actor => actor.getUserObject match {
