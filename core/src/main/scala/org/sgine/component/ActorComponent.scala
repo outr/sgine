@@ -25,7 +25,7 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   }
 
   render.on {
-    if (validateDimensions()) {
+    if (validateDimensions() && screenOption().nonEmpty) {
       validateDimensions @= false
 
       Try {

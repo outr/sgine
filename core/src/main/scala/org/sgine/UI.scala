@@ -1,38 +1,34 @@
 package org.sgine
 
 import com.badlogic.gdx
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
+import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import org.sgine.render.RenderContext
 import reactify._
 
-object UI { ui =>
+object UI extends gdx.Screen { ui =>
   val title: Var[String] = Var("Sgine")
-  val screen: Var[Screen] = Var(Screen.Blank)
+  val screens = new Screens
+  object screen {
+    def :=(screen: => Screen): Unit = apply(screen)
+
+    def @=(screen: Screen): Unit = apply(screen)
+
+    def apply(screen: => Screen): Unit = screens.set(List(screen))
+  }
+  val render: Channel[Double] = Channel[Double]
+
   val updateFPS: Var[Int] = Var(60)
 
-  lazy val drawFPS: Var[Boolean] = Var(false)
+  lazy val drawFPS: Var[Boolean] = Var(true)
   lazy val fpsFont: Var[BitmapFont] = Var(RenderContext.fontNormal)
 
   private var disposed = false
   private var init: () => Unit = () => ()
 
-  // Background thread for updates
-  private lazy val updateThread = new Thread {
-    setDaemon(true)
-
-    private var lastUpdate = System.currentTimeMillis()
-
-    override def run(): Unit = while(!disposed) {
-      val delay = (1000.0 / updateFPS.toDouble).toLong
-      Thread.sleep(delay)
-
-      val now = System.currentTimeMillis()
-      val delta = (now - lastUpdate) / 1000.0
-      screen().update(delta)
-      lastUpdate = now
-    }
-  }
+  private lazy val inputProcessor = new UIInputProcessor
 
   def run(init: => Unit): Unit = {
     this.init = () => init
@@ -50,12 +46,15 @@ object UI { ui =>
 
   private object game extends gdx.Game {
     override def create(): Unit = {
+      screens.added.attach { screen =>
+        ui.render.on {
+          screen.verifyInit()
+          screen.stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)
+        }
+      }
       RenderContext.init()
       ui.init()
-      ui.screen.attachAndFire { s =>
-        setScreen(s.screenAdapter)
-      }
-      updateThread.start()
+      setScreen(ui)
     }
 
     override def dispose(): Unit = {
@@ -63,4 +62,35 @@ object UI { ui =>
       RenderContext.dispose()
     }
   }
+
+  override def show(): Unit = {
+    Gdx.input.setInputProcessor(inputProcessor)
+  }
+
+  override def render(delta: Float): Unit = {
+    Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
+
+    val d = delta.toDouble
+    screens.update(d)
+
+    render @= d
+    val list = screens()
+    list.foreach(_.renderScreen(d))
+  }
+
+  override def resize(width: Int, height: Int): Unit = {
+    val list = screens()
+    list.foreach(_.stage.getViewport.update(width, height, true))
+  }
+
+  override def pause(): Unit = {}
+
+  override def resume(): Unit = {}
+
+  override def hide(): Unit = {
+    Gdx.input.setInputProcessor(null)
+  }
+
+  override def dispose(): Unit = {}
 }

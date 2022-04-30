@@ -16,7 +16,7 @@ trait Component {
 
   protected def init(): Unit = {}
 
-  protected def verifyInit(): Unit = if (!initialized) {
+  def verifyInit(): Unit = if (!initialized) {
     _initialized @= true
     init()
   }
@@ -34,7 +34,10 @@ trait Component {
   val screenOption: Val[Option[Screen]] = Val(parent() match {
     case Some(s: Screen) => Some(s)
     case Some(p: Component) => p.screenOption
-    case None => None
+    case None => this match {
+      case s: Screen => Some(s)
+      case _ => None
+    }
   })
 
   screenOption.attach {

@@ -1,19 +1,15 @@
 package org.sgine
 
-import com.badlogic.gdx
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.{Camera, GL20, OrthographicCamera}
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
-import com.badlogic.gdx.utils.viewport.{FitViewport, ScreenViewport}
+import com.badlogic.gdx.utils.viewport.FitViewport
 import org.sgine.component.{Children, Component, FPSView, InteractiveComponent, TypedContainer}
-import org.sgine.event.key.{KeyChannel, KeyEvent, KeyInput}
-import org.sgine.event.{InputProcessor, TypedEvent}
+import org.sgine.event.key.KeyInput
+import org.sgine.event.InputProcessor
 import org.sgine.event.pointer.PointerEvents
-import org.sgine.render.{RenderContext, Renderable}
 import org.sgine.update.Updatable
 import reactify._
 
-trait Screen extends Renderable with Updatable with TypedContainer[Component] with InteractiveComponent { self =>
+trait Screen extends Updatable with TypedContainer[Component] with InteractiveComponent { self =>
   /**
    * The `Component` at the current cursor position. If nothing else is at the cursor position the `Screen` will be
    * returned.
@@ -22,6 +18,7 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
 
   width @= 3840.0
   height @= 2160.0
+  color @= Color.Black
 
   lazy val stage = new Stage()
 
@@ -35,8 +32,6 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
   override lazy val pointer: ScreenPointerEvents = new ScreenPointerEvents
 
   lazy val input = new KeyInput
-
-  private lazy val _context = new RenderContext(this)
 
   protected def root: Component
 
@@ -52,8 +47,9 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
     stage.setViewport(new FitViewport(width.toFloat, height.toFloat))
   }
 
-  override def render(context: RenderContext): Unit = {
+  def renderScreen(delta: Double): Unit = {
     children
+    render @= delta
     stage.draw()
   }
 
@@ -62,30 +58,7 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
     input.update(delta)
   }
 
-  private[sgine] object screenAdapter extends gdx.ScreenAdapter {
-    override def show(): Unit = {
-      Gdx.input.setInputProcessor(inputProcessor)
-    }
-
-    override def render(delta: Float): Unit = {
-      Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
-      Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-
-      _context.renderWith {
-        self.render(_context)
-      }
-    }
-
-    override def resize(width: Int, height: Int): Unit = {
-      stage.getViewport.update(width, height, true)
-    }
-
-    override def hide(): Unit = {
-      Gdx.input.setInputProcessor(null)
-    }
-  }
-
-  private val inputProcessor = new InputProcessor(this)
+  private[sgine] val inputProcessor = new InputProcessor(this)
 
   class ScreenPointerEvents extends PointerEvents {
     private val _active: Var[Component] = Var(self)

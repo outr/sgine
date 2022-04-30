@@ -13,5 +13,13 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 
 ## TODO 2.0
 - Test with MT
+- UI.stage to render overlays (last render)
+  - Move FPS to UI
+- Revalidate hover events per frame
 - ShapeDrawing
-- 
+- Multiple Screens
+  - Test screen switching
+  - Support transitions
+
+## TODO 2.1
+- Support render on change support
