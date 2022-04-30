@@ -5,10 +5,20 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.BitmapFont
-import org.sgine.render.RenderContext
 import reactify._
 
 object UI extends gdx.Screen { ui =>
+  lazy val fontNormal: BitmapFont = {
+    val f = new BitmapFont
+    f.getData.setScale(4.0f)
+    f
+  }
+  lazy val fontSmall: BitmapFont = {
+    val f = new BitmapFont
+    f.getData.setScale(3.0f)
+    f
+  }
+
   val title: Var[String] = Var("Sgine")
   val screens = new Screens
   object screen {
@@ -47,14 +57,12 @@ object UI extends gdx.Screen { ui =>
           screen.stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)
         }
       }
-      RenderContext.init()
       ui.init()
       setScreen(ui)
     }
 
     override def dispose(): Unit = {
       disposed = true
-      RenderContext.dispose()
     }
   }
 

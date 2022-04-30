@@ -85,10 +85,3 @@ trait Screen extends Updatable with TypedContainer[Component] with InteractiveCo
     }
   }
 }
-
-object Screen {
-  case object Blank extends Screen {
-    override protected lazy val component: Component = new Component {
-    }
-  }
-}

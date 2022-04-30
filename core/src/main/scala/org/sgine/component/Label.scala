@@ -2,13 +2,12 @@ package org.sgine.component
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.{Batch, BitmapFont, GlyphLayout}
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
-import org.sgine.{Color, Screen}
+import org.sgine.{Color, Screen, UI}
 import com.badlogic.gdx.scenes.scene2d.ui.{Label => GDXLabel}
-import org.sgine.render.RenderContext
 import reactify._
 
 class Label extends ActorComponent[GDXLabel] { component =>
-  val font: Var[BitmapFont] = Var(RenderContext.fontNormal)
+  val font: Var[BitmapFont] = Var(UI.fontNormal)
   val text: Var[String] = Var("")
   object preferred {
     lazy val width: Var[Double] = Var(0.0)
