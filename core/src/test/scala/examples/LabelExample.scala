@@ -6,7 +6,7 @@ import reactify._
 
 object LabelExample extends Example {
   override protected lazy val root: Component = new Label("Hello, World!") with InteractiveComponent {
-    font @= OpenSans.Regular.extraLarge
+    font @= Fonts.Pacifico.normal
     center @= screen.center
     middle @= screen.middle
 

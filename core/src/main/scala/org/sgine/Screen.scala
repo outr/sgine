@@ -20,11 +20,17 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
    */
   val atCursor: Var[InteractiveComponent] = Var[InteractiveComponent](self)
 
-  lazy val stage = new Stage(new FitViewport(3840.0f, 2160.0f))
-  override lazy val actor: Group = stage.getRoot
-
   width @= 3840.0
   height @= 2160.0
+
+  lazy val stage = new Stage()
+
+  width.and(height).on(screenSizeChanged())
+
+  override lazy val actor: Group = {
+    screenSizeChanged()
+    stage.getRoot
+  }
 
   override lazy val pointer: ScreenPointerEvents = new ScreenPointerEvents
 
@@ -45,6 +51,10 @@ trait Screen extends Renderable with Updatable with TypedContainer[Component] wi
   }
 
   override lazy val children: Children[Component] = Children(this, Vector(root, fpsView))
+
+  protected def screenSizeChanged(): Unit = {
+    stage.setViewport(new FitViewport(width.toFloat, height.toFloat))
+  }
 
   override def render(context: RenderContext): Unit = {
     children
