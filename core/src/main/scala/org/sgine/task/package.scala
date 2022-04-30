@@ -7,7 +7,7 @@ import scala.concurrent.duration.FiniteDuration
 import scala.language.implicitConversions
 
 package object task {
-  implicit def future2Task[R](future: => Future[R]): Task = FutureTask[R](future)
+  implicit def future2Task[R](future: Future[R]): Task = FutureTask[R](future)
   implicit def f2Task(f: => Unit): Task = Action(f)
 
   implicit object DoubleAnimatable extends Animatable[Double] {
@@ -42,6 +42,7 @@ package object task {
   def sequential(tasks: Task*): Sequential = new Sequential(tasks.toList)
   def sleep(duration: FiniteDuration): Sleep = new Sleep(duration)
   def asynchronous(f: => Future[Unit]): Action = Action(f)
+  def futureTask(f: => Future[Unit]): FutureTask[Unit] = FutureTask(f)
   def synchronous(f: => Unit): Action = Action {
     f
     Future.successful(())

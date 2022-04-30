@@ -29,15 +29,7 @@ object MultiScreenExample extends MultiScreenApp {
           middle @= screen.height / 2.0
           color := (if (pointer.over) screenColor else Color.White)
           pointer.down.on {
-            nextScreen.left @= nextScreen.width
-            UI.screens += nextScreen
-            sequential(
-              parallel(
-                nextScreen.left to 0.0 in 1.seconds easing Easing.bounceOut,
-                screen.right to 0.0 in 1.seconds easing Easing.bounceOut
-              ),
-              synchronous(UI.screens -= screen)
-            ).start
+            UI.screens.transition.slideDown(nextScreen, easing = Easing.bounceOut)
           }
         },
         new Label {
