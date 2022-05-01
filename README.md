@@ -13,9 +13,9 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 
 ## TODO 2.0
 - Test with MT
+- ShapeDrawing
 - Background support on Screen
 - Revalidate hover events per frame
-- ShapeDrawing
 
 ## TODO 2.1
 - Support render on change support

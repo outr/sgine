@@ -3,26 +3,37 @@ package org.sgine.drawable
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.scenes.scene2d.utils
 import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable
+import org.sgine.Color
 import space.earlygrey.shapedrawer.ShapeDrawer
+import space.earlygrey.shapedrawer.scene2d.ShapeDrawerDrawable
 
 trait ShapeDrawable extends Drawable { self =>
-  private var shapeDrawer: ShapeDrawer = _
+  private var drawer: Drawer = _
+  private var _rotation: Double = 0.0
 
   override def scaleX: Double = 1.0
 
   override def scaleY: Double = 1.0
 
-  override def rotation: Double = 0.0
+  override def rotation: Double = _rotation
+  def rotation_=(degrees: Double): Unit = _rotation = degrees
 
-  // TODO: Create ShapeDrawer abstraction with translation
-  def draw(drawer: ShapeDrawer, x: Double, y: Double): Unit
+  def draw(drawer: Drawer): Unit
 
-  override lazy val gdx: utils.Drawable = new BaseDrawable {
+  override lazy val gdx: ShapeDrawerDrawable = new ShapeDrawerDrawable() {
     override def draw(batch: Batch, x: Float, y: Float, width: Float, height: Float): Unit = {
       if (shapeDrawer == null || shapeDrawer.getBatch != batch) {
-        shapeDrawer = new ShapeDrawer(batch, Texture.Pixel.ref)
+        setShapeDrawer(new ShapeDrawer(batch, Texture.Pixel.ref))
+        drawer = Drawer(shapeDrawer)
       }
-      self.draw(shapeDrawer, x.toDouble, y.toDouble)
+      super.draw(batch, x, y, width, height)
+    }
+
+    override def drawShapes(shapeDrawer: ShapeDrawer, x: Float, y: Float, width: Float, height: Float): Unit = {
+      drawer.shapeDrawer.update()
+      drawer.reset(x.toDouble, y.toDouble, width.toDouble, height.toDouble, Color.White, rotation)
+
+      self.draw(drawer)
     }
   }
 }

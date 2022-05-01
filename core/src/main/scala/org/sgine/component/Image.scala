@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.scenes.scene2d.ui.{Image => GDXImage}
 import com.badlogic.gdx.utils.Scaling
-import org.sgine.drawable.{Drawable, Texture}
+import org.sgine.drawable.{Drawable, ShapeDrawable, Texture}
 import reactify._
 
 class Image extends ActorComponent[GDXImage] { component =>
@@ -32,6 +32,14 @@ class Image extends ActorComponent[GDXImage] { component =>
     override def act(delta: Float): Unit = {
       update(delta.toDouble)
       super.act(delta)
+    }
+
+    override def setRotation(degrees: Float): Unit = {
+      super.setRotation(degrees)
+      drawable() match {
+        case sd: ShapeDrawable => sd.rotation = degrees
+        case _ => // Ignore others
+      }
     }
 
     override def toString: String = component.toString
