@@ -14,9 +14,14 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
   private var _baseY: Double = 0.0
   private var _width: Double = 0.0
   private var _height: Double = 0.0
+  private var _color: Color = Color.White
+  private var _alpha: Double = 1.0
 
   var rotation: Double = 0.0
-  var color: Color = Color.White
+  def color: Color = _color
+  def color_=(color: Color): Unit = updateColor(color, alpha)
+  def alpha: Double = _alpha
+  def alpha_=(alpha: Double): Unit = updateColor(color, alpha)
   var joinType: JoinType = JoinType.SMOOTH
 
   def baseX: Double = _baseX
@@ -26,6 +31,11 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
 
   private def preDraw(): Unit = {
     shapeDrawer.setColor(color.gdx)
+  }
+
+  private def updateColor(color: Color, alpha: Double): Unit = {
+    _color = color.withAlpha(color.alpha * alpha)
+    _alpha = alpha
   }
 
   private implicit class DoubleConversions(d: Double) {
@@ -63,12 +73,13 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
     }
   }
 
-  def reset(x: Double, y: Double, width: Double, height: Double, color: Color, rotation: Double): Unit = {
+  def reset(x: Double, y: Double, width: Double, height: Double, color: Color, rotation: Double, alpha: Double): Unit = {
     _baseX = x
     _baseY = y
     _width = width
     _height = height
     this.color = color
     this.rotation = rotation * MathUtils.degreesToRadians
+    this.alpha = alpha
   }
 }

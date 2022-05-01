@@ -21,17 +21,20 @@ trait ShapeDrawable extends Drawable { self =>
   def draw(drawer: Drawer): Unit
 
   override lazy val gdx: ShapeDrawerDrawable = new ShapeDrawerDrawable() {
+    private var alpha = 1.0
+
     override def draw(batch: Batch, x: Float, y: Float, width: Float, height: Float): Unit = {
       if (shapeDrawer == null || shapeDrawer.getBatch != batch) {
         setShapeDrawer(new ShapeDrawer(batch, Texture.Pixel.ref))
         drawer = Drawer(shapeDrawer)
       }
+      alpha = batch.getColor.a.toDouble
       super.draw(batch, x, y, width, height)
     }
 
     override def drawShapes(shapeDrawer: ShapeDrawer, x: Float, y: Float, width: Float, height: Float): Unit = {
       drawer.shapeDrawer.update()
-      drawer.reset(x.toDouble, y.toDouble, width.toDouble, height.toDouble, Color.White, rotation)
+      drawer.reset(x.toDouble, y.toDouble, width.toDouble, height.toDouble, Color.White, rotation, alpha)
 
       self.draw(drawer)
     }

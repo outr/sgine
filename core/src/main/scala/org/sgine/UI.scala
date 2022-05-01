@@ -5,9 +5,10 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.BitmapFont
+import org.sgine.task.TaskSupport
 import reactify._
 
-object UI extends gdx.Screen { ui =>
+object UI extends gdx.Screen with TaskSupport { ui =>
   lazy val fontNormal: BitmapFont = {
     val f = new BitmapFont
     f.getData.setScale(4.0f)
@@ -75,6 +76,7 @@ object UI extends gdx.Screen { ui =>
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
     val d = delta.toDouble
+    ui.update(d)
     screens.update(d)
 
     render @= d

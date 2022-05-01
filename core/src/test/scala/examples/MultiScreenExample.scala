@@ -1,10 +1,9 @@
 package examples
 
 import org.sgine.component._
-import org.sgine.easing.Easing
-import org.sgine.{Color, MultiScreenApp, Screen, UI}
+import org.sgine.{Color, App, Screen, UI}
 
-object MultiScreenExample extends MultiScreenApp {
+object MultiScreenExample extends App {
   private lazy val screen1: Screen = new SimpleScreen("Screen 1", Color.Red, screen2)
   private lazy val screen2: Screen = new SimpleScreen("Screen 2", Color.Green, screen3)
   private lazy val screen3: Screen = new SimpleScreen("Screen 3", Color.Blue, screen1)
@@ -21,12 +20,17 @@ object MultiScreenExample extends MultiScreenApp {
         scribe.info(s"$label width changed: $d")
       }
       Container(
+        new Rectangle {
+          width := screen.width
+          height := screen.height
+          color @= screenColor
+        },
         new Image("crate.jpg") with InteractiveComponent {
           center @= screen.width / 2.0
           middle @= screen.height / 2.0
           color := (if (pointer.over) screenColor else Color.White)
           pointer.down.on {
-            UI.screens.transition.slideDown(nextScreen, easing = Easing.bounceOut)
+            UI.screens.transition.crossFade(nextScreen)
           }
         },
         new Label {
