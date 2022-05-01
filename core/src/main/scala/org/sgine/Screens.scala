@@ -4,10 +4,10 @@ import org.sgine.easing.Easing
 import org.sgine.task._
 import org.sgine.update.Updatable
 import reactify._
+import scribe.Execution.global
 
 import scala.concurrent.Future
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
-import scribe.Execution.global
 
 class Screens extends Var[List[Screen]] with Updatable { self =>
   val added: Channel[Screen] = Channel[Screen]

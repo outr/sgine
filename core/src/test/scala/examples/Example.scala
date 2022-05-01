@@ -1,7 +1,7 @@
 package examples
 
-import org.sgine.component.FPSView
 import org.sgine.SingleScreenApp
+import org.sgine.component.FPSView
 
 trait Example extends SingleScreenApp {
   override def init(): Unit = {

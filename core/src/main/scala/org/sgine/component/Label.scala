@@ -1,9 +1,10 @@
 package org.sgine.component
+
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.g2d.{Batch, BitmapFont, GlyphLayout}
+import com.badlogic.gdx.graphics.g2d.{Batch, BitmapFont}
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle
-import org.sgine.{Color, Screen, UI}
 import com.badlogic.gdx.scenes.scene2d.ui.{Label => GDXLabel}
+import org.sgine.{Screen, UI}
 import reactify._
 
 class Label extends ActorComponent[GDXLabel] { component =>

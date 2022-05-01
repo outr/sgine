@@ -1,7 +1,7 @@
 package examples
 
 import org.sgine.Color
-import org.sgine.component.{Component, Image, InteractiveComponent, Label}
+import org.sgine.component.{Component, InteractiveComponent, Label}
 import reactify._
 
 object LabelExample extends Example {

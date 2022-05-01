@@ -1,6 +1,5 @@
 package org.sgine
 
-import scala.util.Random
 import com.badlogic.gdx.graphics.{Color => GDXColor}
 
 /**

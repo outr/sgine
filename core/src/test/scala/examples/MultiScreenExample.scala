@@ -1,11 +1,8 @@
 package examples
 
-import org.sgine.component.{Component, Container, FPSView, Image, InteractiveComponent, Label}
+import org.sgine.component._
 import org.sgine.easing.Easing
-import org.sgine.task._
 import org.sgine.{Color, MultiScreenApp, Screen, UI}
-
-import scala.concurrent.duration.DurationInt
 
 object MultiScreenExample extends MultiScreenApp {
   private lazy val screen1: Screen = new SimpleScreen("Screen 1", Color.Red, screen2)

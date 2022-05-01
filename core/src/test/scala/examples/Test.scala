@@ -1,11 +1,11 @@
 package examples
 
-import com.badlogic.gdx.{Game, Gdx, Screen}
 import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
 import com.badlogic.gdx.graphics.{GL20, Texture}
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Image
 import com.badlogic.gdx.utils.viewport.FitViewport
+import com.badlogic.gdx.{Game, Gdx, Screen}
 
 object Test extends Game with Screen {
   private lazy val stage = new Stage(new FitViewport(3840.0f, 2160.0f))

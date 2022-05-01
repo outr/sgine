@@ -1,6 +1,6 @@
 package examples
 
-import org.sgine.component.{Component, DimensionedComponent, Image, InteractiveComponent, MutableContainer}
+import org.sgine.component._
 import org.sgine.task._
 import reactify._
 

@@ -6,8 +6,7 @@ import com.badlogic.gdx.{Gdx, InputProcessor => GDXInputProcessor}
 import org.sgine._
 import org.sgine.component.{ActorComponent, Component, InteractiveComponent}
 import org.sgine.event.key.{KeyEvent, KeyState}
-import org.sgine.event.pointer.{PointerButton, PointerDownEvent, PointerDraggedEvent, PointerEvent, PointerMovedEvent, PointerUpEvent}
-import reactify._
+import org.sgine.event.pointer._
 
 import scala.annotation.tailrec
 

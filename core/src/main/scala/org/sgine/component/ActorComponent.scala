@@ -2,8 +2,8 @@ package org.sgine.component
 
 import com.badlogic.gdx.scenes.scene2d.{Actor, Touchable}
 import com.badlogic.gdx.utils.Align
-import org.sgine.{Color, Screen}
 import org.sgine.task.TaskSupport
+import org.sgine.{Color, Screen}
 import reactify._
 
 import scala.util.Try

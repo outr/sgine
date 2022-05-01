@@ -1,6 +1,5 @@
 package examples
 
-import org.sgine.Color
 import org.sgine.component.{Component, Image}
 import org.sgine.easing.Easing
 import org.sgine.task._

@@ -11,7 +11,11 @@ case class Texture(ref: TextureRegion,
                    scaleX: Double = 1.0,
                    scaleY: Double = 1.0,
                    rotation: Double = 0.0) extends Drawable {
-  lazy val gdx: TextureRegionDrawable = new TextureRegionDrawable(ref)
+  lazy val gdx: TextureRegionDrawable = {
+    val t = new TextureRegionDrawable(ref)
+    scribe.info(s"Info - Left Width:${t.getLeftWidth}, Right Width:${t.getRightWidth}, Top:${t.getTopHeight}, Bottom:${t.getBottomHeight}, Min: ${t.getMinWidth}x${t.getMinHeight}")
+    t
+  }
 
   def width: Double = ref.getRegionWidth
   def height: Double = ref.getRegionHeight

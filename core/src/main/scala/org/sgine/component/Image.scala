@@ -2,10 +2,10 @@ package org.sgine.component
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.Batch
-import reactify._
 import com.badlogic.gdx.scenes.scene2d.ui.{Image => GDXImage}
 import com.badlogic.gdx.utils.Scaling
 import org.sgine.drawable.{Drawable, Texture}
+import reactify._
 
 class Image extends ActorComponent[GDXImage] { component =>
   val drawable: Var[Drawable] = Var(Texture.Pixel)

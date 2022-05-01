@@ -3,8 +3,8 @@ package org.sgine
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.FitViewport
 import org.sgine.component.{Children, Component, InteractiveComponent, TypedContainer}
-import org.sgine.event.key.KeyInput
 import org.sgine.event.InputProcessor
+import org.sgine.event.key.KeyInput
 import org.sgine.event.pointer.PointerEvents
 import org.sgine.update.Updatable
 import reactify._
