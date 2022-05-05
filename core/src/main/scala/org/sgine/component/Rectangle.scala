@@ -1,6 +1,7 @@
 package org.sgine.component
 
 import org.sgine.drawable.{Drawer, ShapeDrawable}
+import reactify._
 
 class Rectangle extends Image { image =>
   drawable @= new ShapeDrawable {

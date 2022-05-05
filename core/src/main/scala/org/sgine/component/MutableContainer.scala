@@ -3,7 +3,7 @@ package org.sgine.component
 import reactify.Var
 
 trait MutableContainer[Child <: Component] extends TypedContainer[Child] { self =>
-  override lazy val children = new MutableChildren
+  override lazy val children: MutableChildren = new MutableChildren
 
   class MutableChildren extends Var[Vector[Child]](Vector.empty) with Children[Child] {
     override protected def container: Component = self

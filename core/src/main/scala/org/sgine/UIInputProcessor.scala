@@ -1,6 +1,7 @@
 package org.sgine
 
 import com.badlogic.gdx
+import reactify._
 
 class UIInputProcessor extends gdx.InputProcessor {
   override def keyDown(keycode: Int): Boolean = {
