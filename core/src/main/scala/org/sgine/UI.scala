@@ -40,7 +40,10 @@ object UI extends gdx.Screen with TaskSupport { ui =>
     this.init = () => init
     val config = new Lwjgl3ApplicationConfiguration
     title.attachAndFire { title =>
-      config.setTitle(title)
+      Option(Gdx.graphics) match {
+        case Some(g) => g.setTitle(title)
+        case None => config.setTitle(title)
+      }
     }
     config.useVsync(true)
     config.setForegroundFPS(0)

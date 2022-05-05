@@ -1,10 +1,10 @@
 package examples
 
 import org.sgine.component._
-import org.sgine.{Color, App, Screen, UI}
+import org.sgine.{Color, SgineApp, Screen, UI}
 import reactify._
 
-object MultiScreenExample extends App {
+object MultiScreenExample extends SgineApp {
   private lazy val screen1: Screen = new SimpleScreen("Screen 1", Color.Red, screen2)
   private lazy val screen2: Screen = new SimpleScreen("Screen 2", Color.Green, screen3)
   private lazy val screen3: Screen = new SimpleScreen("Screen 3", Color.Blue, screen1)
