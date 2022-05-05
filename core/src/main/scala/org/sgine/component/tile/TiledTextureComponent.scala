@@ -1,8 +1,7 @@
 package org.sgine.component.tile
 
-import com.badlogic.gdx.graphics.Color
 import org.sgine.component.{Children, Component, Container}
-import org.sgine.texture.Texture
+import org.sgine.drawable.Texture
 import reactify._
 
 abstract class TiledTextureComponent(val texture: Texture, overflow: Boolean) extends Container {
@@ -10,11 +9,6 @@ abstract class TiledTextureComponent(val texture: Texture, overflow: Boolean) ex
 
   protected def create(tileX: Int, tileY: Int): T
 
-//  val x: Var[Double] = Var(0.0)
-//  val y: Var[Double] = Var(0.0)
-  val width: Var[Double] = Var(0.0)
-  val height: Var[Double] = Var(0.0)
-  val color: Var[Color] = Var(Color.WHITE)
   val tileWidth: Double = texture.width * texture.scaleX
   val tileHeight: Double = texture.height * texture.scaleY
   lazy val horizontal: Int = width / tileWidth match {
@@ -35,5 +29,5 @@ abstract class TiledTextureComponent(val texture: Texture, overflow: Boolean) ex
     }
   }
 
-  override lazy val children: Children[Component] = Children(this, tiles.flatten.toList)
+  override lazy val children: Children[Component] = Children(this, tiles.flatten)
 }

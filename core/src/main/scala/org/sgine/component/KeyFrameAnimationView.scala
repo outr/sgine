@@ -1,6 +1,6 @@
 package org.sgine.component
 
-import org.sgine.texture.Texture
+import org.sgine.drawable.Texture
 import org.sgine.update.Updatable
 import reactify._
 
@@ -11,7 +11,7 @@ class KeyFrameAnimationView(textures: Vector[Texture]) extends Image(textures(0)
 
   private var elapsed = 0.0
 
-  texture := textures(index)
+  drawable := textures(index)
 
   override def update(delta: Double): Unit = if (!paused()) {
     elapsed += delta

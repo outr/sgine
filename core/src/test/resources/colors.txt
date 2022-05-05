@@ -1,0 +1,980 @@
+{{Colort/Color|hex=0048BA|r=0 |g=72 |b=186|h=217|s=100|v=73 |name=[[List of Crayola crayon colors#Extreme Twistables colors|Absolute Zero]]|link target=A}}
+{{Colort/Color|hex=B0BF1A|r=176|g=191|b=26|h=65 |s=76 |v=43 |name=[[Acid green]]}}
+{{Colort/Color|hex=7CB9E8|r=124|g=185|b=232|h=206|s=47 |v=91 |name=[[Air Force blue#Aero|Aero]]}}
+{{Colort/Color|hex=C0E8D5|r=192|g=232|b=213|h=151.5|s=17.2|v=91 |name=[[Aero blue]]}}
+{{Colort/Color|hex=B284BE|r=178|g=132|b=190|h=288|s=31 |v=75 |name=[[African violet (color)|African violet]]}}
+{{Colort/Color|hex=72A0C1|r=114|g=160|b=193|h=205|s=41 |v=76 |name=[[Air Force blue#Air superiority blue/PRU blue|Air superiority blue]]}}
+{{Colort/Color|hex=EDEAE0|r=237|g=234|b=224|h=50|s=6|v=93|name=[[Shades of white#Alabaster|Alabaster]]}}
+{{Colort/Color|hex=DB2D43|r=219|g=45 |b=67 |h=352|s=79|v=86|name=[[Amaranth (color)|Alizarin]]}}
+{{Colort/Color|hex=F0F8FF|r=240|g=248|b=255|h=208|s=6 |v=100|name=[[Alice blue]]}}
+{{Colort/Color|hex=C46210|r=196|g=98 |b=16 |h=27 |s=92 |v=77 |name=[[Shades of orange#Alloy orange|Alloy orange]]}}
+{{Colort/Color|hex=EFDECD|r=239|g=222|b=205|h=30 |s=14 |v=94 |name=[[Almond (color)|Almond]]}}
+{{Colort/Color|hex=E52B50|r=229|g=43 |b=80 |h=348|s=81 |v=90 |name=[[Amaranth (color)|Amaranth]]}}
+{{Colort/Color|hex=9F2B68|r=159|g=43 |b=104|h=328|s=73 |v=62 |name=[[Amaranth (color)#Amaranth deep purple|Amaranth (M&P)]]}}
+{{Colort/Color|hex=F19CBB|r=241|g=156|b=187|h=338|s=35 |v=95 |name=[[Amaranth (color)#Amaranth pink|Amaranth pink]]}}
+{{Colort/Color|hex=AB274F|r=171|g=39 |b=79 |h=342|s=77 |v=67 |name=[[Amaranth (color)#Amaranth purple|Amaranth purple]]}}
+{{Colort/Color|hex=D3212D|r=211|g=33 |b=45 |h=356|s=84 |v=83 |name=[[Amaranth (color)|Amaranth red]]}}
+{{Colort/Color|hex=3B7A57|r=59 |g=122|b=87 |h=147|s=52 |v=48 |name=[[Amazon (color)|Amazon]]}}
+{{Colort/Color|hex=FFBF00|r=255|g=191|b=0 |h=45 |s=100|v=100|name=[[Amber (color)|Amber]]}}
+{{Colort/Color|hex=FF7E00|r=255|g=126|b=0 |h=30 |s=100|v=100|name=[[Amber (color)#SAE/ECE_amber|Amber (SAE/ECE)]]}}
+{{Colort/Color|hex=9966CC|r=153|g=102|b=204|h=270|s=50 |v=80 |name=[[Amethyst (color)|Amethyst]]}}
+{{Colort/Color|hex=3DDC84|r=61|g=219|b=134 |h=148 |s=72 |v=86 |name=[[Android green]]}}
+{{Colort/Color|hex=CD9575|r=205|g=149|b=117|h=22 |s=43 |v=80 |name=[[Antique brass]]}}
+{{Colort/Color|hex=665D1E|r=102|g=93 |b=30 |h=53 |s=71 |v=40 |name=[[Antique bronze]]}}
+{{Colort/Color|hex=915C83|r=145|g=92 |b=131|h=316|s=37 |v=57 |l=46 |name=[[Fuchsia (color)#Antique fuchsia|Antique fuchsia]]}}
+{{Colort/Color|hex=841B2D|r=132|g=27 |b=45 |h=350|s=80 |v=52 |name=[[Ruby (color)#Antique ruby|Antique ruby]]}}
+{{Colort/Color|hex=FAEBD7|r=250|g=235|b=215|h=34 |s=14 |v=98 |name=[[Shades of white#Antique white|Antique white]]}}
+{{Colort/Color|hex=008000|r=0 |g=128|b=0 |h=120|s=100|v=50 |name=[[Ao (color)|Ao (English)]]}}
+{{Colort/Color|hex=8DB600|r=141|g=182|b=0 |h=74 |s=100|v=71 |name=[[Chartreuse (color)#Apple green|Apple green]]}}
+{{Colort/Color|hex=FBCEB1|r=251|g=206|b=177|h=24 |s=29 |v=98 |name=[[Apricot (color)|Apricot]]}}
+{{Colort/Color|hex=00FFFF|r=0 |g=255|b=255|h=180|s=100|v=100|name=[[Aqua (color)|Aqua]]}}
+{{Colort/Color|hex=7FFFD4|r=127|g=255|b=212|h=160|s=50 |v=100|name=[[Aquamarine (color)|Aquamarine]]}}
+{{Colort/Color|hex=D0FF14|r=208|g=255|b=20 |h=72 |s=92 |v=100|name=[[Lime (color)#Arctic lime|Arctic lime]]}}
+{{Colort/Color|hex=4B5320|r=75 |g=83 |b=32 |h=69 |s=61 |v=33 |name=[[Shades of green#Army green|Army green]]}}
+{{Colort/Color|hex=8F9779|r=143|g=151|b=121|h=76 |s=20 |v=59 |name=[[Shades of green#Artichoke|Artichoke]]}}
+{{Colort/Color|hex=E9D66B|r=233|g=214|b=107|h=51 |s=54 |v=91 |name=[[Arylide yellow]]}}
+{{Colort/Color|hex=B2BEB5|r=178|g=190|b=181|h=135|s=6 |v=75 |sat=8 |name=[[Shades of gray#Ash gray|Ash gray]]}}
+{{Colort/Color|hex=87A96B|r=135|g=169|b=107|h=93 |s=37 |v=66 |sat=26 |name=[[Shades of green#Asparagus|Asparagus]]}}
+{{Colort/Color|hex=27346F|r=39 |g=52 |b=111|h=229|s=65 |v=44 |name=[[Astronaut]]}}
+{{Colort/Color|hex=FF9966|r=255|g=153|b=102|h=20 |s=60 |v=100|name=[[Shades of orange#Atomic tangerine|Atomic tangerine]]}}
+{{Colort/Color|hex=A52A2A|r=165|g=42 |b=42 |h=0 |s=75 |v=65 |name=[[Auburn (color)|Auburn]]}}
+{{Colort/Color|hex=FDEE00|r=253|g=238|b=0 |h=56 |s=100|v=99 |name=[[Aureolin]]}}
+{{Colort/Color|hex=568203|r=86 |g=130|b=3 |h=81 |s=98 |v=51 |sat=95 |name=[[Chartreuse (color)#Avocado|Avocado]]}}
+{{Colort/Color|hex=007FFF|r=0 |g=127|b=255|h=210|s=100|v=100|name=[[Azure (color)|Azure]]}}
+{{Colort/Color|hex=F0FFFF|r=240|g=255|b=255|h=180|s=6  |v=100|name=[[Shades of azure#Azure (web color)|Azure (X11/web color)]]}}
+{{Colort/Color|hex=89CFF0|r=137|g=207|b=240|h=199|s=43 |v=94 |name=[[Baby blue]]|link target=B}}
+{{Colort/Color|hex=A1CAF1|r=161|g=202|b=241|h=209|s=33 |v=95 |name=[[Baby blue#Baby blue eyes|Baby blue eyes]]}}
+{{Colort/Color|hex=F4C2C2|r=244|g=194|b=194|h=0 |s=20 |v=96 |name=[[Shades of pink#Baby pink|Baby pink]]}}
+{{Colort/Color|hex=FEFEFA|r=254|g=254|b=250|h=60|s=2  |v=100|name=[[Shades of white#Baby powder|Baby powder]]}}
+{{Colort/Color|hex=FF91AF|r=255|g=145|b=175|h=344|s=43 |v=100|name=[[Baker-Miller pink]]}}
+{{Colort/Color|hex=FAE7B5|r=250|g=231|b=181|h=43 |s=28 |v=98 |name=[[List of Crayola crayon colors#Standard colors|Banana Mania]]}}
+{{Colort/Color|hex=DA1884|r=218|g=24 |b=132|h=327|s=89 |v=85 |name=[[Shades_of_pink#Barbie_pink|Barbie Pink]]}}
+{{Colort/Color|hex=7C0A02|r=124|g=10 |b=2 |h=4 |s=98 |v=49 |name=[[Shades of red#Barn red|Barn red]]}}
+{{Colort/Color|hex=848482|r=132|g=132|b=130|h=60 |s=2 |v=52 |name=[[Battleship grey]]}}
+{{Colort/Color|hex=BCD4E6|r=188|g=212|b=230|h=206|s=18 |v=90 |name=[[Baby blue#Beau blue|Beau blue]]}}
+{{Colort/Color|hex=9F8170|r=159|g=129|b=112|h=22 |s=30 |v=62 |name=[[Shades of brown#Beaver|Beaver]]}}
+{{Colort/Color|hex=F5F5DC|r=245|g=245|b=220|h=60 |s=10 |v=96 |name=[[Beige]]}}
+{{Colort/Color|hex=2E5894|r=46 |g=88 |b=148|h=215|s=69 |v=58 |name=[[Sapphire (color)#B'dazzled blue|B'dazzled blue]]}}
+{{Colort/Color|hex=9C2542|r=156|g=37 |b=66 |h=345|s=76 |v=61 |name=[[Ruby (color)#Big dip o'ruby|Big dip o’ruby]]}}
+{{Colort/Color|hex=FFE4C4|r=255|g=228|b=196|h=33 |s=23 |v=100|name=[[X11 color names#Color name charts|Bisque]]}}
+{{Colort/Color|hex=3D2B1F|r=61 |g=43 |b=31 |h=24 |s=49 |v=24 |name=[[Bistre]]}}
+{{Colort/Color|hex=967117|r=150|g=113|b=23 |h=43 |s=85 |v=59 |name=[[Bistre#Bistre brown|Bistre brown]]}}
+{{Colort/Color|hex=CAE00D|r=202|g=224|b=13 |h=66 |s=94 |v=88 |l=46 |name=[[Lemon (color)#Bitter lemon|Bitter lemon]]}}
+{{Colort/Color|hex=BFFF00|r=191|g=255|b=0 |h=75 |s=100|v=100|name=[[Lime (color)|Bitter lime]]}}
+{{Colort/Color|hex=FE6F5E|r=254|g=111|b=94 |h=6 |s=63 |v=100|name=[[Shades of orange#Bittersweet|Bittersweet]]}}
+{{Colort/Color|hex=BF4F51|r=191|g=79 |b=81 |h=359|s=59 |v=75 |name=[[Shades of orange#Bittersweet shimmer|Bittersweet shimmer]]}}
+{{Colort/Color|hex=000000|r=0 |g=0 |b=0 |h=— |s=0 |v=0 |name=[[Black]]}}
+{{Colort/Color|hex=3D0C02|r=61 |g=12 |b=2 |h=10 |s=97 |v=24 |name=[[Shades of black#Black bean|Black bean]]}}
+{{Colort/Color|hex=1B1811|r=27 |g=24 |b=17 |h=42 |s=37 |v=11 |name=[[Shades of black#Black chocolate|Black chocolate]]}}
+{{Colort/Color|hex=3B2F2F|r=59 |g=47 |b=47 |h=0 |s=20 |v=23 |name=[[Shades of black#Black coffee|Black coffee]]}}
+{{Colort/Color|hex=54626F|r=84 |g=98 |b=111|h=209|s=24 |v=44 |name=[[List of Crayola crayon colors#Pearl Brite|Black coral]]}}
+{{Colort/Color|hex=3B3C36|r=59 |g=60 |b=54 |h=70 |s=10 |v=24 |name=[[Olive (color)#Black olive|Black olive]]}}
+{{Colort/Color|hex=BFAFB2|r=191|g=175|b=178|h=349|s=8 |v=75 |name=[[List of Crayola crayon colors#Heads 'n Tails|Black Shadows]]}}
+{{Colort/Color|hex=FFEBCD|r=255|g=235|b=205|h=36 |s=20 |v=100|name=[[X11 color names|Blanched almond]]}}
+{{Colort/Color|hex=A57164|r=165|g=113|b=100|h=12 |s=39 |v=65 |name=[[Bronze (color)#Blast-off bronze|Blast-off bronze]]}}
+{{Colort/Color|hex=318CE7|r=49 |g=140|b=231|h=210|s=79 |v=91 |name=[[Bleu de France (colour)|Bleu de France]]}}
+{{Colort/Color|hex=ACE5EE|r=172|g=229|b=238|h=188|s=28 |v=93 |name=[[List of Crayola crayon colors#Fluorescent crayons|Blizzard blue]]}}
+{{Colort/Color|hex=FAF0BE|r=250|g=240|b=190|h=50 |s=24 |v=98 |name=[[Blond]]}}
+{{Colort/Color|hex=660000|r=102|g=0 |b=0 |h=0 |s=100|v=40 |name=[[Blood red]]}}
+{{Colort/Color|hex=0000FF|r=0 |g=0 |b=255|h=240|s=100|v=100|name=[[Blue]]}}
+{{Colort/Color|hex=1F75FE|r=31 |g=117|b=254|h=217|s=88 |v=100|name=[[Shades of blue#Blue (Crayola)|Blue (Crayola)]]}}
+{{Colort/Color|hex=0093AF|r=0 |g=147|b=175|h=190|s=100|v=69 |name=[[Shades of blue#Blue (Munsell)|Blue (Munsell)]]}}
+{{Colort/Color|hex=0087BD|r=0 |g=135|b=189|h=197|s=100|v=74 |name=[[Shades of blue#Blue (NCS) (psychological primary blue)|Blue (NCS)]]}}
+{{Colort/Color|hex=0018A8|r=0 |g=24 |b=168|h=231|s=100|v=66 |name=[[Shades of blue#Blue (Pantone)|Blue (Pantone)]]}}
+{{Colort/Color|hex=333399|r=51 |g=51 |b=153|h=240|s=67 |v=60 |name=[[Shades of blue#Blue (CMYK) (pigment blue)|Blue (pigment)]]}}
+{{Colort/Color|hex=0247FE|r=2 |g=71 |b=254|h=224|s=99 |v=100|name=[[RYB color model|Blue (RYB)]]}}
+{{Colort/Color|hex=A2A2D0|r=162|g=162|b=208|h=240|s=22 |v=82 |name=[[List of Crayola crayon colors#Standard colors|Blue bell]]}}
+{{Colort/Color|hex=6699CC|r=102|g=153|b=204|h=210|s=50 |v=80 |name=[[Blue-gray]]}}
+{{Colort/Color|hex=0D98BA|r=13 |g=152|b=186|h=192|s=93 |v=73 |name=[[Blue-green]]}}
+{{Colort/Color|hex=064E40|r=6 |g=78 |b=64 |h=168|s=92 |v=31 |name=[[Blue-green#Blue-green (color wheel)|Blue-green (color wheel)]]}}
+{{Colort/Color|hex=5DADEC|r=93 |g=173|b=236|h=206|s=61 |v=93 |name=[[List of Crayola crayon colors#Heads 'n Tails|Blue jeans]]}}
+{{Colort/Color|hex=126180|r=18 |g=97 |b=128|h=197|s=86 |v=50 |name=[[Sapphire (color)#Blue sapphire|Blue sapphire]]}}
+{{Colort/Color|hex=8A2BE2|r=138|g=43 |b=226|h=271|s=81 |v=89 |name=[[Indigo#Deep indigo (web color blue-violet)|Blue-violet]]}}
+{{Colort/Color|hex=7366BD|r=115|g=102|b=189|h=249|s=46 |v=74 |name=[[Violet (color)|Blue-violet (Crayola)]]}}
+{{Colort/Color|hex=4D1A7F|r=77 |g=26 |b=127|h=270|s=80 |v=50 |name=[[Violet (color)|Blue-violet (color wheel)]]}}
+{{Colort/Color|hex=5072A7|r=80 |g=114|b=167|h=217|s=52 |v=65 |name=[[Air Force blue#Blue yonder|Blue yonder]]}}
+{{Colort/Color|hex=3C69E7|r=60 |g=105 |b=231|h=224|s=74 |v=91 |name=[[List of Crayola crayon colors|Bluetiful]]}}
+{{Colort/Color|hex=DE5D83|r=222|g=93 |b=131|h=342|s=58 |v=87 |name=[[Red-violet#Blush|Blush]]}}
+{{Colort/Color|hex=79443B|r=121|g=68 |b=59 |h=9 |s=51 |v=47 |name=[[Bole (color)|Bole]]}}
+{{Colort/Color|hex=E3DAC9|r=227|g=218|b=201|h=39 |s=11 |v=89 |name=[[Shades of white#Bone|Bone]]}}
+{{Colort/Color|hex=006A4E|r=0 |g=106|b=78 |h=164|s=100|v=42 |name=[[Shades of green#Bottle green|Bottle green]]}}
+{{Colort/Color|hex=87413F|r=135|g=65 |b=63 |h=2 |s=53 |v=53 |name=[[Shades of brown#Brandy|Brandy]]}}
+{{Colort/Color|hex=CB4154|r=203|g=65 |b=84 |h=352|s=68 |v=80 |name=[[List of Crayola crayon colors#Standard colors|Brick red]]}}
+{{Colort/Color|hex=66FF00|r=102|g=255|b=0 |h=96 |s=100|v=100|name=[[Shades of green#Bright green|Bright green]]}}
+{{Colort/Color|hex=D891EF|r=216|g=145|b=239|h=285|s=39 |v=94 |name=[[Lilac (color)#Bright lilac|Bright lilac]]}}
+{{Colort/Color|hex=C32148|r=195|g=33 |b=72 |h=346|s=83 |v=76 |name=[[Maroon#Bright maroon|Bright maroon]]}}
+{{Colort/Color|hex=1974D2|r=25 |g=116|b=210|h=210|s=88 |v=82 |name=[[Navy blue#Bright navy blue|Bright navy blue]]}}
+{{Colort/Color|hex=FFAA1D|r=255|g=170|b=29 |h=37 |s=89 |v=100|name=[[List of Crayola crayon colors#Heads 'n Tails|Bright yellow (Crayola)]]}}
+{{Colort/Color|hex=FF55A3|r=255|g=85 |b=163|h=332|s=67 |v=100|name=[[Rose (color)#Brilliant rose|Brilliant rose]]}}
+{{Colort/Color|hex=FB607F|r=251|g=96 |b=127|h=348|s=62 |v=98 |name=[[Rose (color)#Brink pink|Brink pink]]}}
+{{Colort/Color|hex=004225|r=0 |g=66 |b=37 |h=154|s=100|v=26 |name=[[British racing green]]}}
+{{Colort/Color|hex=CD7F32|r=205|g=127 |b=50 |h=30 |s=76 |v=80 |name=[[Bronze (color)|Bronze]]}}
+{{Colort/Color|hex=88540B|r=136|g=84|b=11 |h=35 |s=92 |v=53 |name=[[Brown]]}}
+{{Colort/Color|hex=AF6E4D|r=175|g=110|b=77 |h=20 |s=56 |v=69 |name=[[List of Crayola crayon colors#Heads 'n Tails|Brown sugar]]}}
+{{Colort/Color|hex=1B4D3E|r=27 |g=77 |b=62 |h=162|s=65 |v=30 |name=[[Shades of green#Brunswick green|Brunswick green]]}}
+{{Colort/Color|hex=7BB661|r=123|g=182|b=97 |h=102|s=47 |v=71 |name=[[Spring bud#Bud green|Bud green]]}}
+{{Colort/Color|hex=FFC680|r=255|g=198|b=128|h=33 |s=50 |v=100|name=[[Buff (colour)|Buff]]}}
+{{Colort/Color|hex=800020|r=128|g=0 |b=32 |h=345|s=100|v=50 |name=[[Burgundy (color)|Burgundy]]}}
+{{Colort/Color|hex=DEB887|r=222|g=184|b=135|h=34 |s=39 |v=87 |name=[[X11 color names#Color name charts|Burlywood]]}}
+{{Colort/Color|hex=A17A74|r=161|g=122|b=116|h=8 |s=28 |v=63 |name=[[List of Crayola crayon colors#Silver Swirls|Burnished brown]]}}
+{{Colort/Color|hex=CC5500|r=204|g=85 |b=0 |h=25 |s=100|v=80 |name=[[Shades of orange#Burnt orange|Burnt orange]]}}
+{{Colort/Color|hex=E97451|r=233|g=116|b=81 |h=14 |s=65 |v=91 |name=[[Burnt sienna]]}}
+{{Colort/Color|hex=8A3324|r=138|g=51 |b=36 |h=9  |s=74 |v=54 |name=[[Burnt umber]]}}
+{{Colort/Color|hex=BD33A4|r=189|g=51 |b=164|h=311|s=73 |v=74 |name=[[Byzantium (color)#Byzantine|Byzantine]]}}
+{{Colort/Color|hex=702963|r=112|g=41 |b=99 |h=311|s=63 |v=44 |name=[[Byzantium (color)|Byzantium]]}}
+{{Colort/Color|hex=536872|r=83 |g=104|b=114|h=199|s=27 |v=45 |name=[[Cadet grey#Cadet|Cadet]]|link target=C }}
+{{Colort/Color|hex=5F9EA0|r=95 |g=158|b=160|h=182|s=41 |v=63 |sat=25 |name=[[Cadet grey#Cadet blue|Cadet blue]]}}
+{{Colort/Color|hex=A9B2C3|r=169|g=178|b=195|h=219|s=13 |v=76 |name=[[Cadet grey#Cadet blue (Crayola)|Cadet blue (Crayola)]]}}
+{{Colort/Color|hex=91A3B0|r=145|g=163|b=176|h=205|s=18 |v=69 |name=[[Cadet grey]]}}
+{{Colort/Color|hex=006B3C|r=0 |g=107|b=60 |h=154|s=100|v=42 |name=[[Cadmium pigments|Cadmium green]]}}
+{{Colort/Color|hex=ED872D|r=237|g=135|b=45 |h=28 |s=81 |v=93 |name=[[Cadmium pigments|Cadmium orange]]}}
+{{Colort/Color|hex=E30022|r=227|g=0 |b=34 |h=351|s=100|v=89 |name=[[Cadmium pigments|Cadmium red]]}}
+{{Colort/Color|hex=FFF600|r=255|g=246|b=0 |h=58 |s=100|v=100|name=[[Cadmium pigments|Cadmium yellow]]}}
+{{Colort/Color|hex=A67B5B|r=166|g=123|b=91 |h=26 |s=45 |v=65 |name=[[Coffee (color)#Café au Lait|Café au lait]]}}
+{{Colort/Color|hex=4B3621|r=75 |g=54 |b=33 |h=30 |s=56 |v=29 |name=[[Coffee (color)#Café Noir|Café noir]]}}
+{{Colort/Color|hex=A3C1AD|r=163|g=193|b=173|h=140|s=16 |v=76 |sat=19 |name=[[Cambridge Blue (colour)|Cambridge blue]]}}
+{{Colort/Color|hex=C19A6B|r=193|g=154|b=107|h=33 |s=45 |v=76 |name=[[Camel (color)#Camel|Camel]]}}
+{{Colort/Color|hex=EFBBCC|r=239|g=187|b=204|h=340|s=22 |v=94 |name=[[Shades of pink#Cameo pink|Cameo pink]]}}
+{{Colort/Color|hex=FFFF99|r=255|g=255|b=153|h=60 |s=40 |v=100|name=[[History of Crayola crayons#Crayola No. 64|Canary]]}}
+{{Colort/Color|hex=FFEF00|r=255|g=239|b=0 |h=56 |s=100|v=100|name=[[Shades of yellow#Yellow (CMYK) (process yellow) (canary yellow)|Canary yellow]]}}
+{{Colort/Color|hex=FF0800|r=255|g=8 |b=0 |h=2 |s=100|v=100|name=[[Candy apple red]]}}
+{{Colort/Color|hex=E4717A|r=228|g=113|b=122|h=355|s=50 |v=89 |name=[[Candy apple red#Candy pink|Candy pink]]}}
+{{Colort/Color|hex=00BFFF|r=0 |g=191|b=255|h=195|s=100|v=100|name=[[Sky blue#Deep sky blue|Capri]]}}
+{{Colort/Color|hex=592720|r=89 |g=39 |b=32 |h=7 |s=64 |v=35 |name=[[Caput mortuum (pigment)|Caput mortuum]]}}
+{{Colort/Color|hex=C41E3A|r=196|g=30 |b=58 |h=350|s=85 |v=77 |name=[[Cardinal (color)|Cardinal]]}}
+{{Colort/Color|hex=00CC99|r=0 |g=204|b=153|h=165|s=100|v=80 |name=[[Spring green#Caribbean green|Caribbean green]]}}
+{{Colort/Color|hex=960018|r=150|g=0 |b=24 |h=350|s=100|v=59 |name=[[Carmine (color)|Carmine]]}}
+{{Colort/Color|hex=D70040|r=215|g=0 |b=64 |h=342|s=100|v=84 |name=[[Carmine (color)#Rich carmine|Carmine (M&P)]]}}
+{{Colort/Color|hex=FFA6C9|r=255|g=166|b=201|h=336|s=35 |v=100|name=[[Carnation pink]]}}
+{{Colort/Color|hex=B31B1B|r=179|g=27 |b=27 |h=0 |s=85 |v=70 |name=[[Carnelian (color)|Carnelian]]}}
+{{Colort/Color|hex=56A0D3|r=86 |g=160|b=211|h=204|s=59 |v=83 |name=[[Carolina blue]]}}
+{{Colort/Color|hex=ED9121|r=237|g=145|b=33 |h=33 |s=86 |v=93 |name=[[Shades of orange#Carrot orange|Carrot orange]]}}
+{{Colort/Color|hex=00563F|r=0 |g=86 |b=63 |h=164|s=100|v=34 |name=[[Shades of green#Castleton green|Castleton green]]}}
+{{Colort/Color|hex=703642|r=112|g=54 |b=66 |h=348|s=52 |v=44 |name=[[Catawba (grape)#Catawba (color)|Catawba]]}}
+{{Colort/Color|hex=C95A49|r=201|g=90 |b=73 |h=8 |s=64 |v=79 |name=[[List of Crayola crayon colors#Magic Scent|Cedar Chest]]}}
+{{Colort/Color|hex=ACE1AF|r=172|g=225|b=175|h=123|s=24 |v=88 |name=[[Shades of green#Celadon|Celadon]]}}
+{{Colort/Color|hex=007BA7|r=0 |g=123|b=167|h=196|s=100|v=65 |name=[[Shades_of_cyan#Cerulean|Celadon blue]]}}
+{{Colort/Color|hex=2F847C|r=47 |g=132|b=124|h=174|s=64 |v=52 |sat=47 |name=[[Shades of green#Celadon green|Celadon green]]}}
+{{Colort/Color|hex=B2FFFF|r=178|g=255|b=255|h=180|s=30 |v=100|name=[[Sky blue#Celeste|Celeste]]}}
+{{Colort/Color|hex=246BCE|r=36|g=107 |b=206 |h=215|s=83 |v=81 |name=[[Isatis_tinctoria|Celtic blue]]}}
+{{Colort/Color|hex=DE3163|r=222|g=49 |b=99 |h=343|s=78 |v=87 |name=[[Cerise (color)|Cerise]]}}
+{{Colort/Color|hex=007BA7|r=0 |g=123|b=167|h=196|s=100|v=65 |name=[[Cerulean]]}}
+{{Colort/Color|hex=2A52BE|r=42 |g=82 |b=190|h=224|s=78 |v=75 |l=45 |name=[[Cerulean#Cerulean blue|Cerulean blue]]}}
+{{Colort/Color|hex=6D9BC3|r=109|g=155|b=195|h=208|s=44 |v=76 |name=[[Cerulean#Cerulean frost|Cerulean frost]]}}
+{{Colort/Color|hex=1DACD6|r=29 |g=172|b=214|h=194|s=86 |v=84 |name=[[Cerulean#Cerulean (Crayola)|Cerulean (Crayola)]]}}
+{{Colort/Color|hex=007AA5|r=0 |g=122|b=165|h=196|s=100|v=65 |name=[[CG Blue|CG blue]]}}
+{{Colort/Color|hex=E03C31|r=224|g=60 |b=49 |h=4 |s=78 |v=88 |name=[[CG Red | CG red]]}}
+{{Colort/Color|hex=F7E7CE|r=247|g=231|b=206|h=37 |s=17 |v=97 |name=[[Champagne (color)#Champagne|Champagne]]}}
+{{Colort/Color|hex=F1DDCF|r=241|g=221|b=207|h=25 |s=14 |v=95 |name=[[Shades of pink#Other notable pink colors|Champagne pink]]}}
+{{Colort/Color|hex=36454F|r=54 |g=69 |b=79 |h=204|s=32 |v=31 |name=[[Shades of gray#Charcoal|Charcoal]]}}
+{{Colort/Color|hex=232B2B|r=35 |g=43 |b=43 |h=180|s=19 |v=17 |name=[[Shades of black (colors)#Charleston green|Charleston green]]}}
+{{Colort/Color|hex=E68FAC|r=230|g=143|b=172|h=340|s=38 |v=90 |name=[[Shades of pink#Charm pink|Charm pink]]}}
+{{Colort/Color|hex=DFFF00|r=223|g=255|b=0 |h=68 |s=100|v=100|name=[[Chartreuse (color)|Chartreuse (traditional)]]}}
+{{Colort/Color|hex=7FFF00|r=127|g=255|b=0 |h=90 |s=100|v=100|name=[[Chartreuse (color)|Chartreuse (web)]]}}
+{{Colort/Color|hex=FFB7C5|r=255|g=183|b=197|h=348|s=28 |v=100|name=[[Shades of pink#Cherry blossom pink|Cherry blossom pink]]}}
+{{Colort/Color|hex=954535|r=149|g=69 |b=53 |h=10 |s=64 |v=58 |name=[[Chestnut (color)|Chestnut]]}}
+{{Colort/Color|hex=E23D28|r=226|g=61 |b=40 |h=5 |s=183|v=125|name=[[Shades of red#Chili red|Chili red]]}}
+{{Colort/Color|hex=DE6FA1|r=222|g=111|b=161|h=333|s=50 |v=87 |name=[[Shades of pink#China pink|China pink]]}}
+{{Colort/Color|hex=A8516E|r=168|g=81 |b=110|h=340|s=52 |v=66 |name=[[Rose (color)#China rose|China rose]]}}
+{{Colort/Color|hex=AA381E|r=170|g=56 |b=30 |h=11 |s=82 |v=67 |name=[[Vermilion#Chinese red 2|Chinese red]]}}
+{{Colort/Color|hex=856088|r=133|g=96 |b=136|h=296|s=29 |v=53 |name=[[Shades of violet#Chinese violet|Chinese violet]]}}
+{{Colort/Color|hex=FFB200|r=255|g=178|b=0 |h=42 |s=100|v=100|name=[[Shades of yellow#Chinese yellow|Chinese yellow]]}}
+{{Colort/Color|hex=7B3F00|r=123|g=63 |b=0 |h=31 |s=100|v=48 |name=[[Chocolate (color)|Chocolate (traditional)]]}}
+{{Colort/Color|hex=D2691E|r=210|g=105|b=30 |h=25 |s=86 |v=82 |name=[[Chocolate (color)#Variations of chocolate|Chocolate (web)]]}}
+{{Colort/Color|hex=58111A|r=88|g=17 |b=26 |h=352 |s=80|v=34|name=[[Shades of red#Chocolate cosmos|Chocolate Cosmos]]}}
+{{Colort/Color|hex=FFA700|r=255|g=167|b=0 |h=39 |s=100|v=100|name=[[Chrome yellow]]}}
+{{Colort/Color|hex=98817B|r=152|g=129|b=123|h=12 |s=19 |v=60 |name=[[Cinereous]]}}
+{{Colort/Color|hex=E34234|r=227|g=66 |b=52 |h=5 |s=77 |v=89 |name=[[Vermilion|Cinnabar]]}}
+{{Colort/Color|hex=CD607E|r=205|g=96 |b=126|h=343|s=53 |v=80 |name=[[List of Crayola crayon colors#Silver Swirls|Cinnamon Satin]]}}
+{{Colort/Color|hex=E4D00A|r=228|g=208|b=10 |h=54 |s=96 |v=89 |name=[[Citrine (colour)|Citrine]]}}
+{{Colort/Color|hex=9FA91F|r=158|g=169|b=31 |h=64 |s=82 |v=66 |name=[[Citron (color)|Citron]]}}
+{{Colort/Color|hex=7F1734|r=127|g=23 |b=52 |h=343|s=82 |v=50 |name=[[Wine (color)#Claret|Claret]]}}
+{{Colort/Color|hex=0047AB|r=0 |g=71 |b=171|h=215|s=100|v=67 |name=[[Cobalt blue]]}}
+{{Colort/Color|hex=D2691E|r=210|g=105|b=30 |h=25 |s=86 |v=82 |name=[[Chocolate (color)#Variations of chocolate|Cocoa brown]]}}
+{{Colort/Color|hex=6F4E37|r=111|g=78 |b=55 |h=25 |s=50 |v=44 |name=[[Coffee (color)|Coffee]]}}
+{{Colort/Color|hex=B9D9EB|r=185|g=217|b=235|name=[[Columbia Blue]]}}
+{{Colort/Color|hex=F88379|r=248|g=131|b=121|h=5 |s=51 |v=97 |name=[[Shades of pink#Congo pink|Congo pink]]}}
+{{Colort/Color|hex=8C92AC|r=140|g=146|b=172|h=229|s=19 |v=67 |name=[[Shades of gray#Cool gray|Cool grey]]}}
+{{Colort/Color|hex=B87333|r=184|g=115|b=51 |h=29 |s=72 |v=72 |name=[[Copper (color)|Copper]]}}
+{{Colort/Color|hex=DA8A67|r=218|g=138|b=103|h=18 |s=53 |v=85 |name=[[Copper (color)#Variations of copper|Copper (Crayola)]]}}
+{{Colort/Color|hex=AD6F69|r=173|g=111|b=105|h=5 |s=39 |v=68 |name=[[Copper (color)#Copper penny|Copper penny]]}}
+{{Colort/Color|hex=CB6D51|r=203|g=109|b=81 |h=14 |s=60 |v=80 |name=[[Copper (color)#Copper red|Copper red]]}}
+{{Colort/Color|hex=996666|r=153|g=102|b=102|h=0 |s=33 |v=60 |name=[[Copper (color)#Copper rose|Copper rose]]}}
+{{Colort/Color|hex=FF3800|r=255|g=56 |b=0 |h=13 |s=100|v=100|name=[[Coquelicot]]}}
+{{Colort/Color|hex=FF7F50|r=255|g=127|b=80 |h=16 |s=69 |v=100|name=[[Coral (color)|Coral]]}}
+{{Colort/Color|hex=F88379|r=248|g=131|b=121|h=5 |s=51 |v=97 |name=[[Coral (color)#Coral pink|Coral pink]]}}
+{{Colort/Color|hex=893F45|r=137|g=63 |b=69 |h=355|s=54 |v=54 |name=[[Cordovan (color)|Cordovan]]}}
+{{Colort/Color|hex=FBEC5D|r=251|g=236|b=93 |h=54 |s=63 |v=98 |name=[[Corn (color)|Corn]]}}
+{{Colort/Color|hex=B31B1B|r=179|g=27 |b=27 |h=0  |s=85 |v=70 |name=[[Shades of red#Cornell red|Cornell red]]}}
+{{Colort/Color|hex=6495ED|r=100|g=149|b=237|h=219|s=58 |v=93 |name=[[Cornflower blue]]}}
+{{Colort/Color|hex=FFF8DC|r=255|g=248|b=220|h=48 |s=14 |v=100|name=[[Shades of white#Cornsilk|Cornsilk]]}}
+{{Colort/Color|hex=2E2D88|r=46 |g=45 |b=136|h=241|s=67 |v=53 |name=[[List of Crayola crayon colors#Silver Swirls|Cosmic cobalt]]}}
+{{Colort/Color|hex=FFF8E7|r=255|g=248|b=231|h=43 |s=9 |v=100|name=[[Cosmic latte]]}}
+{{Colort/Color|hex=81613C|r=129|g=97 |b=60 |h=32 |s=52 |v=51 |name=[[Coyote brown]]}}
+{{Colort/Color|hex=FFBCD9|r=255|g=188|b=217|h=334|s=26 |v=100|name=[[Shades of pink#Cotton candy|Cotton candy]]}}
+{{Colort/Color|hex=FFFDD0|r=255|g=253|b=208|h=57 |s=18 |v=100|name=[[Cream (colour)|Cream]]}}
+{{Colort/Color|hex=DC143C|r=220|g=20 |b=60 |h=348|s=91 |v=86 |name=[[Crimson]]}}
+{{Colort/Color|hex=9E1B32|r=158|g=27 |b=50 |h=349|s=83 |v=62 |name=[[Crimson#School colors|Crimson (UA)]]}}
+{{Colort/Color|hex=A7D8DE|r=167|g=216 |b=222 |h=187|s=45 |v=87 |name=[[Crystal]]}}
+{{Colort/Color|hex=F5F5F5|r=245|g=245|b=245|h=— |s=0 |v=96 |name=[[List of Crayola crayon colors#Pearl Brite|Cultured]]}}
+{{Colort/Color|hex=00FFFF|r=0 |g=255|b=255|h=180|s=100|v=100|name=[[Cyan]]}}
+{{Colort/Color|hex=00B7EB|r=0 |g=183|b=235|h=193|s=100|v=92 |name=[[Cyan#Process cyan|Cyan (process)]]}}
+{{Colort/Color|hex=58427C|r=88 |g=66 |b=124|h=263|s=47 |v=49 |name=[[List of Crayola crayon colors#Metallic FX|Cyber grape]]}}
+{{Colort/Color|hex=FFD300|r=255|g=211|b=0 |h=50 |s=100|v=100|name=[[Shades of yellow#Cyber yellow|Cyber yellow]]}}
+{{Colort/Color|hex=F56FA1|r=245|g=111|b=161|h=338 |s=54 |v=96|name=[[Cyclamen (color)|Cyclamen]]}}
+{{Colort/Color|hex=666699|r=102|g=102|b=153|h=240|s=33 |v=60 |name=[[Blue-gray#Dark blue-gray|Dark blue-gray]]|link target=D}}
+{{Colort/Color|hex=654321|r=101|g=67 |b=33 |h=30 |s=67 |v=40 |name=[[Shades of brown#Dark brown|Dark brown]]}}
+{{Colort/Color|hex=5D3954|r=93 |g=57 |b=84 |h=315|s=39 |v=36 |name=[[Byzantium (color)#Dark byzantium|Dark byzantium]]}}
+{{Colort/Color|hex=26428B|r=38 |g=66 |b=139|h=223|s=73 |v=55 |name=[[Cornflower blue#Dark cornflower blue|Dark cornflower blue]]}}
+{{Colort/Color|hex=008B8B|r=0 |g=139|b=139|h=180|s=100|v=55 |name=[[Shades of cyan#Dark cyan|Dark cyan]]}}
+{{Colort/Color|hex=536878|r=83 |g=104|b=120|h=206|s=31 |v=47 |name=[[Electric blue (color)#Dark electric blue|Dark electric blue]]}}
+{{Colort/Color|hex=B8860B|r=184|g=134|b=11 |h=43 |s=94 |v=72 |name=[[Goldenrod (color)#Dark goldenrod|Dark goldenrod]]}}
+{{Colort/Color|hex=013220|r=1 |g=50 |b=32 |h=158|s=98 |v=20 |name=[[Shades of green#Dark green|Dark green]]}}
+{{Colort/Color|hex=006400|r=0 |g=100|b=0 |h=120|s=100|v=39 |name=[[Shades of green#Dark green (X11)|Dark green (X11)]]}}
+{{Colort/Color|hex=1A2421|r=26 |g=36 |b=33 |h=162|s=28 |v=14 |name=[[Jungle green#Dark jungle green|Dark jungle green]]}}
+{{Colort/Color|hex=BDB76B|r=189|g=183|b=107|h=56 |s=43 |v=74 |name=[[Khaki (color)#Dark khaki|Dark khaki]]}}
+{{Colort/Color|hex=483C32|r=72 |g=60 |b=50 |h=27 |s=31 |v=28 |name=[[Lava (color)#Dark lava|Dark lava]]}}
+{{Colort/Color|hex=534B4F|r=83 |g=75 |b=79 |h=330|s=10 |v=33 |name=[[Liver (color)#Dark liver (web)|Dark liver]]}}
+{{Colort/Color|hex=543D37|r=84 |g=61 |b=55 |h=12 |s=35 |v=33 |name=[[Liver (color)#Dark liver (horses)|Dark liver (horses)]]}}
+{{Colort/Color|hex=8B008B|r=139|g=0 |b=139|h=300|s=100|v=55 |name=[[Shades of magenta#Dark magenta|Dark magenta]]}}
+{{Colort/Color|hex=4A5D23|r=74 |g=93 |b=35 |h=80 |s=62 |v=36 |name=[[Shades of green#Dark moss green|Dark moss green]]}}
+{{Colort/Color|hex=556B2F|r=85 |g=107|b=47 |h=82 |s=56 |v=42 |name=[[Olive (color)#Dark olive green|Dark olive green]]}}
+{{Colort/Color|hex=FF8C00|r=255|g=140|b=0 |h=33 |s=100|v=100|name=[[Shades of orange#Dark orange (web color)|Dark orange]]}}
+{{Colort/Color|hex=9932CC|r=153|g=50 |b=204|h=280|s=75 |v=80 |name=[[Orchid (color)#Dark orchid|Dark orchid]]}}
+{{Colort/Color|hex=03C03C|r=3 |g=192|b=60 |h=138|s=98 |v=75 |name=[[Shades of green#Dark pastel green|Dark pastel green]]}}
+{{Colort/Color|hex=301934|r=48 |g=25 |b=52 |h=291|s=51 |v=20 |name=[[Dark purple]]}}
+{{Colort/Color|hex=8B0000|r=139|g=0 |b=0 |h=0 |s=100|v=55 |name=[[Maroon (color)#Dark red|Dark red]]}}
+{{Colort/Color|hex=E9967A|r=233|g=150|b=122|h=15 |s=48 |v=91 |name=[[Salmon (color)#Dark salmon|Dark salmon]]}}
+{{Colort/Color|hex=8FBC8F|r=143|g=188|b=143|h=120|s=24 |v=74 |name=[[X11 color names#Color name charts|Dark sea green]]}}
+{{Colort/Color|hex=3C1414|r=60 |g=20 |b=20 |h=0 |s=67 |v=24 |name=[[Sienna|Dark sienna]]}}
+{{Colort/Color|hex=8CBED6|r=140|g=190|b=214|h=199|s=35 |v=84 |name=[[Sky blue#Dark sky blue|Dark sky blue]]}}
+{{Colort/Color|hex=483D8B|r=72 |g=61 |b=139|h=248|s=56 |v=55 |name=[[X11 color names#Color name charts|Dark slate blue]]}}
+{{Colort/Color|hex=2F4F4F|r=47 |g=79 |b=79 |h=180|s=41 |v=31 |name=[[Slate gray#Dark slate gray|Dark slate gray]]}}
+{{Colort/Color|hex=177245|r=23 |g=114|b=69 |h=150|s=80 |v=45 |name=[[Spring green#Dark spring green|Dark spring green]]}}
+{{Colort/Color|hex=00CED1|r=0 |g=206|b=209|h=181|s=100|v=82 |name=[[Turquoise (color)#Dark turquoise|Dark turquoise]]}}
+{{Colort/Color|hex=9400D3|r=148|g=0 |b=211|h=282|s=100|v=83 |name=[[Shades of violet#Pigment violet (web color dark violet)|Dark violet]]}}
+{{Colort/Color|hex=00703C|r=0 |g=112|b=60 |h=152|s=100|v=44 |name=[[Shades of green#Dartmouth green|Dartmouth green]]}}
+{{Colort/Color|hex=555555|r=85 |g=85 |b=85 |h=— |s=0 |v=33 |name=[[Davy's grey]]}}
+{{Colort/Color|hex=DA3287|r=218|g=50 |b=135|h=330|s=77 |v=85 |name=[[Cerise (color)#Deep cerise|Deep cerise]]}}
+{{Colort/Color|hex=FAD6A5|r=250|g=214|b=165|h=35 |s=34 |v=98 |name=[[Champagne (color)#Deep champagne|Deep champagne]]}}
+{{Colort/Color|hex=B94E48|r=185|g=78 |b=72 |h=3 |s=61 |v=73 |name=[[Chestnut (color)#Deep chestnut|Deep chestnut]]}}
+{{Colort/Color|hex=004B49|r=0 |g=75 |b=73 |h=178|s=100|v=29 |name=[[Jungle green#Deep jungle green|Deep jungle green]]}}
+{{Colort/Color|hex=FF1493|r=255|g=20 |b=147|h=328|s=92 |v=100|name=[[Shades of pink#Deep pink|Deep pink]]}}
+{{Colort/Color|hex=FF9933|r=255|g=153|b=51 |h=30 |s=80 |v=100|name=[[Saffron (color)#India saffron or deep saffron|Deep saffron]]}}
+{{Colort/Color|hex=00BFFF|r=0 |g=191|b=255|h=195|s=100|v=100|name=[[Sky blue#Deep sky blue|Deep sky blue]]}}
+{{Colort/Color|hex=4A646C|r=74 |g=100|b=108|h=194|s=31 |v=42 |name=[[List of Crayola crayon colors#Metallic FX|Deep Space Sparkle]]}}
+{{Colort/Color|hex=7E5E60|r=126|g=94 |b=96 |h=356|s=25 |v=49 |name=[[Taupe#Deep taupe|Deep taupe]]}}
+{{Colort/Color|hex=1560BD|r=21 |g=96 |b=189|h=213|s=89 |v=74 |name=[[List of Crayola crayon colors#Standard colors|Denim]]}}
+{{Colort/Color|hex=2243B6|r=34 |g=67 |b=182|h=227|s=81 |v=71 |name=[[List of Crayola crayon colors#Heads 'n Tails|Denim blue]]}}
+{{Colort/Color|hex=C19A6B|r=193|g=154|b=107|h=33 |s=45 |v=76 |name=[[Desert sand (color)#Desert|Desert]]}}
+{{Colort/Color|hex=EDC9AF|r=237|g=201|b=175|h=25 |s=26 |v=93 |name=[[Desert sand (color)|Desert sand]]}}
+{{Colort/Color|hex=696969|r=105|g=105|b=105|h=— |s=0 |v=41 |name=[[Grey#Web colors|Dim gray]]}}
+{{Colort/Color|hex=1E90FF|r=30 |g=144|b=255|h=210|s=88 |v=100|name=[[Dodger blue]]}}
+{{Colort/Color|hex=D71868|r=215|g=24 |b=104|h=335|s=89 |v=84 |name=[[Rose (color)#Dogwood rose|Dogwood rose]]}}
+{{Colort/Color|hex=967117|r=150|g=113|b=23 |h=43 |s=85 |v=59 |name=[[Desert sand (color)#Sand dune (Drab)|Drab]]}}
+{{Colort/Color|hex=00009C|r=0 |g=0 |b=156|h=240|s=100|v=61 |name=[[Duke blue]]}}
+{{Colort/Color|hex=EFDFBB|r=239|g=223|b=187|h=42 |s=22 |v=94 |name=[[Shades of white#Dutch white|Dutch white]]}}
+{{Colort/Color|hex=E1A95F|r=225|g=169|b=95 |h=34 |s=58 |v=88 |name=[[Desert sand (color)#Earth yellow|Earth yellow]]|link target=E}}
+{{Colort/Color|hex=555D50|r=85 |g=93 |b=80 |h=97 |s=14 |v=36 |name=[[Shades of black (colors)#Ebony|Ebony]]}}
+{{Colort/Color|hex=C2B280|r=194|g=178|b=128|h=45 |s=34 |v=76 |name=[[Ecru]]}}
+{{Colort/Color|hex=1B1B1B|r=27 |g=27 |b=27 |h=— |s=0 |v=11 |name=[[Shades of black#Eerie black|Eerie black]]}}
+{{Colort/Color|hex=614051|r=97 |g=64 |b=81 |h=329|s=34 |v=38 |sat=20 |name=[[Eggplant (color)|Eggplant]]}}
+{{Colort/Color|hex=F0EAD6|r=240|g=234|b=214|h=46 |s=11 |v=94 |name=[[Eggshell (color)|Eggshell]]}}
+{{Colort/Color|hex=1034A6|r=16 |g=52 |b=166|h=226|s=90 |v=65 |name=[[Egyptian blue]]}}
+{{Colort/Color|hex=16161D|r=22 |g=22 |b=29 |h=240|s=24 |v=11 |name=[[Eigengrau]]}}
+{{Colort/Color|hex=7DF9FF|r=125|g=249|b=255|h=183|s=51 |v=100|name=[[Electric blue (color)|Electric blue]]}}
+{{Colort/Color|hex=00FF00|r=0 |g=255|b=0 |h=120|s=100|v=100|name=[[Electric green]]}}
+{{Colort/Color|hex=6F00FF|r=111|g=0 |b=255|h=266|s=100|v=100|name=[[Indigo#Electric indigo|Electric indigo]]}}
+{{Colort/Color|hex=CCFF00|r=204|g=255|b=0 |h=72 |s=100|v=100|name=[[Lime (color)#Electric lime|Electric lime]]}}
+{{Colort/Color|hex=BF00FF|r=191|g=0 |b=255|h=285|s=100|v=100|name=[[Shades of purple#Electric purple: 2000s|Electric purple]]}}
+{{Colort/Color|hex=8F00FF|r=143|g=0 |b=255|h=274|s=100|v=100|name=[[Shades of violet#Electric violet|Electric violet]]}}
+{{Colort/Color|hex=50C878|r=80 |g=200|b=120|h=140|s=60 |v=78 |name=[[Shades of green#Emerald|Emerald]]}}
+{{Colort/Color|hex=6C3082|r=108|g=48 |b=130|h=284|s=63 |v=51 |name=[[Shades of purple#Eminence|Eminence]]}}
+{{Colort/Color|hex=1B4D3E|r=27 |g=77 |b=62 |h=162|s=65 |v=30 |name=[[Shades of green#Brunswick green|English green]]}}
+{{Colort/Color|hex=B48395|r=180|g=131|b=149|h=338|s=27 |v=71 |name=[[Lavender (color)#English lavender|English lavender]]}}
+{{Colort/Color|hex=AB4B52|r=171|g=75 |b=82 |h=356|s=56 |v=67 |sat=39 |l=48 |name=[[Indian red (color)#English red|English red]]}}
+{{Colort/Color|hex=CC474B|r=204|g=71 |b=75 |h=358|s=65 |v=80 |name=[[List of Crayola crayon colors|English vermillion]]}}
+{{Colort/Color|hex=563C5C|r=86 |g=60 |b=92 |h=289|s=35 |v=36 |name=[[Shades of violet#English violet|English violet]]}}
+{{Colort/Color|hex=00FF40|r=0 |g=255 |b=64 |h=135|s=100 |v=100 |name=[[Erin (color)|Erin]]}}
+{{Colort/Color|hex=96C8A2|r=150|g=200|b=162|h=134|s=25 |v=78 |name=[[Eton blue#Eton blue|Eton blue]]}}
+{{Colort/Color|hex=C19A6B|r=193|g=154|b=107|h=33 |s=45 |v=76 |name=[[Fallow (color)|Fallow]]|link target=F}}
+{{Colort/Color|hex=801818|r=128|g=24 |b=24 |h=0 |s=81 |v=50 |name=[[Falu red]]}}
+{{Colort/Color|hex=B53389|r=181|g=51 |b=137|h=320|s=72 |v=71 |l=45 |name=[[Fuchsia (color)#Fandango|Fandango]]}}
+{{Colort/Color|hex=DE5285|r=222|g=82 |b=133|h=338|s=63 |v=87 |name=[[Shades of pink#Fandango pink|Fandango pink]]}}
+{{Colort/Color|hex=F400A1|r=244|g=0 |b=161|h=320|s=100|v=96 |name=[[Fuchsia (color)#Fashion fuchsia|Fashion fuchsia]]}}
+{{Colort/Color|hex=E5AA70|r=229|g=170|b=112|h=30 |s=51 |v=90 |name=[[Fawn (colour)|Fawn]]}}
+{{Colort/Color|hex=4D5D53|r=77 |g=93 |b=83 |h=143|s=17 |v=36 |name=[[Shades of green#Feldgrau|Feldgrau]]}}
+{{Colort/Color|hex=4F7942|r=79 |g=121|b=66 |h=106|s=45 |v=47 |name=[[Shades of green#Fern green|Fern green]]}}
+{{Colort/Color|hex=6C541E|r=108|g=84 |b=30 |h=42 |s=72 |v=42 |name=[[Desert sand (color)#Field drab|Field drab]]}}
+{{Colort/Color|hex=FF5470|r=255|g=84 |b=112|h=350|s=67 |v=100|name=[[List of Crayola crayon colors#Extreme Twistables colors|Fiery rose]]}}
+{{Colort/Color|hex=683068|r=104|g=48 |b=104|h=300|s=54 |v=41 |name=[[Shades of magenta#Finn|Finn]]}}
+{{Colort/Color|hex=B22222|r=178|g=34 |b=34 |h=0 |s=81 |v=70 |name=[[X11 color names#Color name charts|Firebrick]]}}
+{{Colort/Color|hex=CE2029|r=206|g=32 |b=41 |h=357|s=84 |v=81 |name=[[Fire engine red]]}}
+{{Colort/Color|hex=E95C4B|r=233|g=92 |b=75 |h=6 |s=68 |v=91 |name=[[Shades of orange#Fire opal|Fire opal]]}}
+{{Colort/Color|hex=E25822|r=226|g=88 |b=34 |h=17 |s=85 |v=89 |name=[[Flame (color)|Flame]]}}
+{{Colort/Color|hex=EEDC82|r=238|g=220|b=130|h=50 |s=45 |v=93 |name=[[Flax (color)|Flax]]}}
+{{Colort/Color|hex=A2006D|r=162|g=0 |b=109|h=320|s=100|v=64 |name=[[Red-violet#Flirt|Flirt]]}}
+{{Colort/Color|hex=FFFAF0|r=255|g=250|b=240|h=40 |s=6 |v=100|name=[[Shades of white#Floral white|Floral white]]}}
+{{Colort/Color|hex=15F4EE|r=21|g=244|b=238 |h=178 |s=91|v=96|name=[[Shades_of_blue#Fluorescent_blue|Fluorescent blue]]}}
+{{Colort/Color|hex=5FA777|r=95 |g=167|b=119|h=140|s=43 |v=65 |name=[[Shades of green#Forest Green (Crayola)|Forest green (Crayola)]]}}
+{{Colort/Color|hex=014421|r=1 |g=68 |b=33 |h=149|s=99 |v=27 |name=[[Shades of green#UP forest green|Forest green (traditional)]]}}
+{{Colort/Color|hex=228B22|r=34 |g=139|b=34 |h=120|s=76 |v=55 |name=[[Shades of green#Forest green|Forest green (web)]]}}
+{{Colort/Color|hex=A67B5B|r=166|g=123|b=91 |h=26 |s=45 |v=65 |name=[[Beige#French beige|French beige]]}}
+{{Colort/Color|hex=856D4D|r=133|g=109|b=77 |h=34 |s=42 |v=52 |name=[[Bistre#French bistre|French bistre]]}}
+{{Colort/Color|hex=0072BB|r=0 |g=114|b=187|h=203|s=100|v=73 |name=[[Shades of azure#French blue|French blue]]}}
+{{Colort/Color|hex=FD3F92|r=253|g=63 |b=146|h=334|s=75 |v=99 |name=[[Fuchsia (color)#French fuchsia|French fuchsia]]}}
+{{Colort/Color|hex=86608E|r=134|g=96 |b=142|h=290|s=32 |v=56 |name=[[Lilac (color)#French lilac|French lilac]]}}
+{{Colort/Color|hex=9EFD38|r=158|g=253|b=56 |h=89 |s=78 |v=99 |name=[[Lime (color)#French lime|French lime]]}}
+{{Colort/Color|hex=D473D4|r=212|g=115|b=212|h=300|s=46 |v=83 |name=[[Mauve#French mauve (deep mauve)|French mauve]]}}
+{{Colort/Color|hex=FD6C9E|r=253|g=108|b=158|h=339|s=57 |v=99 |name=[[Shades of pink#French pink|French pink]]}}
+{{Colort/Color|hex=C72C48|r=199|g=44 |b=72 |h=349|s=78 |v=78 |name=[[Raspberry (color)#French raspberry|French raspberry]]}}
+{{Colort/Color|hex=F64A8A|r=246|g=74 |b=138|h=338|s=70 |v=96 |name=[[Rose (color)#French rose|French rose]]}}
+{{Colort/Color|hex=77B5FE|r=119|g=181|b=254|h=212|s=53 |v=100|name=[[Sky blue#French sky blue|French sky blue]]}}
+{{Colort/Color|hex=8806CE|r=136|g=6 |b=206|h=279|s=97 |v=81 |name=[[Shades of violet#French violet|French violet]]}}
+{{Colort/Color|hex=E936A7|r=233|g=54 |b=167|h=322|s=77 |v=91 |name=[[List of Crayola crayon colors#Extreme Twistables colors|Frostbite]]}}
+{{Colort/Color|hex=FF00FF|r=255|g=0 |b=255|h=300|s=100|v=100|name=[[Fuchsia (color)|Fuchsia]]}}
+{{Colort/Color|hex=C154C1|r=193|g=84 |b=193|h=300|s=56 |v=76 |name=[[Fuchsia (color)#Deep fuchsia|Fuchsia (Crayola)]]}}
+{{Colort/Color|hex=CC397B|r=204|g=57 |b=123|h=333|s=72 |v=80 |name=[[Fuchsia (color)#Fuchsia purple|Fuchsia purple]]}}
+{{Colort/Color|hex=C74375|r=199|g=67 |b=117|h=337|s=66 |v=78 |name=[[Rose (color)#Fuchsia rose|Fuchsia rose]]}}
+{{Colort/Color|hex=E48400|r=228|g=132|b=0 |h=35 |s=100|v=89 |name=[[Fulvous]]}}
+{{Colort/Color|hex=87421F|r=135|g=66 |b=31 |h=20 |s=77 |v=53 |name=[[List of Crayola crayon colors#Standard colors|Fuzzy Wuzzy]]}}
+{{Colort/Color|hex=DCDCDC|r=220|g=220|b=220|h=— |s=0 |v=86 |name=[[X11 colour names#Color names identical between X11 and HTML/CSS|Gainsboro]]|link target=G}}
+{{Colort/Color|hex=E49B0F|r=228|g=155|b=15 |h=39 |s=93 |v=89 |name=[[Gamboge]]}}
+{{Colort/Color|hex=007F66|r=0 |g=127|b=102|h=168|s=100|v=50 |name=[[Viridian#Generic viridian|Generic viridian]]}}
+{{Colort/Color|hex=F8F8FF|r=248|g=248|b=255|h=240|s=3 |v=100|name=[[Shades of white#Ghost white|Ghost white]]}}
+{{Colort/Color|hex=6082B6|r=96 |g=130|b=182|h=216|s=47 |v=71 |name=[[Glaucous]]}}
+{{Colort/Color|hex=AB92B3|r=171|g=146|b=179|h=285|s=18 |v=70 |name=[[List of Crayola crayon colors#Silver Swirls|Glossy grape]]}}
+{{Colort/Color|hex=00AB66|r=0 |g=171|b=102|h=156|s=100|v=67 |name=[[Shades of green#GO Transit green|GO green]]}}
+{{Colort/Color|hex=A57C00|r=165|g=124|b=0 |h=46 |s=100|v=65 |name=[[Gold (color)#Gold|Gold]]}}
+{{Colort/Color|hex=D4AF37|r=212|g=175|b=55 |h=46 |s=74 |v=83 |name=[[Gold (color)#Gold (metallic gold)|Gold (metallic)]]}}
+{{Colort/Color|hex=FFD700|r=255|g=215|b=0 |h=51 |s=100|v=100|name=[[Gold (color)|Gold (web) (Golden)]]}}
+{{Colort/Color|hex=E6BE8A|r=230|g=190|b=138|h=34 |s=40 |v=90 |name=[[Gold (color)#Pale gold|Gold (Crayola)]]}}
+{{Colort/Color|hex=85754E|r=133|g=117|b=78 |h=43 |s=41 |v=52 |name=[[List of Crayola crayon colors#Metallic FX|Gold Fusion]]}}
+{{Colort/Color|hex=996515|r=153|g=101|b=21 |h=36 |s=86 |v=60 |name=[[Gold (color)#Golden brown|Golden brown]]}}
+{{Colort/Color|hex=FCC200|r=252|g=194|b=0 |h=46 |s=100|v=99 |name=[[Gold (color)#Golden poppy|Golden poppy]]}}
+{{Colort/Color|hex=FFDF00|r=255|g=223|b=0 |h=52 |s=100|v=100|name=[[Gold (color)#Golden yellow|Golden yellow]]}}
+{{Colort/Color|hex=DAA520|r=218|g=165|b=32 |h=43 |s=85 |v=85 |name=[[Goldenrod (color)|Goldenrod]]}}
+{{Colort/Color|hex=00573F|r=0 |g=87|b=63|h=168|s=100|v=34.1 |name=[[Sea green|Gotham green]]}}
+{{Colort/Color|hex=676767|r=103|g=103|b=103|h=— |s=0 |v=40 |name=[[List of Crayola crayon colors#Silver Swirls|Granite gray]]}}
+{{Colort/Color|hex=A8E4A0|r=168|g=228|b=160|h=113|s=30 |v=89 |name=[[List of Crayola crayon colors|Granny Smith apple]]}}
+{{Colort/Color|hex=808080|r=128|g=128|b=128|h=— |s=0 |v=50 |name=[[Shades of gray#Gray|Gray (web)]]}}
+{{Colort/Color|hex=BEBEBE|r=190|g=190|b=190|h=— |s=0 |v=75 |name=[[X11 color names#Color names|Gray (X11 gray)]]}}
+{{Colort/Color|hex=00FF00|r=0 |g=255|b=0 |h=120|s=100|v=100|name=[[Green]]}}
+{{Colort/Color|hex=1CAC78|r=28 |g=172|b=120|h=158|s=84 |v=67 |name=[[Shades of green#Green (Crayola)|Green (Crayola)]]}}
+{{Colort/Color|hex=008000|r=0 |g=128|b=0 |h=120|s=100|v=50 |name=[[Shades of green#Green (HTML/CSS color)|Green (web)]]}}
+{{Colort/Color|hex=00A877|r=0 |g=168|b=119|h=163|s=100|v=66 |name=[[Shades of green#Green (Munsell)|Green (Munsell)]]}}
+{{Colort/Color|hex=009F6B|r=0 |g=159|b=107|h=160|s=100|v=62 |name=[[Shades of green#Green (NCS)|Green (NCS)]]}}
+{{Colort/Color|hex=00AD43|r=0 |g=173|b=67 |h=143|s=100|v=68 |name=[[Shades of green#Green (Pantone)|Green (Pantone)]]}}
+{{Colort/Color|hex=00A550|r=0 |g=165|b=80 |h=149|s=100|v=65 |name=[[Shades of green#Green (CMYK) (pigment green)|Green (pigment)]]}}
+{{Colort/Color|hex=66B032|r=102|g=176|b=50 |h=95 |s=72 |v=69 |name=[[RYB color model|Green (RYB)]]}}
+{{Colort/Color|hex=1164B4|r=17 |g=100|b=180|h=209|s=91 |v=71 |name=[[Blue-green|Green-blue]]}}
+{{Colort/Color|hex=2887C8|r=40 |g=135|b=200|h=204|s=80 |v=78 |name=[[Blue-green#Blue-green (Crayola)|Green-blue (Crayola)]]}}
+{{Colort/Color|hex=009966|r=0 |g=153|b=102|h=160|s=100|v=60 |name=[[Shades of cyan|Green-cyan]]}}
+{{Colort/Color|hex=A7F432|r=167|g=244|b=50 |h=84 |s=80 |v=96 |name=[[List of Crayola crayon colors#Heads 'n Tails|Green Lizard]]}}
+{{Colort/Color|hex=6EAEA1|r=110|g=174|b=161|h=168|s=37 |v=68 |name=[[List of Crayola crayon colors#Silver Swirls|Green Sheen]]}}
+{{Colort/Color|hex=ADFF2F|r=173|g=255|b=47 |h=84 |s=82 |v=100|name=[[Shades of green#Yellow-green|Green-yellow]]}}
+{{Colort/Color|hex=F0E891|r=240|g=232|b=145|h=55 |s=40 |v=94 |name=[[Shades of green#Green-yellow (Crayola)|Green-yellow (Crayola)]]}}
+{{Colort/Color|hex=A99A86|r=169|g=154|b=134|h=34 |s=21 |v=66 |name=[[Grullo]]}}
+{{Colort/Color|hex=2a3439|r=42|g=52|b=57|h=200|s=15|v=19|name=[[Shades of gray#Gunmetal|Gunmetal]]}}
+{{Colort/Color|hex=446CCF|r=68 |g=108|b=207|h=223|s=67 |v=81 |name=[[Han blue]]|link target=H}}
+{{Colort/Color|hex=5218FA|r=82 |g=24 |b=250|h=255|s=90 |v=98 |name=[[Han purple]]}}
+{{Colort/Color|hex=E9D66B|r=233|g=214|b=107|h=51 |s=54 |v=91 |name=[[Hansa yellow]]}}
+{{Colort/Color|hex=3FFF00|r=63 |g=255|b=0 |h=105|s=100|v=100|name=[[Shades of green#Harlequin|Harlequin]]}}
+{{Colort/Color|hex=DA9100|r=218|g=145|b=0 |h=40 |s=100|v=85 |name=[[Gold (color)#Harvest gold|Harvest gold]]}}
+{{Colort/Color|hex=FF7A00|r=255|g=122|b=0 |h=29 |s=100|v=100|name=[[List of Crayola crayon colors#Extreme Twistables colors|Heat Wave]]}}
+{{Colort/Color|hex=DF73FF|r=223|g=115|b=255|h=286|s=55 |v=100|name=[[Heliotrope (color)|Heliotrope]]}}
+{{Colort/Color|hex=AA98A9|r=170|g=152|b=168|h=303|s=11 |v=67 |name=[[Heliotrope (color)#Heliotrope gray|Heliotrope gray]]}}
+{{Colort/Color|hex=F400A1|r=244|g=0 |b=161|h=320|s=100|v=96 |name=[[Cerise (color)#Hollywood cerise|Hollywood cerise]]}}
+{{Colort/Color|hex=F0FFF0|r=240|g=255|b=240|h=120|s=6 |v=100|name=[[Spring green (color)#Honeydew|Honeydew]]}}
+{{Colort/Color|hex=006DB0|r=0 |g=109|b=176|h=203|s=100|v=69 |name=[[Shades of azure#Honolulu blue|Honolulu blue]]}}
+{{Colort/Color|hex=49796B|r=73 |g=121|b=107|h=163|s=40 |v=47 |name=[[Shades of green#Hooker's green|Hooker's green]]}}
+{{Colort/Color|hex=FF1DCE|r=255|g=29 |b=206|h=313|s=89 |v=100|name=[[Shades of magenta#Hot magenta|Hot magenta]]}}
+{{Colort/Color|hex=FF69B4|r=255|g=105|b=180|h=330|s=59 |v=100|name=[[Shades of pink#Hot pink|Hot pink]]}}
+{{Colort/Color|hex=355E3B|r=53 |g=94 |b=59 |h=129|s=44 |v=37 |name=[[Shades of green#Hunter green|Hunter green]]}}
+{{Colort/Color|hex=71A6D2|r=113|g=166|b=210|h=207|s=46 |v=82 |name=[[Blue-gray#Iceberg|Iceberg]]|link target=I}}
+{{Colort/Color|hex=FCF75E|r=252|g=247|b=94 |h=58 |s=63 |v=99 |name=[[Icterine]]}}
+{{Colort/Color|hex=319177|r=49 |g=145|b=119|h=164|s=66 |v=57 |sat=49 |name=[[List of Crayola crayon colors#Metallic FX|Illuminating emerald]]}}
+{{Colort/Color|hex=ED2939|r=237|g=41 |b=57 |h=355|s=83 |v=93 |sat=84 |name=[[Shades of red#Imperial Red|Imperial red]]}}
+{{Colort/Color|hex=B2EC5D|r=178|g=236|b=93 |h=84 |s=61 |v=93 |name=[[List of Crayola crayon colors#Standard colors|Inchworm]]}}
+{{Colort/Color|hex=4C516D|r=76 |g=81 |b=109|h=231|s=30 |v=43 |name=[[Shades of blue#Independence|Independence]]}}
+{{Colort/Color|hex=138808|r=19 |g=136|b=8 |h=115|s=94 |v=53 |name=[[Shades of green#India green|India green]]}}
+{{Colort/Color|hex=CD5C5C|r=205|g=92 |b=92 |h=0 |s=55 |v=80 |name=[[Indian red (color)|Indian red]]}}
+{{Colort/Color|hex=E3A857|r=227|g=168|b=87 |h=35 |s=62 |v=89 |name=[[Indian yellow]]}}
+{{Colort/Color|hex=4B0082|r=75 |g=0 |b=130|h=266|s=100|v=51|name=[[Indigo]]}}
+{{Colort/Color|hex=00416A|r=0 |g=65 |b=106|h=203|s=100|v=42 |name=[[Indigo#Indigo dye|Indigo dye]]}}
+{{Colort/Color|hex=FF496C|r=255|g=73|b=108|h=348|s=71|v=100|name=[[Infrared]]}}
+{{Colort/Color|hex=130a8f|r=19|g=10|b=143|h=244|s=87|v=56|name=[[Shades of Blue#International Klein Blue|International Klein Blue]]}}
+{{Colort/Color|hex=FF4F00|r=255|g=79 |b=0 |h=19 |s=100|v=100|name=[[International orange|International orange (aerospace)]]}}
+{{Colort/Color|hex=BA160C|r=186|g=22 |b=12 |h=3 |s=94 |v=73 |name=[[International orange#International orange (Engineering)|International orange (engineering)]]}}
+{{Colort/Color|hex=C0362C|r=192|g=54 |b=44 |h=4 |s=77 |v=75 |name=[[International orange#Golden Gate Bridge|International orange (Golden Gate Bridge)]]}}
+{{Colort/Color|hex=5A4FCF|r=90 |g=79 |b=207|h=245|s=62 |v=81 |name=[[Iris (color)|Iris]]}}
+{{Colort/Color|hex=B3446C|r=179|g=68 |b=108|h=338|s=62 |v=70 |name=[[Cerise (color)#Irresistible|Irresistible]]}}
+{{Colort/Color|hex=F4F0EC|r=244|g=240|b=236|h=30 |s=3 |v=96 |name=[[Isabelline (colour)|Isabelline]]}}
+{{Colort/Color|hex=B2FFFF|r=178|g=255|b=255|h=180|s=30 |v=100|name=[[Sky blue#Celeste|Italian sky blue]]}}
+{{Colort/Color|hex=FFFFF0|r=255|g=255|b=240|h=60 |s=6 |v=100|name=[[Ivory (color)|Ivory]]}}
+{{Colort/Color|hex=00A86B|r=0 |g=168|b=107|h=158|s=100|v=66 |name=[[Shades of green#Jade|Jade]]|link target=J}}
+{{Colort/Color|hex=9D2933|r=157|g=41 |b=51 |h=355|s=74 |v=62 |name=[[Carmine (color)#Japanese carmine|Japanese carmine]]}}
+{{Colort/Color|hex=5B3256|r=91 |g=50 |b=86 |h=307|s=45 |v=36 |name=[[Shades of violet#Japanese violet|Japanese violet]]}}
+{{Colort/Color|hex=F8DE7E|r=248|g=222|b=126|h=47 |s=49 |v=97 |name=[[Jasmine (color)|Jasmine]]}}
+{{Colort/Color|hex=A50B5E|r=165|g=11 |b=94 |h=328|s=93 |v=65 |name=[[Red-violet#Jazzberry jam|Jazzberry jam]]}}
+{{Colort/Color|hex=343434|r=52 |g=52 |b=52 |h=— |s=0  |v=20 |name=[[Shades of black (colors)#Jet|Jet]]}}
+{{Colort/Color|hex=F4CA16|r=244|g=202|b=22 |h=49 |s=91 |v=96 |name=[[Jonquil (color)|Jonquil]]}}
+{{Colort/Color|hex=BDDA57|r=189|g=218|b=87 |h=73|s=60|v=85|name=[[Spring bud#June bud|June bud]]}}
+{{Colort/Color|hex=29AB87|r=41 |g=171|b=135|h=163|s=76 |v=67 |name=[[Jungle green]]}}
+{{Colort/Color|hex=4CBB17|r=76 |g=187|b=23 |h=101|s=88 |v=73 |name=[[Shades of green#Kelly green|Kelly green]]|link target=K}}
+{{Colort/Color|hex=3AB09E|r=58 |g=176|b=158|h=171|s=67 |v=69 |name=[[Shades of cyan#Keppel|Keppel]]}}
+{{Colort/Color|hex=E8F48C|r=232|g=244|b=140|h=67 |s=43 |v=96 |name=[[List of Crayola crayon colors#Pearl Brite|Key lime]]}}
+{{Colort/Color|hex=C3B091|r=195|g=176|b=145|h=37 |s=26 |v=76 |name=[[Khaki (color)#Khaki|Khaki (web)]]}}
+{{Colort/Color|hex=F0E68C|r=240|g=230|b=140|h=54 |s=42 |v=94 |name=[[Khaki (color)#Light khaki|Khaki (X11) (Light khaki)]]}}
+{{Colort/Color|hex=882D17|r=136|g=45 |b=23 |h=12 |s=83 |v=53 |name=[[Indian red (color)#Kobe|Kobe]]}}
+{{Colort/Color|hex=E79FC4|r=231|g=159|b=196|h=329|s=31 |v=91 |l=76 |name=[[Red-violet#Kobi|Kobi]]}}
+{{Colort/Color|hex=6B4423|r=107|g=68 |b=35 |h=28 |s=67 |v=42 |name=[[Kobicha]]}}
+{{Colort/Color|hex=354230|r=53 |g=66 |b=48 |h=103|s=27 |v=26 |name=[[Chartreuse (color)#Kombu green|Kombu green]]}}
+{{Colort/Color|hex=512888|r=79 |g=38 |b=131|h=266|s=71 |v=53 |name=[[Shades of purple#KSU Purple|KSU purple]]}}
+{{Colort/Color|hex=D6CADD|r=214|g=202|b=221|h=278|s=9 |v=87 |name=[[Lavender (color)#Languid lavender|Languid lavender]]|link target=L}}
+{{Colort/Color|hex=26619C|r=38 |g=97 |b=156|h=210|s=76 |v=61 |name=[[Shades of azure#Lapis lazuli|Lapis lazuli]]}}
+{{Colort/Color|hex=FFFF66|r=255|g=255|b=102|h=60 |s=60 |v=100|name=[[Lemon (color)#Laser lemon|Laser lemon]]}}
+{{Colort/Color|hex=A9BA9D|r=169|g=186|b=157|h=95 |s=16 |v=73 |name=[[Shades of green#Laurel green|Laurel green]]}}
+{{Colort/Color|hex=CF1020|r=207|g=16 |b=32 |h=355|s=92 |v=81 |name=[[Lava (color)|Lava]]}}
+{{Colort/Color|hex=B57EDC|r=181|g=126|b=220|h=275|s=43 |v=86 |name=[[Lavender (color)#Lavender (floral)|Lavender (floral)]]}}
+{{Colort/Color|hex=E6E6FA|r=230|g=230|b=250|h=240|s=8 |v=98 |name=[[Lavender (color)|Lavender (web)]]}}
+{{Colort/Color|hex=CCCCFF|r=204|g=204|b=255|h=240|s=20 |v=100|name=[[Lavender (color)#Lavender blue|Lavender blue]]}}
+{{Colort/Color|hex=FFF0F5|r=255|g=240|b=245|h=340|s=6 |v=100|name=[[Lavender (color)#Lavender blush|Lavender blush]]}}
+{{Colort/Color|hex=C4C3D0|r=196|g=195|b=208|h=245|s=6 |v=82 |name=[[Lavender (color)#Lavender gray|Lavender gray]]}}
+{{Colort/Color|hex=7CFC00|r=124|g=252|b=0 |h=90|s=100|v=99 |name=[[Chartreuse (color)#Lawn green|Lawn green]]}}
+{{Colort/Color|hex=FFF700|r=255|g=247|b=0 |h=58 |s=100|v=100|name=[[Lemon (color)|Lemon]]}}
+{{Colort/Color|hex=FFFACD|r=255|g=250|b=205|h=54 |s=20 |v=100|name=[[Lemon chiffon]]}}
+{{Colort/Color|hex=CCA01D|r=204|g=160|b=29 |h=45 |s=86 |v=80 |name=[[Lemon (color)#Lemon curry|Lemon curry]]}}
+{{Colort/Color|hex=FDFF00|r=253|g=255|b=0 |h=60 |s=100|v=100|name=[[Lemon (color)#Lemon glacier|Lemon glacier]]}}
+{{Colort/Color|hex=F6EABE|r=246|g=234|b=190|h=47 |s=23 |v=96 |l=85 |name=[[Lemon (color)#Lemon meringue|Lemon meringue]]}}
+{{Colort/Color|hex=FFF44F|r=255|g=244|b=79 |h=56 |s=69 |v=100|l=65 |name=[[Lemon (color)#Lemon yellow|Lemon yellow]]}}
+{{Colort/Color|hex=FFFF9F|r=255|g=255|b=159|h=60 |s=38 |v=100|name=[[Lemon (color)#Lemon yellow (Crayola)|Lemon yellow (Crayola)]]}}
+{{Colort/Color|hex=545AA7|r=84 |g=90 |b=167|h=236|s=50 |v=65 |name=[[Shades of blue#Liberty|Liberty]]}}
+{{Colort/Color|hex=ADD8E6|r=173|g=216|b=230|h=195|s=25 |v=90 |name=[[Light blue]]}}
+{{Colort/Color|hex=F08080|r=240|g=128|b=128|h=0 |s=47 |v=94 |name=[[Coral (color)#Light coral|Light coral]]}}
+{{Colort/Color|hex=93CCEA|r=147|g=204|b=234|h=201|s=37 |v=92 |name=[[Cornflower blue#Crayola|Light cornflower blue]]}}
+{{Colort/Color|hex=E0FFFF|r=224|g=255|b=255|h=180|s=12 |v=100|name=[[Shades of cyan#Light cyan|Light cyan]]}}
+{{Colort/Color|hex=C8AD7F|r=200|g=173|b=127|h=38 |s=37 |v=78 |name=[[Beige#Light French beige|Light French beige]]}}
+{{Colort/Color|hex=FAFAD2|r=250|g=250|b=210|h=60 |s=16 |v=98 |name=[[Goldenrod (color)#Light goldenrod yellow|Light goldenrod yellow]]}}
+{{Colort/Color|hex=D3D3D3|r=211|g=211|b=211|h=— |s=0 |v=83 |name=[[Grey#Web colors|Light gray]]}}
+{{Colort/Color|hex=90EE90|r=144|g=238|b=144|h=120|s=39 |v=93 |name=[[X11 color names#Color names|Light green]]}}
+{{Colort/Color|hex=FED8B1|r=254|g=216|b=177|h=30|s=30|v=100|name=[[Shades of orange#Light orange|Light orange]]}}
+{{Colort/Color|hex=C5CBE1|r=197|g=203|b=225|h=228|s=12 |v=88|name=[[Periwinkle (color)#Light periwinkle|Light periwinkle]]}}
+{{Colort/Color|hex=FFB6C1|r=255|g=182|b=193|h=351|s=29 |v=100|name=[[Shades of pink#Light pink|Light pink]]}}
+{{Colort/Color|hex=FFA07A|r=255|g=160|b=122|h=17 |s=52 |v=100|name=[[Salmon (color)#Light salmon|Light salmon]]}}
+{{Colort/Color|hex=20B2AA|r=32 |g=178|b=170|h=177|s=82|v=70 |name=[[Shades of cyan#Light sea green|Light sea green]]}}
+{{Colort/Color|hex=87CEFA|r=135|g=206|b=250|h=203|s=46 |v=98 |l=75 |name=[[Sky blue#Light sky blue|Light sky blue]]}}
+{{Colort/Color|hex=778899|r=119|g=136|b=153|h=210|s=22 |v=60 |name=[[Slate gray#Light slate gray|Light slate gray]]}}
+{{Colort/Color|hex=B0C4DE|r=176|g=196|b=222|h=214|s=21 |v=87 |name=[[Steel blue#Light steel blue|Light steel blue]]}}
+{{Colort/Color|hex=FFFFE0|r=255|g=255|b=224|h=60 |s=12 |v=100|name=[[Shades of yellow#Light yellow|Light yellow]]}}
+{{Colort/Color|hex=C8A2C8|r=200|g=162|b=200|h=300|s=19 |v=78 |name=[[Lilac (color)|Lilac]]}}
+{{Colort/Color|hex=AE98AA|r=174|g=152|b=170|h=311|s=13 |v=68 |name=[[List of Crayola crayon colors#Silver Swirls|Lilac Luster]]}}
+{{Colort/Color|hex=BFFF00|r=191|g=255|b=0 |h=75 |s=100|v=100|name=[[Lime (color)|Lime (color wheel)]]}}
+{{Colort/Color|hex=00FF00|r=0 |g=255|b=0 |h=120|s=100|v=100|name=[[Lime (color)#Web color "lime" (X11 Green)|Lime (web) (X11 green)]]}}
+{{Colort/Color|hex=32CD32|r=50 |g=205|b=50 |h=120|s=76|v=80 |name=[[Lime (color)#Lime green|Lime green]]}}
+{{Colort/Color|hex=195905|r=25 |g=89 |b=5 |h=106|s=94 |v=35 |name=[[Lincoln green]]}}
+{{Colort/Color|hex=FAF0E6|r=250|g=240|b=230|h=30 |s=8 |v=98 |name=[[Linen (color)|Linen]]}}
+{{Colort/Color|hex=C19A6B|r=193|g=154|b=107|h=33 |s=45 |v=76 |name=[[Lion (color)|Lion]]}}
+{{Colort/Color|hex=DE6FA1|r=222|g=111|b=161|h=333|s=50 |v=87 |name=[[Shades of purple#Liseran purple|Liseran purple]]}}
+{{Colort/Color|hex=6CA0DC|r=108|g=160|b=220|h=212|s=51 |v=86 |name=[[Baby blue#Little boy blue|Little boy blue]]}}
+{{Colort/Color|hex=674C47|r=103|g=76 |b=71 |h=9 |s=31 |v=40 |name=[[Liver (color)|Liver]]}}
+{{Colort/Color|hex=B86D29|r=184|g=109|b=41 |h=29 |s=78 |v=72 |name=[[Liver (color)#In dogs|Liver (dogs)]]}}
+{{Colort/Color|hex=6C2E1F|r=108|g=46 |b=31 |h=12 |s=71 |v=42 |name=[[Liver (color)#Liver (organ)|Liver (organ)]]}}
+{{Colort/Color|hex=987456|r=152|g=116|b=86 |h=27 |s=43 |v=60 |name=[[Liver (color)|Liver chestnut]]}}
+{{Colort/Color|hex=6699CC|r=102|g=153|b=204|h=210|s=50 |v=80 |name=[[Blue-gray|Livid]]}}
+{{Colort/Color|hex=FFBD88|r=255|g=189|b=136|h=27 |s=47 |v=100|name=[[List of Crayola crayon colors|Macaroni and Cheese]]|link target=M}}
+{{Colort/Color|hex=CC3336|r=204|g=51 |b=54 |h=359|s=75 |v=80 |name=[[History of Crayola crayons#1903: the original Crayola colors|Madder Lake]]}}
+{{Colort/Color|hex=FF00FF|r=255|g=0 |b=255|h=300|s=100|v=100|name=[[Magenta]]}}
+{{Colort/Color|hex=F653A6|r=246|g=83 |b=166|h=329|s=66 |v=97 |name=[[Shades of magenta#Magenta (Crayola)|Magenta (Crayola)]]}}
+{{Colort/Color|hex=CA1F7B|r=202|g=31 |b=123|h=328|s=85 |v=79 |name=[[Shades of magenta#Magenta dye (original variation) (1860)|Magenta (dye)]]}}
+{{Colort/Color|hex=D0417E|r=208|g=65 |b=126|h=334|s=69 |v=82 |name=[[Shades of magenta#Magenta (Pantone)|Magenta (Pantone)]]}}
+{{Colort/Color|hex=FF0090|r=255|g=0 |b=144|h=326|s=100|v=100|name=[[Magenta#Process magenta (pigment magenta; printer's magenta) (1890s)|Magenta (process)]]}}
+{{Colort/Color|hex=9F4576|r=159|g=69 |b=118|h=327|s=57 |v=62 |sat=39 |name=[[Shades of magenta#Magenta haze|Magenta haze]]}}
+{{Colort/Color|hex=AAF0D1|r=170|g=240|b=209|h=153|s=29 |v=94 |name=[[Spring green (color)#Magic mint|Magic mint]]}}
+{{Colort/Color|hex=F2E8D7|r=242|g=232|b=215|h=38 |s=11 |v=95 |name=[[Magnolia (color)|Magnolia]]}}
+{{Colort/Color|hex=C04000|r=192|g=64 |b=0 |h=20 |s=100 |v=75 |name=[[Mahogany (color)|Mahogany]]}}
+{{Colort/Color|hex=FBEC5D|r=251|g=236|b=93 |h=54 |s=63 |v=98 |l=67 |name=[[Maize (color)|Maize]]}}
+{{Colort/Color|hex=F2C649|r=242|g=198|b=73 |h=44 |s=70 |v=95 |name=[[Maize (color)#Maize (Crayola)|Maize (Crayola)]]}}
+{{Colort/Color|hex=6050DC|r=96 |g=80 |b=220|h=247|s=64 |v=86 |name=[[Majorelle Blue|Majorelle blue]]}}
+{{Colort/Color|hex=0BDA51|r=11 |g=218|b=81 |h=140|s=95 |v=85 |name=[[Shades of green#Malachite|Malachite]]}}
+{{Colort/Color|hex=979AAA|r=151|g=154|b=170|h=231|s=11 |v=67 |name=[[List of Crayola crayon colors#Standard colors|Manatee]]}}
+{{Colort/Color|hex=F37A48|r=243|g=122|b=72 |h=18 |s=70 |v=95 |name=[[List of Crayola crayon colors#Pearl Brite|Mandarin]]}}
+{{Colort/Color|hex=FDBE02|r=253|g=190|b=2  |h=46 |s=99 |v=99 |name=[[Shades of yellow#Mango|Mango]]}}
+{{Colort/Color|hex=FF8243|r=255|g=130|b=67 |h=20 |s=74 |v=100|name=[[List of Crayola crayon colors#Standard colors|Mango Tango]]}}
+{{Colort/Color|hex=74C365|r=116|g=195|b=101|h=110|s=48 |v=76 |name=[[Shades of green#Mantis|Mantis]]}}
+{{Colort/Color|hex=880085|r=136|g=0  |b=133|h=301|s=100|v=53 |name=[[Shades of purple#Mardi Gras|Mardi Gras]]}}
+{{Colort/Color|hex=EAA221|r=234|g=162|b=33 |h=39 |s=85 |v=91 |name=[[Marigold (color)|Marigold]]}}
+{{Colort/Color|hex=C32148|r=195|g=33 |b=72 |h=346|s=83 |v=76 |name=[[Maroon#Bright maroon|Maroon (Crayola)]]}}
+{{Colort/Color|hex=800000|r=128|g=0  |b=0  |h=0  |s=100|v=50 |name=[[Maroon|Maroon (web)]]}}
+{{Colort/Color|hex=B03060|r=176|g=48 |b=96 |h=338|s=73 |v=69 |name=[[Maroon#Rich maroon (maroon (X11))|Maroon (X11)]]}}
+{{Colort/Color|hex=E0B0FF|r=224|g=176|b=255|h=276|s=31 |v=100|name=[[Mauve]]}}
+{{Colort/Color|hex=915F6D|r=145|g=95 |b=109|h=343|s=34 |v=57 |name=[[Taupe#Mauve taupe|Mauve taupe]]}}
+{{Colort/Color|hex=EF98AA|r=239|g=152|b=170|h=348|s=36 |v=94 |name=[[List of Crayola crayon colors#Standard colors|Mauvelous]]}}
+{{Colort/Color|hex=47ABCC|r=71 |g=171|b=204|h=195|s=65 |v=80 |name=[[List of Crayola crayon colors#Standard colors|Maximum blue]]}}
+{{Colort/Color|hex=30BFBF|r=48 |g=191|b=191|h=180|s=75 |v=75 |name=[[List of Crayola crayon colors#Standard colors|Maximum blue green]]}}
+{{Colort/Color|hex=ACACE6|r=172|g=172|b=230|h=240|s=25 |v=90 |name=[[List of Crayola crayon colors#Standard colors|Maximum blue purple]]}}
+{{Colort/Color|hex=5E8C31|r=94 |g=140|b=49 |h=90 |s=65 |v=55 |name=[[List of Crayola crayon colors#Standard colors|Maximum green]]}}
+{{Colort/Color|hex=D9E650|r=217|g=230|b=80 |h=65 |s=65 |v=90 |name=[[List of Crayola crayon colors#Standard colors|Maximum green yellow]]}}
+{{Colort/Color|hex=733380|r=115|g=51 |b=128 |h=290|s=60 |v=50 |name=[[List of Crayola crayon colors#Standard colors|Maximum purple]]}}
+{{Colort/Color|hex=D92121|r=217|g=33 |b=33 |h=0 |s=85 |v=85 |name=[[List of Crayola crayon colors#Standard colors|Maximum red]]}}
+{{Colort/Color|hex=A63A79|r=166|g=58 |b=121|h=325|s=65 |v=65 |name=[[List of Crayola crayon colors#Standard colors|Maximum red purple]]}}
+{{Colort/Color|hex=FAFA37|r=250|g=250|b=55 |h=60 |s=78 |v=98 |name=[[Shades of yellow#Maximum yellow|Maximum yellow]]}}
+{{Colort/Color|hex=F2BA49|r=242|g=186|b=73 |h=40 |s=70 |v=95 |name=[[List of Crayola crayon colors#Standard colors|Maximum yellow red]]}}
+{{Colort/Color|hex=4C9141|r=76 |g=145|b=65 |h=112|s=55 |v=57 |name=[[Spring bud#May green|May green]]}}
+{{Colort/Color|hex=73C2FB|r=115|g=194|b=251|h=205|s=54 |v=98 |name=[[Maya blue]]}}
+{{Colort/Color|hex=66DDAA|r=102|g=221|b=170|h=154|s=54 |v=87 |name=[[Aquamarine (color)|Medium aquamarine]]}}
+{{Colort/Color|hex=0000CD|r=0 |g=0 |b=205|h=240|s=100|v=80 |name=[[Shades of blue#Medium blue|Medium blue]]}}
+{{Colort/Color|hex=E2062C|r=226|g=6 |b=44 |h=350|s=97 |v=89 |l=45 |name=[[Candy apple red (color)#Medium candy apple red|Medium candy apple red]]}}
+{{Colort/Color|hex=AF4035|r=175|g=64 |b=53 |h=5 |s=70 |v=69 |name=[[Carmine (color)#Medium Carmine|Medium carmine]]}}
+{{Colort/Color|hex=F3E5AB|r=243|g=229|b=171|h=48 |s=30 |v=95 |name=[[Champagne (color)#Medium champagne|Medium champagne]]}}
+{{Colort/Color|hex=BA55D3|r=186|g=85 |b=211|h=288|s=60 |v=83 |name=[[X11 color names#Color names|Medium orchid]]}}
+{{Colort/Color|hex=9370DB|r=147|g=112|b=219|h=260|s=49 |v=86 |name=[[Shades of purple#Medium purple (X11)|Medium purple]]}}
+{{Colort/Color|hex=3CB371|r=60 |g=179|b=113|h=147|s=66 |v=70 |name=[[Spring green (color)#Medium sea green|Medium sea green]]}}
+{{Colort/Color|hex=7B68EE|r=123|g=104|b=238|h=249|s=56 |v=93 |name=[[X11 color names#Color names|Medium slate blue]]}}
+{{Colort/Color|hex=00FA9A|r=0 |g=250|b=154|h=157|s=100|v=98 |name=[[Spring green (color)#Medium spring green|Medium spring green]]}}
+{{Colort/Color|hex=48D1CC|r=72 |g=209|b=204|h=178|s=66|v=82 |name=[[Turquoise (color)#Medium turquoise|Medium turquoise]]}}
+{{Colort/Color|hex=C71585|r=199|g=21 |b=133|h=322|s=89 |v=78 |name=[[Red-violet|Medium violet-red]]}}
+{{Colort/Color|hex=F8B878|r=248|g=184|b=120|h=30 |s=52 |v=97 |name=[[Apricot (color)#Mellow apricot|Mellow apricot]]}}
+{{Colort/Color|hex=F8DE7E|r=248|g=222|b=126|h=47 |s=49 |v=97 |name=[[Shades of yellow#Mellow yellow|Mellow yellow]]}}
+{{Colort/Color|hex=FEBAAD|r=254|g=186|b=173|h=10 |s=32 |v=100|name=[[Shades of orange#Melon|Melon]]}}
+{{Colort/Color|hex=D3AF37|r=211|g=175|b=55 |h=46 |s=74 |v=83 |name=[[Gold (color)#Metallic gold|Metallic gold]]}}
+{{Colort/Color|hex=0A7E8C|r=10 |g=126|b=140|h=186|s=93 |v=55 |sat=87 |name=[[List of Crayola crayon colors#Metallic FX|Metallic Seaweed]]}}
+{{Colort/Color|hex=9C7C38|r=156|g=124|b=56 |h=41 |s=64 |v=61 |name=[[List of Crayola crayon colors#Metallic FX|Metallic Sunburst]]}}
+{{Colort/Color|hex=E4007C|r=228|g=0 |b=124|h=327|s=100|v=89 |name=[[Mexican pink]]}}
+{{Colort/Color|hex=7ED4E6|r=126|g=212 |b=230|h=190|s=45|v=90|name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle blue]]}}
+{{Colort/Color|hex=8DD9CC|r=141|g=217 |b=204|h=170|s=35 |v=85 |name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle blue green]]}}
+{{Colort/Color|hex=8B72BE|r=139|g=114|b=190|h=260|s=40 |v=75 |name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle blue purple]]}}
+{{Colort/Color|hex=8B8680|r=139|g=134|b=128|h=33 |s=8 |v=55 |name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle grey]]}}
+{{Colort/Color|hex=4D8C57|r=77 |g=140|b=87 |h=130|s=45 |v=55 |name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle green]]}}
+{{Colort/Color|hex=ACBF60|r=172|g=191|b=96 |h=72 |s=50 |v=75 |name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle green yellow]]}}
+{{Colort/Color|hex=D982B5|r=217|g=130|b=181|h=325|s=40 |v=85 |name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle purple]]}}
+{{Colort/Color|hex=E58E73|r=229|g=144|b=115|h=15 |s=50 |v=90 |name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle red]]}}
+{{Colort/Color|hex=A55353|r=165 |g=83 |b=83 |h=0 |s=50 |v=65 |name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle red purple]]}}
+{{Colort/Color|hex=FFEB00|r=255|g=235|b=0 |h=55 |s=100|v=100|name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle yellow]]}}
+{{Colort/Color|hex=ECB176|r=236|g=177|b=118|h=30|s=50|v=93|name=[[History of Crayola crayons#Munsell Crayola, 1926–1944|Middle yellow red]]}}
+{{Colort/Color|hex=702670|r=112|g=38 |b=112|h=300|s=66 |v=44 |name=[[List of Crayola crayon colors#Pearl Brite|Midnight]]}}
+{{Colort/Color|hex=191970|r=25 |g=25 |b=112|h=240|s=78 |v=44 |name=[[Midnight blue]]}}
+{{Colort/Color|hex=004953|r=0 |g=73 |b=83 |h=187|s=100|v=33 |name=[[Shades of green#Midnight green|Midnight green (eagle green)]]}}
+{{Colort/Color|hex=FFC40C|r=255|g=196|b=12 |h=45 |s=95 |v=100|name=[[Mikado yellow]]}}
+{{Colort/Color|hex=FFDAE9|r=255|g=218|b=233|h=336|s=15 |v=100|name=[[Shades of pink#Mimi Pink|Mimi pink]]}}
+{{Colort/Color|hex=E3F988|r=227|g=249|b=136|h=72 |s=45 |v=98 |l=75 |name=[[Chartreuse (color)#Mindaro|Mindaro]]}}
+{{Colort/Color|hex=36747D|r=54 |g=116|b=125|h=188|s=56 |v=49 |name=[[Blue-green#Ming|Ming]]}}
+{{Colort/Color|hex=F5E050|r=245|g=220|b=80 |h=52 |s=67 |v=96 |name=[[Minions (film)#Marketing and release|Minion yellow]]}}
+{{Colort/Color|hex=3EB489|r=62 |g=180|b=137|h=158|s=66 |v=71 |l=47 |name=[[Spring green (color)#Mint|Mint]]}}
+{{Colort/Color|hex=F5FFFA|r=245|g=255|b=250|h=150|s=4 |v=100|name=[[Spring green (color)#Mint cream|Mint cream]]}}
+{{Colort/Color|hex=98FF98|r=152|g=255|b=152|h=120|s=40 |v=100|name=[[Spring green (color)#Mint green|Mint green]]}}
+{{Colort/Color|hex=BBB477|r=187|g=180|b=119|h=54 |s=36 |v=73 |name=[[List of Crayola crayon colors#Silver Swirls|Misty moss]]}}
+{{Colort/Color|hex=FFE4E1|r=255|g=228|b=225|h=6 |s=12 |v=100|name=[[Rose (color)#Misty rose|Misty rose]]}}
+{{Colort/Color|hex=967117|r=150|g=113|b=23 |h=43 |s=85 |v=59 |name=[[Beige#Mode beige|Mode beige]]}}
+{{Colort/Color|hex=8DA399|r=141|g=163 |b=153 |h=153|s=14 |v=64 |name=[[Shades of blue#Morning blue|Morning blue]]}}
+{{Colort/Color|hex=8A9A5B|r=138|g=154|b=91 |h=75 |s=41 |v=60 |name=[[Shades of green#Moss green|Moss green]]}}
+{{Colort/Color|hex=30BA8F|r=48 |g=186|b=143|h=161|s=74 |v=73 |name=[[List of Crayola crayon colors#Standard colors|Mountain Meadow]]}}
+{{Colort/Color|hex=997A8D|r=153|g=122|b=141|h=323|s=20 |v=60 |name=[[Mountbatten pink]]}}
+{{Colort/Color|hex=18453B|r=24 |g=69 |b=59 |h=167|s=65 |v=27 |name=[[Shades of green#MSU green|MSU green]]}}
+{{Colort/Color|hex=C54B8C|r=197|g=75 |b=140|h=328|s=62 |v=77 |name=[[Shades of purple#Mulberry|Mulberry]]}}
+{{Colort/Color|hex=C8509B|r=200|g=80 |b=155|h=323|s=60 |v=78 |name=[[Shades of purple#Mulberry (Crayola)|Mulberry (Crayola)]]}}
+{{Colort/Color|hex=FFDB58|r=255|g=219|b=88 |h=47 |s=65 |v=100|name=[[Mustard (color)|Mustard]]}}
+{{Colort/Color|hex=317873|r=49 |g=120|b=115|h=176|s=59 |v=47 |name=[[Shades of green#Myrtle green|Myrtle green]]}}
+{{Colort/Color|hex=D65282|r=214|g=82 |b=130|h=338|s=62 |v=84 |name=[[List of Crayola crayon colors#Pearl Brite|Mystic]]}}
+{{Colort/Color|hex=AD4379|r=173|g=67 |b=121|h=329|s=62 |v=68 |name=[[List of Crayola crayon colors#Silver Swirls|Mystic maroon]]}}
+{{Colort/Color|hex=F6ADC6|r=246|g=173|b=198|h=339|s=80|v=82|name=[[Shades of pink|Nadeshiko pink]]|link target=N}}
+{{Colort/Color|hex=FADA5E|r=250|g=218|b=94|h=48|s=62|v=98|l=67|name=[[Naples yellow]]}}
+{{Colort/Color|hex=FFDEAD|r=255|g=222|b=173|h=36|s=32|v=100|l=84|name=[[Navajo white]]}}
+{{Colort/Color|hex=000080|r=0|g=0|b=128|h=240|s=100|v=50|l=25|name=[[Navy blue]]}}
+{{Colort/Color|hex=1974D2|r=25|g=116|b=210|h=210|s=88|v=82|l=46|name=[[List of Crayola crayon colors#Standard colors|Navy blue (Crayola)]]}}
+{{Colort/Color|hex=4666FF|r=70|g=102|b=255|h=230|s=73|v=100|l=64|name=[[Shades of blue#Neon blue|Neon blue]]}}
+{{Colort/Color|hex=FFA343|r=255|g=163|b=67 |h=31 |s=74 |v=100|name=[[Neon Carrot]]}}
+{{Colort/Color|hex=39FF14|r=57|g=255|b=20|h=111|s=92|v=100|l=54|name=[[Shades of green#Neon green|Neon green]]}}
+{{Colort/Color|hex=FE4164|r=254|g=65 |b=100|h=349|s=74 |v=100|name=[[Fuchsia (color)#Neon fuchsia|Neon fuchsia]]}}
+{{Colort/Color|hex=D7837F|r=215|g=131|b=127|h=3|s=41|v=84|l=67|name=[[Shades of pink#New York pink|New York pink]]}}
+{{Colort/Color|hex=727472|r=114|g=116|b=114|h=120|s=2|v=46|l=45|name=[[Shades of gray#Nickel|Nickel]]}}
+{{Colort/Color|hex=A4DDED|r=164|g=221|b=237|h=193|s=31|v=93|l=79|name=[[Non-photo blue]]}}
+{{Colort/Color|hex=E9FFDB|r=233|g=255|b=219|h=97|s=14|v=100|l=93|name=[[Chartreuse (color)#Nyanza|Nyanza]]}}
+{{Colort/Color|hex=4F42B5|r=79|g=66|b=181|h=247|s=64|v=71|l=48|name=[[Turquoise Pearl|Ocean Blue]]|link target=O}}
+{{Colort/Color|hex=48BF91|r=72|g=191|b=145|h=157|s=62|v=75|l=52|name=[[Turquoise Pearl|Ocean green]]}}
+{{Colort/Color|hex=CC7722|r=204|g=119|b=34|h=30|s=83|v=80|l=47|name=[[Ochre]]}}
+{{Colort/Color|hex=43302E|r=67|g=48|b=46|h=6|s=31|v=26|l=22|name=[[Burgundy (color)#Old burgundy|Old burgundy]]}}
+{{Colort/Color|hex=CFB53B|r=207|g=181|b=59|h=49|s=71|v=81|l=52|name=[[Old gold]]}}
+{{Colort/Color|hex=FDF5E6|r=253|g=245|b=230|h=39|s=9|v=99|l=95|name=[[Shades of white#Old lace|Old lace]]}}
+{{Colort/Color|hex=796878|r=121|g=104|b=120|h=304|s=14|v=47|l=44|name=[[Lavender (color)#Old lavender|Old lavender]]}}
+{{Colort/Color|hex=673147|r=103|g=49|b=71|h=336|s=52|v=40|l=30|name=[[Mauve#Old mauve|Old mauve]]}}
+{{Colort/Color|hex=C08081|r=192|g=128|b=129|h=359|s=33|v=75|l=63|name=[[Rose (color)#Old rose|Old rose]]}}
+{{Colort/Color|hex=848482|r=132|g=132|b=130|h=60|s=2|v=52|l=51|name=[[Silver (color)#Old silver|Old silver]]}}
+{{Colort/Color|hex=808000|r=128|g=128|b=0|h=60|s=100|v=50|l=25|name=[[Olive (color)|Olive]]}}
+{{Colort/Color|hex=6B8E23|r=107|g=142|b=35|h=80|s=75|v=56|l=35|name=[[Olive drab|Olive Drab (#3)]]}}
+{{Colort/Color|hex=3C341F|r=60|g=52|b=31|h=43|s=48|v=24|l=18|name=[[Olive drab|Olive Drab #7]]}}
+{{Colort/Color|hex=B5B35C|r=181|g=179|b=92|h=59|s=49|v=71|l=54|name=[[Olive (color)#Olive green|Olive green]]}}
+{{Colort/Color|hex=9AB973|r=154|g=185|b=115|h=87|s=38|v=73|l=59|name=[[Olive (color)#Olivine|Olivine]]}}
+{{Colort/Color|hex=353839|r=53|g=56|b=57|h=195|s=7|v=22|l=22|name=[[Shades of black (colors)#Onyx|Onyx]]}}
+{{Colort/Color|hex=A8C3BC|r=168|g=195|b=188|h=164|s=14|v=76|l=71|name=[[Shades of gray#Opal|Opal]]}}
+{{Colort/Color|hex=B784A7|r=183|g=132|b=167|h=319|s=28|v=72|l=62|name=[[Mauve#Opera mauve|Opera mauve]]}}
+{{Colort/Color|hex=FF7F00|r=255|g=127|b=0|h=30|s=100|v=100|l=50|name=[[Orange (colour)|Orange]]}}
+{{Colort/Color|hex=FF7538|r=255|g=117|b=56|h=18|s=78|v=100|l=61|name=[[Shades of orange#Orange (Crayola)|Orange (Crayola)]]}}
+{{Colort/Color|hex=FF5800|r=255|g=88|b=0|h=21|s=100|v=100|l=50|name=[[Shades of orange#Orange (Pantone)|Orange (Pantone)]]}}
+{{Colort/Color|hex=FFA500|r=255|g=165|b=0|h=39|s=100|v=100|l=50|name=[[Shades of orange#Orange (web_color)|Orange (web)]]}}
+{{Colort/Color|hex=FF9F00|r=255|g=159|b=0|h=37|s=100|v=100|l=50|name=[[Orange peel (color)|Orange peel]]}}
+{{Colort/Color|hex=FF681F|r=255|g=104|b=31|h=20|s=88|v=100|l=56|name=[[Vermilion#Orange-red|Orange-red]]}}
+{{Colort/Color|hex=FF5349|r=255|g=83|b=73|h=4|s=71|v=100|l=64|name=[[Vermilion|Orange-red (Crayola)]]}}
+{{Colort/Color|hex=FA5B3D|r=250|g=91|b=61|h=10|s=76|v=98|l=61|name=[[List of Crayola crayon colors#Heads 'n Tails|Orange soda]]}}
+{{Colort/Color|hex=F5BD1F|r=245|g=189|b=31|h=44|s=87|v=96|l=54|name=[[Marigold (color)#Orange-yellow|Orange-yellow]]}}
+{{Colort/Color|hex=F8D568|r=248|g=213|b=104|h=45|s=58|v=97|l=69|name=[[Marigold (color)#Orange-yellow (Crayola)|Orange-yellow (Crayola)]]}}
+{{Colort/Color|hex=DA70D6|r=218|g=112|b=214|h=302|s=49|v=85|l=65|name=[[Orchid (color)|Orchid]]}}
+{{Colort/Color|hex=F2BDCD|r=242|g=189|b=205|h=342|s=22|v=95|l=85|name=[[Orchid (color)#Orchid pink|Orchid pink]]}}
+{{Colort/Color|hex=E29CD2|r=226|g=156|b=210|h=314|s=31|v=89|l=75|name=[[Orchid (color)|Orchid (Crayola)]]}}
+{{Colort/Color|hex=2D383A|r=45|g=56|b=58|h=189|s=22|v=23|l=20|name=[[Shades of black#Outer space (Crayola)|Outer space (Crayola)]]}}
+{{Colort/Color|hex=FF6E4A|r=255|g=110|b=74|h=12|s=71|v=100|l=65|name=[[List of Crayola crayon colors#Fluorescent crayons|Outrageous Orange]]}}
+{{Colort/Color|hex=4A0000|r=74|g=0|b=0|h=0|s=100|v=29|l=15|name=[[Oxblood]]}}
+{{Colort/Color|hex=002147|r=0|g=33|b=71|h=212|s=100|v=28|l=14|name=[[Oxford Blue (colour)|Oxford blue]]}}
+{{Colort/Color|hex=841617|r=132|g=22|b=23|h=360|s=83|v=52|l=30|name=[[Shades of red#OU crimson|OU Crimson red]]}}
+{{Colort/Color|hex=1CA9C9|r=28|g=169|b=201|h=191|s=86|v=79|l=45|name=[[List of Crayola crayon colors#Standard colors|Pacific blue]]|link target=P}}
+{{Colort/Color|hex=006600|r=0|g=102|b=0|h=120|s=100|v=40|l=20|name=[[Shades of green#Pakistan green|Pakistan green]]}}
+{{Colort/Color|hex=682860|r=104|g=40|b=96|h=308|s=62|v=41|l=28|name=[[Palatinate (colour)|Palatinate purple]]}}
+{{Colort/Color|hex=BCD4E6|r=188|g=212|b=230|h=206|s=18|v=90|l=82|name=[[Aqua (color)#Pale aqua|Pale aqua]]}}
+{{Colort/Color|hex=9BC4E2|r=155|g=196|b=226|h=205|s=31|v=89|l=75|name=[[Cerulean#Pale cerulean|Pale cerulean]]}}
+{{Colort/Color|hex=ED7A9B|r=237|g=122|b=155|h=334|s=48|v=92|name=[[Shades of pink#Pale Dogwood|Pale Dogwood]]}}
+{{Colort/Color|hex=FADADD|r=250|g=218|b=221|h=354|s=13|v=98|l=92|name=[[Shades of pink#Pale pink|Pale pink]]}}
+{{Colort/Color|hex=FAE6FA|r=250|g=230|b=250|h=300|s=8|v=98|l=94|name=[[Shades of purple#Pale purple|Pale purple (Pantone)]]}}
+{{Colort/Color|hex=C9C0BB|r=201|g=192|b=187|h=21|s=7|v=79|l=76|name=[[silver (color)#Pale silver|Pale silver]]}}
+{{Colort/Color|hex=ECEBBD|r=236|g=235|b=189|h=59|s=20|v=93|l=83|name=[[Spring bud#Pale spring bud|Pale spring bud]]}}
+{{Colort/Color|hex=78184A|r=120|g=24|b=74|h=329|s=80|v=47|l=28|name=[[Shades of purple#Pansy purple|Pansy purple]]}}
+{{Colort/Color|hex=009B7D|r=0|g=155|b=125|h=168|s=100|v=61|l=30|name=[[Viridian#Paolo Veronese green|Paolo Veronese green]]}}
+{{Colort/Color|hex=FFEFD5|r=255|g=239|b=213|h=37|s=16|v=100|l=92|name=[[Papaya whip]]}}
+{{Colort/Color|hex=E63E62|r=230|g=62|b=98|h=347|s=73|v=90|l=57|name=[[Shades of pink#Paradise pink|Paradise pink]]}}
+{{Colort/Color|hex=F1E9D2|r=241|g=233|b=210|h=45|s=13 |v=95 |name=[[Shades of white#Parchment|Parchment]]}}
+{{Colort/Color|hex=50C878|r=80|g=200|b=120|h=140|s=60|v=78|l=55|name=[[Paris green|Paris Green]]}}
+{{Colort/Color|hex=DEA5A4|r=222|g=165|b=164|h=1|s=26|v=87|l=76|name=[[Shades of pink#Pastel pink|Pastel pink]]}}
+{{Colort/Color|hex=800080|r=128|g=0|b=128|h=300|s=100|v=50|l=25|name=[[Shades of purple#Purple (HTML/CSS color) (patriarch)|Patriarch]]}}
+{{Colort/Color|hex=536878|r=83|g=104|b=120|h=206|s=31|v=47|l=40|name=[[Payne's grey]]}}
+{{Colort/Color|hex=FFE5B4|r=255|g=229|b=180|h=39|s=29|v=100|l=85|name=[[Peach (color)|Peach]]}}
+{{Colort/Color|hex=FFCBA4|r=255|g=203|b=164|h=26|s=36|v=100|l=82|name=[[Peach (color)#Peach|Peach (Crayola)]]}}
+{{Colort/Color|hex=FFDAB9|r=255|g=218|b=185|h=28|s=27|v=100|l=86|name=[[Peach (color)#Peach puff|Peach puff]]}}
+{{Colort/Color|hex=D1E231|r=209|g=226|b=49|h=66|s=78|v=89|l=54|name=[[Chartreuse (color)#Pear|Pear]]}}
+{{Colort/Color|hex=B768A2|r=183|g=104|b=162|h=316|s=43|v=72|l=56|name=[[Shades of purple#Pearly purple|Pearly purple]]}}
+{{Colort/Color|hex=CCCCFF|r=204|g=204|b=255|h=240|s=20|v=100|l=90|name=[[Periwinkle (color)|Periwinkle]]}}
+{{Colort/Color|hex=C3CDE6|r=195|g=205|b=230|h=223|s=15|v=90|l=83|name=[[Periwinkle (color)#Periwinkle (Crayola)|Periwinkle (Crayola)]]}}
+{{Colort/Color|hex=E12C2C|r=225|g=44|b=44|h=0|s=80|v=88|l=53|name=[[List of Crayola crayon colors#Standard colors|Permanent Geranium Lake]]}}
+{{Colort/Color|hex=1C39BB|r=28|g=57|b=187|h=229|s=85|v=73|l=42|name=[[Persian blue]]}}
+{{Colort/Color|hex=00A693|r=0|g=166|b=147|h=173|s=100|v=65|l=33|name=[[Shades of green#Persian green|Persian green]]}}
+{{Colort/Color|hex=32127A|r=50|g=18|b=122|h=258|s=85|v=48|l=27|name=[[Persian blue#Persian indigo|Persian indigo]]}}
+{{Colort/Color|hex=D99058|r=217|g=144|b=88|h=26|s=59|v=85|l=60|name=[[Shades of orange#Persian orange|Persian orange]]}}
+{{Colort/Color|hex=F77FBE|r=247|g=127|b=190|h=329|s=49|v=97|l=73|name=[[Rose (color)#Persian pink|Persian pink]]}}
+{{Colort/Color|hex=701C1C|r=112|g=28|b=28|h=0|s=75|v=44|l=27|name=[[Plum (color)#Persian plum (prune)|Persian plum]]}}
+{{Colort/Color|hex=CC3333|r=204|g=51|b=51|h=0|s=75|v=80|l=50|name=[[Persian red]]}}
+{{Colort/Color|hex=FE28A2|r=254|g=40|b=162|h=326|s=84|v=100|l=58|name=[[Rose (color)#Persian rose|Persian rose]]}}
+{{Colort/Color|hex=EC5800|r=236|g=88|b=0|h=22|s=100|v=93|l=46|name=[[Shades of orange#Persimmon|Persimmon]]}}
+{{Colort/Color|hex=8BA8B7|r=139|g=168|b=183|h=200|s=24|v=72|l=63|name=[[List of Crayola crayon colors#Silver Swirls|Pewter Blue]]}}
+{{Colort/Color|hex=DF00FF|r=223|g=0|b=255|h=292|s=100|v=100|l=50|name=[[Shades of purple#Psychedelic purple (phlox)|Phlox]]}}
+{{Colort/Color|hex=000F89|r=0|g=15|b=137|h=233|s=100|v=54|l=27|name=[[Phthalocyanine Blue BN|Phthalo blue]]}}
+{{Colort/Color|hex=123524|r=18|g=53|b=36|h=151|s=66|v=21|l=14|name=[[Phthalocyanine Green G|Phthalo green]]}}
+{{Colort/Color|hex=2E2787|r=46|g=39|b=135|h=244|s=71|v=53|l=34|name=[[Shades of blue#Picotee blue|Picotee blue]]}}
+{{Colort/Color|hex=C30B4E|r=195|g=11|b=78|h=338|s=94|v=76|l=40|name=[[Carmine (color)#Pictorial carmine|Pictorial carmine]]}}
+{{Colort/Color|hex=FDDDE6|r=253|g=221|b=230|h=343|s=13|v=99|l=93|name=[[Shades of pink#Piggy pink|Piggy pink]]}}
+{{Colort/Color|hex=01796F|r=1|g=121|b=111|h=175|s=99|v=47|l=24|name=[[Shades of green#Pine green|Pine green]]}}
+{{Colort/Color|hex=2A2F23|r=42|g=47|b=35|h=85|s=26|v=18|l=16|name=[[Shades of green#Pine tree|Pine tree]]}}
+{{Colort/Color|hex=FFC0CB|r=255|g=192|b=203|h=350|s=25|v=100|l=88|name=[[Pink]]}}
+{{Colort/Color|hex=D74894|r=215|g=72|b=148|h=328|s=67|v=84|l=56|name=[[Shades of pink#Pink (Pantone)|Pink (Pantone)]]}}
+{{Colort/Color|hex=FC74FD|r=252|g=116|b=253|h=300|s=54|v=99|l=72|name=[[Manatee (color)|Pink flamingo]]}}
+{{Colort/Color|hex=FFDDF4|r=255|g=221|b=244|h=319|s=13|v=100|l=93|name=[[Shades of pink#Pink lace|Pink lace]]}}
+{{Colort/Color|hex=D8B2D1|r=216|g=178|b=209|h=311|s=18|v=85|l=77|name=[[Shades of pink#Pink lavender|Pink lavender]]}}
+{{Colort/Color|hex=F78FA7|r=247|g=143|b=167|h=346|s=42|v=97|l=76|name=[[List of Crayola crayon colors|Pink Sherbet]]}}
+{{Colort/Color|hex=93C572|r=147|g=197|b=114|h=96|s=42|v=77|l=61|name=[[Chartreuse (color)#Pistachio|Pistachio]]}}
+{{Colort/Color|hex=E5E4E2|r=229|g=228|b=226|h=40|s=1|v=90|l=89|name=[[Platinum (color)|Platinum]]}}
+{{Colort/Color|hex=8E4585|r=142|g=69|b=133|h=307|s=51|v=56|l=41|name=[[Plum (color)|Plum]]}}
+{{Colort/Color|hex=DDA0DD|r=221|g=160|b=221|h=300|s=28|v=87|l=75|name=[[Plum (color)#Pale plum|Plum (web)]]}}
+{{Colort/Color|hex=5946B2|r=89|g=70|b=178|h=251|s=61|v=70|l=49|name=[[List of Crayola crayon colors#Heads 'n Tails|Plump Purple]]}}
+{{Colort/Color|hex=5DA493|r=93|g=164|b=147|h=166|s=43|v=64|l=50|name=[[List of Crayola crayon colors#Silver Swirls|Polished Pine]]}}
+{{Colort/Color|hex=86608E|r=134|g=96|b=142|h=290|s=32|v=56|l=47|name=[[Shades of purple#Pomp and Power|Pomp and Power]]}}
+{{Colort/Color|hex=BE4F62|r=190|g=79|b=98|h=350|s=58|v=75|l=53|name=[[Red-violet#Popstar|Popstar]]}}
+{{Colort/Color|hex=FF5A36|r=255|g=90|b=54|h=11|s=79|v=100|l=61|name=[[Portland Orange]]}}
+{{Colort/Color|hex=B0E0E6|r=176|g=224|b=230|h=187|s=23|v=90|l=80|name=[[Powder blue]]}}
+{{Colort/Color|hex=F58025|r=245|g=128|b=37|h=26|s=85|v=96|l=55|name=[[Shades of orange#Princeton orange|Princeton orange]]}}
+{{Colort/Color|hex=FFEF00|r=255|g=239 |b=0 |h=56 |s=100|v=100|name=[[Shades of yellow#Yellow (CMYK) (process yellow) (canary yellow)|Process yellow]]}}
+{{Colort/Color|hex=701C1C|r=112|g=28|b=28|h=0|s=75|v=44|l=27|name=[[Plum (color)#Persian plum (prune)|Prune]]}}
+{{Colort/Color|hex=003153|r=0|g=49|b=83|h=205|s=100|v=33|l=16|name=[[Prussian blue]]}}
+{{Colort/Color|hex=DF00FF|r=223|g=0|b=255|h=292|s=100|v=100|l=50|name=[[Psychedelic purple]]}}
+{{Colort/Color|hex=CC8899|r=204|g=136|b=153|h=345|s=33|v=80|l=67|name=[[Puce]]}}
+{{Colort/Color|hex=644117|r=100|g=65|b=23|h=33|s=77|v=39|l=24|name=[[Brown#Business|Pullman Brown (UPS Brown)]]}}
+{{Colort/Color|hex=FF7518|r=255|g=117|b=24|h=24|s=91|v=100|l=55|name=[[Shades of orange#Pumpkin|Pumpkin]]}}
+{{Colort/Color|hex=6A0DAD|r=96|g=0|b=128|h=275|s=92|v=68|l=37|name=[[Shades of purple#Purple|Purple]]}}
+{{Colort/Color|hex=800080|r=128|g=0|b=128|h=300|s=100|v=50|l=25|name=[[Shades of purple#Purple_(HTML/CSS_color)_(patriarch)|Purple (web)]]}}
+{{Colort/Color|hex=9F00C5|r=159|g=0|b=197|h=288|s=100|v=77|l=39|name=[[Shades of purple#Purple (Munsell)|Purple (Munsell)]]}}
+{{Colort/Color|hex=A020F0|r=160|g=32|b=240|h=277|s=87|v=94|l=53|name=[[Shades of purple#Purple (X11 color) (veronica)|Purple (X11)]]}}
+{{Colort/Color|hex=9678B6|r=150|g=120|b=182|h=269|s=34|v=71|l=59|name=[[Lavender (color)#Lavender purple (purple mountain majesty)|Purple mountain majesty]]}}
+{{Colort/Color|hex=4E5180|r=78|g=81|b=128|h=236|s=39|v=50|l=40|name=[[Navy blue#Purple navy|Purple navy]]}}
+{{Colort/Color|hex=FE4EDA|r=254|g=78|b=218|h=312|s=69|v=100|l=65|name=[[Shades of magenta#Purple pizzazz|Purple pizzazz]]}}
+{{Colort/Color|hex=9C51B6|r=156|g=81|b=182|h=285|s=56|v=71|l=52|name=[[List of Crayola crayon colors#Heads 'n Tails|Purple Plum]]}}
+{{Colort/Color|hex=9A4EAE|r=154|g=78|b=174|h=288|s=55|v=68|l=49|name=[[Shades of purple#Purpureus|Purpureus]]}}
+{{Colort/Color|hex=436B95|r=67|g=107|b=149|h=211|s=55|v=58|l=42|name=[[Royal blue#Queen blue|Queen blue]]|link target=Q}}
+{{Colort/Color|hex=E8CCD7|r=232|g=204|b=215|h=336|s=12|v=91|l=85|name=[[Shades of pink#Queen pink|Queen pink]]}}
+{{Colort/Color|hex=A6A6A6|r=166|g=166|b=166|h=—|s=0|v=65|l=65|name=[[List of Crayola crayon colors#Silver Swirls|Quick Silver]]}}
+{{Colort/Color|hex=8E3A59|r=142|g=58|b=89|h=338|s=59|v=56|l=39|name=[[Shades of magenta#Quinacridone magenta|Quinacridone magenta]]}}
+{{Colort/Color|hex=FF355E|r=255|g=53|b=94|h=348|s=79|v=100|l=60|name=[[Amaranth (color)#Radical red (bright amaranth pink)|Radical Red]]|link target=R}}
+{{Colort/Color|hex=242124|r=36|g=33|b=36|h=300|s=8|v=14|l=14|name=[[Raisin black]]}}
+{{Colort/Color|hex=FBAB60|r=251|g=171|b=96|h=29|s=62|v=98|l=68|name=[[Saffron (color)#Rajah|Rajah]]}}
+{{Colort/Color|hex=E30B5D|r=227|g=11|b=92|h=337|s=95|v=89|l=47|name=[[Raspberry (color)|Raspberry]]}}
+{{Colort/Color|hex=915F6D|r=145|g=95|b=109|h=343|s=34|v=57|l=47|name=[[Raspberry (color)#Raspberry glace|Raspberry glace]]}}
+{{Colort/Color|hex=B3446C|r=179|g=68|b=108|h=338|s=62|v=70|l=48|name=[[Raspberry (color)#Raspberry rose|Raspberry rose]]}}
+{{Colort/Color|hex=D68A59|r=214|g=138|b=89|h=24|s=58|v=84|l=59|name=[[List of Crayola crayon colors#Standard colors|Raw sienna]]}}
+{{Colort/Color|hex=826644|r=130|g=102|b=68|h=33|s=48|v=51|l=39|name=[[Umber#Raw umber|Raw umber]]}}
+{{Colort/Color|hex=FF33CC|r=255|g=51|b=204|h=315|s=80|v=100|l=60|name=[[Rose (color)#Razzle dazzle rose|Razzle dazzle rose]]}}
+{{Colort/Color|hex=E3256B|r=227|g=37|b=107|h=338|s=84|v=89|l=52|name=[[Rose (color)#Razzmatazz|Razzmatazz]]}}
+{{Colort/Color|hex=8D4E85|r=141|g=78|b=133|h=308|s=45|v=55|l=43|name=[[List of Crayola crayon colors#Metallic FX|Razzmic Berry]]}}
+{{Colort/Color|hex=663399|r=102|g=52|b=153|h=270|s=67|v=60|l=40|name=[[Eric A. Meyer|Rebecca Purple]]}}
+{{Colort/Color|hex=FF0000|r=255|g=0|b=0|h=0|s=100|v=100|l=50|name=[[Red]]}}
+{{Colort/Color|hex=EE204D|r=238|g=32|b=77|h=347|s=87|v=93|l=53|name=[[Shades of red#Red (Crayola)|Red (Crayola)]]}}
+{{Colort/Color|hex=F2003C|r=242|g=0|b=60|h=345|s=100|v=95|l=47|name=[[Shades of red#Red (Munsell)|Red (Munsell)]]}}
+{{Colort/Color|hex=C40233|r=196|g=2|b=51|h=345|s=99|v=77|l=39|name=[[Shades of red#Red (NCS) (psychological primary red)|Red (NCS)]]}}
+{{Colort/Color|hex=ED2939|r=237|g=41|b=57|h=355|s=83|v=93|l=55|name=[[Shades of red#Red (Pantone)|Red (Pantone)]]}}
+{{Colort/Color|hex=ED1C24|r=237|g=28|b=36|h=358|s=88|v=93|l=52|name=[[Shades of red#Red (CMYK) (pigment red)|Red (pigment)]]}}
+{{Colort/Color|hex=FE2712|r=254|g=39|b=18|h=5|s=93|v=100|l=53|name=[[RYB color model|Red (RYB)]]}}
+{{Colort/Color|hex=FF5349|r=255|g=83|b=73|h=3|s=71|v=100|l=64|name=[[Red-orange]]}}
+{{Colort/Color|hex=FF681F|r=255|g=104|b=31|h=20|s=88|v=100|l=56|name=[[Vermilion#Red-orange|Red-orange (Crayola)]]}}
+{{Colort/Color|hex=FF4500|r=255|g=69|b=0|h=16|s=100|v=100|l=50|name=[[Vermilion|Red-orange (Color wheel)]]}}
+{{Colort/Color|hex=E40078|r=228|g=0|b=120|h=328|s=100|v=89|l=45|name=[[Red-violet#Red-purple|Red-purple]]}}
+{{Colort/Color|hex=FD3A4A|r=253|g=58|b=74|h=355|s=77|v=99|l=61|name=[[List of Crayola crayon colors#Heads 'n Tails|Red Salsa]]}}
+{{Colort/Color|hex=C71585|r=199|g=21|b=133|h=322|s=89|v=78|l=43|name=[[Red-violet]]}}
+{{Colort/Color|hex=C0448F|r=192|g=68|b=143|h=324|s=65|v=75|l=51|name=[[Red-violet#Red-violet (Crayola)|Red-violet (Crayola)]]}}
+{{Colort/Color|hex=922B3E|r=146|g=43|b=62|h=350|s=71|v=57|l=37|name=[[Red-violet#Red-violet (Color wheel)|Red-violet (Color wheel)]]}}
+{{Colort/Color|hex=A45A52|r=164|g=90|b=82|h=6|s=50|v=64|l=48|name=[[Shades of red#Redwood|Redwood]]}}
+{{Colort/Color|hex=002387|r=0|g=35|b=135|h=224|s=100|v=53|l=26|name=[[Shades of blue#Resolution blue|Resolution blue]]}}
+{{Colort/Color|hex=777696|r=119|g=118|b=150|h=242|s=21|v=59|l=53|name=[[Blue-gray#Rhythm|Rhythm]]}}
+{{Colort/Color|hex=004040|r=0|g=64|b=64|h=180|s=100|v=25|l=13|name=[[Rich black]]}}
+{{Colort/Color|hex=010B13|r=1|g=11|b=19|h=207|s=95|v=8|l=4|name=[[Rich black|Rich black (FOGRA29)]]}}
+{{Colort/Color|hex=010203|r=1|g=2|b=3|h=210|s=67|v=1|l=1|name=[[Rich black|Rich black (FOGRA39)]]}}
+{{Colort/Color|hex=444C38|r=68|g=76|b=56|h=84|s=26|v=30|l=26|name=[[Shades of green#Rifle green|Rifle green]]}}
+{{Colort/Color|hex=00CCCC|r=0|g=204|b=204|h=180|s=100|v=80|l=40|name=[[Robin egg blue]]}}
+{{Colort/Color|hex=8A7F80|r=138|g=127|b=128|h=355|s=8|v=54|l=52|name=[[Shades of gray#Rocket metallic|Rocket metallic]]}}
+{{Colort/Color|hex=A91101|r=169|g=17 |b=1 |h=6 |s=99 |v=66 |name=[[Shades of red#Spanish red|Rojo Spanish red]]}}
+{{Colort/Color|hex=838996|r=131|g=137|b=150|h=221|s=13|v=59|l=55|name=[[Silver (color)#Roman silver|Roman silver]]}}
+{{Colort/Color|hex=FF007F|r=255|g=0|b=127|h=330|s=100|v=100|l=50|name=[[Rose (color)|Rose]]}}
+{{Colort/Color|hex=F9429E|r=249|g=66|b=158|h=330|s=73|v=98|l=62|name=[[Rose (color)#Rose bonbon|Rose bonbon]]}}
+{{Colort/Color|hex=9E5E6F|r=158|g=94|b=111|h=344|s=41|v=62|l=49|name=[[List of Crayola crayon colors#Silver Swirls|Rose Dust]]}}
+{{Colort/Color|hex=674846|r=103|g=72|b=70|h=4|s=32|v=40|l=34|name=[[Rose (color)#Rose ebony|Rose ebony]]}}
+{{Colort/Color|hex=E32636|r=227|g=38|b=54|h=355|s=83|v=89|l=52|name=[[Alizarin|Rose madder]]}}
+{{Colort/Color|hex=FF66CC|r=255|g=102|b=204|h=320|s=60|v=100|name=[[Rose (color)#Rose pink|Rose pink]]}}
+{{Colort/Color|hex=ED7A9B|r=237|g=122|b=155|h=334|s=48|v=92|name=[[Shades of pink#Rose Pompadour|Rose Pompadour]]}}
+{{Colort/Color|hex=AA98A9|r=170|g=152|b=169|h=303|s=11|v=67|l=63|name=[[Rose (color)#Rose quartz|Rose quartz]]}}
+{{Colort/Color|hex=C21E56|r=194|g=30|b=86|h=340|s=85|v=76|l=44|name=[[Rose (color)#Rose red|Rose red]]}}
+{{Colort/Color|hex=905D5D|r=144|g=93|b=93|h=0|s=35|v=56|l=46|name=[[Taupe#Rose taupe|Rose taupe]]}}
+{{Colort/Color|hex=AB4E52|r=171|g=78|b=82|h=357|s=54|v=67|l=49|name=[[Rose (color)#Rose vale|Rose vale]]}}
+{{Colort/Color|hex=65000B|r=101|g=0|b=11|h=353|s=100|v=40|l=20|name=[[Rose (color)#Rosewood|Rosewood]]}}
+{{Colort/Color|hex=D40000|r=212|g=0|b=0|h=0|s=100|v=83|l=42|name=[[Rosso corsa]]}}
+{{Colort/Color|hex=BC8F8F|r=188|g=143|b=143|h=0|s=24|v=74|l=65|name=[[Rose (color)#Rosy brown|Rosy brown]]}}
+{{Colort/Color|hex=002366|r=0|g=35|b=102|h=219|s=100|v=40|l=20|name=[[Royal blue|Royal blue (dark)]]}}
+{{Colort/Color|hex=4169E1|r=65|g=105|b=225|h=225|s=71|v=88|l=57|name=[[Royal blue|Royal blue (light)]]}}
+{{Colort/Color|hex=7851A9|r=120|g=81|b=169|h=267|s=52|v=66|l=49|name=[[Shades of purple#Royal_purple: 17th century|Royal purple]]}}
+{{Colort/Color|hex=FADA5E|r=250|g=218|b=94|h=48|s=62|v=98|l=67|name=[[Shades of yellow#Royal yellow|Royal yellow]]}}
+{{Colort/Color|hex=CE4676|r=206|g=70|b=118|h=339|s=66|v=81|l=54|name=[[Ruby (color)#Ruber|Ruber]]}}
+{{Colort/Color|hex=D10056|r=209|g=0|b=86|h=335|s=100|v=82|l=41|name=[[Ruby (color)#Rubine red|Rubine red]]}}
+{{Colort/Color|hex=E0115F|r=224|g=17|b=95|h=337|s=92|v=88|l=47|name=[[Ruby (color)|Ruby]]}}
+{{Colort/Color|hex=9B111E|r=155|g=17|b=30|h=354|s=89|v=61|l=34|name=[[Ruby (color)#Ruby red|Ruby red]]}}
+{{Colort/Color|hex=A81C07|r=168|g=28|b=7|h=8|s=96|v=66|l=34|name=[[Rufous]]}}
+{{Colort/Color|hex=80461B|r=128|g=70|b=27|h=26|s=79|v=50|l=30|name=[[Russet (color)|Russet]]}}
+{{Colort/Color|hex=679267|r=103|g=146|b=103|h=120|s=29|v=57|l=49|name=[[Shades of green#Russian green|Russian green]]}}
+{{Colort/Color|hex=32174D|r=50|g=23|b=77|h=270|s=70|v=30|l=20|name=[[Shades of violet#Russian violet|Russian violet]]}}
+{{Colort/Color|hex=B7410E|r=183|g=65|b=14|h=18|s=92|v=72|l=39|name=[[Rust (color)|Rust]]}}
+{{Colort/Color|hex=DA2C43|r=218|g=44|b=67|h=352|s=80|v=85|l=51|name=[[Shades of red#Rusty red|Rusty red]]}}
+{{Colort/Color|hex=043927|r=4|g=57|b=39|h=160|s=93|v=22|l=12|name=[[Shades of green#Sacramento State green|Sacramento State green]]|link target=S}}
+{{Colort/Color|hex=8B4513|r=139|g=69|b=19|h=25|s=86|v=55|l=31|name=[[X11 color names#Color name charts|Saddle brown]]}}
+{{Colort/Color|hex=FF7800|r=255|g=120|b=0|h=28|s=100|v=100|l=50|name=[[Safety orange]]}}
+{{Colort/Color|hex=FF6700|r=255|g=103|b=0|h=24|s=100|v=100|l=50|name=[[Safety orange|Safety orange (blaze orange)]]}}
+{{Colort/Color|hex=EED202|r=238|g=210|b=2|h=53|s=99|v=93|l=47|name=[[Shades of yellow#Safety yellow|Safety yellow]]}}
+{{Colort/Color|hex=F4C430|r=244|g=196|b=48|h=45|s=80|v=96|l=57|name=[[Saffron (color)|Saffron]]}}
+{{Colort/Color|hex=BCB88A|r=188|g=184|b=138|h=55|s=27|v=74|l=64|name=[[Sage (color)|Sage]]}}
+{{Colort/Color|hex=23297A|r=35|g=41|b=122|h=236|s=71|v=48|l=31|name=[[St. Patrick's blue]]}}
+{{Colort/Color|hex=FA8072|r=250|g=128|b=114|h=6|s=54|v=98|l=71|name=[[Salmon (color)|Salmon]]}}
+{{Colort/Color|hex=FF91A4|r=255|g=145|b=164|h=350|s=43|v=100|l=78|name=[[Salmon (color)#Salmon pink|Salmon pink]]}}
+{{Colort/Color|hex=C2B280|r=194|g=178|b=128|h=45|s=34|v=76|l=63|name=[[Sand (color)|Sand]]}}
+{{Colort/Color|hex=967117|r=150|g=113|b=23|h=43|s=85|v=59|l=34|name=[[Desert sand (color)#Sand dune (Drab)|Sand dune]]}}
+{{Colort/Color|hex=F4A460|r=244|g=164|b=96|h=28|s=61|v=96|l=67|name=[[Shades of brown#Sandy brown|Sandy brown]]}}
+{{Colort/Color|hex=507D2A|r=80|g=125|b=42|h=93|s=66|v=49|l=33|name=[[Shades of green#Sap green|Sap green]]}}
+{{Colort/Color|hex=0F52BA|r=15|g=82|b=186|h=216|s=92|v=73|l=39|name=[[Sapphire (color)#Sapphire|Sapphire]]}}
+{{Colort/Color|hex=0067A5|r=0|g=103|b=165|h=203|s=100|v=65|l=32|name=[[Sapphire (color)#Sapphire blue|Sapphire blue]]}}
+{{Colort/Color|hex=2D5DA1|r=45|g=93|b=161|h=215|s=72|v=35|l=40|name=[[Sapphire (color)|Sapphire (Crayola)]]}}
+{{Colort/Color|hex=CBA135|r=203|g=161|b=53|h=43|s=74|v=80|l=50|name=[[Gold (color)#Satin sheen gold|Satin sheen gold]]}}
+{{Colort/Color|hex=FF2400|r=255|g=36|b=0|h=8|s=100|v=100|l=50|name=[[Scarlet (color)|Scarlet]]}}
+{{Colort/Color|hex=FF91AF|r=255|g=145|b=175|h=344|s=43|v=100|l=78|name=[[Baker-Miller Pink|Schauss pink]]}}
+{{Colort/Color|hex=FFD800|r=255|g=216|b=0|h=51|s=100|v=100|l=50|name=[[School bus yellow]]}}
+{{Colort/Color|hex=66FF66|r=102|g=255|b=102|h=120|s=60|v=100|l=70|name=[[List of Crayola crayon colors#Fluorescent crayons|Screamin' Green]]}}
+{{Colort/Color|hex=2E8B57|r=46|g=139|b=87|h=146|s=67|v=55|l=36|name=[[Shades of green#Sea green|Sea green]]}}
+{{Colort/Color|hex=00FFCD|r=1|g=255|b=205|h=168|s=100|v=100|l=50|name=[[Shades of green|Sea green (Crayola)]]}}
+{{Colort/Color|hex=612086|r=97|g=32|b=134|h=278|s=76|v=53|name=[[Seance]]}}
+{{Colort/Color|hex=59260B|r=50|g=20|b=20|h=0|s=60|v=20|l=14|name=[[Seal brown]]}}
+{{Colort/Color|hex=FFF5EE|r=255|g=245|b=238|h=25|s=7|v=100|l=97|name=[[Seashell (color)|Seashell]]}}
+{{Colort/Color|hex=FFBA00|r=255|g=186|b=0|h=44|s=100|v=100|l=50|name=[[Selective yellow]]}}
+{{Colort/Color|hex=704214|r=112|g=66|b=20|h=30|s=82|v=44|l=26|name=[[Sepia (color)|Sepia]]}}
+{{Colort/Color|hex=8A795D|r=138|g=121|b=93|h=37|s=33|v=54|l=45|name=[[List of Crayola crayon colors#Standard_colors|Shadow]]}}
+{{Colort/Color|hex=778BA5|r=119|g=139|b=165|h=214|s=28|v=65|l=56|name=[[Blue-gray#Shadow blue|Shadow blue]]}}
+{{Colort/Color|hex=009E60|r=0|g=158|b=96|h=156|s=100|v=62|l=31|name=[[Shades of green#Shamrock green|Shamrock green]]}}
+{{Colort/Color|hex=8FD400|r=143|g=212|b=0|h=80|s=100|v=83|l=42|name=[[List of Crayola crayon colors#Metallic FX|Sheen green]]}}
+{{Colort/Color|hex=D98695|r=217|g=134|b=149|h=349|s=38|v=85|l=69|name=[[List of Crayola crayon colors#Metallic FX|Shimmering Blush]]}}
+{{Colort/Color|hex=5FA778|r=95|g=167|b=120|h=141|s=43|v=66|l=51|name=[[List of Crayola crayon colors#Silver Swirls|Shiny Shamrock]]}}
+{{Colort/Color|hex=FC0FC0|r=252|g=15|b=192|h=315|s=94|v=99|l=52|name=[[Shades of pink#Shocking pink|Shocking pink]]}}
+{{Colort/Color|hex=FF6FFF|r=255|g=111|b=255|h=300|s=56|v=100|l=72|name=[[Shades of magenta#Shocking pink (Crayola)|Shocking pink (Crayola)]]}}
+{{Colort/Color|hex=882D17|r=136|g=45|b=23|h=12|s=83|v=53|l=31|name=[[Sienna]]}}
+{{Colort/Color|hex=C0C0C0|r=192|g=192|b=192|h=—|s=0|v=75|l=75|name=[[Silver (color)|Silver]]}}
+{{Colort/Color|hex=C9C0BB|r=201|g=192|b=187|h=21|s=7|v=79|l=76|name=[[Silver (color)#Silver (Crayola)|Silver (Crayola)]]}}
+{{Colort/Color|hex=AAA9AD|r=170|g=169|b=173|h=255|s=2|v=68|l=67|name=[[Silver (color)#Silver (Metallic)|Silver (Metallic)]]}}
+{{Colort/Color|hex=ACACAC|r=172|g=172|b=172|h=—|s=0|v=67|l=67|name=[[Silver (color)#Silver chalice|Silver chalice]]}}
+{{Colort/Color|hex=C4AEAD|r=196|g=174|b=173|h=3|s=12|v=77|l=72|name=[[Shades of pink#Silver pink|Silver pink]]}}
+{{Colort/Color|hex=BFC1C2|r=191|g=193|b=194|h=200|s=2|v=76|l=75|name=[[Silver (color)#Silver sand|Silver sand]]}}
+{{Colort/Color|hex=CB410B|r=203|g=65|b=11|h=17|s=95|v=80|l=42|name=[[Sinopia]]}}
+{{Colort/Color|hex=FF3855|r=255|g=56|b=85|h=351|s=78|v=100|l=61|name=[[List of Crayola crayon colors#Heads 'n Tails|Sizzling Red]]}}
+{{Colort/Color|hex=FFDB00|r=255|g=219|b=0|h=52|s=100|v=100|l=50|name=[[List of Crayola crayon colors#Extreme Twistables colors|Sizzling Sunrise]]}}
+{{Colort/Color|hex=007474|r=0|g=116|b=116|h=180|s=100|v=45|l=23|name=[[Spring green#Skobeloff|Skobeloff]]}}
+{{Colort/Color|hex=87CEEB|r=135|g=206|b=235|h=197|s=43|v=92|l=73|name=[[Sky blue]]}}
+{{Colort/Color|hex=76D7EA|r=118|g=215|b=234|h=190|s=50|v=92|l=69|name=[[Sky blue#Medium sky blue|Sky blue (Crayola)]]}}
+{{Colort/Color|hex=CF71AF|r=207|g=113|b=175|h=320|s=45|v=81|l=63|name=[[Shades of magenta#Sky magenta|Sky magenta]]}}
+{{Colort/Color|hex=6A5ACD|r=106|g=90|b=205|h=248|s=56|v=80|l=58|name=[[X11 color names#Color names|Slate blue]]}}
+{{Colort/Color|hex=708090|r=112|g=128|b=144|h=210|s=22|v=56|l=50|name=[[Slate gray]]}}
+{{Colort/Color|hex=299617|r=41|g=150|b=23|h=111|s=85|v=59|l=34|name=[[List of Crayola crayon colors#Heads 'n Tails|Slimy green]]}}
+{{Colort/Color|hex=C84186|r=200|g=65|b=134|h=329|s=68|v=78|l=52|name=[[Red-violet#Smitten|Smitten]]}}
+{{Colort/Color|hex=100C08|r=16|g=12|b=8|h=30|s=50|v=6|l=5|name=[[Smoky black]]}}
+{{Colort/Color|hex=FFFAFA|r=255|g=250|b=250|h=0|s=2|v=76|l=99|name=[[Shades of white#Snow|Snow]]}}
+{{Colort/Color|hex=893843|r=137|g=56|b=67|h=352|s=59|v=54|l=38|name=[[Shades of pink#Solid pink|Solid pink]]}}
+{{Colort/Color|hex=757575|r=117|g=117|b=117|h=—|s=0|v=46|l=46|name=[[Silver (color)#Sonic silver|Sonic silver]]}}
+{{Colort/Color|hex=1D2951|r=29|g=41|b=81|h=226|s=64|v=32|l=22|name=[[Cadet grey#Space cadet|Space cadet]]}}
+{{Colort/Color|hex=807532|r=128|g=117|b=50|h=52|s=61|v=50|l=35|name=[[Bistre#Spanish bistre|Spanish bistre]]}}
+{{Colort/Color|hex=0070B8|r=0|g=112|b=184|h=203|s=100|v=72|l=36|name=[[Shades of blue#Spanish blue|Spanish blue]]}}
+{{Colort/Color|hex=D10047|r=209|g=0|b=71|h=340|s=100|v=82|l=41|name=[[Carmine (color)#Spanish carmine|Spanish carmine]]}}
+{{Colort/Color|hex=989898|r=152|g=152|b=152|h=—|s=0|v=60|l=60|name=[[Shades of gray#Spanish gray|Spanish gray]]}}
+{{Colort/Color|hex=009150|r=0|g=145|b=80|h=153|s=100|v=57|l=28|name=[[Shades of green#Spanish green|Spanish green]]}}
+{{Colort/Color|hex=E86100|r=232|g=97|b=0|h=25|s=100|v=91|l=45|name=[[Shades of orange#Spanish orange|Spanish orange]]}}
+{{Colort/Color|hex=F7BFBE|r=247|g=191|b=190|h=1|s=23|v=97|l=86|name=[[Shades of pink#Spanish pink|Spanish pink]]}}
+{{Colort/Color|hex=E60026|r=230|g=0|b=38|h=350|s=100|v=90|l=45|name=[[Shades of red#Spanish red|Spanish red]]}}
+{{Colort/Color|hex=00FFFF|r=0|g=255|b=255|h=180|s=100|v=100|l=50|name=[[Sky blue#Spanish sky blue|Spanish sky blue]]}}
+{{Colort/Color|hex=4C2882|r=76|g=40|b=130|h=264|s=69|v=51|l=33|name=[[Shades of violet#Spanish violet|Spanish violet]]}}
+{{Colort/Color|hex=007F5C|r=0|g=127|b=92|h=163|s=100|v=50|l=25|name=[[Viridian#Spanish viridian|Spanish viridian]]}}
+{{Colort/Color|hex=A7FC00|r=167|g=252|b=0|h=80|s=100|v=99|l=49|name=[[Spring bud]]}}
+{{Colort/Color|hex=87FF2A|r=135|g=255|b=42|h=94|s=84|v=100|l=58|name=[[List of Crayola crayon colors#Extreme Twistables colors|Spring Frost]]}}
+{{Colort/Color|hex=00FF7F|r=0|g=255|b=127|h=150|s=100|v=100|l=50|name=[[Spring green (color)|Spring green]]}}
+{{Colort/Color|hex=ECEBBD|r=236|g=235|b=189|h=59|s=20|v=93|l=83|name=[[Spring green (color)#Spring green (traditional)|Spring green (Crayola)]]}}
+{{Colort/Color|hex=007BB8|r=0|g=123|b=184|h=200|s=100|v=72|l=36|name=[[Cadet grey#Star command blue|Star command blue]]}}
+{{Colort/Color|hex=4682B4|r=70|g=130|b=180|h=207|s=61|v=71|l=49|name=[[Steel blue]]}}
+{{Colort/Color|hex=CC33CC|r=204|g=51|b=204|h=300|s=75|v=80|l=50|name=[[Shades of pink#Steel pink|Steel pink]]}}
+{{Colort/Color|hex=5F8A8B|r=95|g=138|b=139|h=181|s=32|v=55|l=46|name=[[Shiny Shamrock|Steel Teal]]}}
+{{Colort/Color|hex=FADA5E|r=250|g=218|b=94|h=48|s=62|v=98|l=67|name=[[Stil de grain yellow]]}}
+{{Colort/Color|hex=E4D96F|r=228|g=217|b=111|h=54|s=51|v=89|l=66|name=[[Straw (colour)|Straw]]}}
+{{Colort/Color|hex=FA5053|r=250|g=80|b=83|h=359|s=68|v=98|l=65|name=[[Strawberry]]}}
+{{Colort/Color|hex=FF9361|r=255|g=147|b=97|h=19|s=62|v=100|l=69|name=[[Strawberry blonde (hair color)|Strawberry Blonde]]}}
+{{Colort/Color|hex=914E75|r=145|g=78|b=117|h=325|s=46|v=57|l=44|name=[[List of Crayola crayon colors#Silver Swirls|Sugar Plum]]}}
+{{Colort/Color|hex=FFCC33|r=255|g=204|b=51|h=45|s=80|v=100|l=60|name=[[Sunset (color)#Sunglow|Sunglow]]}}
+{{Colort/Color|hex=E3AB57|r=227|g=171|b=87|h=36|s=62|v=89|l=62|name=[[Sunset (color)#Sunray|Sunray]]}}
+{{Colort/Color|hex=FAD6A5|r=250|g=214|b=165|h=35|s=34|v=98|l=81|name=[[Sunset (color)|Sunset]]}}
+{{Colort/Color|hex=CF6BA9|r=207|g=107|b=169|h=323|s=48|v=81|l=62|name=[[Shades of pink#Super pink|Super pink]]}}
+{{Colort/Color|hex=A83731|r=168|g=55|b=49|h=3|s=71|v=66|l=43|name=[[List of Crayola crayon colors#Heads 'n Tails|Sweet Brown]]}}
+{{Colort/Color|hex=D44500|r=212|g=69 |b=0 |h=9 |s=72 |v=100|name=[[Shades of orange#Syracuse Orange|Syracuse Orange]]}}
+{{Colort/Color|hex=D2B48C|r=210|g=180|b=140|h=25|s=33|v=82|l=69|name=[[Tan (color)|Tan]]|link target=T}}
+{{Colort/Color|hex=D99A6C|r=217|g=154|b=108|h=34|s=50|v=85|l=64|name=[[Tan (color)#Tan (Crayola)|Tan (Crayola)]]}}
+{{Colort/Color|hex=F28500|r=242|g=133|b=0|h=33|s=100|v=95|l=47|name=[[Tangerine (color)|Tangerine]]}}
+{{Colort/Color|hex=E4717A|r=228|g=113|b=122|h=355|s=50|v=89|l=67|name=[[Shades of pink#Tango pink|Tango pink]]}}
+{{Colort/Color|hex=FB4D46|r=251|g=77|b=70|h=2|s=72|v=98|l=63|name=[[List of Crayola crayon colors#Heads 'n Tails|Tart Orange]]}}
+{{Colort/Color|hex=483C32|r=72|g=60|b=50|h=27|s=31|v=28|l=24|name=[[Taupe]]}}
+{{Colort/Color|hex=8B8589|r=139|g=133|b=137|h=320|s=4|v=55|l=53|name=[[Taupe#Taupe gray|Taupe gray]]}}
+{{Colort/Color|hex=D0F0C0|r=208|g=240|b=192|h=100|s=20|v=94|l=85|name=[[Shades of green#Tea green|Tea green]]}}
+{{Colort/Color|hex=F4C2C2|r=244|g=194|b=194|h=0|s=20|v=96|l=86|name=[[Shades_of_red#Tea_rose|Tea rose]]}}
+{{Colort/Color|hex=008080|r=0|g=128|b=128|h=180|s=100|v=50|l=25|name=[[Teal (color)|Teal]]}}
+{{Colort/Color|hex=367588|r=54|g=117|b=136|h=194|s=60|v=53|l=37|name=[[Teal (color)#Teal blue|Teal blue]]}}
+{{Colort/Color|hex=CF3476|r=207|g=52|b=118|h=334|s=75|v=81|l=51|name=[[Shades of magenta#Telemagenta|Telemagenta]]}}
+{{Colort/Color|hex=CD5700|r=205|g=87|b=0|h=25|s=100|v=80|l=40|name=[[Tawny (color)|Tenné]] (tawny)}}
+{{Colort/Color|hex=E2725B|r=226|g=114|b=91|h=10|s=60|v=89|l=62|name=[[Terra_cotta_(color)|Terra cotta]]}}
+{{Colort/Color|hex=D8BFD8|r=216|g=191|b=216|h=300|s=12|v=85|l=80|name=[[Shades of purple#Thistle|Thistle]]}}
+{{Colort/Color|hex=DE6FA1|r=222|g=111|b=161|h=333|s=50|v=87|l=65|name=[[Rose (color)#Thulian pink|Thulian pink]]}}
+{{Colort/Color|hex=FC89AC|r=252|g=137|b=172|h=342|s=46|v=99|l=76|name=[[Rose (color)#Tickle me pink|Tickle Me Pink]]}}
+{{Colort/Color|hex=0ABAB5|r=10|g=186|b=181|h=178|s=95|v=73|l=38|name=[[Tiffany Blue#Tiffany Blue|Tiffany Blue]]}}
+{{Colort/Color|hex=DBD7D2|r=219|g=215|b=210|h=33|s=4|v=86|l=84|name=[[List of Crayola crayon colors|Timberwolf]]}}
+{{Colort/Color|hex=EEE600|r=238|g=230|b=0|h=58|s=100|v=93|l=47|name=[[Titanium yellow]]}}
+{{Colort/Color|hex=FF6347|r=255|g=99|b=71|h=9|s=72|v=100|l=64|name=[[Shades of orange#Tomato|Tomato]]}}
+{{Colort/Color|hex=86A1A9|r=134|g=161|b=169|h=194|s=17|v=66|l=50|name=[[Tourmaline]]}}
+{{Colort/Color|hex=00755E|r=0|g=117|b=94|h=168|s=100|v=46|l=23|name=[[Jungle green#Tropical rainforest|Tropical rainforest]]}}
+{{Colort/Color|hex=2D68C4|r=0|g=115|b=207|h=207|s=100|v=81|l=41|name=[[True Blue (color)|True Blue]]}}
+{{Colort/Color|hex=1C05B3|r=28|g=5|b=179|h=248|s=95|v=70|l=36|name=[[Trypan Blue]]}}
+{{Colort/Color|hex=3E8EDE|r=62|g=142|b=222|h=210|s=70.7|v=87.1|l=56|name=[[Tufts blue]]}}
+{{Colort/Color|hex=DEAA88|r=222|g=170|b=136|h=24|s=39|v=87|l=70|name=[[List of Crayola crayon colors|Tumbleweed]]}}
+{{Colort/Color|hex=40E0D0|r=64|g=224|b=208|h=174|s=71|v=88|l=56|name=[[Turquoise (color)|Turquoise]]}}
+{{Colort/Color|hex=00FFEF|r=0|g=255|b=239|h=176|s=100|v=100|l=50|name=[[Turquoise (color)#Turquoise blue|Turquoise blue]]}}
+{{Colort/Color|hex=A0D6B4|r=160|g=214|b=180|h=142|s=25|v=84|l=73|name=[[Turquoise (color)#Turquoise Green|Turquoise green]]}}
+{{Colort/Color|hex=8A9A5B|r=138|g=154|b=91|h=75|s=41|v=60|l=48|name=[[Chartreuse (color)#Turtle green|Turtle green]]}}
+{{Colort/Color|hex=FAD6A5|r=250|g=214|b=165|h=35|s=34|v=98|l=81|name=[[Beige#Tuscan|Tuscan]]}}
+{{Colort/Color|hex=6F4E37|r=111|g=78|b=55|h=25|s=50|v=44|l=33|name=[[Tuscan red#Tuscan brown|Tuscan brown]]}}
+{{Colort/Color|hex=7C4848|r=124|g=72|b=72|h=0|s=42|v=49|l=38|name=[[Tuscan red]]}}
+{{Colort/Color|hex=A67B5B|r=166|g=123|b=91|h=26|s=45|v=65|l=50|name=[[Tan (color)#Tuscan tan|Tuscan tan]]}}
+{{Colort/Color|hex=C09999|r=192|g=153|b=153|h=0|s=20|v=75|l=68|name=[[Tuscan red#Tuscany|Tuscany]]}}
+{{Colort/Color|hex=8A496B|r=138|g=73|b=107|h=329|s=47|v=54|l=41|name=[[Lavender (color)#Twilight lavender|Twilight lavender]]}}
+{{Colort/Color|hex=66023C|r=102|g=2|b=60|h=325|s=98|v=40|l=20|name=[[Tyrian purple#Tyrian purple|Tyrian purple]]}}
+{{Colort/Color|hex=0033AA|r=0|g=51|b=170|h=222|s=100|v=67|l=33|name=[[University of Arizona#School colors|UA blue]]|link target=U}}
+{{Colort/Color|hex=D9004C|r=217|g=0|b=76|h=339|s=100|v=85|l=43|name=[[University of Arizona#School colors|UA red]]}}
+{{Colort/Color|hex=3F00FF|r=18|g=10|b=143|h=244|s=93|v=56|l=30|name=[[Ultramarine]]}}
+{{Colort/Color|hex=4166F5|r=65|g=102|b=245|h=228|s=73|v=96|l=61|name=[[Ultramarine#Ultramarine blue|Ultramarine blue]]}}
+{{Colort/Color|hex=FF6FFF|r=255|g=111|b=255|h=300|s=56|v=100|l=72|name=[[Shades of magenta#Shocking pink (Crayola)|Ultra pink]]}}
+{{Colort/Color|hex=FC6C85|r=252|g=108|b=133|h=350|s=57|v=99|l=71|name=[[Carmine (color)#Ultra red|Ultra red]]}}
+{{Colort/Color|hex=635147|r=99|g=81|b=71|h=21|s=28|v=39|l=33|name=[[Umber]]}}
+{{Colort/Color|hex=FFDDCA|r=255|g=221|b=202|h=22|s=21|v=100|l=90|name=[[Beige#Unbleached silk|Unbleached silk]]}}
+{{Colort/Color|hex=5B92E5|r=91|g=146|b=229|h=216|s=60|v=90|l=63|name=[[Shades of azure#United Nations blue|United Nations blue]]}}
+{{Colort/Color|hex=A50021|r=165|g=0 |b=33 |h=348|s=100|v=65|name=[[Shades of red#Penn red|University of Pennsylvania red]]}}
+{{Colort/Color|hex=FFFF66|r=255|g=255|b=102|h=60|s=60|v=100|l=70|name=[[Shades of yellow#Unmellow yellow|Unmellow yellow]]}}
+{{Colort/Color|hex=014421|r=1|g=68|b=33|h=149|s=99|v=27|l=14|name=[[Shades of green#UP forest green|UP Forest green]]}}
+{{Colort/Color|hex=7B1113|r=123|g=17|b=19|h=359|s=86|v=48|l=27|name=[[Maroon (color)#UP maroon|UP maroon]]}}
+{{Colort/Color|hex=AE2029|r=174|g=32|b=41|h=356|s=82|v=68|l=40|name=[[Upsdell red]]}}
+{{Colort/Color|hex=AFDBF5|r=175|g=219|b=245|h=202|s=29|v=96|l=82|name=[[Shades of blue#Uranian blue|Uranian blue]]}}
+{{Colort/Color|hex=004F98|r=0|g=79|b=152|h=209|s=100|v=60|l=30|name=[[Air Force blue#USAFA blue|USAFA blue]]}}
+{{Colort/Color|hex=664228|r=102|g=66|b=40|h=25|s=60|v=0|l=28|name=[[Van Dyke brown]]|link target=V}}
+{{Colort/Color|hex=F3E5AB|r=243|g=229|b=171|h=48|s=30|v=95|l=81|name=[[Vanilla (color)|Vanilla]]}}
+{{Colort/Color|hex=F38FA9|r=243|g=143|b=169|h=344|s=41|v=95|l=76|name=[[Vanilla (color)#Vanilla ice|Vanilla ice]]}}
+{{Colort/Color|hex=C5B358|r=197|g=179|b=88|h=50|s=55|v=77|l=56|name=[[Gold (color)#Vegas gold|Vegas gold]]}}
+{{Colort/Color|hex=C80815|r=200|g=8|b=21|h=356|s=96|v=78|l=41|name=[[Venetian red]]}}
+{{Colort/Color|hex=43B3AE|r=67|g=179|b=174|h=177|s=63|v=70|l=48|name=[[Verdigris]]}}
+{{Colort/Color|hex=E34234|r=227|g=66|b=52|h=5|s=77|v=89|l=55|name=[[Vermilion]]}}
+{{Colort/Color|hex=D9381E|r=217|g=56|b=30|h=8|s=86|v=85|l=48|name=[[Vermilion#Medium vermilion|Vermilion]]}}
+{{Colort/Color|hex=A020F0|r=160|g=32|b=240|h=277|s=87|v=94|l=53|name=[[Shades of purple#Purple (X11 color) (veronica)|Veronica]]}}
+{{Colort/Color|hex=8F00FF|r=143|g=0|b=255|h=274|s=100|v=100|l=50|name=[[Violet (color)|Violet]]}}
+{{Colort/Color|hex=7F00FF|r=127|g=0|b=255|h=270|s=100|v=100|l=50|name=[[Shades of violet#Color wheel violet|Violet (color wheel)]]}}
+{{Colort/Color|hex=963D7F|r=150|g=61|b=127|h=316|s=59|v=59|l=41|name=[[Shades of violet#Violet (crayola)|Violet (crayola)]]}}
+{{Colort/Color|hex=8601AF|r=134|g=1|b=175|h=286|s=99|v=69|l=35|name=[[RYB color model|Violet (RYB)]]}}
+{{Colort/Color|hex=EE82EE|r=238|g=130|b=238|h=300|s=45|v=93|l=72|name=[[Shades of violet#Web color "violet"|Violet (web)]]}}
+{{Colort/Color|hex=324AB2|r=50|g=74|b=178|h=229|s=72|v=70|l=45|name=[[Violet-blue]]}}
+{{Colort/Color|hex=766EC8|r=118|g=110|b=200|h=246|s=45|v=78|l=61|name=[[Violet-blue#Violet-blue (Crayola)|Violet-blue (Crayola)]]}}
+{{Colort/Color|hex=F75394|r=247|g=83|b=148|h=336|s=66|v=97|l=65|name=[[Red-violet#Violet-red|Violet-red]]}}
+{{Colort/Color|hex=F0599C|r=240|g=89|b=156|h=333|s=63|v=94|l=65|name=[[Red-violet#Violet-red(PerBang)|Violet-red(PerBang)]]}}
+{{Colort/Color|hex=40826D|r=64|g=130|b=109|h=161|s=51|v=51|l=38|name=[[Viridian]]}}
+{{Colort/Color|hex=009698|r=0|g=150|b=152|h=181|s=100|v=60|l=30|name=[[Viridian#Viridian green|Viridian green]]}}
+{{Colort/Color|hex=9F1D35|r=159|g=29|b=53|h=349|s=82|v=62|l=37|name=[[Burgundy (color)#Vivid burgundy|Vivid burgundy]]}}
+{{Colort/Color|hex=00CCFF|r=0|g=204|b=255|h=192|s=100|v=100|l=50|name=[[Sky blue#Vivid sky blue|Vivid sky blue]]}}
+{{Colort/Color|hex=FFA089|r=255|g=160|b=137|h=12|s=46|v=100|l=77|name=[[List of Crayola crayon colors#Standard colors|Vivid tangerine]]}}
+{{Colort/Color|hex=9F00FF|r=159|g=0|b=255|h=277|s=100|v=100|l=50|name=[[Shades of violet#Vivid violet|Vivid violet]]}}
+{{Colort/Color|hex=CEFF00|r=205|g=255|b=0|h=72|s=100|v=100|l=50|name=[[Lime (color)#Volt|Volt]]}}
+{{Colort/Color|hex=004242|r=0|g=66|b=66|h=180|s=100|v=25|l=13|name=[[Rich black|Warm black]]|link target=W}}
+{{Colort/Color|hex=189BCC|r=24|g=155|b=204|h=196|s=88|v=80|l=45|name=[[Weezer (Blue Album)|Weezy Blue]]}}
+{{Colort/Color|hex=F5DEB3|r=245|g=222|b=179|h=39|s=27|v=96|l=83|name=[[Wheat (color)|Wheat]]}}
+{{Colort/Color|hex=FFFFFF|r=255|g=255|b=255|h=—|s=0|v=100|l=100|name=[[White]]}}
+{{Colort/Color|hex=A2ADD0|r=162|g=173|b=208|h=226|s=22|v=82|l=73|name=[[Air Force blue#Wild blue yonder|Wild blue yonder]]}}
+{{Colort/Color|hex=D470A2|r=212|g=112|b=162|h=330|s=47|v=83|l=64|name=[[Orchid (color)#Wild orchid|Wild orchid]]}}
+{{Colort/Color|hex=FF43A4|r=255|g=67|b=164|h=329|s=74|v=100|l=63|name=[[List of Crayola crayon colors#Standard colors|Wild Strawberry]]}}
+{{Colort/Color|hex=FC6C85|r=252|g=108|b=133|h=350|s=57|v=99|l=71|name=[[Carmine (color)#Wild watermelon|Wild watermelon]]}}
+{{Colort/Color|hex=A75502|r=167|g=85|b=2|h=30|s=99|v=65|l=33|name=[[Tan (color)#Windsor tan|Windsor tan]]}}
+{{Colort/Color|hex=722F37|r=114|g=47|b=55|h=353|s=59|v=45|l=32|name=[[Wine (color)|Wine]]}}
+{{Colort/Color|hex=673147|r=103|g=49|b=71|h=336|s=52|v=40|l=30|name=[[Wine (color)#Wine dregs|Wine dregs]]}}
+{{Colort/Color|hex=FF007C|r=255|g=0|b=124|h=331|s=100|v=100|l=50|name=[[List of Crayola crayon colors#Extreme Twistables colors|Winter Sky]]}}
+{{Colort/Color|hex=56887D|r=86|g=136|b=125|h=167|s=37|v=53|l=44|name=[[List of Crayola crayon colors#Silver Swirls|Wintergreen Dream]]}}
+{{Colort/Color|hex=C9A0DC|r=201|g=160|b=220|h=281|s=27|v=86|l=75|name=[[Lavender (color)#Light lavender (wisteria)|Wisteria]]}}
+{{Colort/Color|hex=C19A6B|r=193|g=154|b=107|h=33|s=45|v=76|l=59|name=[[Shades of brown#Wood brown|Wood brown]]}}
+{{Colort/Color|hex=738678|r=115|g=134|b=120|h=136|s=14|v=53|l=49|name=[[Shades_of_gray#Xanadu|Xanadu]]|link target=X}}
+{{Colort/Color|hex=EEED09|r=238|g=237|b=9 |h=60 |s=97 |v=93 |name=[[Shades of yellow#Xanthic|Xanthic]]}}
+{{Colort/Color|hex=F1B42F|r=241|g=180|b=47 |h=41 |s=80 |v=95 |name=[[Shades of yellow#Xanthous|Xanthous]]}}
+{{Colort/Color|hex=00356B|r=0  |g=53 |b=107|h=210|s=100|v=42|l=21 |name=[[Yale Blue]]|link target=Y}}
+{{Colort/Color|hex=FFFF00|r=255|g=255|b=0|h=60|s=100|v=100|l=50|name=[[Yellow]]}}
+{{Colort/Color|hex=FCE883|r=252|g=232|b=131|h=50|s=48|v=99|l=75|name=[[Shades of yellow#Yellow (Crayola)|Yellow (Crayola)]]}}
+{{Colort/Color|hex=EFCC00|r=239|g=204|b=0|h=51|s=100|v=94|l=47|name=[[Shades of yellow#Yellow (Munsell)|Yellow (Munsell)]]}}
+{{Colort/Color|hex=FFD300|r=255|g=211|b=0|h=50|s=100|v=100|l=50|name=[[Shades of yellow#Yellow (NCS) (psychological primary yellow)|Yellow (NCS)]]}}
+{{Colort/Color|hex=FEDF00|r=254|g=223|b=0|h=53|s=100|v=100|l=50|name=[[Shades of yellow#Yellow (Pantone)|Yellow (Pantone)]]}}
+{{Colort/Color|hex=FFEF00|r=255|g=239|b=0|h=56|s=100|v=100|l=50|name=[[Shades of yellow#Yellow (CMYK) (process yellow) (canary yellow)|Yellow (process)]]}}
+{{Colort/Color|hex=FEFE33|r=254|g=254|b=51|h=60|s=80|v=100|l=60|name=[[RYB color model|Yellow (RYB)]]}}
+{{Colort/Color|hex=9ACD32|r=154|g=205|b=50|h=80|s=76|v=80|l=50|name=[[Yellow-green]]}}
+{{Colort/Color|hex=C5E384|r=197|g=227|b=132|h=79|s=42|v=89|l=70|name=[[Yellow-green#Yellow-green (Crayola)|Yellow-green (Crayola)]]}}
+{{Colort/Color|hex=30B21A|r=48|g=178|b=26|h=112|s=85|v=70|l=40|name=[[Yellow-green#Yellow-green (Color Wheel)|Yellow-green (Color Wheel)]]}}
+{{Colort/Color|hex=FFAE42|r=255|g=174|b=66|h=34|s=74|v=100|l=63|name=[[List of Crayola crayon colors|Yellow Orange]]}}
+{{Colort/Color|hex=FF9505|r=255|g=149|b=5|h=36|s=98|v=100|l=51|name=[[List of Crayola crayon colors|Yellow Orange (Color Wheel)]]}}
+{{Colort/Color|hex=FFF700|r=255|g=247|b=0|h=58|s=100|v=100|l=50|name=[[List of Crayola crayon colors#Heads 'n Tails|Yellow Sunshine]]}}
+{{Colort/Color|hex=2E5090|r=46|g=80|b=144|h=219|s=68|v=56|l=37|name=[[YInMn Blue]]}}
+{{Colort/Color|hex=0014A8|r=0|g=20|b=168|h=233|s=100|v=66|l=33|name=[[Zaffre]]|link target=Z}}
+{{Colort/Color|hex=39A78E|r=57|g=167|b=142|h=166|s=66|v=65|l=44|name=[[Spring green#Zomp|Zomp]]}}

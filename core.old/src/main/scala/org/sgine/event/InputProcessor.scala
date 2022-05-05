@@ -79,7 +79,7 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor with GestureListe
     this.stageX = vector.x
     this.stageY = vector.y
 
-    val touchable: Boolean = false
+    val touchable: Boolean = true
     val actor = screen.stage.hit(stageX.toFloat, stageY.toFloat, touchable)
     val widget = findTouchable(actor).getUserObject.asInstanceOf[ActorWidget[Actor]]
     if (atCursor != widget) {

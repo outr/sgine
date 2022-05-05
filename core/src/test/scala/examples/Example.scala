@@ -1,11 +1,12 @@
 package examples
 
-import org.sgine.{SingleScreenApp, UI}
+import org.sgine.SingleScreenApp
+import org.sgine.component.FPSView
 
 trait Example extends SingleScreenApp {
   override def init(): Unit = {
     super.init()
 
-    UI.fpsFont @= OpenSans.Regular.normal
+    FPSView.font @= Fonts.OpenSans.Regular.normal
   }
 }

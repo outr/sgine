@@ -11,7 +11,8 @@ case class PointerDraggedEvent(displayX: Int,
                                target: Component,
                                targetX: Double,
                                targetY: Double,
-                               pointer: Int) extends PointerEvent {
+                               pointer: Int,
+                               time: Long = System.currentTimeMillis()) extends PointerEvent {
   def reTarget(target: Component, targetX: Double, targetY: Double): PointerDraggedEvent = copy(
     target = target,
     targetX = targetX,

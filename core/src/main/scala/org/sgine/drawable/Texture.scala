@@ -1,19 +1,20 @@
-package org.sgine.texture
+package org.sgine.drawable
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.{Color, Pixmap, Texture => GDXTexture}
 import com.badlogic.gdx.graphics.Pixmap.Format
 import com.badlogic.gdx.graphics.Texture.TextureFilter
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.graphics.{Color, Pixmap, Texture => GDXTexture}
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable
 
 case class Texture(ref: TextureRegion,
                    scaleX: Double = 1.0,
                    scaleY: Double = 1.0,
-                   rotation: Double = 0.0) {
+                   rotation: Double = 0.0) extends Drawable {
+  lazy val gdx: TextureRegionDrawable = new TextureRegionDrawable(ref)
+
   def width: Double = ref.getRegionWidth
   def height: Double = ref.getRegionHeight
-  def scaledWidth: Double = width * scaleX
-  def scaledHeight: Double = height * scaleY
 
   def scaled(scale: Double): Texture = copy(scaleX = scale, scaleY = scale)
   def scaled(scaleX: Double, scaleY: Double): Texture = copy(scaleX = scaleX, scaleY = scaleY)

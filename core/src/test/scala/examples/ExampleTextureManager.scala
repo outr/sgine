@@ -1,6 +1,6 @@
 package examples
 
-import org.sgine.texture.{Texture, TextureManager}
+import org.sgine.drawable.{Texture, TextureManager}
 
 /**
  * Auto-generated TextureManager. Do not directly modify.

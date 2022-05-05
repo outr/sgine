@@ -1,4 +1,4 @@
-package org.sgine.texture
+package org.sgine.drawable
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
@@ -130,7 +130,7 @@ abstract class TextureManager(fileName: Option[String],
         val source =
           s"""package $packageName
              |
-             |import org.sgine.texture.{Texture, TextureManager}
+             |import org.sgine.drawable.{Texture, TextureManager}
              |
              |/**
              | * Auto-generated TextureManager. Do not directly modify.

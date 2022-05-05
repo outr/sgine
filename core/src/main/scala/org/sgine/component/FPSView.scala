@@ -1,16 +1,15 @@
 package org.sgine.component
 
 import com.badlogic.gdx.Gdx
-import org.sgine.UI
-import org.sgine.render.RenderContext
+import org.sgine.{Overlay, UI}
 import reactify._
 
-class FPSView extends TextView {
-  font := UI.fpsFont
+object FPSView extends Label {
+  font := UI.fontNormal
+  top @= 0.0
+  right @= Overlay.width - 10.0
 
-  override def render(context: RenderContext): Unit = {
+  updates.on {
     text @= s"${Gdx.graphics.getFramesPerSecond}fps"
-
-    super.render(context)
   }
 }

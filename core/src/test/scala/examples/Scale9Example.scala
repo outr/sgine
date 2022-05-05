@@ -1,15 +1,15 @@
 package examples
 
 import org.sgine.Color
-import org.sgine.component.{Component, Container, InteractiveComponent, Scale9View}
-import org.sgine.texture.{Scale9, Texture}
+import org.sgine.component.{Component, Container, Image, InteractiveComponent}
+import org.sgine.drawable.{Scale9, Texture}
 import reactify._
 
 object Scale9Example extends Example {
   private lazy val scale9 = Scale9(Texture.internal("scale9test.png"), 50, 50, 50, 50)
 
-  override protected lazy val root: Component = Container(
-    new Scale9View(scale9) with InteractiveComponent {
+  override protected lazy val component: Component = Container(
+    new Image(scale9) with InteractiveComponent {
       center @= screen.center
       middle @= screen.middle
       width @= 2000.0
@@ -19,7 +19,7 @@ object Scale9Example extends Example {
 
       override def toString: String = "scale9.1"
     },
-    new Scale9View(scale9) with InteractiveComponent {
+    new Image(scale9) with InteractiveComponent {
       center @= screen.center
       middle @= screen.middle
       width @= 1000.0
@@ -29,7 +29,7 @@ object Scale9Example extends Example {
 
       override def toString: String = "scale9.2"
     },
-    new Scale9View(scale9) with InteractiveComponent {
+    new Image(scale9) with InteractiveComponent {
       center @= screen.center
       middle @= screen.middle
       width @= 400.0

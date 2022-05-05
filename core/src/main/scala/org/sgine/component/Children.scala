@@ -2,7 +2,7 @@ package org.sgine.component
 
 import reactify.{Channel, Val}
 
-trait Children[Child <: Component] extends Val[List[Child]] {
+trait Children[Child <: Component] extends Val[Vector[Child]] {
   protected def container: Component
 
   val added: Channel[Child] = Channel[Child]
@@ -26,12 +26,12 @@ trait Children[Child <: Component] extends Val[List[Child]] {
 
 object Children {
   def apply[Child <: Component](parent: Component,
-                                children: List[Child]): Children[Child] = dynamic(parent, children)
+                                children: Vector[Child]): Children[Child] = dynamic(parent, children)
 
-  def dynamic[Child <: Component](parent: Component, children: => List[Child]): Children[Child] = new Children[Child] {
+  def dynamic[Child <: Component](parent: Component, children: => Vector[Child]): Children[Child] = new Children[Child] {
     override protected def container: Component = parent
 
-    set(Nil)
+    set(Vector.empty)
     set(children)
 
     override def toString(): String = s"$parent.children"

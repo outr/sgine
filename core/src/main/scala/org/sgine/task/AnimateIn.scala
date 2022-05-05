@@ -4,14 +4,15 @@ import org.sgine.easing.Easing
 
 import scala.concurrent.duration.FiniteDuration
 
-case class AnimateIn(get: () => Double,
-                     apply: Double => Unit,
-                     destination: () => Double,
-                     duration: () => FiniteDuration,
-                     easing: Easing) extends DurationTask {
-  private var initialPosition: Double = 0.0
+case class AnimateIn[T](get: () => T,
+                        apply: T => Unit,
+                        destination: () => T,
+                        duration: () => FiniteDuration,
+                        easing: Easing,
+                        animatable: Animatable[T]) extends DurationTask {
+  private var initialPosition: T = get()
 
-  def easing(easing: Easing): AnimateIn = copy(easing = easing)
+  def easing(easing: Easing): AnimateIn[T] = copy(easing = easing)
 
   override def time: FiniteDuration = duration()
 
@@ -19,11 +20,8 @@ case class AnimateIn(get: () => Double,
     if (reset) {
       initialPosition = get()
     }
-    val endPosition = destination()
-    val length = endPosition - initialPosition
     val eased = easing.calculate(progress)
-    val adjust = length * eased
-    val value = initialPosition + adjust
+    val value = animatable.valueAt(initialPosition, destination(), eased)
     apply(value)
   }
 }

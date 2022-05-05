@@ -10,11 +10,11 @@ class TiledComponent(tiled: TiledTextureComponent, tileX: Int, tileY: Int) exten
     height @= tiled.tileHeight
 
     val tc = new Image
-    tc.texture @= tiled.texture
+    tc.drawable @= tiled.texture
     tc
   }
 
-  override val children: Children[Component] = Children(this, List(texture))
+  override val children: Children[Component] = Children(this, Vector(texture))
 
   override def toString: String = s"TiledComponent(texture = ${tiled.texture}, tileX = $tileX, tileY = $tileY)"
 }

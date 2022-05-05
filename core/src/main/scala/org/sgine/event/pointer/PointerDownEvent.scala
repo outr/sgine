@@ -12,7 +12,8 @@ case class PointerDownEvent(displayX: Int,
                             targetX: Double,
                             targetY: Double,
                             pointer: Int,
-                            button: PointerButton) extends PointerEvent {
+                            button: PointerButton,
+                            time: Long = System.currentTimeMillis()) extends PointerEvent {
   def reTarget(target: Component, targetX: Double, targetY: Double): PointerDownEvent = copy(
     target = target,
     targetX = targetX,

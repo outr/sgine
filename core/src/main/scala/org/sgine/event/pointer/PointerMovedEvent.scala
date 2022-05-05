@@ -10,7 +10,8 @@ case class PointerMovedEvent(displayX: Int,
                              percentY: Double,
                              target: Component,
                              targetX: Double,
-                             targetY: Double) extends PointerEvent {
+                             targetY: Double,
+                             time: Long = System.currentTimeMillis()) extends PointerEvent {
   def reTarget(target: Component, targetX: Double, targetY: Double): PointerMovedEvent = copy(
     target = target,
     targetX = targetX,

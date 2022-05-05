@@ -1,24 +1,39 @@
 package examples
 
 import org.sgine.Color
-import org.sgine.component.{Component, DimensionedComponent}
-import org.sgine.render.{RenderContext, Renderable}
-import space.earlygrey.shapedrawer.JoinType
+import org.sgine.component.{Component, Image}
+import org.sgine.drawable.{Drawer, ShapeDrawable}
+import org.sgine.task._
 import reactify._
 
-object ShapesExample extends Example {
-  override protected def root: Component = new DimensionedComponent with Renderable {
-    center @= screen.center
-    middle @= screen.middle
-    width @= 1200.0
-    height @= 600.0
+import scala.concurrent.duration.DurationInt
 
-    override def render(context: RenderContext): Unit = {
-      val m = matrix4(context)
-      context.filledRectangle(0.0, 0.0, width, height, m, Color.Red)
-      context.rectangle(100.0, 100.0, width - 200.0, height - 200.0, m, Color.White, 20.0)
-      context.circle(width / 2.0, height / 2.0, 100.0, m, Color.DarkMagenta, 20.0, JoinType.SMOOTH)
-      context.line(150.0, 150.0, width - 150.0, 150.0, m, Color.DarkBlue, 20.0)
+object ShapesExample extends Example {
+  override protected lazy val component: Component = new Image {
+    center := screen.center
+    middle := screen.middle
+
+    forever(
+      sequential(
+        rotation to 360.0 in 2.seconds,
+        synchronous(rotation @= 0.0)
+      )
+    ).start
+
+    drawable @= new ShapeDrawable {
+      override def draw(drawer: Drawer): Unit = {
+        drawer.color = Color.Red
+        drawer.filled.rectangle()
+        drawer.color = Color.DarkRed
+        drawer.rectangle(100.0, 100.0, drawer.width - 200.0, drawer.height - 200.0, lineWidth = 20.0)
+        drawer.color = Color.Blue
+        drawer.line(width + 100.0, -100.0, -100.0, height + 100.0, 10.0)
+        drawer.line(-100.0, -100.0, width + 100.0, height + 100.0, 10.0)
+      }
+
+      override def width: Double = 1000.0
+
+      override def height: Double = 1000.0
     }
   }
 }

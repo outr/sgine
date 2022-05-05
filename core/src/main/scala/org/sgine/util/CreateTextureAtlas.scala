@@ -21,6 +21,7 @@ object CreateTextureAtlas {
     settings.wrapY = TextureWrap.ClampToEdge
     settings.bleed = true
     settings.legacyOutput = false
+    scribe.info(s"Processing $inputPath...")
     TexturePacker.process(settings, inputPath, outputPath, atlasName)
   }
 }

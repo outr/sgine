@@ -1,44 +1,53 @@
 package examples
 
-import org.sgine.Color
-import org.sgine.component.{Component, DimensionedComponent, Image, InteractiveComponent, MutableContainer}
+import org.sgine.component._
 import org.sgine.task._
+import reactify._
 
 import scala.concurrent.duration.DurationInt
 
 object ContainerExample extends Example with TaskSupport {
-  private lazy val crate = new Image("crate.jpg") {
-    override def toString: String = "crate"
+  private lazy val crate1 = new Image("crate.jpg") {
+    override def toString: String = "crate1"
+  }
+  private lazy val crate2 = new Image("crate.jpg") {
+    x := width
+    y := height
+
+    override def toString: String = "crate2"
   }
   private lazy val container = new MutableContainer[Component] with DimensionedComponent with InteractiveComponent {
     private var index = 0
+    private val time = 250.millis
     private val actions = Vector(
       () => {
-        center := screen.center
-        middle := screen.middle
-//        rotation @= 0.0
+        parallel(
+          center to screen.center in time,
+          middle to screen.middle in time,
+          rotation to 0.0 in time
+        ).start
       },
       () => {
-        right := screen.width
-        bottom := screen.height
+        parallel(
+          right to screen.width in time,
+          bottom to screen.height in time
+        ).start
       },
       () => {
-        center := screen.center
-        middle := screen.middle
-//        rotation @= 45.0
+        parallel(
+          center to screen.center in time,
+          middle to screen.middle in time,
+          rotation to 135.0 in time
+        ).start
       }
     )
 
-    children.add(crate)
+    children.add(crate1)
+    children.add(crate2)
 
     center := screen.center
     middle := screen.middle
-//    (rotation to 360.0 in 5.seconds).start
 
-    pointer.over.attach {
-      case true => crate.color @= Color.Red
-      case false => crate.color @= Color.White
-    }
     pointer.down.on {
       index += 1
       if (index >= actions.length) {
@@ -50,5 +59,5 @@ object ContainerExample extends Example with TaskSupport {
     override def toString: String = "container"
   }
 
-  override protected lazy val root: Component = container
+  override protected lazy val component: Component = container
 }

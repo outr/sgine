@@ -1,32 +1,53 @@
 package org.sgine.component
 
-import org.sgine.Color
-import org.sgine.render.RenderContext
-import org.sgine.texture.Texture
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.g2d.Batch
+import com.badlogic.gdx.scenes.scene2d.ui.{Image => GDXImage}
+import com.badlogic.gdx.utils.Scaling
+import org.sgine.drawable.{Drawable, ShapeDrawable, Texture}
 import reactify._
 
-class Image extends RenderableComponent {
-  val texture: Var[Texture] = Var(Texture.Pixel)
-  val color: Var[Color] = Var(Color.White)
+class Image extends ActorComponent[GDXImage] { component =>
+  val drawable: Var[Drawable] = Var(Texture.Pixel)
 
   def this(path: String) = {
     this()
-    texture @= Texture.internal(path)
+    drawable @= Texture.internal(path)
   }
 
-  def this(texture: Texture) = {
+  def this(drawable: Drawable) = {
     this()
-    this.texture @= texture
+    this.drawable @= drawable
   }
 
-  texture.attachAndFire { texture =>
-    width := texture.scaledWidth * scaleX
-    height := texture.scaledHeight * scaleY
+  override lazy val actor: GDXImage = new GDXImage {
+    setScaling(Scaling.stretch)
+    setUserObject(component)
+
+    override def draw(batch: Batch, parentAlpha: Float): Unit = {
+      render @= Gdx.graphics.getDeltaTime.toDouble
+      super.draw(batch, parentAlpha)
+    }
+
+    override def act(delta: Float): Unit = {
+      update(delta.toDouble)
+      super.act(delta)
+    }
+
+    override def setRotation(degrees: Float): Unit = {
+      super.setRotation(degrees)
+      drawable() match {
+        case sd: ShapeDrawable => sd.rotation = degrees
+        case _ => // Ignore others
+      }
+    }
+
+    override def toString: String = component.toString
   }
 
-  override def render(context: RenderContext): Unit = context.draw(
-    texture = texture,
-    transform = matrix4(context),
-    color = color
-  )
+  drawable.attachAndFire { drawable =>
+    actor.setDrawable(drawable.gdx)
+    width := (drawable.width * drawable.scaleX) * scaleX
+    height := (drawable.height * drawable.scaleY) * scaleY
+  }
 }
