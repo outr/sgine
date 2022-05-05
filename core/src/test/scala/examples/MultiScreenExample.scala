@@ -2,6 +2,7 @@ package examples
 
 import org.sgine.component._
 import org.sgine.{Color, App, Screen, UI}
+import reactify._
 
 object MultiScreenExample extends App {
   private lazy val screen1: Screen = new SimpleScreen("Screen 1", Color.Red, screen2)
