@@ -22,7 +22,7 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
 
   protected def findParentActor(parent: Option[Component]): Option[ActorComponent[_ <: Actor]] = parent match {
     case None => None
-    case Some(ac: ActorComponent[Actor]) => Some(ac)
+    case Some(ac: ActorComponent[_]) => Some(ac)
     case Some(p) => findParentActor(Some(p))
   }
 
