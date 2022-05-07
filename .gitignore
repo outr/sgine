@@ -2,5 +2,5 @@ target
 .idea
 .bsp
 core/src/test/resources/texture.atlas
-core/src/test/resources/texture.png
+core/src/test/resources/texture_1.png
 /mac.sbt
