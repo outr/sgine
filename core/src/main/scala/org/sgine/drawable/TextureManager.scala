@@ -24,6 +24,8 @@ abstract class TextureManager(fileName: Option[String],
                               name: String = "texture.atlas",
                               path: String = "src/main/resources",
                               inputPath: String = "resources",
+                              pageWidth: Int = 1024,
+                              pageHeight: Int = 1024,
                               scaleOverride: Map[String, Double] = Map.empty) {
   private lazy val atlas: Map[String, Vector[Texture]] = Try(new TextureAtlas(Gdx.files.internal(name))
     .getRegions
@@ -80,7 +82,13 @@ abstract class TextureManager(fileName: Option[String],
       if (!getClass.getSimpleName.endsWith("$")) throw new RuntimeException(s"TextureManager sub-class must be an object")
       if (shouldRegen) {
         // Create the texture atlas
-        CreateTextureAtlas(inputPath, name, this.path)
+        CreateTextureAtlas(
+          inputPath = inputPath,
+          atlasName = name,
+          outputPath = this.path,
+          pageWidth = pageWidth,
+          pageHeight = pageHeight
+        )
 
         // Regenerate the TextureManager code
         val packageName = getClass.getPackage.getName
@@ -140,6 +148,8 @@ abstract class TextureManager(fileName: Option[String],
              |  name = "$name",
              |  path = "${this.path}",
              |  inputPath = "$inputPath",
+             |  pageWidth = $pageWidth,
+             |  pageHeight = $pageHeight,
              |  scaleOverride = $scaleOverrideString
              |) {
              |${textureEntries.mkString("\n")}

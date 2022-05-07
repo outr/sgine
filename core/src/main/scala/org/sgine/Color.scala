@@ -9,6 +9,13 @@ import com.badlogic.gdx.graphics.{Color => GDXColor}
 case class Color(value: Long) {
   lazy val gdx: GDXColor = new GDXColor(red.toFloat, green.toFloat, blue.toFloat, alpha.toFloat)
 
+  def *(that: Color): Color = Color.fromRGBA(
+    red = this.red * that.red,
+    green = this.green * that.green,
+    blue = this.blue * that.blue,
+    alpha = this.alpha * that.alpha
+  )
+
   def red: Double = redInt / 255.0
   def green: Double = greenInt / 255.0
   def blue: Double = blueInt / 255.0

@@ -2,7 +2,9 @@ package org.sgine.component.tile
 
 import org.sgine.component._
 
-class TiledComponent(tiled: TiledTextureComponent, tileX: Int, tileY: Int) extends Container with DimensionedComponent {
+class TiledComponent(tiled: TiledTextureComponent,
+                     tileX: Int,
+                     tileY: Int) extends Container with DimensionedComponent { self =>
   protected lazy val texture: Image = {
     x @= tileX * tiled.tileWidth
     y @= tileY * tiled.tileHeight

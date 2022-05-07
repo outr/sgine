@@ -9,16 +9,27 @@ import reactify._
 import scala.util.Try
 
 trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
+  lazy val parentActor: Val[Option[ActorComponent[_ <: Actor]]] = Val(findParentActor(parent))
   val color: Var[Color] = Var(Color.White)
+  val hierarchicalColor: Val[Color] = Val(parentActor() match {
+    case Some(p) => p.hierarchicalColor * color
+    case None => color
+  })
 
   lazy val render: Channel[Double] = Channel[Double]
 
   lazy val validateDimensions: Var[Boolean] = Var(true)
 
+  protected def findParentActor(parent: Option[Component]): Option[ActorComponent[_ <: Actor]] = parent match {
+    case None => None
+    case Some(ac: ActorComponent[Actor]) => Some(ac)
+    case Some(p) => findParentActor(Some(p))
+  }
+
   /**
     * Update on render
     */
-  protected def uor[T](v: Var[T])(f: T => Unit): Unit = v.attach { t =>
+  protected def uor[T](v: Val[T])(f: T => Unit): Unit = v.attach { t =>
     render.once { _ =>
       f(t)
     }
@@ -49,7 +60,7 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   uor(scaleY) { s =>
     actor.setScaleY(s.toFloat)
   }
-  uor(color) { c =>
+  uor(hierarchicalColor) { c =>
     actor.setColor(c.gdx)
   }
 

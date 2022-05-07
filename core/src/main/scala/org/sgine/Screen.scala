@@ -28,7 +28,6 @@ trait Screen extends Updatable with TypedContainer[Component] with InteractiveCo
 
   width @= 3840.0
   height @= 2160.0
-  color @= Color.Black
 
   lazy val stage = new Stage()
 
