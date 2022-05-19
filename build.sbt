@@ -27,7 +27,7 @@ ThisBuild / developers := List(
 
 ThisBuild / fork := true
 
-val gdxVersion: String = "1.10.1-SNAPSHOT"
+val gdxVersion: String = "1.11.0"
 val reactifyVersion: String = "4.0.8"
 val scribeVersion: String = "3.8.2"
 val shapedrawerVersion: String = "2.5.0"
