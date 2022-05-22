@@ -13,7 +13,7 @@ class KeyFrameAnimationView(textures: Vector[Texture]) extends Image(textures(0)
 
   drawable := textures(index)
 
-  override def update(delta: Double): Unit = if (!paused()) {
+  override def update(delta: Double): Unit = if (!paused() && speed() != 0.0) {
     elapsed += delta
     if (elapsed >= speed) {
       val newIndex = index + 1
