@@ -47,3 +47,13 @@ trait Component {
 
   override def toString: String = getClass.getName
 }
+
+object Component {
+  def flatChildren(component: Component): Vector[Component] = component match {
+    case c if !c.visible() => Vector.empty
+    case container: TypedContainer[_] => container +: container.children.flatMap { child =>
+      flatChildren(child)
+    }
+    case _ => Vector(component)
+  }
+}

@@ -10,6 +10,8 @@ import org.sgine.update.Updatable
 import reactify._
 
 trait Screen extends Updatable with TypedContainer[Component] with InteractiveComponent { self =>
+  lazy val flatChildren: Val[Vector[Component]] = Val(Component.flatChildren(this))
+
   /**
    * The `Component` at the current cursor position. If nothing else is at the cursor position the `Screen` will be
    * returned.

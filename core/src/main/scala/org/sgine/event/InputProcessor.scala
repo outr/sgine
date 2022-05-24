@@ -7,10 +7,17 @@ import org.sgine._
 import org.sgine.component.{ActorComponent, Component, InteractiveComponent}
 import org.sgine.event.key.{KeyEvent, KeyState}
 import org.sgine.event.pointer._
+import reactify.Val
 
 import scala.annotation.tailrec
 
 class InputProcessor(screen: Screen) extends GDXInputProcessor {
+  lazy val interactiveActors: Val[Vector[ActorComponent[Actor] with InteractiveComponent]] =
+    Val(screen.flatChildren.collect {
+      case c: ActorComponent[_] with InteractiveComponent if c.interactive =>
+        c.asInstanceOf[ActorComponent[Actor] with InteractiveComponent]
+    })
+
 //  private val gestures = new GestureDetector(this)
   private val vector = new Vector2
 
@@ -74,21 +81,24 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
     this.screenX = vector.x
     this.screenY = vector.y
 
-    val touchable: Boolean = true
-    Option(screen.stage.hit(screenX.toFloat, screenY.toFloat, touchable))
-      .flatMap(actor =>
-        Option(findTouchable(actor).getUserObject.asInstanceOf[ActorComponent[Actor] with InteractiveComponent])
-      ) match {
+    val hits = interactiveActors.filter { c =>
+      vector.set(displayX.toFloat, displayY.toFloat)
+      c.actor.screenToLocalCoordinates(vector)
+      c.actor.hit(vector.x, vector.y, false) != null
+    }
+    // TODO: support secondary hits?
+    val lastHit = hits.lastOption
+    lastHit match {
       case Some(widget) =>
         if (atCursor != widget) {
-          screen.atCursor := widget
+          screen.atCursor @= widget
         }
         vector.set(displayX.toFloat, displayY.toFloat)
         widget.actor.screenToLocalCoordinates(vector)
         this.localX = vector.x
         this.localY = vector.y
       case None =>
-        screen.atCursor := screen
+        screen.atCursor @= screen
         this.localX = screenX
         this.localY = screenY
     }
