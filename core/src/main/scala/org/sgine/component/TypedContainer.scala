@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.scenes.scene2d.Group
 import reactify._
 
-trait TypedContainer[Child <: Component] extends ActorComponent[Group] with InteractiveComponent { component =>
+trait TypedContainer[Child <: Component] extends ActorComponent[Group] { component =>
   def children: Children[Child]
 
   override protected def init(): Unit = {
