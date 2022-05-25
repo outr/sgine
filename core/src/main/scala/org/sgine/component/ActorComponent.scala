@@ -63,6 +63,9 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   uor(hierarchicalColor) { c =>
     actor.setColor(c.gdx)
   }
+  uor(visible) { b =>
+    actor.setVisible(b)
+  }
 
   protected def updateDimensions(screen: Screen): Unit = {
     val parentHeight = parent().map {

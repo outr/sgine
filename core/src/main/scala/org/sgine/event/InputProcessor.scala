@@ -14,7 +14,7 @@ import scala.annotation.tailrec
 class InputProcessor(screen: Screen) extends GDXInputProcessor {
   lazy val interactiveActors: Val[Vector[ActorComponent[Actor] with InteractiveComponent]] =
     Val(screen.flatChildren.collect {
-      case c: ActorComponent[_] with InteractiveComponent if c.interactive =>
+      case c: ActorComponent[_] with InteractiveComponent if c.visible && c.interactive =>
         c.asInstanceOf[ActorComponent[Actor] with InteractiveComponent]
     })
 
