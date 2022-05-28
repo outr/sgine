@@ -63,7 +63,7 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   uor(hierarchicalColor) { c =>
     actor.setColor(c.gdx)
   }
-  uor(visible) { b =>
+  visible.attach { b =>
     actor.setVisible(b)
   }
 

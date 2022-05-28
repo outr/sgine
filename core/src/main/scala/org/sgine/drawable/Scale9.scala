@@ -19,4 +19,7 @@ object Scale9 {
     val ninePatch = new NinePatch(texture.ref, left, right, top, bottom)
     Scale9(ninePatch)
   }
+  def apply(texture: Texture, horizontal: Int, vertical: Int): Scale9 =
+    apply(texture, vertical, vertical, horizontal, horizontal)
+  def apply(texture: Texture, value: Int): Scale9 = apply(texture, value, value)
 }
