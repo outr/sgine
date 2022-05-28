@@ -6,16 +6,28 @@ import reactify.{Channel, Val, Var}
 object Pointer {
   val event: Channel[PointerEvent] = Channel[PointerEvent]
 
-  private val _x: Var[Int] = Var[Int](0)
-  private val _y: Var[Int] = Var[Int](0)
+  private val displayX: Var[Int] = Var(0)
+  private val displayY: Var[Int] = Var(0)
 
-  def x: Val[Int] = _x
-  def y: Val[Int] = _y
+  private val screenX: Var[Double] = Var(0.0)
+  private val screenY: Var[Double] = Var(0.0)
+
+  object display {
+    def x: Val[Int] = displayX
+    def y: Val[Int] = displayY
+  }
+
+  object screen {
+    def x: Val[Double] = screenX
+    def y: Val[Double] = screenY
+  }
 
   event.attach {
     case evt: PointerMovedEvent =>
-      _x @= evt.displayX
-      _y @= evt.displayY
+      displayX @= evt.displayX
+      displayY @= evt.displayY
+      screenX @= evt.screenX
+      screenY @= evt.screenY
     case _ => // Ignore
   }
 }
