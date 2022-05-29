@@ -1,7 +1,7 @@
 package examples
 
-import org.sgine.{Overlay, Pointer}
-import org.sgine.component.{Children, Component, Container, DimensionedComponent, Image, InteractiveComponent, Label, MutableContainer, TypedContainer}
+import org.sgine.component.{Component, Container, Image, Label}
+import org.sgine.tooltip.{Tooltip, TooltipSupport}
 import reactify._
 
 object TooltipExample extends Example {
@@ -28,12 +28,6 @@ object TooltipExample extends Example {
 
     center := screen.center
     top := screen.middle + 200.0
-  }
-
-  override protected def init(): Unit = {
-    super.init()
-
-    Overlay.children += Tooltip
   }
 
   override protected lazy val component: Component = Container(
