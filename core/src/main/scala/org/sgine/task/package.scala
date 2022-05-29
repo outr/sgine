@@ -30,10 +30,12 @@ package object task {
   }
 
   implicit class StateChannelWorkflowAnimatable[T](state: Stateful[T] with Mutable[T]) {
-    def to(destination: => T)(implicit animatable: Animatable[T]) = PartialAnimate[T](
+    def to(destination: => T, adjustableDestination: Boolean = false)
+          (implicit animatable: Animatable[T]): PartialAnimate[T] = PartialAnimate[T](
       get = () => state(),
       apply = (t: T) => state := t,
       destination = () => destination,
+      adjustableDestination,
       animatable
     )
   }

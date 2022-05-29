@@ -14,6 +14,16 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 ## TODO 2.0
 - Test with MT
 - Revalidate hover events per frame
+- Dialog support
+  - Modal support
+    - Backdrop
+  - Drag support
+  - Title and interactivity
+  - Focus
+  - Child Dialogs
+- Mouse cursor
+  - Change the cursor
+  - Mouse hide support
 
 ## TODO 2.1
 - Support render on change support

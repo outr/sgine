@@ -10,7 +10,7 @@ import reactify._
 class Label extends ActorComponent[GDXLabel] { component =>
   val font: Var[BitmapFont] = Var(UI.fontNormal)
   val text: Var[String] = Var("")
-  val wrap: Var[Boolean] = Var(true)
+  val wrap: Var[Boolean] = Var(false)
 
   def this(text: String) = {
     this()
