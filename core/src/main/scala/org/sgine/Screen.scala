@@ -2,21 +2,21 @@ package org.sgine
 
 import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
 import com.badlogic.gdx.utils.viewport.FitViewport
-import org.sgine.component.{Children, Component, InteractiveComponent, TypedContainer}
+import org.sgine.component.{Children, Component, PointerSupport, TypedContainer}
 import org.sgine.event.InputProcessor
 import org.sgine.event.key.KeyInput
 import org.sgine.event.pointer.PointerEvents
 import org.sgine.update.Updatable
 import reactify._
 
-trait Screen extends Updatable with TypedContainer[Component] with InteractiveComponent { self =>
+trait Screen extends Updatable with TypedContainer[Component] with PointerSupport { self =>
   lazy val flatChildren: Val[Vector[Component]] = Val(Component.flatChildren(this))
 
   /**
    * The `Component` at the current cursor position. If nothing else is at the cursor position the `Screen` will be
    * returned.
    */
-  val atCursor: Var[InteractiveComponent] = Var[InteractiveComponent](self)
+  val atCursor: Var[PointerSupport] = Var[PointerSupport](self)
 
   /**
     * If locked, cannot be removed from Screens
@@ -77,11 +77,11 @@ trait Screen extends Updatable with TypedContainer[Component] with InteractiveCo
       case (oldValue, newValue) =>
         oldValue match {
           case screen: Screen => screen.pointer._over @= false
-          case ic: InteractiveComponent => ic.pointer._over @= false
+          case ic: PointerSupport => ic.pointer._over @= false
         }
         newValue match {
           case screen: Screen => screen.pointer._over @= true
-          case ic: InteractiveComponent => ic.pointer._over @= true
+          case ic: PointerSupport => ic.pointer._over @= true
         }
     }
   }

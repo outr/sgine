@@ -1,8 +1,8 @@
 package org.sgine.tooltip
 
-import org.sgine.component.InteractiveComponent
+import org.sgine.component.PointerSupport
 
-trait TooltipSupport extends InteractiveComponent {
+trait TooltipSupport extends PointerSupport {
   def tooltip: Tooltip
 
   override protected def init(): Unit = {

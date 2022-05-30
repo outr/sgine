@@ -15,6 +15,7 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 - Test with MT
 - Revalidate hover events per frame
 - Dialog support
+  - Support Overlay to intercept events
   - Modal support
     - Backdrop
   - Drag support

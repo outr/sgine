@@ -39,7 +39,7 @@ val vlcjVersion = "3.10.1"
 val scalaTestVersion = "3.2.12"
 
 lazy val root = project.in(file("."))
-  .aggregate(core, coreOld, lwjgl, video, examples)
+  .aggregate(core)
   .settings(
     publish := {},
     publishLocal := {}
@@ -62,26 +62,15 @@ lazy val core = project
     )
   )
 
-lazy val coreOld = project.in(file("core.old"))
-  .settings(
-    name := "sgine-core",
-    libraryDependencies ++= Seq(
-      "io.youi" %% "youi-core" % youiVersion,
-      "com.badlogicgames.gdx" % "gdx" % gdxVersion,
-      "com.badlogicgames.gdx" % "gdx-freetype" % gdxVersion,
-      "org.scalatest" %% "scalatest" % scalaTestVersion % "test"
-    )
-  )
-
-lazy val lwjgl = project.in(file("lwjgl"))
-  .settings(
-    name := "sgine-lwjgl",
-    libraryDependencies ++= Seq(
-      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion
-    )
-  )
-  .dependsOn(coreOld)
-
+//lazy val lwjgl = project.in(file("lwjgl"))
+//  .settings(
+//    name := "sgine-lwjgl",
+//    libraryDependencies ++= Seq(
+//      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion
+//    )
+//  )
+//  .dependsOn(coreOld)
+//
 //lazy val jglfw = project.in(file("jglfw"))
 //  .settings(
 //    name := "sgine-jglfw",
@@ -109,33 +98,15 @@ lazy val lwjgl = project.in(file("lwjgl"))
 //    )
 //  )
 //  .dependsOn(core)
-
-lazy val tools = project.in(file("tools"))
-  .settings(
-    name := "sgine-tools",
-    libraryDependencies ++= Seq(
-      "com.badlogicgames.gdx" % "gdx-tools" % gdxVersion
-    )
-  )
-  .dependsOn(coreOld)
-
-lazy val video = project.in(file("video"))
-  .settings(
-    name := "sgine-video",
-    libraryDependencies ++= Seq(
-      "uk.co.caprica" % "vlcj" % vlcjVersion
-    )
-  )
-  .dependsOn(coreOld, lwjgl)
-
-lazy val examples = project.in(file("examples"))
-  .settings(
-    name := "sgine-examples",
-    fork := true,
-    libraryDependencies ++= Seq(
-      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
-      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
-      "org.scala-lang.modules" %% "scala-xml" % scalaXMLVersion
-    )
-  )
-  .dependsOn(coreOld, lwjgl, video)
+//
+//lazy val examples = project.in(file("examples"))
+//  .settings(
+//    name := "sgine-examples",
+//    fork := true,
+//    libraryDependencies ++= Seq(
+//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
+//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
+//      "org.scala-lang.modules" %% "scala-xml" % scalaXMLVersion
+//    )
+//  )
+//  .dependsOn(coreOld, lwjgl, video)

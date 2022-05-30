@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.{Gdx, InputProcessor => GDXInputProcessor}
 import org.sgine._
-import org.sgine.component.{ActorComponent, Component, InteractiveComponent}
+import org.sgine.component.{ActorComponent, Component, PointerSupport}
 import org.sgine.event.key.{KeyEvent, KeyState}
 import org.sgine.event.pointer._
 import reactify.Val
@@ -12,10 +12,10 @@ import reactify.Val
 import scala.annotation.tailrec
 
 class InputProcessor(screen: Screen) extends GDXInputProcessor {
-  lazy val interactiveActors: Val[Vector[ActorComponent[Actor] with InteractiveComponent]] =
+  lazy val interactiveActors: Val[Vector[ActorComponent[Actor] with PointerSupport]] =
     Val(screen.flatChildren.collect {
-      case c: ActorComponent[_] with InteractiveComponent if c.visible && c.interactive =>
-        c.asInstanceOf[ActorComponent[Actor] with InteractiveComponent]
+      case c: ActorComponent[_] with PointerSupport if c.visible && c.pointer.enabled =>
+        c.asInstanceOf[ActorComponent[Actor] with PointerSupport]
     })
 
 //  private val gestures = new GestureDetector(this)
@@ -28,7 +28,7 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
   private var localX: Double = 0.0
   private var localY: Double = 0.0
 
-  private def atCursor: InteractiveComponent = screen.atCursor.get
+  private def atCursor: PointerSupport = screen.atCursor.get
 //  private def focused: Option[Component] = screen.focused.get
 
   private def pevt(displayX: Int, displayY: Int)
@@ -44,28 +44,28 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
       case e: PointerDownEvent =>
         e.target match {
           case s: Screen => s.pointer.down @= e
-          case ic: InteractiveComponent =>
+          case ic: PointerSupport =>
             ic.pointer.down @= e
             screen.pointer.down @= e
         }
       case e: PointerDraggedEvent =>
         e.target match {
           case s: Screen => s.pointer.dragged @= e
-          case ic: InteractiveComponent =>
+          case ic: PointerSupport =>
             ic.pointer.dragged @= e
             screen.pointer.dragged @= e
         }
       case e: PointerMovedEvent =>
         e.target match {
           case s: Screen => s.pointer.moved @= e
-          case ic: InteractiveComponent =>
+          case ic: PointerSupport =>
             ic.pointer.moved @= e
             screen.pointer.moved @= e
         }
       case e: PointerUpEvent =>
         e.target match {
           case s: Screen => s.pointer.up @= e
-          case ic: InteractiveComponent =>
+          case ic: PointerSupport =>
             ic.pointer.up @= e
             screen.pointer.up @= e
         }
