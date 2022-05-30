@@ -1,9 +1,9 @@
 package org.sgine.tooltip
 
 import org.sgine.{Overlay, Pointer}
-import org.sgine.component.{DimensionedComponent, MutableContainer}
+import org.sgine.component.{DimensionedSupport, MutableContainer}
 
-trait Tooltip extends DimensionedComponent
+trait Tooltip extends DimensionedSupport
 
 object Tooltip extends MutableContainer[Tooltip] {
   Overlay.children += this
