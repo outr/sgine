@@ -15,7 +15,6 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 - Test with MT
 - Revalidate hover events per frame
 - Dialog support
-  - Support Overlay to intercept events
   - Modal support
     - Backdrop
   - Drag support
@@ -25,6 +24,7 @@ Currently wraps around libgdx (https://libgdx.badlogicgames.com/) to provide a p
 - Mouse cursor
   - Change the cursor
   - Mouse hide support
+- Investigate ActorComponent providing a single Actor for greater customization
 
 ## TODO 2.1
 - Support render on change support

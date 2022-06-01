@@ -9,12 +9,12 @@ import scribe.Execution.global
 import scala.concurrent.Future
 import scala.concurrent.duration.{DurationInt, FiniteDuration}
 
-class Screens extends Var[List[Screen]] with Updatable { self =>
+class Screens extends Var[Vector[Screen]] with Updatable { self =>
   val added: Channel[Screen] = Channel[Screen]
   val removed: Channel[Screen] = Channel[Screen]
 
-  lazy val unlocked: Val[List[Screen]] = Val(get.filterNot(_.locked))
-  lazy val locked: Val[List[Screen]] = Val(get.filter(_.locked))
+  lazy val unlocked: Val[Vector[Screen]] = Val(get.filterNot(_.locked))
+  lazy val locked: Val[Vector[Screen]] = Val(get.filter(_.locked))
 
   changes {
     case (oldValue, newValue) =>
@@ -37,11 +37,11 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
     }
   }
 
-  set(Nil)
-  set(List(Overlay))
+  set(Vector.empty)
+  set(Vector(Overlay))
 
   def add(screens: Screen*): Unit = {
-    this @= get ::: screens.toList
+    this @= get ++ screens.toVector
   }
 
   def +=(screen: Screen): Unit = add(screen)
@@ -69,7 +69,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
     }
 
     def slideLeft(screen: Screen, duration: FiniteDuration = 1.second, easing: Easing = Easing.linear): TaskInstance = {
-      val existing = unlocked().map { s =>
+      val existing = unlocked().toList.map { s =>
         s.right to 0.0 in duration easing easing
       }
       screen.left @= screen.width
@@ -81,7 +81,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
     }
 
     def slideRight(screen: Screen, duration: FiniteDuration = 1.second, easing: Easing = Easing.linear): TaskInstance = {
-      val existing = unlocked().map { s =>
+      val existing = unlocked().toList.map { s =>
         s.left to s.width in duration easing easing
       }
       screen.right @= 0.0
@@ -93,7 +93,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
     }
 
     def slideUp(screen: Screen, duration: FiniteDuration = 1.second, easing: Easing = Easing.linear): TaskInstance = {
-      val existing = unlocked().map { s =>
+      val existing = unlocked().toList.map { s =>
         s.bottom to 0.0 in duration easing easing
       }
       screen.top @= screen.height
@@ -105,7 +105,7 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
     }
 
     def slideDown(screen: Screen, duration: FiniteDuration = 1.second, easing: Easing = Easing.linear): TaskInstance = {
-      val existing = unlocked().map { s =>
+      val existing = unlocked().toList.map { s =>
         s.top to s.height in duration easing easing
       }
       screen.bottom @= 0.0
@@ -117,11 +117,11 @@ class Screens extends Var[List[Screen]] with Updatable { self =>
     }
 
     def crossFade(screen: Screen, duration: FiniteDuration = 1.seconds, easing: Easing = Easing.linear): TaskInstance = {
-      val originalColors: List[(Screen, Color)] = unlocked().map { s =>
+      val originalColors: List[(Screen, Color)] = unlocked().toList.map { s =>
         val color = s.color()
         (s, color)
       }
-      val existing = unlocked().map { s =>
+      val existing = unlocked().toList.map { s =>
         s.color to Color.Clear in duration easing easing
       }
       val screenColor = screen.color()
