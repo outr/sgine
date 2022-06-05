@@ -7,6 +7,7 @@ import org.sgine.drawable.{Scale9, Texture}
 import org.sgine.event.{Draggable, DraggableSupport}
 import reactify._
 
+// TODO: GlassPane support
 object DialogExample extends Example {
   override protected def component: Component = new Image("sgine.png") with PointerSupport {
     center := screen.center
@@ -19,19 +20,27 @@ object DialogExample extends Example {
   }
 
   object ExampleDialog extends Container with PointerSupport with Dialog with DraggableSupport { dialog =>
-    private lazy val scale9 = Scale9(Texture.internal("scale9test.png"), 50, 50, 50, 50)
-    private lazy val topBar = new Rectangle with PointerSupport {
-      color @= Color.DarkGreen
+    private lazy val topScale9 = Scale9(Texture.internal("blue_dialog_bar.png"), 22, 22, 18, 1)
+    private lazy val bodyScale9 = Scale9(Texture.internal("blue_dialog_body.png"), 28, 28, 5, 40)
+    private lazy val topBar = new Image(topScale9) with PointerSupport {
       width @= 750.0
       height @= 100.0
     }
     private lazy val title = new Label {
       font @= Fonts.OpenSans.Regular.normal
-      x @= 15.0
+      x @= 25.0
       y @= 5.0
       text @= "Example Dialog"
     }
-    private lazy val body = new Image(scale9) {
+    private lazy val close = new Image("close.png") with PointerSupport {
+      x @= 600.0
+      y @= -50.0
+      scaleX @= 0.4
+      scaleY @= 0.4
+      color := (if (pointer.over) Color.Red else Color.DarkRed)
+      pointer.down.on(dialog.visible @= false)
+    }
+    private lazy val body = new Image(bodyScale9) {
       y @= 100.0
       width @= 750.0
       height @= 400.0
@@ -45,6 +54,7 @@ object DialogExample extends Example {
 
     override def children: Children[Component] = Children(this, Vector(
       topBar,
+      close,
       title,
       body
     ))
