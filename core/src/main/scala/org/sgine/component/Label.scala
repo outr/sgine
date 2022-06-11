@@ -43,8 +43,8 @@ class Label extends ActorComponent[GDXLabel] { component =>
     actor.setStyle(new LabelStyle(font(), color().gdx))
     actor.setText(text)
     actor.setWrap(wrap)
-    preferred.width @= actor.getPrefWidth.toDouble
-    preferred.height @= actor.getPrefHeight.toDouble
+    width.preferred @= actor.getPrefWidth.toDouble
+    height.preferred @= actor.getPrefHeight.toDouble
 
     super.updateDimensions(screen)
   }

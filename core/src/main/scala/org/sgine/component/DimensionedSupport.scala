@@ -1,6 +1,6 @@
 package org.sgine.component
 
-import org.sgine.Screen
+import org.sgine.{Dimension, Screen}
 import reactify._
 
 trait DimensionedSupport extends Component {
@@ -8,13 +8,8 @@ trait DimensionedSupport extends Component {
   lazy val y: Var[Double] = Var(0.0)
   lazy val z: Var[Int] = Var(0)
 
-  object preferred {
-    lazy val width: Var[Double] = Var(0.0)
-    lazy val height: Var[Double] = Var(0.0)
-  }
-
-  lazy val width: Var[Double] = Var(preferred.width)
-  lazy val height: Var[Double] = Var(preferred.height)
+  lazy val width: Dimension = new Dimension
+  lazy val height: Dimension = new Dimension
 
   lazy val scaleX: Var[Double] = Var(1.0)
   lazy val scaleY: Var[Double] = Var(1.0)
@@ -37,11 +32,11 @@ trait DimensionedSupport extends Component {
       case _: Screen => // Ignore Screen
       case c: TypedContainer[_] =>
 
-        preferred.width := c.children().foldLeft(0.0)((max, child) => child match {
+        width.preferred := c.children().foldLeft(0.0)((max, child) => child match {
           case dc: DimensionedSupport => math.max(max, dc.x + dc.width)
           case _ => max
         })
-        preferred.height := c.children().foldLeft(0.0)((max, child) => child match {
+        height.preferred := c.children().foldLeft(0.0)((max, child) => child match {
           case dc: DimensionedSupport => math.max(max, dc.y + dc.height)
           case _ => max
         })

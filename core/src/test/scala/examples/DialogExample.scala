@@ -37,7 +37,7 @@ object DialogExample extends Example {
       y @= -50.0
       scaleX @= 0.4
       scaleY @= 0.4
-      color := (if (pointer.over) Color.Red else Color.DarkRed)
+      color := (if (pointer.over) Color.Red else Color.White)
       pointer.down.on(dialog.visible @= false)
     }
     private lazy val body = new Image(bodyScale9) {
