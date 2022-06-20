@@ -56,6 +56,11 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
     shapeDrawer.rectangle(x.cx, y.cy, width.f, -height.f, lineWidth.f, rotation.f, joinType)
   }
 
+  def circle(x: Double = 0.0, y: Double = 0.0, radius: Double, lineWidth: Double): Unit = {
+    preDraw()
+    shapeDrawer.circle(x.cx, y.cy, radius.f, lineWidth.f, joinType)
+  }
+
   private lazy val v = new Vector2
   private lazy val v2 = new Vector2
 
