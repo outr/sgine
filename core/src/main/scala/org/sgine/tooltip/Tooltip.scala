@@ -2,6 +2,7 @@ package org.sgine.tooltip
 
 import org.sgine.{Overlay, Pointer}
 import org.sgine.component.{DimensionedSupport, MutableContainer}
+import reactify._
 
 trait Tooltip extends DimensionedSupport
 

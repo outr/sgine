@@ -1,6 +1,6 @@
 package org.sgine
 
-import reactify.Var
+import reactify._
 
 class Dimension extends Var[Double] {
   val preferred: Var[Double] = Var(0.0)

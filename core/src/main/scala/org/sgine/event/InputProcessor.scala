@@ -7,7 +7,7 @@ import org.sgine._
 import org.sgine.component.{ActorComponent, Component, PointerSupport}
 import org.sgine.event.key.{KeyEvent, KeyState}
 import org.sgine.event.pointer._
-import reactify.Val
+import reactify._
 
 import scala.annotation.tailrec
 

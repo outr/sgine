@@ -1,6 +1,7 @@
 package org.sgine.tooltip
 
 import org.sgine.component.PointerSupport
+import reactify._
 
 trait TooltipSupport extends PointerSupport {
   def tooltip: Tooltip
