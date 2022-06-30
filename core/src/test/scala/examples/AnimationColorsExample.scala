@@ -4,6 +4,7 @@ import org.sgine.Color
 import org.sgine.component.{Component, Image}
 import org.sgine.task._
 import scala.concurrent.duration._
+import reactify._
 
 object AnimationColorsExample extends Example {
   override protected def component: Component = new Image("sgine.png") with TaskSupport {

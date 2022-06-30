@@ -78,6 +78,24 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
     }
   }
 
+  // TODO: Figure out a way to apply transform
+  def draw(texture: Texture)
+          (x: Double = 0.0, y: Double = 0.0,
+           originX: Double = texture.width / 2.0, originY: Double = texture.height / 2.0,
+           width: Double = texture.width, height: Double = texture.height,
+           scaleX: Double = 1.0, scaleY: Double = 1.0,
+           rotation: Double = 0.0): Unit = {
+    preDraw()
+    shapeDrawer.getBatch.draw(
+      texture.ref,
+      x.cx, y.cy,
+      originX.f, -originY.f,
+      width.f, -height.f,
+      scaleX.toFloat, scaleY.toFloat,
+      rotation.f
+    )
+  }
+
   def reset(x: Double, y: Double, width: Double, height: Double, color: Color, rotation: Double, alpha: Double): Unit = {
     _baseX = x
     _baseY = y
