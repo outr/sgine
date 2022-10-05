@@ -2,8 +2,8 @@ name := "sgine"
 ThisBuild / organization := "org.sgine"
 ThisBuild / version := "2.0.0-SNAPSHOT"
 
-ThisBuild / scalaVersion := "2.13.8"
-ThisBuild / crossScalaVersions := List("2.13.8", "3.2.0")
+ThisBuild / scalaVersion := "2.13.9"
+ThisBuild / crossScalaVersions := List("2.13.9", "3.2.0")
 ThisBuild / scalacOptions ++= Seq("-unchecked", "-deprecation")
 
 ThisBuild / resolvers += Resolver.sonatypeRepo("releases")
@@ -30,7 +30,7 @@ ThisBuild / fork := true
 val gdxVersion: String = "1.11.0"
 val reactifyVersion: String = "4.0.8"
 val scribeVersion: String = "3.8.2"
-val shapedrawerVersion: String = "2.5.0"
+val shapedrawerVersion: String = "2.6.0"
 
 val youiVersion = "0.14.4"
 val scalaXMLVersion = "2.0.0-M2"
