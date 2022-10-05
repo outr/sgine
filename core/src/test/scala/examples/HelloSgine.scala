@@ -1,6 +1,6 @@
 package examples
 
-import org.sgine.Color
+import org.sgine.{Color, PointerCursor}
 import org.sgine.component.{Component, Image, PointerSupport}
 import reactify._
 
@@ -10,5 +10,6 @@ object HelloSgine extends Example {
     middle @= screen.middle
 
     color := (if (pointer.over) Color.Red else Color.White)
+    pointer.cursor @= Some(PointerCursor.Hand)
   }
 }
