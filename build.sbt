@@ -29,7 +29,7 @@ ThisBuild / fork := true
 
 val gdxVersion: String = "1.11.0"
 val reactifyVersion: String = "4.0.8"
-val scribeVersion: String = "3.8.2"
+val scribeVersion: String = "3.8.3"
 val shapedrawerVersion: String = "2.6.0"
 
 val youiVersion = "0.14.4"
