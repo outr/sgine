@@ -10,20 +10,12 @@ import reactify._
 class Label extends ActorComponent[GDXLabel] { component =>
   val font: Var[BitmapFont] = Var(UI.fontNormal)
   val text: Var[String] = Var("")
-  object preferred {
-    lazy val width: Var[Double] = Var(0.0)
-    lazy val height: Var[Double] = Var(0.0)
-  }
+  val wrap: Var[Boolean] = Var(false)
 
   def this(text: String) = {
     this()
     this.text @= text
   }
-
-  font.on(validateDimensions @= true)
-  text.on(validateDimensions @= true)
-  width := preferred.width
-  height := preferred.height
 
   override val actor: GDXLabel = new GDXLabel(text(), new LabelStyle(font(), color().gdx)) {
     setUserObject(component)
@@ -39,11 +31,20 @@ class Label extends ActorComponent[GDXLabel] { component =>
     }
   }
 
+  override protected def init(): Unit = {
+    super.init()
+
+    font.on(validateDimensions @= true)
+    text.on(validateDimensions @= true)
+    wrap.on(validateDimensions @= true)
+  }
+
   override protected def updateDimensions(screen: Screen): Unit = {
     actor.setStyle(new LabelStyle(font(), color().gdx))
-    actor.setText(text())
-    preferred.width @= actor.getPrefWidth.toDouble
-    preferred.height @= actor.getPrefHeight.toDouble
+    actor.setText(text)
+    actor.setWrap(wrap)
+    width.preferred @= actor.getPrefWidth.toDouble
+    height.preferred @= actor.getPrefHeight.toDouble
 
     super.updateDimensions(screen)
   }

@@ -29,6 +29,8 @@ abstract class TiledTextureComponent(val texture: Texture, overflow: Boolean) ex
     }
   }
 
+  def apply(tileX: Int, tileY: Int): T = tiles(tileY)(tileX)
+
   lazy val flatTiles: Vector[T] = tiles.flatten
 
   override lazy val children: Children[Component] = Children(this, flatTiles)

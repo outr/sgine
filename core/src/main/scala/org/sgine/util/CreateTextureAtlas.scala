@@ -12,8 +12,8 @@ object CreateTextureAtlas {
   def apply(inputPath: String,
             atlasName: String = "texture.atlas",
             outputPath: String = "src/main/resources",
-            pageWidth: Int = 1024,
-            pageHeight: Int = 1024,
+            pageWidth: Int = 2048,
+            pageHeight: Int = 4096,
             pageFormat: Pixmap.Format = Pixmap.Format.RGBA8888,
             padding: Int = 2,
             duplicateBorder: Boolean = true,
@@ -24,10 +24,14 @@ object CreateTextureAtlas {
       pageWidth, pageHeight, pageFormat, padding, duplicateBorder, stripWhitespaceX, stripWhitespaceY, packStrategy
     )
     val directory = new File(inputPath)
-    directory.listFiles().foreach { file =>
-      val name = file.getName.substring(0, file.getName.indexOf('.'))
-      val image = new Pixmap(Gdx.files.absolute(file.getCanonicalPath))
-      packer.pack(name, image)
+    val files = directory.listFiles().toList.sortBy(_.getName)
+    val fileCount = files.size
+    files.zipWithIndex.foreach {
+      case (file, index) =>
+        val name = file.getName.substring(0, file.getName.indexOf('.'))
+        val image = new Pixmap(Gdx.files.absolute(file.getCanonicalPath))
+        scribe.info(s"Packing $name (${index + 1} of $fileCount)...")
+        packer.pack(name, image)
     }
     val parameters = new PixmapPackerIO.SaveParameters
     parameters.format = PixmapPackerIO.ImageFormat.PNG
@@ -36,5 +40,6 @@ object CreateTextureAtlas {
     parameters.useIndexes = true
     val io = new PixmapPackerIO
     io.save(Gdx.files.local(s"$outputPath/$atlasName"), packer, parameters)
+    packer.dispose()
   }
 }

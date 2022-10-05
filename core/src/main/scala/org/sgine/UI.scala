@@ -27,7 +27,7 @@ object UI extends gdx.Screen with TaskSupport { ui =>
 
     def @=(screen: Screen): Unit = apply(screen)
 
-    def apply(screen: => Screen): Unit = screens.set(List(screen))
+    def apply(screen: => Screen): Unit = screens.set(Vector(screen))
   }
   val render: Channel[Double] = Channel[Double]
 

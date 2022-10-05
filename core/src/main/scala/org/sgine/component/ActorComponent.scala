@@ -8,7 +8,7 @@ import reactify._
 
 import scala.util.Try
 
-trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
+trait ActorComponent[A <: Actor] extends DimensionedSupport with TaskSupport {
   lazy val parentActor: Val[Option[ActorComponent[_ <: Actor]]] = Val(findParentActor(parent))
   val color: Var[Color] = Var(Color.White)
   val hierarchicalColor: Val[Color] = Val(parentActor() match {
@@ -63,10 +63,13 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
   uor(hierarchicalColor) { c =>
     actor.setColor(c.gdx)
   }
+  visible.attach { b =>
+    actor.setVisible(b)
+  }
 
   protected def updateDimensions(screen: Screen): Unit = {
     val parentHeight = parent().map {
-      case dc: DimensionedComponent => dc.height()
+      case dc: DimensionedSupport => dc.height()
       case _ => screen.height()
     }.getOrElse(screen.height())
     val y = (-this.y.toFloat + parentHeight - height).toFloat
@@ -75,7 +78,7 @@ trait ActorComponent[A <: Actor] extends DimensionedComponent with TaskSupport {
     actor.setWidth(width.toFloat)
     actor.setHeight(height.toFloat)
     actor.setOrigin(Align.center)
-    val touchable = if (visible && isInstanceOf[InteractiveComponent]) {
+    val touchable = if (visible && isInstanceOf[PointerSupport]) {
       Touchable.enabled
     } else {
       Touchable.disabled

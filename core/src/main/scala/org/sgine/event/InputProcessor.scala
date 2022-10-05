@@ -4,13 +4,20 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.{Gdx, InputProcessor => GDXInputProcessor}
 import org.sgine._
-import org.sgine.component.{ActorComponent, Component, InteractiveComponent}
+import org.sgine.component.{ActorComponent, Component, PointerSupport}
 import org.sgine.event.key.{KeyEvent, KeyState}
 import org.sgine.event.pointer._
+import reactify._
 
 import scala.annotation.tailrec
 
 class InputProcessor(screen: Screen) extends GDXInputProcessor {
+  lazy val interactiveActors: Val[Vector[ActorComponent[Actor] with PointerSupport]] =
+    Val(screen.flatChildren.collect {
+      case c: ActorComponent[_] with PointerSupport if c.visible && c.pointer.enabled =>
+        c.asInstanceOf[ActorComponent[Actor] with PointerSupport]
+    })
+
 //  private val gestures = new GestureDetector(this)
   private val vector = new Vector2
 
@@ -21,49 +28,51 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
   private var localX: Double = 0.0
   private var localY: Double = 0.0
 
-  private def atCursor: InteractiveComponent = screen.atCursor.get
+  private def atCursor: PointerSupport = screen.atCursor.get
 //  private def focused: Option[Component] = screen.focused.get
 
-  private def pevt(displayX: Int, displayY: Int)
-                  (create: (Double, Double, Double, Double, Component, Double, Double) => PointerEvent): Unit = {
+  private def extract(displayX: Int, displayY: Int): (Double, Double, Double, Double) = {
     val percentX = displayX.toDouble / Gdx.graphics.getWidth.toDouble
     val percentY = displayY.toDouble / Gdx.graphics.getHeight.toDouble
     val screenX = percentX * screen.width()
     val screenY = percentY * screen.height()
+    (percentX, percentY, screenX, screenY)
+  }
+
+  private def pevt(displayX: Int, displayY: Int)
+                  (create: (Double, Double, Double, Double, Component, Double, Double) => PointerEvent): Boolean = {
+    val (percentX, percentY, screenX, screenY) = extract(displayX, displayY)
     updateCoordinates(displayX, displayY)
 
     val evt = create(screenX, screenY, percentX, percentY, atCursor, localX, localY)
     evt match {
-      case e: PointerDownEvent =>
-        e.target match {
-          case s: Screen => s.pointer.down @= e
-          case ic: InteractiveComponent =>
-            ic.pointer.down @= e
-            screen.pointer.down @= e
-        }
-      case e: PointerDraggedEvent =>
-        e.target match {
-          case s: Screen => s.pointer.dragged @= e
-          case ic: InteractiveComponent =>
-            ic.pointer.dragged @= e
-            screen.pointer.dragged @= e
-        }
-      case e: PointerMovedEvent =>
-        e.target match {
-          case s: Screen => s.pointer.moved @= e
-          case ic: InteractiveComponent =>
-            ic.pointer.moved @= e
-            screen.pointer.moved @= e
-        }
-      case e: PointerUpEvent =>
-        e.target match {
-          case s: Screen => s.pointer.up @= e
-          case ic: InteractiveComponent =>
-            ic.pointer.up @= e
-            screen.pointer.up @= e
-        }
+      case e: PointerDownEvent => e.target match {
+        case s: Screen => s.pointer.down @= e
+        case ic: PointerSupport =>
+          ic.pointer.down @= e
+          screen.pointer.down @= e
+      }
+      case e: PointerDraggedEvent => e.target match {
+        case s: Screen => s.pointer.dragged @= e
+        case ic: PointerSupport =>
+          ic.pointer.dragged @= e
+          screen.pointer.dragged @= e
+      }
+      case e: PointerMovedEvent => e.target match {
+        case s: Screen => s.pointer.moved @= e
+        case ic: PointerSupport =>
+          ic.pointer.moved @= e
+          screen.pointer.moved @= e
+      }
+      case e: PointerUpEvent => e.target match {
+        case s: Screen => s.pointer.up @= e
+        case ic: PointerSupport =>
+          ic.pointer.up @= e
+          screen.pointer.up @= e
+      }
     }
     Pointer.event @= evt
+    evt.target != screen
   }
 
   private def updateCoordinates(displayX: Int, displayY: Int): Unit = {
@@ -74,21 +83,24 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
     this.screenX = vector.x
     this.screenY = vector.y
 
-    val touchable: Boolean = true
-    Option(screen.stage.hit(screenX.toFloat, screenY.toFloat, touchable))
-      .flatMap(actor =>
-        Option(findTouchable(actor).getUserObject.asInstanceOf[ActorComponent[Actor] with InteractiveComponent])
-      ) match {
+    val hits = interactiveActors.filter { c =>
+      vector.set(displayX.toFloat, displayY.toFloat)
+      c.actor.screenToLocalCoordinates(vector)
+      c.actor.hit(vector.x, vector.y, false) != null
+    }
+    // TODO: support secondary hits?
+    val lastHit = hits.lastOption
+    lastHit match {
       case Some(widget) =>
         if (atCursor != widget) {
-          screen.atCursor := widget
+          screen.atCursor @= widget
         }
         vector.set(displayX.toFloat, displayY.toFloat)
         widget.actor.screenToLocalCoordinates(vector)
         this.localX = vector.x
         this.localY = vector.y
       case None =>
-        screen.atCursor := screen
+        screen.atCursor @= screen
         this.localX = screenX
         this.localY = screenY
     }
@@ -126,26 +138,33 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
     true
   }
 
+  private var downEvent: Option[PointerDownEvent] = None
+  private var lastMove: Option[(Double, Double)] = None
+
   override def touchDown(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {
     pevt(displayX, displayY) {
-      case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerDownEvent(
-        displayX = displayX,
-        displayY = displayY,
-        screenX = screenX,
-        screenY = screenY,
-        percentX = percentX,
-        percentY = percentY,
-        target = target,
-        targetX = targetX,
-        targetY = targetY,
-        pointer = pointer,
-        button = PointerButton(button)
-      )
+      case (screenX, screenY, percentX, percentY, target, targetX, targetY) =>
+        val evt = PointerDownEvent(
+          displayX = displayX,
+          displayY = displayY,
+          screenX = screenX,
+          screenY = screenY,
+          percentX = percentX,
+          percentY = percentY,
+          target = target,
+          targetX = targetX,
+          targetY = targetY,
+          pointer = pointer,
+          button = PointerButton(button)
+        )
+        downEvent = Some(evt)
+        evt
     }
-    true
   }
 
   override def touchUp(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {
+    downEvent = None
+    lastMove = None
     pevt(displayX, displayY) {
       case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerUpEvent(
         displayX = displayX,
@@ -161,25 +180,36 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
         button = PointerButton(button)
       )
     }
-    true
   }
 
   override def touchDragged(displayX: Int, displayY: Int, pointer: Int): Boolean = {
-    pevt(displayX, displayY) {
-      case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerDraggedEvent(
-        displayX = displayX,
-        displayY = displayY,
-        screenX = screenX,
-        screenY = screenY,
-        percentX = percentX,
-        percentY = percentY,
-        target = target,
-        targetX = targetX,
-        targetY = targetY,
-        pointer = pointer
-      )
+    downEvent match {
+      case Some(evt) =>
+        val (percentX, percentY, screenX, screenY) = extract(displayX, displayY)
+
+        val (deltaX, deltaY) = lastMove match {
+          case Some((lastX, lastY)) => (screenX - lastX, screenY - lastY)
+          case None => (0.0, 0.0)
+        }
+        lastMove = Some((screenX, screenY))
+        val dragged = PointerDraggedEvent(
+          displayX = displayX,
+          displayY = displayY,
+          screenX = screenX,
+          screenY = screenY,
+          deltaX = deltaX,
+          deltaY = deltaY,
+          percentX = percentX,
+          percentY = percentY,
+          target = evt.target,
+          targetX = evt.targetX,
+          targetY = evt.targetY,
+          pointer = pointer
+        )
+        evt.target.asInstanceOf[PointerSupport].pointer.dragged @= dragged
+        true
+      case None => false
     }
-    true
   }
 
   override def mouseMoved(displayX: Int, displayY: Int): Boolean = {
@@ -196,12 +226,11 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
         targetY = targetY
       )
     }
-    true
   }
 
   override def scrolled(amountX: Float, amountY: Float): Boolean = {
     // TODO: Support
-    true
+    false
   }
 
   /*override def pinchStop(): Unit = {

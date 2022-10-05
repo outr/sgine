@@ -7,11 +7,12 @@ import scala.concurrent.duration._
 case class PartialAnimate[T](get: () => T,
                              apply: T => Unit,
                              destination: () => T,
+                             adjustableDestination: Boolean = false,
                              animatable: Animatable[T]) {
   def from(value: => T): PartialAnimate[T] = copy(get = () => value)
 
   def in(duration: => FiniteDuration): AnimateIn[T] =
-    AnimateIn(get, apply, destination, () => duration, Easing.linear, animatable)
+    AnimateIn(get, apply, destination, adjustableDestination, () => duration, Easing.linear, animatable)
 
   // TODO: Figure out how to solve this?
 //  def by(stepBy: Double): AnimateIn[T] = {

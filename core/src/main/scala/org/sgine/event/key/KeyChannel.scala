@@ -5,9 +5,10 @@ import reactify.Channel
 import reactify.reaction.Reaction
 
 class KeyChannel extends Channel[KeyEvent]() {
-  def onKey(key: Key)(f: => Unit): Reaction[KeyEvent] = {
+  def onKey(key: Key*)(f: => Unit): Reaction[KeyEvent] = {
+    val keys = key.toSet
     attach { evt =>
-      if (evt.key == key) {
+      if (keys.contains(evt.key)) {
         f
       }
     }

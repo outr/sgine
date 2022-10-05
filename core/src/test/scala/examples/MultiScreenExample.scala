@@ -26,7 +26,7 @@ object MultiScreenExample extends SgineApp {
           height := screen.height
           color @= screenColor
         },
-        new Image("crate.jpg") with InteractiveComponent {
+        new Image("crate.jpg") with PointerSupport {
           center @= screen.width / 2.0
           middle @= screen.height / 2.0
           color := (if (pointer.over) screenColor else Color.White)

@@ -3,6 +3,8 @@ package org.sgine.event.pointer
 import reactify._
 
 class PointerEvents {
+  lazy val enabled: Var[Boolean] = Var(true)
+
   private[sgine] lazy val _over: Var[Boolean] = Var(false)
 
   lazy val down: Channel[PointerDownEvent] = Channel[PointerDownEvent]

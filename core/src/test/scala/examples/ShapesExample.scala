@@ -2,13 +2,15 @@ package examples
 
 import org.sgine.Color
 import org.sgine.component.{Component, Image}
-import org.sgine.drawable.{Drawer, ShapeDrawable}
+import org.sgine.drawable.{Drawer, ShapeDrawable, Texture}
 import org.sgine.task._
 import reactify._
 
 import scala.concurrent.duration.DurationInt
 
 object ShapesExample extends Example {
+  private lazy val texture = Texture.internal("crate.jpg")
+
   override protected lazy val component: Component = new Image {
     center := screen.center
     middle := screen.middle
@@ -29,6 +31,7 @@ object ShapesExample extends Example {
         drawer.color = Color.Blue
         drawer.line(width + 100.0, -100.0, -100.0, height + 100.0, 10.0)
         drawer.line(-100.0, -100.0, width + 100.0, height + 100.0, 10.0)
+        drawer.draw(texture)()
       }
 
       override def width: Double = 1000.0

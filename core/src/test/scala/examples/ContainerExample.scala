@@ -17,8 +17,8 @@ object ContainerExample extends Example with TaskSupport {
 
     override def toString: String = "crate2"
   }
-  private lazy val container = new MutableContainer[Component] with DimensionedComponent with InteractiveComponent {
-    color @= Color.Red
+  private lazy val container = new MutableContainer[Component] with DimensionedSupport with PointerSupport {
+    color := (if (pointer.over) Color.Red else Color.White)
 
     private var index = 0
     private val time = 250.millis
