@@ -2,8 +2,12 @@ name := "sgine"
 ThisBuild / organization := "org.sgine"
 ThisBuild / version := "2.0.0-SNAPSHOT"
 
-ThisBuild / scalaVersion := "2.13.9"
-ThisBuild / crossScalaVersions := List("2.13.9", "3.2.1")
+val scala213 = "2.13.10"
+
+val scala3 = "3.2.1"
+
+ThisBuild / scalaVersion := scala213
+ThisBuild / crossScalaVersions := List(scala213, scala3)
 ThisBuild / scalacOptions ++= Seq("-unchecked", "-deprecation")
 
 ThisBuild / resolvers += Resolver.sonatypeRepo("releases")
