@@ -21,6 +21,11 @@ object UI extends gdx.Screen with TaskSupport { ui =>
   }
 
   val title: Var[String] = Var("Sgine")
+
+  /**
+    * Must be set prior to starting the UI. Defaults to Some(60).
+    */
+  val overCheckFrameRate: Var[Option[Int]] = Var(Some(60))
   val screens = new Screens
   object screen {
     def :=(screen: => Screen): Unit = apply(screen)
@@ -50,8 +55,11 @@ object UI extends gdx.Screen with TaskSupport { ui =>
     config.setIdleFPS(0)
     config.setWindowedMode(1920, 1080)
     config.setBackBufferConfig(8, 8, 8, 8, 16, 2, 2)
-    ui.updates.every(0.016) {
-      inputProcessor.checkOver()
+    overCheckFrameRate().foreach { frameRate =>
+      val delay = 1.0 / frameRate.toDouble
+      ui.updates.every(delay) {
+        inputProcessor.checkOver()
+      }
     }
     new Lwjgl3Application(game, config)
   }
