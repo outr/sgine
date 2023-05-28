@@ -51,6 +51,11 @@ class UIInputProcessor extends gdx.InputProcessor {
     recurseScreens(_.inputProcessor.mouseMoved(screenX, screenY))
   }
 
+  def checkOver(): Unit = recurseScreens(s => {
+    s.inputProcessor.checkOver()
+    false
+  })
+
   override def scrolled(amountX: Float, amountY: Float): Boolean = {
     recurseScreens(_.inputProcessor.scrolled(amountX, amountY))
     true

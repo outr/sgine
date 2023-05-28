@@ -70,18 +70,18 @@ trait Screen extends Updatable with TypedContainer[Component] with PointerSuppor
 
     def active: Val[Component] = _active
 
-    moved.attach { evt =>
+    over.attach { evt =>
       _active @= evt.target
     }
     active.changes {
       case (oldValue, newValue) =>
         oldValue match {
-          case screen: Screen => screen.pointer._over @= false
-          case ic: PointerSupport => ic.pointer._over @= false
+          case screen: Screen => screen.pointer.isOver.asInstanceOf[Var[Boolean]] @= false
+          case ic: PointerSupport => ic.pointer.isOver.asInstanceOf[Var[Boolean]] @= false
         }
         newValue match {
-          case screen: Screen => screen.pointer._over @= true
-          case ic: PointerSupport => ic.pointer._over @= true
+          case screen: Screen => screen.pointer.isOver.asInstanceOf[Var[Boolean]] @= true
+          case ic: PointerSupport => ic.pointer.isOver.asInstanceOf[Var[Boolean]] @= true
         }
     }
   }

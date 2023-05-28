@@ -9,7 +9,7 @@ object HelloSgine extends Example {
     center @= screen.center
     middle @= screen.middle
 
-    color := (if (pointer.over) Color.Red else Color.White)
+    color := (if (pointer.isOver) Color.Red else Color.White)
     pointer.cursor @= Some(PointerCursor.Hand)
   }
 }

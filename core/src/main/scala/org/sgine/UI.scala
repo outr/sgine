@@ -50,6 +50,9 @@ object UI extends gdx.Screen with TaskSupport { ui =>
     config.setIdleFPS(0)
     config.setWindowedMode(1920, 1080)
     config.setBackBufferConfig(8, 8, 8, 8, 16, 2, 2)
+    ui.updates.every(0.016) {
+      inputProcessor.checkOver()
+    }
     new Lwjgl3Application(game, config)
   }
 

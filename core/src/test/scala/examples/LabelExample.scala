@@ -12,7 +12,7 @@ object LabelExample extends Example {
     wrap @= true
     width @= 1000.0
 
-    color := (if (pointer.over) Color.Red else Color.White)
+    color := (if (pointer.isOver) Color.Red else Color.White)
 
     override def toString: String = "text"
   }

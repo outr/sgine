@@ -15,7 +15,7 @@ object Scale9Example extends Example {
       width @= 2000.0
       height @= 1200.0
 
-      color := (if (pointer.over) Color.Red else Color.White)
+      color := (if (pointer.isOver) Color.Red else Color.White)
 
       override def toString: String = "scale9.1"
     },
@@ -25,7 +25,7 @@ object Scale9Example extends Example {
       width @= 1000.0
       height @= 800.0
 
-      color := (if (pointer.over) Color.Red else Color.White)
+      color := (if (pointer.isOver) Color.Red else Color.White)
 
       override def toString: String = "scale9.2"
     },
@@ -35,7 +35,7 @@ object Scale9Example extends Example {
       width @= 400.0
       height @= 400.0
 
-      color := (if (pointer.over) Color.Red else Color.White)
+      color := (if (pointer.isOver) Color.Red else Color.White)
 
       override def toString: String = "scale9.3"
     }

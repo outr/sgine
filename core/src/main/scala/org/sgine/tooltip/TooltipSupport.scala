@@ -9,7 +9,7 @@ trait TooltipSupport extends PointerSupport {
   override protected def init(): Unit = {
     super.init()
 
-    tooltip.visible := pointer.over
+    tooltip.visible := pointer.isOver
     Tooltip.children += tooltip
   }
 }

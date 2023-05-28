@@ -29,7 +29,7 @@ object MultiScreenExample extends SgineApp {
         new Image("crate.jpg") with PointerSupport {
           center @= screen.width / 2.0
           middle @= screen.height / 2.0
-          color := (if (pointer.over) screenColor else Color.White)
+          color := (if (pointer.isOver) screenColor else Color.White)
           pointer.down.on {
             UI.screens.transition.crossFade(nextScreen)
           }

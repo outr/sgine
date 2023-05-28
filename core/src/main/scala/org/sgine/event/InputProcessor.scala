@@ -39,6 +39,8 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
     (percentX, percentY, screenX, screenY)
   }
 
+  private var previousOver: PointerOverEvent = _
+
   private def pevt(displayX: Int, displayY: Int)
                   (create: (Double, Double, Double, Double, Component, Double, Double) => PointerEvent): Boolean = {
     val (percentX, percentY, screenX, screenY) = extract(displayX, displayY)
@@ -69,6 +71,15 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
         case ic: PointerSupport =>
           ic.pointer.up @= e
           screen.pointer.up @= e
+      }
+      case e: PointerOverEvent => if (previousOver != e) {
+        e.target match {
+          case s: Screen => s.pointer.over @= e
+          case ic: PointerSupport =>
+            ic.pointer.over @= e
+            screen.pointer.over @= e
+        }
+        previousOver = e
       }
     }
     Pointer.event @= evt
@@ -212,7 +223,28 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
     }
   }
 
+  private var lastX: Int = 0
+  private var lastY: Int = 0
+
+  def checkOver(): Unit = {
+    pevt(lastX, lastY) {
+      case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerOverEvent(
+        displayX = displayX,
+        displayY = displayY,
+        screenX = screenX,
+        screenY = screenY,
+        percentX = percentX,
+        percentY = percentY,
+        target = target,
+        targetX = targetX,
+        targetY = targetY
+      )
+    }
+  }
+
   override def mouseMoved(displayX: Int, displayY: Int): Boolean = {
+    lastX = displayX
+    lastY = displayY
     pevt(displayX, displayY) {
       case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerMovedEvent(
         displayX = displayX,
