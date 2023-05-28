@@ -6,25 +6,25 @@ import reactify._
 
 object TooltipExample extends Example {
   private lazy val logo = new Image("sgine.png") with TooltipSupport {
-    lazy val tooltip: Tooltip = new Label("Logo") with Tooltip {
+    tooltip @= Some(new Label("Logo") with Tooltip {
       font @= Fonts.Pacifico.normal
-    }
+    })
 
     center := screen.center
     bottom := screen.middle - 200.0
   }
   private lazy val basketball = new Image("basketball.png") with TooltipSupport {
-    lazy val tooltip: Tooltip = new Label("Basketball") with Tooltip {
+    tooltip @= Some(new Label("Basketball") with Tooltip {
       font @= Fonts.Pacifico.normal
-    }
+    })
 
     center := screen.center
     middle := screen.middle
   }
   private lazy val crate = new Image("crate.jpg") with TooltipSupport {
-    lazy val tooltip: Tooltip = new Label("Crate") with Tooltip {
+    tooltip @= Some(new Label("Crate") with Tooltip {
       font @= Fonts.Pacifico.normal
-    }
+    })
 
     center := screen.center
     top := screen.middle + 200.0
