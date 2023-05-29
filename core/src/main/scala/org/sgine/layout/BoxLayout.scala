@@ -31,7 +31,7 @@ class BoxLayout(direction: Compass = Compass.South,
   override def validate(container: AbstractContainer): Unit = {
     var previous: Option[DimensionedSupport] = None
     container.children.foreach {
-      case c: DimensionedSupport =>
+      case c: DimensionedSupport if c.includeInLayout() =>
         previous match {
           case Some(p) => anchor(c) := prev(p)
           case None => anchor(c) := start(container)

@@ -12,6 +12,8 @@ trait Component {
    */
   val visible: Var[Boolean] = Var(true)
 
+  val includeInLayout: Var[Boolean] = Var(true)
+
   def initialized: Val[Boolean] = _initialized
 
   protected def init(): Unit = {}

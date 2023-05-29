@@ -4,7 +4,7 @@ import org.sgine.component.{AbstractContainer, Component}
 import reactify.Var
 
 trait InvalidatingLayoutManager extends LayoutManager {
-  private val dirty: Var[Boolean] = Var(true)
+  val dirty: Var[Boolean] = Var(true)
 
   override def added(container: AbstractContainer, child: Component): Unit = dirty @= true
 
@@ -17,4 +17,6 @@ trait InvalidatingLayoutManager extends LayoutManager {
   }
 
   def validate(container: AbstractContainer): Unit
+
+  def invalidate(): Unit = dirty @= true
 }
