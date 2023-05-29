@@ -1,5 +1,6 @@
 package org.sgine.component
 
+import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.scenes.scene2d.{Actor, Touchable}
 import com.badlogic.gdx.utils.Align
 import org.sgine.task.TaskSupport
@@ -97,6 +98,26 @@ trait ActorComponent[A <: Actor] extends DimensionedSupport with TaskSupport {
         case p: TypedContainer[_] =>
           p.actor.addActor(actor)
       }
+  }
+
+  def hitTest(displayX: Double, displayY: Double, vector: Vector2): Boolean = {
+    vector.set(displayX.toFloat, displayY.toFloat)
+    actor.screenToLocalCoordinates(vector)
+    val actorHit = isVisible() &&
+      vector.x >= 0.0 &&
+      vector.x <= width() &&
+      vector.y >= 0.0 &&
+      vector.y <= height()
+    if (actorHit) {
+      // Verify parent isn't clipped
+      parent() match {
+        case Some(p: ActorComponent[_]) => p.hitTest(displayX, displayY, vector)
+        case None => true
+        case _ => false
+      }
+    } else {
+      false
+    }
   }
 
   def actor: A

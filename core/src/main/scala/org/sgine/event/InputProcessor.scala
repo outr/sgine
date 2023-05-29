@@ -94,13 +94,11 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
     this.screenX = vector.x
     this.screenY = vector.y
 
-    val hits = interactiveActors.filter { c =>
-      vector.set(displayX.toFloat, displayY.toFloat)
-      c.actor.screenToLocalCoordinates(vector)
-      c.actor.hit(vector.x, vector.y, false) != null
+    val hits = interactiveActors.reverseIterator.filter { c =>
+      c.hitTest(displayX, displayY, vector)
     }
     // TODO: support secondary hits?
-    val lastHit = hits.lastOption
+    val lastHit = hits.nextOption()
     lastHit match {
       case Some(widget) =>
         if (atCursor != widget) {
