@@ -7,7 +7,7 @@ import reactify._
 object TooltipExample extends Example {
   private lazy val logo = new Image("sgine.png") with TooltipSupport {
     tooltip @= Some(new Label("Logo") with Tooltip {
-      font @= Fonts.Pacifico.normal
+      font @= Fonts.OpenSans.Regular.extraLarge
     })
 
     center := screen.center

@@ -14,5 +14,13 @@ object Tooltip extends MutableContainer[Tooltip] {
 
     left @= Pointer.screen.x
     top @= Pointer.screen.y
+    screenOption().foreach { screen =>
+      if (Pointer.screen.x() > screen.center()) {
+        right @= Pointer.screen.x
+      }
+      if (Pointer.screen.y() > screen.middle()) {
+        bottom @= Pointer.screen.y
+      }
+    }
   }
 }
