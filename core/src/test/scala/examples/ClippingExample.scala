@@ -1,8 +1,9 @@
 package examples
 
-import org.sgine.{Clipping, Color}
+import org.sgine.{Clipping, Color, Overlay}
 import org.sgine.component.{Children, Component, Container, Image, Label, PointerSupport}
 import org.sgine.drawable.{Drawer, ShapeDrawable}
+import org.sgine.event.{Draggable, DraggableSupport}
 import reactify._
 
 object ClippingExample extends Example {
@@ -27,12 +28,21 @@ object ClippingExample extends Example {
     override def toString: String = "text"
   }
 
-  override protected lazy val component: Component = new Container {
+  override protected lazy val component: Component = new Container with DraggableSupport {
     width @= 800.0
     height @= 800.0
     center @= screen.center
     middle @= screen.middle
     clipping @= Clipping.Container
+
+    draggable @= Some(Draggable(label, label))
+    drag.within(
+      container = this,
+      padLeft = 25.0,
+      padTop = 25.0,
+      padRight = 25.0,
+      padBottom = 25.0
+    )
 
     override val children: Children[Component] = Children(this, Vector(
       new Image(background),

@@ -5,6 +5,7 @@ import reactify._
 
 class PointerEvents {
   lazy val enabled: Var[Boolean] = Var(true)
+  lazy val draggable: Var[Boolean] = Var(false)
 
   lazy val down: Channel[PointerDownEvent] = Channel[PointerDownEvent]
   lazy val dragged: Channel[PointerDraggedEvent] = Channel[PointerDraggedEvent]

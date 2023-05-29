@@ -14,6 +14,18 @@ trait DraggableSupport {
       drag.max.x := Some(container.width)
       drag.max.y := Some(container.height)
     }
+    def within(container: DimensionedSupport,
+               padLeft: => Double = 0.0,
+               padTop: => Double = 0.0,
+               padRight: => Double = 0.0,
+               padBottom: => Double = 0.0): Unit = {
+      val d = draggable().getOrElse(throw new RuntimeException("Draggable must be set before calling within."))
+      val t = d.dragTarget
+      drag.min.x := Some(container.width - t.width - padRight)
+      drag.min.y := Some(container.height - t.height - padBottom)
+      drag.max.x := Some(t.width + padLeft)
+      drag.max.y := Some(t.height + padTop)
+    }
     def unbound(): Unit = {
       drag.min.x @= None
       drag.min.y @= None
@@ -58,6 +70,7 @@ trait DraggableSupport {
         d.dragSource.pointer.dragged.reactions -= reaction
       }
       newValue.foreach { d =>
+        d.dragSource.pointer.draggable @= true
         d.dragSource.pointer.dragged.reactions += reaction
       }
   }

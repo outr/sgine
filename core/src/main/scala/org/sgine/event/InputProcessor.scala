@@ -215,8 +215,13 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
           targetY = evt.targetY,
           pointer = pointer
         )
-        evt.target.asInstanceOf[PointerSupport].pointer.dragged @= dragged
-        true
+        val p = evt.target.asInstanceOf[PointerSupport].pointer
+        if (p.draggable()) {
+          p.dragged @= dragged
+          true
+        } else {
+          false
+        }
       case None => false
     }
   }
