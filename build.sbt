@@ -4,7 +4,7 @@ ThisBuild / version := "2.0.0-SNAPSHOT"
 
 val scala213 = "2.13.10"
 
-val scala3 = "3.2.2"
+val scala3 = "3.3.0"
 
 ThisBuild / scalaVersion := scala213
 ThisBuild / crossScalaVersions := List(scala213, scala3)
