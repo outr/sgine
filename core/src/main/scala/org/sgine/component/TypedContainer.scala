@@ -5,10 +5,10 @@ trait TypedContainer[C <: Component] extends AbstractContainer {
 }
 
 object TypedContainer {
-  def apply[Child <: Component](children: Child*): TypedContainer[Child] = {
+  def apply[C <: Component](children: C*): TypedContainer[C] = {
     val vector = children.toVector
-    val container = new TypedContainer[Child] { self =>
-      override val children: Children[Child] = Children(self, vector)
+    val container = new TypedContainer[C] { self =>
+      override val children: Children[C] = Children(self, vector)
     }
     container
   }

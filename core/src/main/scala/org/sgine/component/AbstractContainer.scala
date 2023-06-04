@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.scenes.scene2d.Group
 import org.sgine.Clipping
-import reactify.Var
+import reactify._
 
 trait AbstractContainer extends ActorComponent[Group] { component =>
   type Child <: Component
