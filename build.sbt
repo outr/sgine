@@ -1,6 +1,6 @@
 name := "sgine"
 ThisBuild / organization := "org.sgine"
-ThisBuild / version := "2.0.0-SNAPSHOT"
+ThisBuild / version := "2.0.0b1"
 
 val scala213 = "2.13.10"
 
@@ -10,8 +10,8 @@ ThisBuild / scalaVersion := scala213
 ThisBuild / crossScalaVersions := List(scala213, scala3)
 ThisBuild / scalacOptions ++= Seq("-unchecked", "-deprecation")
 
-ThisBuild / resolvers += Resolver.sonatypeRepo("releases")
-ThisBuild / resolvers += Resolver.sonatypeRepo("snapshots")
+ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("releases")
+ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 ThisBuild / resolvers += "jitpack" at "https://jitpack.io"
 
 ThisBuild / publishTo := sonatypePublishToBundle.value
