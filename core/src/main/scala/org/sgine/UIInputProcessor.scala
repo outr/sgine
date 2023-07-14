@@ -47,6 +47,10 @@ class UIInputProcessor extends gdx.InputProcessor {
     recurseScreens(_.inputProcessor.touchDragged(screenX, screenY, pointer))
   }
 
+  override def touchCancelled(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = {
+    recurseScreens(_.inputProcessor.touchCancelled(screenX, screenY, pointer, button))
+  }
+
   override def mouseMoved(screenX: Int, screenY: Int): Boolean = {
     recurseScreens(_.inputProcessor.mouseMoved(screenX, screenY))
   }

@@ -226,6 +226,10 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
     }
   }
 
+  override def touchCancelled(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean = {
+    touchUp(screenX, screenY, pointer, button)
+  }
+
   private var lastX: Int = 0
   private var lastY: Int = 0
 
