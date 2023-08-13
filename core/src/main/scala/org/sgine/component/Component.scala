@@ -3,7 +3,7 @@ package org.sgine.component
 import org.sgine.Screen
 import reactify._
 
-trait Component {
+trait Component { c =>
   private val _initialized: Var[Boolean] = Var(false)
   protected[sgine] val _parent: Var[Option[Component]] = Var(None)
 
@@ -33,8 +33,43 @@ trait Component {
    */
   val parent: Val[Option[Component]] = _parent
 
-  def screenX: Double = parent().map(_.screenX).getOrElse(0.0)
-  def screenY: Double = parent().map(_.screenY).getOrElse(0.0)
+  protected def screenX: Double = parent().map(_.screenX).getOrElse(0.0)
+  protected def screenY: Double = parent().map(_.screenY).getOrElse(0.0)
+
+  /**
+   * Access to global coordinates within the screen
+   */
+  object global {
+    def x: Double = screenX
+    def y: Double = screenY
+
+    protected def w: Double = c match {
+      case d: DimensionedSupport => d.width()
+      case _ => 0.0
+    }
+    protected def h: Double = c match {
+      case d: DimensionedSupport => d.height()
+      case _ => 0.0
+    }
+
+    def left: Double = x
+    def center: Double = x + (w / 2.0)
+    def right: Double = x + w
+
+    def top: Double = y
+    def middle: Double = y + (h / 2.0)
+    def bottom: Double = y + h
+
+    /**
+     * Converts a global x value to local coordinates
+     */
+    def localizeX(x: Double): Double = x - screenX
+
+    /**
+     * Converts a global y value to local coordinates
+     */
+    def localizeY(y: Double): Double = y - screenY
+  }
 
   val screenOption: Val[Option[Screen]] = Val(parent() match {
     case Some(s: Screen) => Some(s)

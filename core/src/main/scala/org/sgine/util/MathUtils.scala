@@ -8,19 +8,11 @@ object MathUtils {
     math.sqrt(math.pow(x2 - x1, 2.0) + math.pow(y2 - y1, 2.0))
 
   def distanceFromCenter(c1: Component, c2: Component): Double = {
-    val (c1Center, c1Middle) = c1 match {
-      case ds: DimensionedSupport => ds.center() -> ds.middle()
-      case _ => 0.0 -> 0.0
-    }
-    val (c2Center, c2Middle) = c2 match {
-      case ds: DimensionedSupport => ds.center() -> ds.middle()
-      case _ => 0.0 -> 0.0
-    }
     distance(
-      x1 = c1.screenX + c1Center,
-      y1 = c1.screenY + c1Middle,
-      x2 = c2.screenX + c2Center,
-      y2 = c2.screenY + c2Middle
+      x1 = c1.global.center,
+      y1 = c1.global.middle,
+      x2 = c2.global.center,
+      y2 = c2.global.middle
     )
   }
 
