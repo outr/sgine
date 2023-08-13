@@ -45,6 +45,25 @@ object TargetingExample extends Example {
           val y = global.localizeY(target.global.middle)
           drawer.color = Color.Green
           drawer.line(110.0, 110.0, x, y, 6.0)
+          val (fx, fy) = MathUtils.changeLineLength(110.0, 110.0, x, y, 1000.0)
+          drawer.color = Color.Blue
+          drawer.line(110.0, 110.0, fx, fy, 6.0)
+          enemies.foreach { e =>
+            val gx1 = global.center
+            val gy1 = global.middle
+            val gx2 = global.x + fx
+            val gy2 = global.y + fy
+            val intersecting = MathUtils.intersectSegmentCircle(
+              x1 = gx1,
+              y1 = gy1,
+              x2 = gx2,
+              y2 = gy2,
+              circleX = e.global.center,
+              circleY = e.global.middle,
+              circleRadius = 110.0
+            )
+            e.intersecting @= intersecting
+          }
         }
       }
 
@@ -60,6 +79,8 @@ object TargetingExample extends Example {
   class Enemy extends Container { e =>
     private val r1 = Random.nextDouble()
     private val r2 = Random.nextDouble()
+
+    val intersecting: Var[Boolean] = Var(false)
 
     center := r1 * screen.width
     middle := r2 * screen.height
@@ -78,19 +99,21 @@ object TargetingExample extends Example {
           } else {
             Color.Red
           }
+        } else if (intersecting()) {
+          Color.Blue
         } else {
           Color.White
         }
       }
     }
 
-    private lazy val text = new Label("Testing") {
+    private lazy val text = new Label {
       font @= Fonts.OpenSans.Regular.small
       color @= Color.White
       center @= 100.0
       middle @= 100.0
 
-      this.text := s"d: ${distance().f()}"
+      this.text := distance().f()
     }
 
     override lazy val children: Children[Component] = Children(

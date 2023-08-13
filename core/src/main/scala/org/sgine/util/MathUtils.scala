@@ -4,6 +4,10 @@ import com.badlogic.gdx.math.{Intersector, Vector2}
 import org.sgine.component.{Component, DimensionedSupport}
 
 object MathUtils {
+  private lazy val t1: Vector2 = new Vector2()
+  private lazy val t2: Vector2 = new Vector2()
+  private lazy val t3: Vector2 = new Vector2()
+
   def distance(x1: Double, y1: Double, x2: Double, y2: Double): Double =
     math.sqrt(math.pow(x2 - x1, 2.0) + math.pow(y2 - y1, 2.0))
 
@@ -17,13 +21,11 @@ object MathUtils {
   }
 
   def changeLineLength(x1: Double, y1: Double, x2: Double, y2: Double, length: Double): (Double, Double) = {
-    // TODO: keep the trajectory, but change the length of the line's endpoint
-    (x2, y2)
+    val currentLength = math.sqrt(math.pow(x2 - x1, 2.0) + math.pow(y2 - y1, 2.0))
+    val nx = x2 + (x2 - x1) / currentLength * length
+    val ny = y2 + (y2 - y1) / currentLength * length
+    (nx, ny)
   }
-
-  private lazy val start: Vector2 = new Vector2()
-  private lazy val end: Vector2 = new Vector2()
-  private lazy val center: Vector2 = new Vector2()
 
   def intersectSegmentCircle(x1: Double,
                              y1: Double,
@@ -32,12 +34,12 @@ object MathUtils {
                              circleX: Double,
                              circleY: Double,
                              circleRadius: Double): Boolean = {
-    start.x = x1.toFloat
-    start.y = y1.toFloat
-    end.x = x2.toFloat
-    end.y = y2.toFloat
-    center.x = circleX.toFloat
-    center.y = circleY.toFloat
-    Intersector.intersectSegmentCircle(start, end, center, circleRadius.toFloat)
+    t1.x = x1.toFloat
+    t1.y = y1.toFloat
+    t2.x = x2.toFloat
+    t2.y = y2.toFloat
+    t3.x = circleX.toFloat
+    t3.y = circleY.toFloat
+    Intersector.intersectSegmentCircle(t1, t2, t3, math.pow(circleRadius, 2.0).toFloat)
   }
 }
