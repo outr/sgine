@@ -16,6 +16,11 @@ object MathUtils {
     )
   }
 
+  def changeLineLength(x1: Double, y1: Double, x2: Double, y2: Double, length: Double): (Double, Double) = {
+    // TODO: keep the trajectory, but change the length of the line's endpoint
+    (x2, y2)
+  }
+
   private lazy val start: Vector2 = new Vector2()
   private lazy val end: Vector2 = new Vector2()
   private lazy val center: Vector2 = new Vector2()
