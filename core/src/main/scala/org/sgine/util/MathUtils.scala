@@ -22,8 +22,9 @@ object MathUtils {
 
   def changeLineLength(x1: Double, y1: Double, x2: Double, y2: Double, length: Double): (Double, Double) = {
     val currentLength = math.sqrt(math.pow(x2 - x1, 2.0) + math.pow(y2 - y1, 2.0))
-    val nx = x2 + (x2 - x1) / currentLength * length
-    val ny = y2 + (y2 - y1) / currentLength * length
+    val newLength = length - currentLength
+    val nx = x2 + (x2 - x1) / currentLength * newLength
+    val ny = y2 + (y2 - y1) / currentLength * newLength
     (nx, ny)
   }
 
