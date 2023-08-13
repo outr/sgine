@@ -1,6 +1,6 @@
 name := "sgine"
 ThisBuild / organization := "org.sgine"
-ThisBuild / version := "2.0.0b2"
+ThisBuild / version := "2.0.0b3"
 
 val scala213 = "2.13.11"
 
