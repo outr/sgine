@@ -1,7 +1,7 @@
 package examples
 
 import org.sgine.{Color, Pointer}
-import org.sgine.component.{Children, Component, Container, Image, Label, MutableContainer}
+import org.sgine.component.{Children, Component, Container, Image, Label, MutableContainer, Targeting}
 import org.sgine.drawable.{Drawer, ShapeDrawable}
 import org.sgine.util.MathUtils
 import perfolation.double2Implicits
@@ -21,11 +21,15 @@ object TargetingExample extends Example {
     children ++= enemies
   }
 
-  object Player extends Container {
+  object Player extends Container with Targeting[Enemy] {
     center := Pointer.screen.x
     middle := Pointer.screen.y
     width @= 220.0
     height @= 220.0
+
+    override protected def maxDistance: Double = 500.0
+
+    override protected def targets: List[Enemy] = enemies
 
     private lazy val image = new Image("basketball.png")
     private lazy val drawing = new Image {
@@ -36,13 +40,11 @@ object TargetingExample extends Example {
       override def draw(drawer: Drawer): Unit = {
         drawer.color = Color.White
         drawer.circle(110.0, 110.0, 500.0, 6.0)
-        nearest().headOption.foreach { first =>
-          if (first.distance() < 500.0) {
-            val x = global.localizeX(first.global.center)
-            val y = global.localizeY(first.global.middle)
-            drawer.color = Color.Green
-            drawer.line(110.0, 110.0, x, y, 6.0)
-          }
+        currentTarget().foreach { target =>
+          val x = global.localizeX(target.global.center)
+          val y = global.localizeY(target.global.middle)
+          drawer.color = Color.Green
+          drawer.line(110.0, 110.0, x, y, 6.0)
         }
       }
 
