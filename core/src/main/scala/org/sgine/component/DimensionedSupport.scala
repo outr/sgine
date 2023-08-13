@@ -25,6 +25,9 @@ trait DimensionedSupport extends Component {
 
   def depth: Var[Int] = z
 
+  override def screenX: Double = super.screenX + x()
+  override def screenY: Double = super.screenY + y()
+
   override protected def init(): Unit = {
     super.init()
 

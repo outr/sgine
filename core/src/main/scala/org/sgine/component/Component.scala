@@ -33,6 +33,9 @@ trait Component {
    */
   val parent: Val[Option[Component]] = _parent
 
+  def screenX: Double = parent().map(_.screenX).getOrElse(0.0)
+  def screenY: Double = parent().map(_.screenY).getOrElse(0.0)
+
   val screenOption: Val[Option[Screen]] = Val(parent() match {
     case Some(s: Screen) => Some(s)
     case Some(p: Component) => p.screenOption
