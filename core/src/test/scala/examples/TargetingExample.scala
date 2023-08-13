@@ -5,7 +5,7 @@ import org.sgine.component.{Children, Component, Container, Image, Label, Mutabl
 import org.sgine.drawable.{Drawer, ShapeDrawable}
 import org.sgine.util.MathUtils
 import perfolation.double2Implicits
-import reactify.Val
+import reactify._
 
 import scala.util.Random
 
