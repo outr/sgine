@@ -29,7 +29,7 @@ object TargetingExample extends Example {
 
     override protected def maxDistance: Double = 500.0
 
-    override protected def targets: List[Enemy] = enemies
+    override protected def targets: List[Enemy] = nearest()
 
     private lazy val image = new Image("basketball.png")
     private lazy val drawing = new Image {

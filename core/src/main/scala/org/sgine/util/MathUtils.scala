@@ -1,7 +1,7 @@
 package org.sgine.util
 
 import com.badlogic.gdx.math.{Intersector, Vector2}
-import org.sgine.component.{Component, DimensionedSupport}
+import org.sgine.component.Component
 
 object MathUtils {
   private lazy val t1: Vector2 = new Vector2()
