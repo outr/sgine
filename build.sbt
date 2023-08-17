@@ -32,11 +32,11 @@ ThisBuild / developers := List(
 ThisBuild / fork := true
 
 val gdxVersion: String = "1.12.0"
-val reactifyVersion: String = "4.0.8"
+val reactifyVersion: String = "4.1.0"
+val fabricVersion: String = "1.12.6"
 val scribeVersion: String = "3.11.9"
 val shapedrawerVersion: String = "2.6.0"
 
-val youiVersion = "0.14.4"
 val scalaXMLVersion = "2.0.0-M2"
 val androidVersion = "4.1.1.4"
 val vlcjVersion = "3.10.1"
@@ -61,6 +61,7 @@ lazy val core = project
       "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
       "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion,
       "com.outr" %% "reactify" % reactifyVersion,
+      "org.typelevel" %% "fabric-reactify" % fabricVersion,
       "com.outr" %% "scribe-slf4j" % scribeVersion,
       "space.earlygrey" % "shapedrawer" % shapedrawerVersion
     )
