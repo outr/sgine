@@ -33,6 +33,13 @@ trait Component { c =>
    */
   val parent: Val[Option[Component]] = _parent
 
+  def removeFromParent(): Boolean = parent() match {
+    case Some(p: MutableContainer[_]) =>
+      p.asInstanceOf[MutableContainer[Component]].children -= this
+      true
+    case _ => false
+  }
+
   protected def screenX: Double = parent().map(_.screenX).getOrElse(0.0)
   protected def screenY: Double = parent().map(_.screenY).getOrElse(0.0)
 

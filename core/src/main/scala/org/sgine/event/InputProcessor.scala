@@ -82,7 +82,6 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
         previousOver = e
       }
     }
-    Pointer.event @= evt
     evt.target != screen
   }
 
@@ -149,6 +148,7 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
 
   private var downEvent: Option[PointerDownEvent] = None
   private var lastMove: Option[(Double, Double)] = None
+  private var dragging: Option[PointerSupport] = None
 
   override def touchDown(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {
     pevt(displayX, displayY) {
@@ -172,51 +172,75 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
   }
 
   override def touchUp(displayX: Int, displayY: Int, pointer: Int, button: Int): Boolean = {
+    val de = downEvent
     downEvent = None
     lastMove = None
     pevt(displayX, displayY) {
-      case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerUpEvent(
-        displayX = displayX,
-        displayY = displayY,
-        screenX = screenX,
-        screenY = screenY,
-        percentX = percentX,
-        percentY = percentY,
-        target = target,
-        targetX = targetX,
-        targetY = targetY,
-        pointer = pointer,
-        button = PointerButton(button)
-      )
-    }
-  }
+      case (screenX, screenY, percentX, percentY, target, targetX, targetY) =>
+        dragging.foreach { d =>
+          de.foreach { downEvent =>
+            val dragged = createDragEvent(displayX, displayY, pointer, downEvent, finished = true)
 
-  override def touchDragged(displayX: Int, displayY: Int, pointer: Int): Boolean = {
-    downEvent match {
-      case Some(evt) =>
-        val (percentX, percentY, screenX, screenY) = extract(displayX, displayY)
+            d.pointer.dragged @= dragged
+          }
 
-        val (deltaX, deltaY) = lastMove match {
-          case Some((lastX, lastY)) => (screenX - lastX, screenY - lastY)
-          case None => (0.0, 0.0)
+          dragging = None
         }
-        lastMove = Some((screenX, screenY))
-        val dragged = PointerDraggedEvent(
+        PointerUpEvent(
           displayX = displayX,
           displayY = displayY,
           screenX = screenX,
           screenY = screenY,
-          deltaX = deltaX,
-          deltaY = deltaY,
           percentX = percentX,
           percentY = percentY,
-          target = evt.target,
-          targetX = evt.targetX,
-          targetY = evt.targetY,
-          pointer = pointer
+          target = target,
+          targetX = targetX,
+          targetY = targetY,
+          pointer = pointer,
+          button = PointerButton(button)
         )
-        val p = evt.target.asInstanceOf[PointerSupport].pointer
+    }
+  }
+
+  protected def createDragEvent(displayX: Int,
+                                displayY: Int,
+                                pointer: Int,
+                                downEvent: PointerDownEvent,
+                                finished: Boolean): PointerDraggedEvent = {
+    val (percentX, percentY, screenX, screenY) = extract(displayX, displayY)
+
+    val (deltaX, deltaY) = lastMove match {
+      case Some((lastX, lastY)) => (screenX - lastX, screenY - lastY)
+      case None => (0.0, 0.0)
+    }
+    lastMove = Some((screenX, screenY))
+    PointerDraggedEvent(
+      displayX = displayX,
+      displayY = displayY,
+      screenX = screenX,
+      screenY = screenY,
+      deltaX = deltaX,
+      deltaY = deltaY,
+      percentX = percentX,
+      percentY = percentY,
+      target = downEvent.target,
+      targetX = downEvent.targetX,
+      targetY = downEvent.targetY,
+      pointer = pointer,
+      finished = finished
+    )
+  }
+
+  override def touchDragged(displayX: Int, displayY: Int, pointer: Int): Boolean = {
+    val (_, _, sx, sy) = extract(displayX, displayY)
+    Pointer.update(displayX, displayY, sx, sy)
+    downEvent match {
+      case Some(evt) =>
+        val dragged = createDragEvent(displayX, displayY, pointer, evt, finished = false)
+        val c = evt.target.asInstanceOf[PointerSupport]
+        val p = c.pointer
         if (p.draggable()) {
+          dragging = Some(c)
           p.dragged @= dragged
           true
         } else {
@@ -252,6 +276,10 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
   override def mouseMoved(displayX: Int, displayY: Int): Boolean = {
     lastX = displayX
     lastY = displayY
+
+    val (_, _, sx, sy) = extract(displayX, displayY)
+    Pointer.update(displayX, displayY, sx, sy)
+
     pevt(displayX, displayY) {
       case (screenX, screenY, percentX, percentY, target, targetX, targetY) => PointerMovedEvent(
         displayX = displayX,

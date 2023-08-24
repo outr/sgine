@@ -2,12 +2,10 @@ package org.sgine
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Cursor
-import org.sgine.event.pointer.{PointerEvent, PointerMovedEvent}
+import org.sgine.event.pointer.{PointerDraggedEvent, PointerEvent, PointerMovedEvent}
 import reactify.{Channel, Val, Var}
 
 object Pointer {
-  val event: Channel[PointerEvent] = Channel[PointerEvent]
-
   private val displayX: Var[Int] = Var(0)
   private val displayY: Var[Int] = Var(0)
 
@@ -32,7 +30,6 @@ object Pointer {
     }
     v
   }
-  
 
   object display {
     def x: Val[Int] = displayX
@@ -44,12 +41,10 @@ object Pointer {
     def y: Val[Double] = screenY
   }
 
-  event.attach {
-    case evt: PointerMovedEvent =>
-      displayX @= evt.displayX
-      displayY @= evt.displayY
-      screenX @= evt.screenX
-      screenY @= evt.screenY
-    case _ => // Ignore
+  def update(displayX: Int, displayY: Int, screenX: Double, screenY: Double): Unit = {
+    this.displayX @= displayX
+    this.displayY @= displayY
+    this.screenX @= screenX
+    this.screenY @= screenY
   }
 }
