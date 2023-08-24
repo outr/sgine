@@ -28,6 +28,10 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
   private var localX: Double = 0.0
   private var localY: Double = 0.0
 
+  def hitsAtPointer(): Iterator[ActorComponent[Actor] with PointerSupport] = interactiveActors.reverseIterator.filter { c =>
+    c.hitTest(displayX, displayY, vector)
+  }
+
   private def atCursor: PointerSupport = screen.atCursor.get
 //  private def focused: Option[Component] = screen.focused.get
 
@@ -93,9 +97,7 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
     this.screenX = vector.x
     this.screenY = vector.y
 
-    val hits = interactiveActors.reverseIterator.filter { c =>
-      c.hitTest(displayX, displayY, vector)
-    }
+    val hits = hitsAtPointer()
     // TODO: support secondary hits?
     val lastHit = hits.nextOption()
     lastHit match {
@@ -233,6 +235,10 @@ class InputProcessor(screen: Screen) extends GDXInputProcessor {
 
   override def touchDragged(displayX: Int, displayY: Int, pointer: Int): Boolean = {
     val (_, _, sx, sy) = extract(displayX, displayY)
+    this.displayX = displayX
+    this.displayY = displayY
+    this.screenX = sx
+    this.screenY = sy
     Pointer.update(displayX, displayY, sx, sy)
     downEvent match {
       case Some(evt) =>

@@ -1,8 +1,8 @@
 package org.sgine
 
-import com.badlogic.gdx.scenes.scene2d.{Group, Stage}
+import com.badlogic.gdx.scenes.scene2d.{Actor, Group, Stage}
 import com.badlogic.gdx.utils.viewport.FitViewport
-import org.sgine.component.{Children, Component, PointerSupport, TypedContainer}
+import org.sgine.component.{ActorComponent, Children, Component, PointerSupport, TypedContainer}
 import org.sgine.event.InputProcessor
 import org.sgine.event.key.KeyInput
 import org.sgine.event.pointer.PointerEvents
@@ -64,6 +64,8 @@ trait Screen extends Updatable with TypedContainer[Component] with PointerSuppor
   }
 
   private[sgine] val inputProcessor = new InputProcessor(this)
+
+  def hitsAtPointer(): Iterator[ActorComponent[Actor] with PointerSupport] = inputProcessor.hitsAtPointer()
 
   class ScreenPointerEvents extends PointerEvents {
     private val _active: Var[Component] = Var(self)
