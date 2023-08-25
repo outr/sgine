@@ -1,8 +1,6 @@
 package org.sgine.drawable
 
 import com.badlogic.gdx.graphics.g2d.Batch
-import com.badlogic.gdx.scenes.scene2d.utils
-import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable
 import org.sgine.Color
 import space.earlygrey.shapedrawer.ShapeDrawer
 import space.earlygrey.shapedrawer.scene2d.ShapeDrawerDrawable

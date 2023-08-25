@@ -64,11 +64,18 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
   private lazy val v = new Vector2
   private lazy val v2 = new Vector2
 
-  def line(x1: Double, y1: Double, x2: Double, y2: Double, lineWidth: Double): Unit = {
+  def line(x1: Double,
+           y1: Double,
+           x2: Double,
+           y2: Double,
+           lineWidth: Double,
+           snap: Boolean = false,
+           color1: Color = color,
+           color2: Color = color): Unit = {
     preDraw()
     val (x1f, y1f) = fix(x1, y1)
     val (x2f, y2f) = fix(x2, y2)
-    shapeDrawer.line(x1f, y1f, x2f, y2f, lineWidth.f)
+    shapeDrawer.line(x1f, y1f, x2f, y2f, lineWidth.f, snap, color1.gdx.toFloatBits, color2.gdx.toFloatBits)
   }
 
   object filled {
