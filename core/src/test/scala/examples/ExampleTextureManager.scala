@@ -10,6 +10,8 @@ object ExampleTextureManager extends TextureManager(
   name = "texture.atlas",
   path = "src/test/resources",
   inputPath = "../work/atlas",
+  pageWidth = 1024,
+  pageHeight = 1024,
   scaleOverride = Map(
     "basketball" -> 2.25
   )

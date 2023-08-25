@@ -9,20 +9,9 @@ trait TooltipSupport extends PointerSupport {
   override protected def init(): Unit = {
     super.init()
 
-    def setTooltip(t: Tooltip): Unit = {
-      t.visible := pointer.isOver
-      Tooltip.children += t
-    }
-
-    tooltip().foreach(setTooltip)
-
-    tooltip.changes {
-      case (previous, current) =>
-        previous.foreach { t =>
-          t.visible @= false
-          Tooltip.children -= t
-        }
-        current.foreach(setTooltip)
+    pointer.isOver.attach {
+      case true => Tooltip.active := tooltip()
+      case false => Tooltip.active @= None
     }
   }
 }

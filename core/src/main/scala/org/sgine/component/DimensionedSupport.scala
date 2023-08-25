@@ -34,7 +34,6 @@ trait DimensionedSupport extends Component {
     this match {
       case _: Screen => // Ignore Screen
       case c: TypedContainer[_] =>
-
         width.preferred := c.children().foldLeft(0.0)((max, child) => child match {
           case dc: DimensionedSupport => math.max(max, dc.x + dc.width)
           case _ => max
