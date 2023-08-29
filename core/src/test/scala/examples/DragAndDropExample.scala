@@ -8,30 +8,49 @@ import reactify._
 
 object DragAndDropExample extends Example {
   private object Ball extends Image("basketball.png") with DragAndDropSupport {
+    override type Drag = Image
+
     center := screen.center * 0.5
     middle := screen.middle
 
-    override protected def createDragComponent(): DimensionedSupport = {
+    override protected def createDragComponent(): Image = {
       val img = new Image("basketball.png")
       img.color @= Color.White.withAlpha(0.5)
       img
     }
+
+    override protected def out(drag: Image, drop: DropSupport, accept: Boolean): Unit = {
+      drag.color @= Color.White.withAlpha(0.5)
+    }
+
+    override protected def over(drag: Image, drop: DropSupport, accept: Boolean): Unit = if (accept) {
+      drag.color @= Color.White
+    } else {
+      drag.color @= Color.White.withAlpha(0.5)
+    }
   }
 
-  private object Crate extends Image("crate.jpg") with DropSupport {
+  private class Crate(accept: Boolean) extends Image("crate.jpg") with DropSupport {
+    override def accepts(c: DragAndDropSupport): Boolean = accept
+
+    override def over(c: DragAndDropSupport, accept: Boolean): Unit = color @= (if (accept) Color.Blue else Color.Red)
+
+    override def out(c: DragAndDropSupport, accept: Boolean): Unit = color @= Color.White
+
+    override def receive(c: DragAndDropSupport, accept: Boolean): Unit = color @= (if (accept) Color.Green else Color.Red)
+  }
+
+  private object AcceptCrate extends Crate(accept = true) {
     center := screen.center * 1.5
     middle := screen.middle
+  }
 
-    override def accepts(c: DragAndDropSupport): Boolean = true
-
-    override def over(c: DragAndDropSupport): Unit = color @= Color.Blue
-
-    override def out(c: DragAndDropSupport): Unit = color @= Color.White
-
-    override def receive(c: DragAndDropSupport): Unit = color @= Color.Green
+  private object RejectCrate extends Crate(accept = false) {
+    center := screen.center
+    middle := screen.middle
   }
 
   override protected lazy val component: Component = Container(
-    Ball, Crate
+    Ball, RejectCrate, AcceptCrate
   )
 }

@@ -1,6 +1,6 @@
 name := "sgine"
 ThisBuild / organization := "org.sgine"
-ThisBuild / version := "2.0.0b4-SNAPSHOT"
+ThisBuild / version := "2.0.0b4.1-SNAPSHOT"
 
 val scala213 = "2.13.11"
 
@@ -26,7 +26,7 @@ ThisBuild / scmInfo := Some(
   )
 )
 ThisBuild / developers := List(
-  Developer(id="darkfrog", name="Matt Hicks", email="matt@matthicks.com", url=url("http://matthicks.com"))
+  Developer(id="darkfrog", name="Matt Hicks", email="matt@matthicks.com", url=url("https://matthicks.com"))
 )
 
 ThisBuild / fork := true

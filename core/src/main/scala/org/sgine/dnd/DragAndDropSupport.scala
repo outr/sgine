@@ -6,9 +6,11 @@ import org.sgine.{Overlay, Pointer}
 import reactify._
 
 trait DragAndDropSupport extends DimensionedSupport with PointerSupport {
-  private var dragging: Option[DimensionedSupport] = None
+  type Drag <: DimensionedSupport
 
-  private var current: Option[DropSupport] = None
+  private var dragging: Option[Drag] = None
+
+  private var current: Option[(DropSupport, Boolean)] = None
 
   pointer.draggable @= true
   pointer.dragged.attach { evt =>
@@ -19,30 +21,42 @@ trait DragAndDropSupport extends DimensionedSupport with PointerSupport {
       Overlay.children += c
       dragging = Some(c)
     }
-    val d = dragging.get
+    val drag = dragging.get
     val previous = current
     val screen = screenOption().get
     current = screen.hitsAtPointer().collectFirst {
-      case drop: DropSupport if drop.accepts(this) => drop
+      case drop: DropSupport => (drop, drop.accepts(this))
     }
     if (current != previous) {
-      previous.foreach { drop =>
-        drop.out(this)
+      previous.foreach {
+        case (drop, accept) =>
+          drop.out(this, accept)
+          out(drag, drop, accept)
       }
-      current.foreach { drop =>
-        drop.over(this)
+      current.foreach {
+        case (drop, accept) =>
+          drop.over(this, accept)
+          over(drag, drop, accept)
       }
     }
     if (evt.finished) {
-      current.foreach { drop =>
-        drop.receive(this)
-        current = None
+      current.foreach {
+        case (drop, accept) =>
+          drop.receive(this, accept)
+          receive(drag, drop, accept)
+          current = None
       }
 
-      d.removeFromParent()
+      drag.removeFromParent()
       dragging = None
     }
   }
 
-  protected def createDragComponent(): DimensionedSupport
+  protected def createDragComponent(): Drag
+
+  protected def out(drag: Drag, drop: DropSupport, accept: Boolean): Unit = {}
+
+  protected def over(drag: Drag, drop: DropSupport, accept: Boolean): Unit = {}
+
+  protected def receive(drag: Drag, drop: DropSupport, accept: Boolean): Unit = {}
 }

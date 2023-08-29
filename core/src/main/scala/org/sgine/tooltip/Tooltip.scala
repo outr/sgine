@@ -63,6 +63,8 @@ object Tooltip extends MutableContainer[Tooltip] {
     t.visible @= true
   }
 
+  def hide(): Unit = active @= None
+
   override def update(delta: Double): Unit = {
     super.update(delta)
 
