@@ -4,6 +4,8 @@ import org.sgine.Color
 import org.sgine.component.{Component, Container, DimensionedSupport, Image}
 import org.sgine.dnd.{DragAndDropSupport, DropSupport}
 
+import reactify._
+
 object DragAndDropExample extends Example {
   private object Ball extends Image("basketball.png") with DragAndDropSupport {
     center := screen.center * 0.5
