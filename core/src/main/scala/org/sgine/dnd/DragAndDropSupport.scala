@@ -16,8 +16,6 @@ trait DragAndDropSupport extends DimensionedSupport with PointerSupport {
   pointer.dragged.attach { evt =>
     if (dragging.isEmpty) {
       val c = createDragComponent()
-      c.center := Pointer.screen.x
-      c.middle := Pointer.screen.y
       Overlay.children += c
       dragging = Some(c)
     }
@@ -39,6 +37,12 @@ trait DragAndDropSupport extends DimensionedSupport with PointerSupport {
           over(drag, drop, accept)
       }
     }
+    current match {
+      case Some((drop, accept)) if accept && drop.dragSnap => snapTo(drag, drop)
+      case _ =>
+        drag.center @= Pointer.screen.x
+        drag.middle @= Pointer.screen.y
+    }
     if (evt.finished) {
       current.foreach {
         case (drop, accept) =>
@@ -59,4 +63,9 @@ trait DragAndDropSupport extends DimensionedSupport with PointerSupport {
   protected def over(drag: Drag, drop: DropSupport, accept: Boolean): Unit = {}
 
   protected def receive(drag: Drag, drop: DropSupport, accept: Boolean): Unit = {}
+
+  protected def snapTo(drag: Drag, drop: DropSupport): Unit = {
+    drag.center @= drop.center
+    drag.middle @= drop.middle
+  }
 }

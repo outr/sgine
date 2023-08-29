@@ -28,9 +28,16 @@ object DragAndDropExample extends Example {
     } else {
       drag.color @= Color.White.withAlpha(0.5)
     }
+
+    override protected def snapTo(drag: Image, drop: DropSupport): Unit = {
+      drag.x @= drop.x
+      drag.y @= drop.y
+    }
   }
 
   private class Crate(accept: Boolean) extends Image("crate.jpg") with DropSupport {
+    override def dragSnap: Boolean = true
+
     override def accepts(c: DragAndDropSupport): Boolean = accept
 
     override def over(c: DragAndDropSupport, accept: Boolean): Unit = color @= (if (accept) Color.Blue else Color.Red)

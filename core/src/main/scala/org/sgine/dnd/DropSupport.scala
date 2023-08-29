@@ -3,6 +3,8 @@ package org.sgine.dnd
 import org.sgine.component.{DimensionedSupport, PointerSupport}
 
 trait DropSupport extends DimensionedSupport with PointerSupport {
+  def dragSnap: Boolean = false
+
   def accepts(c: DragAndDropSupport): Boolean
 
   def over(c: DragAndDropSupport, accept: Boolean): Unit
