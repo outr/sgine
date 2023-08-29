@@ -3,6 +3,8 @@ package org.sgine.dnd
 import org.sgine.component.{DimensionedSupport, PointerSupport}
 import org.sgine.{Overlay, Pointer}
 
+import reactify._
+
 trait DragAndDropSupport extends DimensionedSupport with PointerSupport {
   private var dragging: Option[DimensionedSupport] = None
 
