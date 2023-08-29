@@ -13,6 +13,8 @@ object DragAndDropExample extends Example {
     center := screen.center * 0.5
     middle := screen.middle
 
+    override protected def startDragging: Boolean = false
+
     override protected def createDragComponent(): Image = {
       val img = new Image("basketball.png")
       img.color @= Color.White.withAlpha(0.5)
