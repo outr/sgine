@@ -1,7 +1,7 @@
 package examples
 
 import org.sgine.Color
-import org.sgine.component.{Component, Container, DimensionedSupport, Image}
+import org.sgine.component.{Component, Container, Image}
 import org.sgine.dnd.{DragAndDropSupport, DropSupport}
 
 import reactify._

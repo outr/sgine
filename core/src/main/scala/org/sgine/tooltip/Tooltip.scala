@@ -8,7 +8,7 @@ trait Tooltip extends DimensionedSupport {
   visible @= false
 
   object tooltip {
-    val moveWithPointer: Var[Boolean] = Var(false)
+    val moveWithPointer: Var[Boolean] = Var(true)
     val delay: Var[Double] = Var(1.0)
   }
 }
