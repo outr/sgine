@@ -34,7 +34,7 @@ ThisBuild / fork := true
 val gdxVersion: String = "1.12.0"
 val reactifyVersion: String = "4.1.0"
 val fabricVersion: String = "1.12.6"
-val scribeVersion: String = "3.12.1"
+val scribeVersion: String = "3.12.2"
 val shapedrawerVersion: String = "2.6.0"
 
 val scalaXMLVersion = "2.0.0-M2"
