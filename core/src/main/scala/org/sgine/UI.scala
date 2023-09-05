@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.BitmapFont
+import org.sgine.audio.Audio
 import org.sgine.task.TaskSupport
 import reactify._
 
@@ -61,6 +62,7 @@ object UI extends gdx.Screen with TaskSupport { ui =>
         inputProcessor.checkOver()
       }
     }
+    updates.attach(Audio.update)
     new Lwjgl3Application(game, config)
   }
 
