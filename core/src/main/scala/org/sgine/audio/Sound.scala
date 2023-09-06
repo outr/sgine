@@ -13,6 +13,17 @@ class Sound(private[audio] val gdx: com.badlogic.gdx.audio.Sound) extends AudioE
     new SoundInstance(this, id, volume, pitch, pan, loop)
   }
 
+  def playAndForget(volume: Double = 1.0,
+                    pitch: Double = 1.0,
+                    pan: Double = 0.0,
+                    loop: Boolean = false): Unit = {
+    if (loop) {
+      gdx.loop(volume.toFloat, pitch.toFloat, pan.toFloat)
+    } else {
+      gdx.play(volume.toFloat, pitch.toFloat, pan.toFloat)
+    }
+  }
+
   def stop(): Unit = gdx.stop()
 
   def pause(): Unit = gdx.pause()
