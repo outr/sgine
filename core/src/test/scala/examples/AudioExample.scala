@@ -1,9 +1,11 @@
 package examples
 
 import org.sgine.audio.Audio
-import org.sgine.{Color, PointerCursor}
-import org.sgine.component.{Component, Container, Image, Label, PointerSupport}
+import org.sgine.PointerCursor
+import org.sgine.component.{Container, Image, Label, PointerSupport}
 import perfolation.double2Implicits
+
+import reactify._
 
 object AudioExample extends Example {
   private lazy val music = Audio.music("music.mp3")
