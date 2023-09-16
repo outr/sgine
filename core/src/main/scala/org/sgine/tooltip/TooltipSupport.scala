@@ -15,7 +15,7 @@ trait TooltipSupport extends PointerSupport {
       if (!Tooltip.isLocked) {
         if (b) {
           tooltip.foreach { t =>
-            Tooltip.active := ActiveTooltip.Hovering(t)
+            Tooltip.active := ActiveTooltip.Hovering(t, this)
           }
         } else {
           Tooltip.active @= ActiveTooltip.None
@@ -25,7 +25,7 @@ trait TooltipSupport extends PointerSupport {
     pointer.down.on {
       if (tooltip.clickLock()) {
         tooltip.foreach { t =>
-          val at = ActiveTooltip.Locked(t)
+          val at = ActiveTooltip.Locked(t, this)
           if (Tooltip.active() == at) {
             Tooltip.active @= ActiveTooltip.None
           } else {
