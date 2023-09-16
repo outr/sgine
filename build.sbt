@@ -1,6 +1,6 @@
 name := "sgine"
 ThisBuild / organization := "org.sgine"
-ThisBuild / version := "2.0.0b4"
+ThisBuild / version := "2.0.0b5-SNAPSHOT"
 
 val scala213 = "2.13.11"
 
@@ -13,6 +13,7 @@ ThisBuild / scalacOptions ++= Seq("-unchecked", "-deprecation")
 ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("releases")
 ThisBuild / resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 ThisBuild / resolvers += "jitpack" at "https://jitpack.io"
+ThisBuild / resolvers += "Google" at "https://maven.google.com/"
 
 ThisBuild / publishTo := sonatypePublishToBundle.value
 ThisBuild / sonatypeProfileName := "org.sgine"
@@ -43,7 +44,7 @@ val vlcjVersion = "3.10.1"
 val scalaTestVersion = "3.2.12"
 
 lazy val root = project.in(file("."))
-  .aggregate(core)
+  .aggregate(core, lwjgl, android, ios, examples)
   .settings(
     publish := {},
     publishLocal := {}
@@ -57,61 +58,55 @@ lazy val core = project
     libraryDependencies ++= Seq(
       "com.badlogicgames.gdx" % "gdx" % gdxVersion,
       "com.badlogicgames.gdx" % "gdx-tools" % gdxVersion,
-      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
-      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
-      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion,
       "com.outr" %% "reactify" % reactifyVersion,
       "org.typelevel" %% "fabric-reactify" % fabricVersion,
       "com.outr" %% "scribe-slf4j" % scribeVersion,
-      "space.earlygrey" % "shapedrawer" % shapedrawerVersion
+      "space.earlygrey" % "shapedrawer" % shapedrawerVersion,
+      // TODO: REMOVE
+      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
+      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
+      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion
     )
   )
 
-//lazy val lwjgl = project.in(file("lwjgl"))
-//  .settings(
-//    name := "sgine-lwjgl",
-//    libraryDependencies ++= Seq(
-//      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion
-//    )
-//  )
-//  .dependsOn(coreOld)
-//
-//lazy val jglfw = project.in(file("jglfw"))
-//  .settings(
-//    name := "sgine-jglfw",
-//    libraryDependencies ++= Seq(
-//      "com.badlogicgames.gdx" % "gdx-backend-jglfw" % gdxVersion
-//    )
-//  )
-//  .dependsOn(core)
-//
-//lazy val android = project.in(file("android"))
-//  .settings(
-//    name := "sgine-android",
-//    libraryDependencies ++= Seq(
-//      "com.badlogicgames.gdx" % "gdx-backend-android" % gdxVersion,
-//      "com.google.android" % "android" % androidVersion % "provided"
-//    )
-//  )
-//  .dependsOn(core)
-//
-//lazy val ios = project.in(file("ios"))
-//  .settings(
-//    name := "sgine-ios",
-//    libraryDependencies ++= Seq(
-//      "com.badlogicgames.gdx" % "gdx-backend-robovm" % gdxVersion
-//    )
-//  )
-//  .dependsOn(core)
-//
-//lazy val examples = project.in(file("examples"))
-//  .settings(
-//    name := "sgine-examples",
-//    fork := true,
-//    libraryDependencies ++= Seq(
-//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
-//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
-//      "org.scala-lang.modules" %% "scala-xml" % scalaXMLVersion
-//    )
-//  )
-//  .dependsOn(coreOld, lwjgl, video)
+lazy val lwjgl = project.in(file("lwjgl"))
+  .settings(
+    name := "sgine-lwjgl",
+    libraryDependencies ++= Seq(
+      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
+      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
+      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion
+    )
+  )
+  .dependsOn(core)
+
+lazy val android = project.in(file("android"))
+  .settings(
+    name := "sgine-android",
+    libraryDependencies ++= Seq(
+      "com.badlogicgames.gdx" % "gdx-backend-android" % gdxVersion,
+      "com.google.android" % "android" % androidVersion % "provided"
+    )
+  )
+  .dependsOn(core)
+
+lazy val ios = project.in(file("ios"))
+  .settings(
+    name := "sgine-ios",
+    libraryDependencies ++= Seq(
+      "com.badlogicgames.gdx" % "gdx-backend-robovm" % gdxVersion
+    )
+  )
+  .dependsOn(core)
+
+lazy val examples = project.in(file("examples"))
+  .settings(
+    name := "sgine-examples",
+    fork := true,
+    libraryDependencies ++= Seq(
+      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
+      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
+      "org.scala-lang.modules" %% "scala-xml" % scalaXMLVersion
+    )
+  )
+  .dependsOn(core, lwjgl)

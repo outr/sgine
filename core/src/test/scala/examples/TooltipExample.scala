@@ -25,6 +25,7 @@ object TooltipExample extends Example {
     tooltip @= Some(new Label("Crate") with Tooltip {
       font @= Fonts.Pacifico.normal
     })
+    tooltip.clickLock @= true
 
     center := screen.center
     top := screen.middle + 200.0

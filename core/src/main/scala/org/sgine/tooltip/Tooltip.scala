@@ -14,34 +14,37 @@ trait Tooltip extends DimensionedSupport {
 }
 
 object Tooltip extends MutableContainer[Tooltip] {
-  val active: Var[Option[Tooltip]] = Var(None)
+  val active: Var[ActiveTooltip] = Var(ActiveTooltip.None)
+
+  def isLocked: Boolean = active.isLocked
 
   private var countdown: Double = 0.0
 
-  children := active().toVector
+  children := active().toOption.toVector
 
   width := screenOption().map(_.width()).getOrElse(0.0)
   height := screenOption().map(_.height()).getOrElse(0.0)
 
   active.changes {
     case (previous, current) =>
-      previous.foreach { t =>
+      previous.toOption.foreach { t =>
         t.visible @= false
         t.x @= 0.0
         t.y @= 0.0
       }
-      current.foreach { t =>
-        if (t.tooltip.delay() > 0.0) {
+      current.toOption.foreach { t =>
+        if (t.tooltip.delay() > 0.0 && !current.isLocked) {
           countdown = t.tooltip.delay()
         } else {
-          setTooltip(t)
+          countdown = 0.0
+          setTooltip(t, current)
         }
       }
   }
 
   Overlay.children += this
 
-  private def setTooltip(t: Tooltip): Unit = {
+  private def setTooltip(t: Tooltip, at: ActiveTooltip): Unit = {
     def positionX: Double = screenOption() match {
       case Some(screen) if Pointer.screen.x() > screen.center() => Pointer.screen.x - t.width
       case _ => Pointer.screen.x
@@ -52,7 +55,7 @@ object Tooltip extends MutableContainer[Tooltip] {
       case _ => Pointer.screen.y
     }
 
-    if (t.tooltip.moveWithPointer()) {
+    if (t.tooltip.moveWithPointer() && !at.isLocked) {
       t.left := positionX
       t.top := positionY
     } else {
@@ -63,7 +66,7 @@ object Tooltip extends MutableContainer[Tooltip] {
     t.visible @= true
   }
 
-  def hide(): Unit = active @= None
+  def hide(): Unit = active @= ActiveTooltip.None
 
   override def update(delta: Double): Unit = {
     super.update(delta)
@@ -73,7 +76,7 @@ object Tooltip extends MutableContainer[Tooltip] {
 
       if (countdown <= 0.0) {
         countdown = 0.0
-        active().foreach(setTooltip)
+        active.toOption.foreach(setTooltip(_, active()))
       }
     }
   }
