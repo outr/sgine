@@ -39,7 +39,7 @@ object TargetingExample extends Example {
     }
 
     object shape extends ShapeDrawable {
-      override def draw(drawer: Drawer): Unit = {
+      override def draw(drawer: Drawer, delta: Double): Unit = {
         drawer.color = Color.White
         drawer.circle(110.0, 110.0, 500.0, 6.0)
         currentTargets().foreach { target =>

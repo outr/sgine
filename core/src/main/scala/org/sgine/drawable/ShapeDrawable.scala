@@ -1,7 +1,7 @@
 package org.sgine.drawable
 
 import com.badlogic.gdx.graphics.g2d.Batch
-import org.sgine.Color
+import org.sgine.{Color, UI}
 import space.earlygrey.shapedrawer.ShapeDrawer
 import space.earlygrey.shapedrawer.scene2d.ShapeDrawerDrawable
 
@@ -16,7 +16,7 @@ trait ShapeDrawable extends Drawable { self =>
   override def rotation: Double = _rotation
   def rotation_=(degrees: Double): Unit = _rotation = degrees
 
-  def draw(drawer: Drawer): Unit
+  def draw(drawer: Drawer, delta: Double): Unit
 
   override lazy val gdx: ShapeDrawerDrawable = new ShapeDrawerDrawable() {
     private var alpha = 1.0
@@ -34,7 +34,7 @@ trait ShapeDrawable extends Drawable { self =>
       drawer.shapeDrawer.update()
       drawer.reset(x.toDouble, y.toDouble, width.toDouble, height.toDouble, Color.White, rotation, alpha)
 
-      self.draw(drawer)
+      self.draw(drawer, UI.delta)
     }
   }
 }

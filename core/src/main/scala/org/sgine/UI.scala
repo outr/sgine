@@ -10,6 +10,10 @@ import org.sgine.task.TaskSupport
 import reactify._
 
 object UI extends gdx.Screen with TaskSupport { ui =>
+  private var _delta: Double = 0.0
+
+  def delta: Double = _delta
+
   lazy val fontNormal: BitmapFont = {
     val f = new BitmapFont
     f.getData.setScale(4.0f)
@@ -91,13 +95,13 @@ object UI extends gdx.Screen with TaskSupport { ui =>
     Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-    val d = delta.toDouble
-    ui.update(d)
-    screens.update(d)
+    _delta = delta.toDouble
+    ui.update(_delta)
+    screens.update(_delta)
 
-    render @= d
+    render @= _delta
     val list = screens()
-    list.foreach(_.renderScreen(d))
+    list.foreach(_.renderScreen(_delta))
   }
 
   override def resize(width: Int, height: Int): Unit = {

@@ -4,6 +4,7 @@ import org.sgine.Color
 import org.sgine.component.{Component, Image}
 import org.sgine.drawable.{Drawer, ShapeDrawable, Texture}
 import org.sgine.task._
+import org.sgine.util.MathUtils
 import reactify._
 
 import scala.concurrent.duration.DurationInt
@@ -23,7 +24,7 @@ object ShapesExample extends Example {
     ).start
 
     drawable @= new ShapeDrawable {
-      override def draw(drawer: Drawer): Unit = {
+      override def draw(drawer: Drawer, delta: Double): Unit = {
         drawer.color = Color.Red
         drawer.filled.rectangle()
         drawer.color = Color.DarkRed
@@ -31,7 +32,16 @@ object ShapesExample extends Example {
         drawer.color = Color.Blue
         drawer.line(width + 100.0, -100.0, -100.0, height + 100.0, 10.0)
         drawer.line(-100.0, -100.0, width + 100.0, height + 100.0, 10.0)
-        drawer.draw(texture)()
+        drawer.filled.sector(
+          x = 300.0,
+          y = 300.0,
+          radius = 400.0,
+          startAngle = 0.0,
+          degrees = 45,
+          innerColor = Color.Green.withAlpha(0.5),
+          outerColor = Color.Blue.withAlpha(0.5)
+        )
+//        drawer.draw(texture)()
       }
 
       override def width: Double = 1000.0

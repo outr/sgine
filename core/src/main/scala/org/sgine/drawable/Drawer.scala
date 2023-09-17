@@ -1,7 +1,8 @@
 package org.sgine.drawable
 
-import com.badlogic.gdx.math.{MathUtils, Vector2}
+import com.badlogic.gdx.math.Vector2
 import org.sgine.Color
+import org.sgine.util.MathUtils
 import space.earlygrey.shapedrawer.{JoinType, ShapeDrawer}
 
 /**
@@ -83,6 +84,30 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
       preDraw()
       shapeDrawer.filledRectangle(x.cx, y.cy, width.f, -height.f, rotation.f)
     }
+
+    def circle(x: Double, y: Double, radius: Double): Unit = {
+      preDraw()
+      shapeDrawer.filledCircle(x.cx, y.cy, radius.f)
+    }
+
+    def sector(x: Double,
+               y: Double,
+               radius: Double,
+               startAngle: Double,
+               degrees: Double,
+               innerColor: Color,
+               outerColor: Color): Unit = {
+      preDraw()
+      shapeDrawer.sector(
+        x.cx,
+        y.cy,
+        radius.f,
+        MathUtils.degreesToRadians(90.0 - startAngle - degrees).f,
+        MathUtils.degreesToRadians(degrees).f,
+        innerColor.gdx,
+        outerColor.gdx
+      )
+    }
   }
 
   // TODO: Figure out a way to apply transform
@@ -109,7 +134,7 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
     _width = width
     _height = height
     this.color = color
-    this.rotation = rotation * MathUtils.degreesToRadians
+    this.rotation = MathUtils.degreesToRadians(rotation)
     this.alpha = alpha
   }
 }

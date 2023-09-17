@@ -8,7 +8,7 @@ import reactify._
 
 object ClippingExample extends Example {
   private lazy val background = new ShapeDrawable {
-    override def draw(drawer: Drawer): Unit = {
+    override def draw(drawer: Drawer, delta: Double): Unit = {
       drawer.color = Color.Aero
       drawer.filled.rectangle()
     }

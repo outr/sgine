@@ -5,7 +5,7 @@ import reactify._
 
 class Rectangle extends Image { image =>
   drawable @= new ShapeDrawable {
-    override def draw(drawer: Drawer): Unit = {
+    override def draw(drawer: Drawer, delta: Double): Unit = {
       drawer.color = image.color
       drawer.filled.rectangle()
     }

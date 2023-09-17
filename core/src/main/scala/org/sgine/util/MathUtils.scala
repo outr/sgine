@@ -8,6 +8,8 @@ object MathUtils {
   private lazy val t2: Vector2 = new Vector2()
   private lazy val t3: Vector2 = new Vector2()
 
+  def degreesToRadians(degrees: Double): Double = degrees * math.Pi / 180.0
+
   def distance(x1: Double, y1: Double, x2: Double, y2: Double): Double =
     math.sqrt(math.pow(x2 - x1, 2.0) + math.pow(y2 - y1, 2.0))
 
