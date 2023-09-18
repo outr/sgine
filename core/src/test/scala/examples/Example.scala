@@ -1,7 +1,10 @@
 package examples
 
+import org.sgine.audio.Audio
 import org.sgine.{Screen, SgineApp, UI}
 import org.sgine.component.{Component, FPSView}
+
+import java.io.File
 
 trait Example extends SgineApp { self =>
   object screen extends Screen {
@@ -12,6 +15,7 @@ trait Example extends SgineApp { self =>
 
   override protected def init(): Unit = {
     FPSView.font @= Fonts.OpenSans.Regular.normal
+    Audio.resourcesDirectory = Some(new File("src/test/resources"))
 
     UI.screen @= screen
   }

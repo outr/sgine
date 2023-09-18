@@ -13,10 +13,19 @@ import java.io.{BufferedWriter, File, FileWriter}
 import java.nio.file.Files
 
 object Audio extends UpdateSupport {
+  /**
+   * This must be set to the resources folder where the audio.info.json file should be created.
+   */
+  var resourcesDirectory: Option[File] = None
+
+  var infoFileName: String = "audio_info.json"
+
   private var entries: List[AudioElement] = Nil
 
-  private lazy val infoFile = Gdx.files.local("audio.info.json")
+  private lazy val infoFile = Gdx.files.classpath(infoFileName)
   private lazy val _info: Var[Map[String, AudioInfo]] = {
+    assert(resourcesDirectory.nonEmpty, "Audio.resourcesDirectory must be set to the resources folder path in order to generate audio info.")
+    assert(resourcesDirectory.get.isDirectory, s"Audio.resourcesDirectory is set, but does not exist: ${resourcesDirectory.get.getCanonicalPath}")
     val map: Map[String, AudioInfo] = if (infoFile.exists()) {
       val jsonString = infoFile.readString()
       val json = JsonParser(jsonString)
@@ -26,9 +35,14 @@ object Audio extends UpdateSupport {
     }
     val v = Var(map)
     v.attach { map =>
-      val json = map.asJson
-      val jsonString = JsonFormatter.Default(json)
-      infoFile.writeString(jsonString, false)
+      try {
+        val json = map.asJson
+        val jsonString = JsonFormatter.Default(json)
+        val outputPath = resourcesDirectory.get.toPath.resolve(infoFileName)
+        Files.writeString(outputPath, jsonString)
+      } catch {
+        case t: Throwable => scribe.error(t)
+      }
     }
     v
   }
