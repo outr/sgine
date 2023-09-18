@@ -3,7 +3,7 @@ package org.sgine.audio
 import com.badlogic.gdx.audio
 import reactify.{Trigger, Val, Var}
 
-class Music(gdx: com.badlogic.gdx.audio.Music) extends AudioElement {
+class Music(gdx: com.badlogic.gdx.audio.Music, info: AudioInfo) extends AudioElement {
   private val _playing: Var[Boolean] = Var(false)
   private val _position: Var[Double] = Var(0.0)
 

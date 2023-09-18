@@ -37,6 +37,7 @@ val reactifyVersion: String = "4.1.0"
 val fabricVersion: String = "1.12.6"
 val scribeVersion: String = "3.12.2"
 val shapedrawerVersion: String = "2.6.0"
+val media4sVersion: String = "1.0.20"
 
 val scalaXMLVersion = "2.0.0-M2"
 val androidVersion = "4.1.1.4"
@@ -62,6 +63,7 @@ lazy val core = project
       "org.typelevel" %% "fabric-reactify" % fabricVersion,
       "com.outr" %% "scribe-slf4j" % scribeVersion,
       "space.earlygrey" % "shapedrawer" % shapedrawerVersion,
+      "com.outr" %% "media4s" % media4sVersion,
       // TODO: REMOVE
       "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
       "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
