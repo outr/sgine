@@ -8,7 +8,7 @@ import scala.util.Try
 class Updates extends Channel[Double] {
   def every(delay: Double,
             stopIn: Double = Int.MaxValue.toDouble)
-           (f: => Unit): Unit = {
+           (f: => Unit): Reaction[Double] = {
     var total = 0.0
     var elapsed = 0.0
     var reaction: Reaction[Double] = null
@@ -23,6 +23,7 @@ class Updates extends Channel[Double] {
         reactions -= reaction
       }
     }
+    reaction
   }
 
   def in(delay: Double)(f: => Unit): Unit = every(delay, stopIn = delay)(f)

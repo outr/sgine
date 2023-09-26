@@ -50,11 +50,10 @@ object Audio extends UpdateSupport {
   def info(file: FileHandle): AudioInfo = _info().get(file.path()) match {
     case Some(info) => info
     case None =>
-      val tmp = File.createTempFile("audio-info", file.path())
-      val bytes = file.readBytes()
-      Files.write(tmp.toPath, bytes)
+      val f = new File(resourcesDirectory.get, file.path())
+      assert(f.isFile, s"Unable to find ${file.path()} in ${resourcesDirectory.get.getCanonicalPath}")
 
-      val mediaInfo = VideoUtil.info(tmp)
+      val mediaInfo = VideoUtil.info(f)
       val info = AudioInfo(mediaInfo.duration)
       synchronized {
         _info @= _info() + (file.path() -> info)

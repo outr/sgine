@@ -67,9 +67,19 @@ abstract class TextureManager(fileName: Option[String],
       val outputPath = new File(this.path)
       outputPath.mkdirs()
 
-      val inputFiles = inputDirectory.listFiles().toList
+      def recurseFiles(dir: File, prefix: String): List[(File, String)] = {
+        val files = dir.listFiles().toList
+        files.flatMap { file =>
+          if (file.isDirectory) {
+            recurseFiles(file, s"$prefix${file.getName.capitalize}")
+          } else {
+            List((file, s"$prefix${file.getName.capitalize}"))
+          }
+        }
+      }
+      val inputFiles = recurseFiles(inputDirectory, "")
       val atlasTextureCount = atlas.flatMap(_._2).size
-      val newestFileTime = inputFiles.map(_.lastModified()).max
+      val newestFileTime = inputFiles.map(_._1.lastModified()).max
       val shouldRegen = if (atlasTextureCount != inputFiles.length) {
         scribe.info(s"Atlas texture count ($atlasTextureCount) is not the same as the input file count (${inputFiles.length}). Regenerating...")
         true
@@ -94,12 +104,13 @@ abstract class TextureManager(fileName: Option[String],
         val packageName = getClass.getPackage.getName
         val className = getClass.getSimpleName.replace("$", "")
         val IndexedRegex = """(.+)_(\d{1,2})""".r
-        val textureMappings = inputFiles.groupBy { file =>
-          val fileName = file.getName
-          fileName.substring(0, fileName.indexOf('.')) match {
-            case IndexedRegex(name, _) => name
-            case s => s
-          }
+
+        val textureMappings = inputFiles.groupBy {
+          case (_, fileName) =>
+            fileName.substring(0, fileName.indexOf('.')) match {
+              case IndexedRegex(name, _) => name
+              case s => s
+            }
         }
         val textureNames = textureMappings.keys.toList.sorted
         val textureEntries = textureNames.map { textureName =>

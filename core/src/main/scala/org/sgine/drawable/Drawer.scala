@@ -98,6 +98,7 @@ case class Drawer(shapeDrawer: ShapeDrawer) {
                innerColor: Color,
                outerColor: Color): Unit = {
       preDraw()
+
       shapeDrawer.sector(
         x.cx,
         y.cy,

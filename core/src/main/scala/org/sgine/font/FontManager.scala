@@ -10,6 +10,7 @@ trait FontManager {
 
   protected def create[Return](path: String, allowMarkup: Boolean = true)
                               (f: Generator => Return): Return = {
+    FreeTypeFontGenerator.setMaxTextureSize(4096)
     val ftfg = new FreeTypeFontGenerator(Gdx.files.internal(path))
     try {
       val generator = (size: Int) => {
