@@ -33,5 +33,7 @@ trait MutableContainer[Child <: Component] extends TypedContainer[Child] { self 
       this @= get.filterNot(list.contains)
       list
     }
+
+    def clear(): Unit = this @= Vector.empty
   }
 }

@@ -1,6 +1,6 @@
 package org.sgine.audio
 
-import fabric.rw.RW
+import fabric.rw._
 
 case class AudioInfo(length: Double)
 

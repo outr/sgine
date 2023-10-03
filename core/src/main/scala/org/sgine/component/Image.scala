@@ -45,9 +45,10 @@ class Image extends ActorComponent[GDXImage] { component =>
     override def toString: String = component.toString
   }
 
+  width := (drawable.width * drawable.scaleX) * scaleX
+  height := (drawable.height * drawable.scaleY) * scaleY
+
   drawable.attachAndFire { drawable =>
     actor.setDrawable(drawable.gdx)
-    width := (drawable.width * drawable.scaleX) * scaleX
-    height := (drawable.height * drawable.scaleY) * scaleY
   }
 }

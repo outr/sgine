@@ -118,4 +118,6 @@ object UI extends gdx.Screen with TaskSupport { ui =>
   }
 
   override def dispose(): Unit = {}
+
+  final def quit(): Unit = Gdx.app.exit()
 }

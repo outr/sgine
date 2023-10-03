@@ -12,8 +12,25 @@ class PointerEvents {
   lazy val moved: Channel[PointerMovedEvent] = Channel[PointerMovedEvent]
   lazy val up: Channel[PointerUpEvent] = Channel[PointerUpEvent]
   lazy val over: Channel[PointerOverEvent] = Channel[PointerOverEvent]
+  lazy val click: Channel[PointerUpEvent] = Channel[PointerUpEvent]
+
+  private lazy val pressed: Var[Boolean] = {
+    val v = Var(false)
+    down.on(v @= true)
+    isOver.attach { b =>
+      if (!b) v @= false
+    }
+    up.attach { evt =>
+      if (v()) {
+        click @= evt
+      }
+      v @= false
+    }
+    v
+  }
 
   lazy val isOver: Val[Boolean] = Var(false)
+  lazy val isPressed: Val[Boolean] = Var(pressed)
 
   lazy val cursor: Var[Option[PointerCursor]] = {
     val v = Var[Option[PointerCursor]](None)
