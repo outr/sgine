@@ -2,6 +2,7 @@ package examples
 
 import org.sgine.component.{Component, Label}
 import org.sgine.event.MouseHideSupport
+import reactify._
 
 object MouseHideExample extends Example with MouseHideSupport {
   override protected def component: Component = new Label {

@@ -1,7 +1,7 @@
 package org.sgine
 
 import org.sgine.task._
-import reactify.{Channel, Val}
+import reactify._
 
 class ScreenManager extends Val[Vector[Screen]](Vector.empty) with TaskSupport { sm =>
   val adding: Channel[Screen] = Channel[Screen]

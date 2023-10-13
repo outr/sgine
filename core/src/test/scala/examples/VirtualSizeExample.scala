@@ -2,6 +2,7 @@ package examples
 
 import org.sgine._
 import org.sgine.component.{Component, Container, Image}
+import reactify._
 
 object VirtualSizeExample extends Example with VirtualSizeSupport {
   override protected lazy val component: Component = Container(
