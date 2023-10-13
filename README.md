@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/outr/sgine/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/outr/sgine/actions/workflows/ci.yml)
 [![Gitter](https://badges.gitter.im/outr/sgine.svg)](https://gitter.im/outr/sgine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Maven Central](https://img.shields.io/maven-central/v/org.sgine/sgine-core_2.11.svg)](https://maven-badges.herokuapp.com/maven-central/org.sgine/sgine-core_2.11)
+[![Maven Central](https://img.shields.io/maven-central/v/org.sgine/sgine-core_2.11.svg)](https://maven-badges.herokuapp.com/maven-central/org.sgine/sgine-core_2.13)
 
 Scala Engine for OpenGL-based Desktop, Android, and iOS game and business development.
 
