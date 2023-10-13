@@ -1,8 +1,11 @@
 package examples
 
 import org.sgine.component._
-import org.sgine.{Color, SgineApp, Screen, UI}
+import org.sgine.task._
+import org.sgine.{Color, Screen, SgineApp, UI}
 import reactify._
+
+import scala.concurrent.duration.DurationInt
 
 object MultiScreenExample extends SgineApp {
   private lazy val screen1: Screen = new SimpleScreen("Screen 1", Color.Red, screen2)
@@ -12,7 +15,7 @@ object MultiScreenExample extends SgineApp {
   override protected def init(): Unit = {
     FPSView.font @= Fonts.OpenSans.Regular.normal
 
-    UI.screen @= screen1
+    UI.screens.set(screen1)
   }
 
   class SimpleScreen(label: String, screenColor: Color, nextScreen: => Screen) extends Screen { screen =>
@@ -31,7 +34,7 @@ object MultiScreenExample extends SgineApp {
           middle @= screen.height / 2.0
           color := (if (pointer.isOver) screenColor else Color.White)
           pointer.down.on {
-            UI.screens.transition.crossFade(nextScreen)
+            UI.screens @= nextScreen
           }
         },
         new Label {
@@ -42,5 +45,14 @@ object MultiScreenExample extends SgineApp {
         }
       )
     }
+
+    override def activate(): Task = {
+      color @= Color.Clear
+      color to Color.White in 1.second
+    }
+
+    override def deactivate(): Task = color to Color.Clear in 1.second
+
+    override def toString: String = label
   }
 }

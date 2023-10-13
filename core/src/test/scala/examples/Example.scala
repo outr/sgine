@@ -17,6 +17,6 @@ trait Example extends SgineApp { self =>
     FPSView.font @= Fonts.OpenSans.Regular.normal
     Audio.resourcesDirectory = Some(new File("src/test/resources"))
 
-    UI.screen @= screen
+    UI.screens @= screen
   }
 }

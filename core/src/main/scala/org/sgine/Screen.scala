@@ -6,6 +6,7 @@ import org.sgine.component.{ActorComponent, Children, Component, PointerSupport,
 import org.sgine.event.InputProcessor
 import org.sgine.event.key.KeyInput
 import org.sgine.event.pointer.PointerEvents
+import org.sgine.task.Task
 import org.sgine.update.Updatable
 import reactify._
 
@@ -62,6 +63,16 @@ trait Screen extends Updatable with TypedContainer[Component] with PointerSuppor
     stage.act(delta.toFloat)
     input.update(delta)
   }
+
+  /**
+   * Defines transitioning task for activation of screen
+   */
+  def activate(): Task = Task.None
+
+  /**
+   * Defines transitioning task for deactivation of screen
+   */
+  def deactivate(): Task = Task.None
 
   private[sgine] val inputProcessor = new InputProcessor(this)
 

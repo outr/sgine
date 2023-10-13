@@ -31,14 +31,7 @@ object UI extends gdx.Screen with TaskSupport { ui =>
     * Must be set prior to starting the UI. Defaults to Some(60).
     */
   val overCheckFrameRate: Var[Option[Int]] = Var(Some(60))
-  val screens = new Screens
-  object screen {
-    def :=(screen: => Screen): Unit = apply(screen)
-
-    def @=(screen: Screen): Unit = apply(screen)
-
-    def apply(screen: => Screen): Unit = screens.set(Vector(screen))
-  }
+  val screens = new ScreenManager
   val render: Channel[Double] = Channel[Double]
 
   private var disposed = false
@@ -72,7 +65,7 @@ object UI extends gdx.Screen with TaskSupport { ui =>
 
   private object game extends gdx.Game {
     override def create(): Unit = {
-      screens.added.attach { screen =>
+      screens.adding.attach { screen =>
         ui.render.on {
           screen.verifyInit()
           screen.stage.getViewport.update(Gdx.graphics.getWidth, Gdx.graphics.getHeight, true)
