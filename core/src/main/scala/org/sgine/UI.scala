@@ -2,7 +2,6 @@ package org.sgine
 
 import com.badlogic.gdx
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.backends.lwjgl3.{Lwjgl3Application, Lwjgl3ApplicationConfiguration}
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import org.sgine.audio.Audio
@@ -39,20 +38,8 @@ object UI extends gdx.Screen with TaskSupport { ui =>
 
   private lazy val inputProcessor = new UIInputProcessor
 
-  def run(init: => Unit): Unit = {
+  def run(init: => Unit): gdx.Game = {
     this.init = () => init
-    val config = new Lwjgl3ApplicationConfiguration
-    title.attachAndFire { title =>
-      Option(Gdx.graphics) match {
-        case Some(g) => g.setTitle(title)
-        case None => config.setTitle(title)
-      }
-    }
-    config.useVsync(true)
-    config.setForegroundFPS(0)
-    config.setIdleFPS(0)
-    config.setWindowedMode(1920, 1080)
-    config.setBackBufferConfig(8, 8, 8, 8, 16, 2, 2)
     overCheckFrameRate().foreach { frameRate =>
       val delay = 1.0 / frameRate.toDouble
       ui.updates.every(delay) {
@@ -60,7 +47,7 @@ object UI extends gdx.Screen with TaskSupport { ui =>
       }
     }
     updates.attach(Audio.update)
-    new Lwjgl3Application(game, config)
+    game
   }
 
   private object game extends gdx.Game {

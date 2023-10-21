@@ -65,9 +65,9 @@ lazy val core = project
       "space.earlygrey" % "shapedrawer" % shapedrawerVersion,
       "com.outr" %% "media4s" % media4sVersion,
       // TODO: REMOVE
-      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
-      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
-      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion
+//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
+//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
+//      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion
     )
   )
 
@@ -106,9 +106,9 @@ lazy val examples = project.in(file("examples"))
     name := "sgine-examples",
     fork := true,
     libraryDependencies ++= Seq(
-      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
-      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
-      "org.scala-lang.modules" %% "scala-xml" % scalaXMLVersion
+//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
+//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
+//      "org.scala-lang.modules" %% "scala-xml" % scalaXMLVersion
     )
   )
   .dependsOn(core, lwjgl)
