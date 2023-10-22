@@ -12,6 +12,13 @@ class ScreenManager extends Val[Vector[Screen]](Vector.empty) with TaskSupport {
   def :=(screen: => Screen): Unit = replace(screen)
   def @=(screen: Screen): Unit = replace(screen)
 
+  replace(Overlay, transitionAdd = false, transitionRemove = false)
+
+  override protected def set(value: => Vector[Screen]): Unit = {
+    val sorted = value.sortBy(_.priority())
+    super.set(sorted)
+  }
+
   /**
    * Adds the supplied screen to the existing screens currently active.
    */
