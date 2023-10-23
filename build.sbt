@@ -63,11 +63,7 @@ lazy val core = project
       "org.typelevel" %% "fabric-reactify" % fabricVersion,
       "com.outr" %% "scribe-slf4j" % scribeVersion,
       "space.earlygrey" % "shapedrawer" % shapedrawerVersion,
-      "com.outr" %% "media4s" % media4sVersion,
-      // TODO: REMOVE
-//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-desktop",
-//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-desktop",
-//      "com.badlogicgames.gdx" % "gdx-backend-lwjgl3" % gdxVersion
+      "com.outr" %% "media4s" % media4sVersion
     )
   )
 
@@ -87,10 +83,18 @@ lazy val android = project.in(file("android"))
     name := "sgine-android",
     libraryDependencies ++= Seq(
       "com.badlogicgames.gdx" % "gdx-backend-android" % gdxVersion,
-      "com.google.android" % "android" % androidVersion % "provided"
+//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-armeabi-v7a",
+//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-arm64-v8a",
+//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-x86",
+//      "com.badlogicgames.gdx" % "gdx-platform" % gdxVersion classifier "natives-x86_64",
+//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-armeabi-v7a",
+//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-arm64-v8a",
+//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-x86",
+//      "com.badlogicgames.gdx" % "gdx-freetype-platform" % gdxVersion classifier "natives-x86_64",
+//      "com.google.android" % "android" % androidVersion % "provided"
     )
   )
-  .dependsOn(core)
+//  .dependsOn(core)
 
 lazy val ios = project.in(file("ios"))
   .settings(
