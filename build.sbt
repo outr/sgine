@@ -37,7 +37,7 @@ val reactifyVersion: String = "4.1.0"
 val fabricVersion: String = "1.12.6"
 val scribeVersion: String = "3.12.2"
 val shapedrawerVersion: String = "2.6.0"
-val media4sVersion: String = "1.0.21"
+val media4sVersion: String = "1.0.22"
 
 val scalaXMLVersion = "2.0.0-M2"
 val androidVersion = "4.1.1.4"
