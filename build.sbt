@@ -2,7 +2,7 @@ name := "sgine"
 ThisBuild / organization := "org.sgine"
 ThisBuild / version := "2.0.0b5-SNAPSHOT4"
 
-val scala213 = "2.13.12"
+val scala213 = "2.13.13"
 
 val scala3 = "3.3.1"
 
