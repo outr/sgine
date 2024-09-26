@@ -32,7 +32,7 @@ ThisBuild / developers := List(
 
 ThisBuild / fork := true
 
-val gdxVersion: String = "1.12.0"
+val gdxVersion: String = "1.12.1"
 val reactifyVersion: String = "4.1.0"
 val fabricVersion: String = "1.12.6"
 val scribeVersion: String = "3.12.2"
